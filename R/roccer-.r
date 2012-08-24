@@ -18,11 +18,7 @@ print.roccer <- function(x, ...) {
   cat("Roccer: ", x$name, "\n", sep = "")
 }
 
-basic_roccer <- function(name, input, command = NULL) {
-  if (is.null(command)) {
-    command <- str_sub(name, 2, -1)
-  }
-  
+basic_roccer <- function(name, input, command = name) {
   roccer(name,
     roc_parser(tag = input),
     rd_out(rd_command(command))

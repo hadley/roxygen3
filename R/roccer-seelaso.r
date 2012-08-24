@@ -1,4 +1,4 @@
-roc_seealso <- basic_roccer("@seealso", sentence_tag())
+roc_seealso <- basic_roccer("seealso", sentence_tag())
 
 parse_family <- function(rocblocks) {
   return(rocblocks)
@@ -28,7 +28,7 @@ parse_family <- function(rocblocks) {
   rocblocks
 }
 
-roc_family <- roccer("@family", 
+roc_family <- roccer("family", 
   roc_parser(tag = sentence_tag(), all = parse_family))
 
 

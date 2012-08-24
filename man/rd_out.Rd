@@ -4,6 +4,16 @@
 
 \title{[DEV]}
 
+\arguments{
+  \item{tag}{a function that takes a single argument (tag)
+  as input, and returns a list of \code{rd_commands} as
+  output}
+
+  \item{name}{name of the input tag - this is usually not
+  specified as it is filled in by \code{\link{roccer}} but
+  is useful for testing.}
+}
+
 \description{
   This function is useful only for developers
 }

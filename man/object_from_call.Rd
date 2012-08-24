@@ -3,7 +3,21 @@
 \alias{object_from_call}
 
 \title{Given a call that modifies the R environment, find the object that
-it creates.}
+it creates}
+
+\arguments{
+  \item{call}{unevaluated function call}
+
+  \item{env}{environment in which to evaluate function
+  call}
+}
+
+\value{
+  a list giving the \code{name} and \code{value} of the
+  object that the call creates.  \code{NULL} is returned if
+  the call doesn't modify the package environment in a way
+  that roxygen recognises.
+}
 
 \description{
 

@@ -1,4 +1,4 @@
-roc_comment <- basic_roccer("@comment", sentence_tag())
+roc_comment <- basic_roccer("comment", sentence_tag())
 
 roc_path <- roccer("path", 
   roc_parser(one = function(roc, path, ...) {

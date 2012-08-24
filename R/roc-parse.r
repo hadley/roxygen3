@@ -35,7 +35,7 @@ parse_rocblocks.roc_parser <- function(parser, rocblocks) {
       tag <- rocblocks[[i]]$roc[[parser$name]]
       if (is.null(tag)) next
       
-      rocblocks[[i]]$roc[[tag]] <- parser$tag(tag)
+      rocblocks[[i]]$roc[[parser$name]] <- parser$tag(tag, parser$name)
     }
   }
   

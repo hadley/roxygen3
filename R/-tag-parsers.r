@@ -1,5 +1,5 @@
 split_pieces <- function(text, split_with, min, max) {
-  pieces <- str_split(text, split_with)
+  pieces <- str_split(text, split_with)[[1]]
   
   if (length(pieces) < min) {
     stop(key, " requires at least ", min, " values.")
@@ -36,17 +36,22 @@ paragraph_tag <- function(min = 0, max = Inf) {
   }
 }
 
-name_desc_tag <- function(text, key, srcref) {
-  pieces <- str_split_fixed(text, "[[:space:]]+", 2)
-  
-  name <- pieces[, 1]
-  desc <- str_trim(pieces[, 2])
+text_tag <- function() {
+  function(text, key, ...) text
+}
 
-  if (name == "") {
-    roxygen_stop(key, ' requires a name and description', srcref = srcref)
-  }
+name_desc_tag <- function() {
+  function(text, key, srcref) {
+    pieces <- str_split_fixed(text, "[[:space:]]+", 2)
   
-  list(name = name, desc = desc)
+    name <- pieces[, 1]
+    desc <- str_trim(pieces[, 2])
+
+    if (any(name == "")) {
+      stop(key, ' requires a name and description')
+    }
+    setNames(desc, name)
+  }
 }
 
 

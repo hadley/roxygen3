@@ -1,9 +1,9 @@
 #' @roc_usage @@title Topic title
 #' @roc_desc The topic title. By default this is taken from the first sentence
 #'  of the roxygen block. See \code{\link{roc_intro}} for more details.
-roc_title <- basic_roccer("@title", sentence_tag())
-roc_description <- basic_roccer("@description", paragraph_tag())
-roc_details <- basic_roccer("@details", paragraph_tag())
+roc_title <- basic_roccer("title", sentence_tag())
+roc_description <- basic_roccer("description", paragraph_tag())
+roc_details <- basic_roccer("details", paragraph_tag())
 
 parse_intro <- function(roc, obj, ...) {
   if (!is.null(roc$`_intro`)) {
@@ -49,5 +49,5 @@ parse_intro <- function(roc, obj, ...) {
   )
 }
 
-roc_intro <- roccer("@_intro", roc_parser(one = parse_intro))
-base_prereqs[["@_intro"]] <- c("@title", "@description", "@details")
+roc_intro <- roccer("_intro", roc_parser(one = parse_intro))
+base_prereqs[["_intro"]] <- c("title", "description", "details")

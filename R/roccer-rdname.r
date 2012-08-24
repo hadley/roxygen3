@@ -1,4 +1,4 @@
-roc_rdname <- roccer("@rdname", 
+roc_rdname <- roccer("rdname", 
   roc_parser(one = function(roc, ...) {
     list(rdname = roc$rdname %||% nice_name(roc$name))
   })

@@ -76,7 +76,7 @@ parse_roc <- function(lines, match = "^\\s*#+\'") {
   elements <- str_replace_all(elements, fixed("@@"), "@")
   
   cols <- str_split_fixed(elements, "[[:space:]]+", 2)
-  
+
   tapply(cols[, 2], cols[, 1], list)
 }
 

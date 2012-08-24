@@ -18,7 +18,7 @@ write_out <- function(roccers, rocblocks, out_path) {
     if (is.null(out[[type]])) out[[type]] <- list()
     
     for (rocblock in rocblocks) {
-      tag <- rocblock$roc[[str_replace(rocout$name, "@", "")]]
+      tag <- rocblock$roc[[rocout$name]]
       if (is.null(tag)) next
       
       path <- output_path(rocout, rocblock)

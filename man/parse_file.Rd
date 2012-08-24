@@ -4,6 +4,14 @@
 
 \title{[DEV]}
 
+\arguments{
+  \item{path}{path of file to parse}
+}
+
+\value{
+  A list of roc objects
+}
+
 \description{
   This function is useful only for developers
 }

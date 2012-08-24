@@ -4,6 +4,18 @@
 
 \title{[DEV]}
 
+\arguments{
+  \item{path}{path to directory of R files to parse}
+
+  \item{env}{environment that contains the results of
+  evaluating the file. If \code{NULL}, will create a new
+  environment with the global environment as a parent and
+  will evaluate the code in that environment. This will be
+  fine for simple, stand alone files, but you'll need to
+  manage the environments yourself for more complicated
+  packages.}
+}
+
 \description{
   This function is useful only for developers
 }

@@ -4,6 +4,24 @@
 
 \title{[DEV]}
 
+\arguments{
+  \item{tag}{a function that takes a single argument and
+  returns an object that will be used}
+
+  \item{one}{a function with named arguments corresponding
+  to any component of a rocblock (e.g. \code{roc},
+  \code{obj}, \code{path}) that returns a named list
+  specifying the modifications that should be made to the
+  roc.}
+
+  \item{all}{a function with one parameter that is giving a
+  list of all rocblocks and should return a named list
+  containing named list specifying changes to the rocs.}
+
+  \item{name}{when \code{NULL} will automatically be giving
+  the name of the roccer that uses it.}
+}
+
 \description{
   This function is useful only for developers
 }

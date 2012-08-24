@@ -4,10 +4,10 @@ ns_roccer <- function(name, input, output) {
     namespace_out(output))
 }
 
-ns_roccer("@import", words_tag(), ns_each("import"))
-ns_roccer("@importFrom", words_tag(), ns_repeat1("importFrom"))
-ns_roccer("@importClassesFrom", words_tag(), ns_repeat1("importClassesFrom")) 
-ns_roccer("@useDynLib", arguments_tag(), ns_directive("useDynLib"))
+ns_roccer("import", words_tag(), ns_each("import"))
+ns_roccer("importFrom", words_tag(), ns_repeat1("importFrom"))
+ns_roccer("importClassesFrom", words_tag(), ns_repeat1("importClassesFrom")) 
+ns_roccer("useDynLib", arguments_tag(), ns_directive("useDynLib"))
 
 # But how would you document these? Generally, how to do you create and
 # document bundles of related roccers?

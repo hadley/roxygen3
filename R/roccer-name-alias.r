@@ -1,6 +1,6 @@
-roc_alias <- basic_roccer("@aliases", words_tag(min = 1), "alias")
+roc_alias <- basic_roccer("aliases", words_tag(min = 1), "alias")
 
-roc_name <- roccer("@name", 
+roc_name <- roccer("name", 
   roc_parser(
     tag = words_tag(min = 1, max = 1),
     one = function(roc, obj, ...) {
@@ -12,4 +12,4 @@ roc_name <- roccer("@name",
   ),
   rd_out(rd_command("name"))
 )
-base_prereqs[["@name"]] <- "@aliases"
+base_prereqs[["name"]] <- "aliases"
