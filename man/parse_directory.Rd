@@ -4,6 +4,10 @@
 
 \title{[DEV]}
 
+\usage{
+  parse_directory(path, env = NULL)
+}
+
 \arguments{
   \item{path}{path to directory of R files to parse}
 

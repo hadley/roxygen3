@@ -4,6 +4,10 @@
 
 \title{[DEV]}
 
+\usage{
+  rd_out(tag, name = NULL)
+}
+
 \arguments{
   \item{tag}{a function that takes a single argument (tag)
   as input, and returns a list of \code{rd_commands} as

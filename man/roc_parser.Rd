@@ -4,6 +4,11 @@
 
 \title{[DEV]}
 
+\usage{
+  roc_parser(tag = NULL, one = NULL, all = NULL,
+    name = NULL)
+}
+
 \arguments{
   \item{tag}{a function that takes a single argument and
   returns an object that will be used}

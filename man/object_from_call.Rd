@@ -5,6 +5,10 @@
 \title{Given a call that modifies the R environment, find the object that
 it creates}
 
+\usage{
+  object_from_call(call, env)
+}
+
 \arguments{
   \item{call}{unevaluated function call}
 

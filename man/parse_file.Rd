@@ -4,6 +4,10 @@
 
 \title{[DEV]}
 
+\usage{
+  parse_file(path, env = NULL)
+}
+
 \arguments{
   \item{path}{path of file to parse}
 }
