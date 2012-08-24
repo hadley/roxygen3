@@ -48,8 +48,9 @@ merge.rd_command <- function(x, y, ...) {
 #' @S3method format keyword_command
 #' @S3method format alias_command
 format_rd <- function(x, ...) {
-  vapply(sort(unique(x$values)), make_rd_command, command = x$command, 
+  out <- vapply(sort(unique(x$values)), make_rd_command, command = x$command, 
     FUN.VALUE = character(1), USE.NAMES = FALSE)
+  str_c(out, collapse = "")
 }
 format.keyword_command <- format_rd
 format.alias_command <- function(x, ...) {
