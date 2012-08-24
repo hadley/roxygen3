@@ -16,7 +16,7 @@ parse_directory <- function(path, env = NULL) {
     lapply(r_files, sys.source, envir = env, chdir = TRUE)
   }
 
-  lapply(r_files, parse_file, env = env)
+  unlist(lapply(r_files, parse_file, env = env), recursive = FALSE)
 }
 
 #' Parse a source file containing roxygen blocks.
@@ -46,12 +46,13 @@ parse_file <- function(path, env = NULL) {
     if (beg == end) return()
 
     roc <- parse_roc(lines[beg:end])
-    if (is.null(roc)) return(NULL)
+    if (is.null(roc)) return()
 
     obj <- object_from_call(parsed[[i]], env)
     
     rocblock(obj = obj, roc = roc, path = path, lines = c(beg, end))
   }
+  
   compact(lapply(seq_along(parsed), extract))
 }
 

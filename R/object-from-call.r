@@ -8,7 +8,7 @@
 #'   modify the package environment in a way that roxygen recognises.
 #' @keywords internal
 object_from_call <- function(call, env) {
-  if (is.null(call)) return(list(NULL))
+  if (is.null(call)) return()
   
   # Find function, then use match.call to construct complete call
   f <- eval(call[[1]], env)
