@@ -31,20 +31,20 @@ parse_rocblocks.roc_parser <- function(parser, rocblocks) {
   
   # Loop through all rocblocks, extracting tag. 
   if (!is.null(parser$tag)) {
-    out <- lapply(rocblocks, function(rocblock) {
-      tag <- rocblock$roc[[parser$name]]
-      if (is.null(tag)) return()
-      setNames(list(parser$tag(tag)), tag)
-    })
-    rocblocks <- modifyList(rocblocks, out)
+    for(i in seq_along(rocblocks)) {
+      tag <- rocblocks[[i]]$roc[[parser$name]]
+      if (is.null(tag)) next
+      
+      rocblocks[[i]]$roc[[tag]] <- parser$tag(tag)
+    }
   }
   
   # Loop through all rocblocks, calling parser with do.call.
   if (!is.null(parser$one)) {
-    out <- lapply(rocblocks, function(rocblock) {
-      do.call(parser$one, rocblock)
-    })
-    rocblocks <- modifyList(rocblocks, out)
+    for(i in seq_along(rocblocks)) {
+      out <- do.call(parser$one, rocblocks[[i]])
+      rocblocks[[i]]$roc <- modifyList(rocblocks[[i]]$roc, out)
+    }
   }
   
   # Parsing function should return named list specifying changes.

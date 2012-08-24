@@ -1,6 +1,6 @@
 #' Parse directory of source files.
 #'
-#' @Param path path to directory of R files to parse
+#' @param path path to directory of R files to parse
 #' @param env environment that contains the results of evaluating the file.
 #'   If \code{NULL}, will create a new environment with the global environment
 #'   as a parent and will evaluate the code in that environment. This will be
