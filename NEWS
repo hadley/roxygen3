@@ -1,0 +1,2 @@
+* `@S3method` now takes 0-2 arguments: if less than two are supplied it will
+  attempt to guess the others.

@@ -55,19 +55,18 @@ ns_s3_method <- roccer("S3method",
   roc_parser(
     words_tag(0, 2),
     one = function(roc, obj, ...) {
-      if (is.null(roc$S3method)) return(list())
       n <- length(roc$S3method)
-      
-      # Full, so don't need to guess
+      if (n == 0) return(list())
       if (n == 2) return(list())
       
-      if (n == 1) {
-        generic <- roc$S3method
-        class <- str_replace(obj$name, fixed(str_c(generic, ".")), "")
-      } else {
-        pieces <- str_split_fixed(obj$name, ".", n = 2)[1, ]
+      if (roc$S3method == "") {
+        # Empty, so guess from name
+        pieces <- str_split_fixed(obj$name, fixed("."), n = 2)[1, ]
         generic <- pieces[1]
         class <- pieces[2]
+      } else {
+        generic <- roc$S3method
+        class <- str_replace(obj$name, fixed(str_c(generic, ".")), "")
       }
       list(S3method = c(generic, class))
   }),

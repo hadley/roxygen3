@@ -14,7 +14,7 @@ new_command <- function(command, values) {
 
 is.rd_command <- function(x) inherits(x, "rd_command")
 
-#' @S3method print rd_command
+#' @S3method
 print.rd_command <- function(x, ...) {
   cat(format(x), "\n")
 }
@@ -32,12 +32,12 @@ make_rd_command <- function(command, ..., space = FALSE) {
   str_c("\\", command, str_c("{", values, "}", collapse = ""), "\n")                         
 }
 
-#' @S3method format rd_command
+#' @S3method
 format.rd_command <- function(x, ...) {
   stop("Unimplemented format: ", class(x)[1], call. = FALSE)
 }
 
-#' @S3method merge rd_command
+#' @S3method
 merge.rd_command <- function(x, y, ...) {
   stopifnot(identical(class(x), class(y)))  
   new_command(x$command, c(x$values, y$values))
@@ -45,36 +45,44 @@ merge.rd_command <- function(x, y, ...) {
 
 # commands that repeat multiple times --------------------------------------------
 
-#' @S3method format keyword_command
-#' @S3method format alias_command
 format_rd <- function(x, ...) {
   out <- vapply(sort(unique(x$values)), make_rd_command, command = x$command, 
     FUN.VALUE = character(1), USE.NAMES = FALSE)
   str_c(out, collapse = "")
 }
+
+#' @S3method
 format.keyword_command <- format_rd
+
+#' @S3method
 format.alias_command <- function(x, ...) {
   x$values <- str_replace_all(x$values, fixed("%"), "\\%")
   format_rd(x)
 }
+
+#' @S3method
 format.comment_command <- format_rd
 
 # commands that keep the first occurence -----------------------------------------
 format_first <- function(x, ...) {
   make_rd_command(x$command, x$values[1])
 } 
-#' @S3method format name_command
-#' @S3method format title_command
-#' @S3method format docType_command
-#' @S3method format format_command
-#' @S3method format encoding_command
+
+#' @S3method
 format.name_command <- function(x, ...) {
   x$values <- str_replace_all(x$values, fixed("%"), "\\%")
   format_first(x, ...)
 }
+#' @S3method
 format.title_command <- format_first
+
+#' @S3method
 format.docType_command <- format_first
+
+#' @S3method
 format.format_command <- format_first
+
+#' @S3method
 format.encoding_command <- format_first
 
 # commands collapse their values into a single string ----------------------------
@@ -84,25 +92,34 @@ format_collapse <- function(x, ..., indent = 2, exdent = 2) {
   make_rd_command(x$command, str_wrap(values, width = 60, indent = indent, 
     exdent = exdent), space = TRUE)
 } 
-#' @S3method format author_command
-#' @S3method format concept_command
-#' @S3method format description_command
-#' @S3method format details_command
-#' @S3method format note_command
-#' @S3method format references_command
-#' @S3method format seealso_command
-#' @S3method format source_command
-#' @S3method format usage_command
-#' @S3method format value_command
+#' @S3method
 format.author_command <- format_collapse
+
+#' @S3method
 format.concept_command <- format_collapse
+
+#' @S3method
 format.description_command <- format_collapse
+
+#' @S3method
 format.details_command <- format_collapse
+
+#' @S3method
 format.note_command <- format_collapse
+
+#' @S3method
 format.references_command <- format_collapse
+
+#' @S3method
 format.seealso_command <- format_collapse
+
+#' @S3method
 format.source_command <- format_collapse
+
+#' @S3method
 format.usage_command <- function(x, ...) format_collapse(x, ..., exdent = 4)
+
+#' @S3method
 format.value_command <- format_collapse
 
 
@@ -110,14 +127,18 @@ format.value_command <- format_collapse
 
 format_null <- function(x, ...) NULL
 
-#' @S3method format family_command
+#' @S3method
 format.family_command <- format_null
+
+#' @S3method
 format.inheritParams_command <- format_null
+
+#' @S3method
 format.formals_command <- format_null
 
 # commands with special errors or other semantics --------------------------------
 
-#' @S3method format arguments_command
+#' @S3method
 format.arguments_command <- function(x, ...) {
   names <- names(x$values)
   dups <- duplicated(names)
@@ -127,7 +148,7 @@ format.arguments_command <- function(x, ...) {
     space = TRUE)
 }
 
-#' @S3method format slot_command
+#' @S3method
 format.slot_command <- function(x, ...) {
   names <- names(x$values)
   items <- str_c("\\item{", names, "}{", x$values, "}", collapse = "\n\n")
@@ -137,8 +158,7 @@ format.slot_command <- function(x, ...) {
     "\n}\n")
 }
 
-
-#' @S3method format section_command
+#' @S3method
 format.section_command <- function(x, ...) {
   names <- vapply(x$values, "[[", "name", FUN.VALUE = character(1))
 
@@ -149,7 +169,7 @@ format.section_command <- function(x, ...) {
     collapse = "\n")
 }
 
-#' @S3method format examples_command
+#' @S3method
 format.examples_command <- function(x, ...) {
   values <- str_c(x$values, collapse = "\n")
   make_rd_command(x$command, values, space = TRUE)  
