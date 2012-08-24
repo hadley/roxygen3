@@ -8,15 +8,28 @@ recursive_merge <- function(lists) {
   Reduce(modifyList, lists)
 }
 
-
-list_matrix <- function(lists) {
-  stopifnot(is.list(lists))
-
-  is_list <- vapply(lists, is.list, logical(1))
-  stopifnot(all(is_list))
+write_if_different <- function(path, contents) {
+  if (!file.exists(dirname(path))) {
+    dir.create(dirname(path), showWarnings = FALSE)
+  }
   
-  n <- unique(vapply(lists, length, integer(1)))
-  stopifnot(length(n) > 1)
+  contents <- str_c(contents, collapse = "\n")
+  if (the_same(path, contents)) return(FALSE)
   
-  matrix(unlist(lists, recursive = FALSE), ncol = n, nrow = length(lists))
+  name <- basename(path)
+  if (!str_detect(name, "^[a-zA-Z][a-zA-Z0-9_.-]*$")) {
+    cat("Skipping invalid path: ", name, "\n")
+    FALSE
+  } else {
+    cat(sprintf('Writing %s\n', name))
+    writeLines(contents, path)
+    TRUE
+  }  
 }
+the_same <- function(path, new) {
+  if (!file.exists(path)) return(FALSE)
+
+  old <- str_c(readLines(path), collapse = "\n")
+  return(identical(old, new))
+}
+

@@ -2,16 +2,12 @@ rocout <- function(tag, name, subclass) {
   structure(list(tag = tag, name = name), class = c(subclass, "rocout"))
 }
 
-write_output <- function(rocouts, rocblocks) {
-  
-}
-
 
 write_output <- function(writer, rocblocks) {
   UseMethod("write_output")
 }
 
-write_out <- function(roccers, rocblocks) {
+write_out <- function(roccers, rocblocks, out_path) {
   out <- list()
   
   for (roccer in roccers) {
@@ -34,7 +30,7 @@ write_out <- function(roccers, rocblocks) {
   
   writers <- names(out)
   for (writer in writers) {
-    match.fun(writer)(out[[writer]])
+    match.fun(writer)(out[[writer]], out_path)
   }
   
 }
