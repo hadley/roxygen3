@@ -42,7 +42,7 @@ parse_rocblocks.roc_parser <- function(parser, rocblocks) {
   # Loop through all rocblocks, calling parser with do.call.
   if (!is.null(parser$one)) {
     out <- lapply(rocblocks, function(rocblock) {
-      do.call(parser$tag, rocblock)
+      do.call(parser$one, rocblock)
     })
     rocblocks <- modifyList(rocblocks, out)
   }

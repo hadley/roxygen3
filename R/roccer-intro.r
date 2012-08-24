@@ -5,9 +5,9 @@ roc_title <- basic_roccer("@title", sentence_tag())
 roc_description <- basic_roccer("@description", paragraph_tag())
 roc_details <- basic_roccer("@details", paragraph_tag())
 
-parse_intro <- function(roc, obj) {
+parse_intro <- function(roc, obj, ...) {
   if (!is.null(roc$`_intro`)) {
-    paragraphs <- str_trim(str_split(intro, fixed('\n\n'))[[1]])
+    paragraphs <- str_trim(str_split(roc$`_intro`, fixed('\n\n'))[[1]])
   } else {
     paragraphs <- NULL
   }
