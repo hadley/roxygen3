@@ -1,4 +1,4 @@
-split_pieces <- function(text, split_with, min, max) {
+split_pieces <- function(text, key, split_with, min, max) {
   pieces <- str_split(text, split_with)[[1]]
   
   if (length(pieces) < min) {
@@ -13,26 +13,26 @@ split_pieces <- function(text, split_with, min, max) {
 
 words_tag <- function(min = 0, max = Inf) {
   function(text, key, ...) {
-    split_pieces(text, "[[:space:]]+", min, max)
+    split_pieces(text, key, "[[:space:]]+", min, max)
   }
 }
 
 # all basically work like words_tag, except they split on different things.
 arguments_tag <- function(min = 0, max = Inf) {
   function(text, key, ...) {
-    split_pieces(text, ", ?", min, max)
+    split_pieces(text, key, ", ?", min, max)
   }
 }
 
 sentence_tag <- function(min = 0, max = Inf) {
   function(text, key, ...) {
-    split_pieces(text, "[.?!]", min, max)
+    split_pieces(text, key, "[.?!]", min, max)
   }
 }
 
 paragraph_tag <- function(min = 0, max = Inf) {
   function(text, key, ...) {
-    split_pieces(text, "\n{2,}", min, max)
+    split_pieces(text, key, "\n{2,}", min, max)
   }
 }
 

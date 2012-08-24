@@ -24,7 +24,8 @@ it creates}
 }
 
 \description{
-
+  Given a call that modifies the R environment, find the
+  object that it creates.
 }
 
 \keyword{internal}

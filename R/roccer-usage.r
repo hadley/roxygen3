@@ -28,7 +28,7 @@ usage.function <- function(obj, name) {
   }
 }
 
-usage.method <- function(obj, name) {
+usage.MethodDefinition <- function(obj, name) {
   signature <- str_c(as.character(obj@defined), collapse = ",")
   str_c("\\S4method{", obj@generic, "}{", signature, "}")
 }
@@ -36,6 +36,8 @@ usage.method <- function(obj, name) {
 usage.data.frame <- function(obj, name) {
   name
 }
+
+usage.NULL <- function(obj, name) NULL
 
 usage.default <- function(obj, name) {
   message("No usage method defined for object of class ", 
