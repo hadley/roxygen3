@@ -10,13 +10,10 @@ Author: Hadley Wickham <hadley@rice.edu>,
 Maintainer: Hadley Wickham <hadley@rice.edu>
 Depends:
     R (>= 2.14),
-    stats,
-    methods,
-    tools
+    stats
 Imports:
     stringr (>= 0.6),
     tools,
-    brew,
     digest
 Suggests:
     testthat
