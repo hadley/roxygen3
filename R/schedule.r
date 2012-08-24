@@ -1,12 +1,3 @@
-find_roccers <- function(env = "package:roxygen3") {
-  rocs <- compact(lapply(ls(env), function(x) {
-    obj <- get(x, env)
-    if (is.roccer(x)) x
-  }))
-  names(rocs) <- vapply(rocs, "[", "name", FUN.VALUE = character(1))
-  rocs
-}
-
 
 # L ← Empty list that will contain the sorted nodes
 # S ← Set of all nodes with no outgoing edges
