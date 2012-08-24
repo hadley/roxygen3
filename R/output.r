@@ -15,18 +15,20 @@ write_out <- function(roccers, rocblocks) {
   out <- list()
   
   for (roccer in roccers) {
-    rocout <- roccer$rocout
+    rocout <- roccer$output
+    if (is.null(rocout)) next
+    
     type <- output_type(rocout)
     if (is.null(out[[type]])) out[[type]] <- list()
     
     for (rocblock in rocblocks) {
-      tag <- rocblock$roc[[rocout$name]]
-      if (is.null(tag)) return()
+      tag <- rocblock$roc[[str_replace(rocout$name, "@", "")]]
+      if (is.null(tag)) next
       
       path <- output_path(rocout, rocblock)
-      n <- length(output[[type]][[path]]) + 1
-      if (n == 1) output[[type]][[path]] <- list()
-      output[[type]][[path]][[n]] <- rocout$tag(tag)
+      n <- length(out[[type]][[path]]) + 1
+      if (n == 1) out[[type]][[path]] <- list()
+      out[[type]][[path]][n] <- rocout$tag(tag)
     }
   }
   

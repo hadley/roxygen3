@@ -21,7 +21,7 @@ print.rd_command <- function(x, ...) {
 
 # Translate a command and values into an Rd expression; multiple values get their
 # own braces.
-rd_command <- function(command, ..., space = FALSE) {
+make_rd_command <- function(command, ..., space = FALSE) {
   if (space) {
     values <- str_c("\n", str_c(..., collapse = "\n"), "\n")
   } else {
@@ -33,7 +33,9 @@ rd_command <- function(command, ..., space = FALSE) {
 }
 
 #' @S3method format rd_command
-format.rd_command <- function(x, ...) stop("Unimplemented format")
+format.rd_command <- function(x, ...) {
+  stop("Unimplemented format: ", class(x)[1], call. = FALSE)
+}
 
 #' @S3method merge rd_command
 merge.rd_command <- function(x, y, ...) {
@@ -46,18 +48,19 @@ merge.rd_command <- function(x, y, ...) {
 #' @S3method format keyword_command
 #' @S3method format alias_command
 format_rd <- function(x, ...) {
-  vapply(sort(unique(x$values)), rd_command, command = x$command, 
+  vapply(sort(unique(x$values)), make_rd_command, command = x$command, 
     FUN.VALUE = character(1), USE.NAMES = FALSE)
 }
 format.keyword_command <- format_rd
 format.alias_command <- function(x, ...) {
   x$values <- str_replace_all(x$values, fixed("%"), "\\%")
-  format_rd(x, ...)
+  format_rd(x)
 }
+format.comment_command <- format_rd
 
 # commands that keep the first occurence -----------------------------------------
 format_first <- function(x, ...) {
-  rd_command(x$command, x$values[1])
+  make_rd_command(x$command, x$values[1])
 } 
 #' @S3method format name_command
 #' @S3method format title_command
@@ -77,7 +80,7 @@ format.encoding_command <- format_first
 
 format_collapse <- function(x, ..., indent = 2, exdent = 2) {
   values <- str_c(x$values, collapse = "\n\n")
-  rd_command(x$command, str_wrap(values, width = 60, indent = indent, 
+  make_rd_command(x$command, str_wrap(values, width = 60, indent = indent, 
     exdent = exdent), space = TRUE)
 } 
 #' @S3method format author_command
@@ -119,7 +122,7 @@ format.arguments_command <- function(x, ...) {
   dups <- duplicated(names)
   
   items <- str_c("\\item{", names, "}{", x$values, "}", collapse = "\n\n")
-  rd_command("arguments", str_wrap(items, width = 60, exdent = 2, indent = 2),
+  make_rd_command("arguments", str_wrap(items, width = 60, exdent = 2, indent = 2),
     space = TRUE)
 }
 
@@ -148,5 +151,5 @@ format.section_command <- function(x, ...) {
 #' @S3method format examples_command
 format.examples_command <- function(x, ...) {
   values <- str_c(x$values, collapse = "\n")
-  rd_command(x$command, values, space = TRUE)  
+  make_rd_command(x$command, values, space = TRUE)  
 }

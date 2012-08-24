@@ -18,17 +18,15 @@ output_path.rd_out <- function(writer, rocblock) {
   if (is.null(rocblock$roc$rdname)) {
     stop("rdname not specified", call. = FALSE)
   }
-  file.path("man", paste(rocblock$roc$rdname, ".Rd"))
+  file.path("man", paste(rocblock$roc$rdname, ".Rd", sep = ""))
 }
 
 output_type.rd_out <- function(writer) {
   "rd_write"
 }
 
-rd_write <- function()
-
 rd_command <- function(command) {
   function(tag) {
-    list(new_command(command, tag))
+    new_command(command, tag)
   }
 }
