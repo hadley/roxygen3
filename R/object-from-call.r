@@ -7,6 +7,9 @@
 #'   that the call creates.  \code{NULL} is returned if the call doesn't
 #'   modify the package environment in a way that roxygen recognises.
 #' @keywords internal
+#' @examples
+#' a <- 1
+#' object_from_call(quote(a <- 1), environment())
 object_from_call <- function(call, env) {
   if (is.null(call)) return()
   
