@@ -84,7 +84,7 @@ ns_export <- roccer("export",
   ),
   namespace_out(ns_each("export"))
 )
-base_prereqs[["export"]] <- c("@method", "@S3method")
+base_prereqs[["export"]] <- c("S3method")
 
 #' @export
 default_export <- function(obj, name) {

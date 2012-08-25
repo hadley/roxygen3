@@ -1,18 +1,26 @@
+#' @import igraph
+roccer_graph <- function(roccers, prereqs) {
+  nodes <- names(roccers)
 
-# L ← Empty list that will contain the sorted nodes
-# S ← Set of all nodes with no outgoing edges
-# for each node n in S do
-#     visit(n) 
-# function visit(node n)
-#     if n has not been visited yet then
-#         mark n as visited
-#         for each node m with an edge from m to n do
-#             visit(m)
-#         add n to L
-topo_sort <- function(roccers, prereqs = NULL) {
+  n <- vapply(prereqs, length, integer(1))
+  edge_df <- cbind(unlist(prereqs), rep(names(prereqs), n))
+  node_df <- data.frame(name = nodes)
+
+  graph <- graph.data.frame(edge_df, vertices = node_df)
+  V(graph)$label <- V(graph)$name
+
+  graph
+}
+
+sort_roccers <- function(roccers, prereqs = NULL) {
+  if (is.null(prereqs)) return(roccers)
   
+  g <- roccer_graph(roccers, base_prereqs)
+  order <- V(g)$name[topological.sort(g)]
+  roccers[order]
 }
 
 base_roccers <- function() {
-  topo.sort(find_roccers(asNamespace("roxygen3")), base_prereqs)
+  base <- find_roccers(asNamespace("roxygen3"))
+  sort_roccers(base, base_prereqs)
 }

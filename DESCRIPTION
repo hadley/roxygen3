@@ -15,6 +15,7 @@ Imports:
     stringr (>= 0.6),
     tools,
     digest,
-    codetools
+    codetools,
+    igraph
 Suggests:
     testthat
