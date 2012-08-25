@@ -21,12 +21,22 @@ roxygenise <- function(path, roccers = base_roccers()) {
   })
 }
 
-roxy_block <- function(text, roccers = base_roccers()) {
+block_parse <- function(text, roccers = base_roccers()) {
   env <- new.env(parent = globalenv())
   src <- srcfile(digest(text))
   expr <- parse(text = text)
   eval(expr, env = env)
   
   lines <- str_split(text, "\n")[[1]]
-  parse_text(lines, env, NULL)
+  
+  rocblocks <- parse_text(lines, env, NULL)
+  for (roccer in roccers) {
+    rocblocks <- parse_rocblocks(roccer$parser, rocblocks)
+  }
+  
+  rocblocks[[1]]$roc
+}
+
+block_out <- function(text, roccers = base_roccers) {
+  
 }
