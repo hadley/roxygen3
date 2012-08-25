@@ -34,25 +34,31 @@ parse_file <- function(path, env = NULL) {
   
   # Find the locations of (comment + code) blocks
   lines <- readLines(path, warn = FALSE)
-  parsed <- parse(text = lines, srcfile = srcfile(path))
+  src <- srcfile(path)
+  
+  parse_text(lines, env, src)
+}
+
+parse_text <- function(lines, env, src) {
+  parsed <- parse(text = lines)
   refs <- attr(parsed, "srcref")
   
   # Walk through each src ref and match code and comments
-  extract <- function(i) {    
+  extract <- function(i) {
     # Comments begin after last line of last block, and continue to 
     # first line of this block
     beg <- if (i == 1) 1 else refs[[i - 1]][[3]] + 1 
     end <- refs[[i]][[1]] - 1
-    if (beg == end) return()
+    # if (beg == end) return()
 
     roc <- parse_roc(lines[beg:end])
     if (is.null(roc)) return()
 
     obj <- object_from_call(parsed[[i]], env)
     
-    rocblock(obj = obj, roc = roc, path = path, lines = c(beg, end))
-  }
-  
+    rocblock(obj = obj, roc = roc, path = src$filename, 
+      lines = c(beg, end))
+  }  
   compact(lapply(seq_along(parsed), extract))
 }
 

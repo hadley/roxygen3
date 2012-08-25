@@ -20,3 +20,13 @@ roxygenise <- function(path, roccers = base_roccers()) {
     
   })
 }
+
+roxy_block <- function(text, roccers = base_roccers()) {
+  env <- new.env(parent = globalenv())
+  src <- srcfile(digest(text))
+  expr <- parse(text = text)
+  eval(expr, env = env)
+  
+  lines <- str_split(text, "\n")[[1]]
+  parse_text(lines, env, NULL)
+}
