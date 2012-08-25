@@ -21,6 +21,7 @@ roxygenise <- function(path, roccers = base_roccers()) {
   })
 }
 
+#' @importFrom digest digest
 block_parse <- function(text, roccers = base_roccers()) {
   env <- new.env(parent = globalenv())
   src <- srcfile(digest(text))
