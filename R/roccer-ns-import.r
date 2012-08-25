@@ -12,7 +12,8 @@ ns_import_from <- roccer("importFrom",
     }
   ),
   namespace_out(function(tag) {
-    str_c("importFrom(", quote_if_needed(tag), ",", names(tag), ")")
+    str_c("importFrom(", quote_if_needed(tag), ",", names(tag), ")", 
+      collapse = "\n")
   })
 )
 
