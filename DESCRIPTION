@@ -16,6 +16,7 @@ Imports:
     tools,
     digest,
     codetools,
-    igraph
+    igraph,
+    devtools
 Suggests:
     testthat

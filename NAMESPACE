@@ -1,4 +1,5 @@
 import(stringr)
+importFrom(stringr,str_c)
 importFrom(tools,checkRd)
 importFrom(codetools,findGlobals)
 S3method(print,rd_command)

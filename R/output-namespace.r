@@ -10,9 +10,11 @@ output_type.namespace_out <- function(writer) {
   "ns_write"
 }
 
+#' @auto_imports
 ns_write <- function(output, out_path) {
   out <- file.path(out_path, "NAMESPACE")  
-  formatted <- str_c(unlist(output), collapse = "\n")
+  lines <- str_c(unlist(output), collapse = "\n")
+  formatted <- with_collate("C", sort(unique(lines)))
   write_if_different(out, formatted)
 }
 
