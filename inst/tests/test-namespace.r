@@ -10,10 +10,10 @@ test_that("export parameter overrides default", {
   expect_equal(out$export, "b")
 })
 
-# test_that("export detects S4 class", {
-#   out <- block_parse("#' @export\nsetClass('a')")
-#   expect_equal(out, 'exportClasses(a)')
-# })
+test_that("export detects S4 class", {
+  out <- block_parse("#' @export\nsetClass('a')")
+  expect_equal(out$exportClasses, "a")
+})
 # 
 # test_that("exportClass overrides default class name", {
 #   out <- block_parse("#' @exportClass b\nsetClass('a')")
