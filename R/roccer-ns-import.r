@@ -2,13 +2,11 @@
 ns_import_from <- roccer("importFrom", 
   roc_parser(
     function(tag, name) {
-      # @TODO: reinstate once prereq sorting in place.
-      # pieces <- str_split(tag, "[[:space:]]+")[[1]]
-      # if (length(pieces) < 2) {
-      #   stop("@importFrom needs at least two components.", call. = FALSE)
-      # }
-      # setNames(pieces[-1], pieces[1])
-      return(tag)
+      pieces <- str_split(tag, "[[:space:]]+")[[1]]
+      if (length(pieces) < 2) {
+        stop("@importFrom needs at least two components.", call. = FALSE)
+      }
+      setNames(pieces[1], pieces[-1])
     }
   ),
   namespace_out(function(tag) {
@@ -36,7 +34,7 @@ base_prereqs[["auto_import"]] <- "importFrom"
 #' 
 #' @param f function to process
 #' @param imported list of functions that are already imported
-#' @auto_import
+#' @importFrom codetools findGlobals
 auto_imports <- function(f, name, imported = NULL, loaded = NULL) {
   globals <- findGlobals(f, merge = FALSE)$functions
   this_pkg <- environmentName(environment(f))
