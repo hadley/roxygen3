@@ -1,6 +1,6 @@
+S3method(default_export,"function")
 S3method(default_export,MethodDefinition)
 S3method(default_export,classRepresentation)
-S3method(default_export,function)
 S3method(format,alias_command)
 S3method(format,arguments_command)
 S3method(format,author_command)

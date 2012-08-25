@@ -23,7 +23,7 @@ ns_write <- function(output, out_path) {
 
 ns_each <- function(directive) {
   function(values) {
-    lines(directive, "(", values, ")")
+    lines(directive, "(", quote_if_needed(values), ")")
   }
 }
 ns_call <- function(directive) {
@@ -34,7 +34,8 @@ ns_call <- function(directive) {
 }
 ns_repeat1 <- function(directive) {
   function(values) {
-    lines(directive, "(", values[1], ",", values[-1], ")")
+    lines(directive, "(", quote_if_needed(values[1]), ",",
+      quote_if_needed(values[-1]), ")")
   }
 }
 
