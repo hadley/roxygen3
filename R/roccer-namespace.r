@@ -73,14 +73,59 @@ ns_s3_method <- roccer("S3method",
   namespace_out(ns_repeat1("S3method"))
 )
 
-# process_tag(partitum, "S3method", ns_S3method),
-# process_tag(partitum, "importFrom", ns_collapse),
-# process_tag(partitum, 'exportClass', ns_exportClass),
-# process_tag(partitum, 'exportMethod', ns_exportMethod),
-# process_tag(partitum, 'exportPattern', ns_default),
-# 
-# process_tag(partitum, "export", ns_export),
+ns_export_class <- ns_roccer(
+  "exportClass", 
+  words_tag(), 
+  ns_each("exportClass")
+)
+ns_export_method <- ns_roccer(
+  "exportMethod", 
+  words_tag(), 
+  ns_each("exportMethod")
+)
+ns_export_pattern <- ns_roccer(
+  "exportPattern", 
+  words_tag(), 
+  ns_each("exportPattern")
+)
 
+ns_export <- roccer("export",
+  roc_parser(
+    words_tag(),
+    function(roc, obj, ...) {
+      # Not specified, or ot empty, so just return
+      if (is.null(roc$export) || roc$export != "") {
+        return(list())
+      }
+      
+      # Special case for s3 methods
+      if (!is.null(roc$method)) {
+        return(list(S3method = roc$method))
+      }
+      
+      default_export(obj$value, obj$name)
+    }
+  ),
+  namespace_out(ns_each("export"))
+)
+base_prereqs[["export"]] <- c("@method", "@S3method")
+
+#' @export
+default_export <- function(obj, name) {
+  UseMethod("default_export")
+}
+#' @S3method
+default_export.classRepresentation <- function(obj, name) {
+  list(exportClass = value@className)
+}
+#' @S3method
+default_export.MethodDefinition <- function(obj, name) {
+  list(exportMethod = value@generic)
+}
+#' @S3method
+default_export.function <- function(obj, name) {
+  list(export = name)
+}
 
 # Also need to think about more consistent naming scheme:
 # 
