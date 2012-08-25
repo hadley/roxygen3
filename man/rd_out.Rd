@@ -2,7 +2,7 @@
 
 \alias{rd_out}
 
-\title{[DEV]}
+\title{[DEV] Output to Rd files in the man directory.}
 
 \usage{
   rd_out(tag, name = NULL)
@@ -20,14 +20,12 @@
 
 \description{
   This function is useful only for developers
-}
-
-\details{
-  Output to Rd files in the man directory.
 
   This uses the \code{@rdname} tag to determine which file
   the output from each rocblock is sent to.
+}
 
+\details{
   Only one of \code{tag} and \code{out} can be supplied.
 }
 

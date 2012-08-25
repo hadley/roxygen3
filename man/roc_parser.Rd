@@ -2,7 +2,7 @@
 
 \alias{roc_parser}
 
-\title{[DEV]}
+\title{[DEV] Create a rocblock parser.}
 
 \usage{
   roc_parser(tag = NULL, one = NULL, all = NULL,
@@ -29,9 +29,7 @@
 
 \description{
   This function is useful only for developers
-}
 
-\details{
   Create a rocblock parser.
 }
 

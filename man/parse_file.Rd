@@ -2,7 +2,7 @@
 
 \alias{parse_file}
 
-\title{[DEV]}
+\title{[DEV] Parse a source file containing roxygen blocks.}
 
 \usage{
   parse_file(path, env = NULL)
@@ -18,9 +18,7 @@
 
 \description{
   This function is useful only for developers
-}
 
-\details{
   Parse a source file containing roxygen blocks.
 }
 

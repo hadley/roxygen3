@@ -8,4 +8,4 @@ parse_dev <- function(roc, ...) {
 }
 
 roc_dev <- roccer("dev", roc_parser(one = parse_dev))
-base_prereqs[["dev"]] <- c("title", "details")
+base_prereqs[["dev"]] <- c("_intro", "title", "details")

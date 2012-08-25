@@ -2,7 +2,7 @@
 
 \alias{parse_directory}
 
-\title{[DEV]}
+\title{[DEV] Parse directory of source files.}
 
 \usage{
   parse_directory(path, env = NULL)
@@ -22,9 +22,7 @@
 
 \description{
   This function is useful only for developers
-}
 
-\details{
   Parse directory of source files.
 }
 
