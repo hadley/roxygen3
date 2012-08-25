@@ -6,7 +6,7 @@ ns_import_from <- roccer("importFrom",
       if (length(pieces) < 2) {
         stop("@importFrom needs at least two components.", call. = FALSE)
       }
-      setNames(pieces[1], pieces[-1])
+      setNames(rep(pieces[1], length(pieces[-1])), pieces[-1])
     }
   ),
   namespace_out(function(tag) {

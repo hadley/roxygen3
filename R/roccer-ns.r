@@ -92,11 +92,11 @@ default_export <- function(obj, name) {
 }
 #' @S3method
 default_export.classRepresentation <- function(obj, name) {
-  list(exportClass = as.vector(obj@className))
+  list(exportClass = as.vector(obj@className), export = NULL)
 }
 #' @S3method
 default_export.MethodDefinition <- function(obj, name) {
-  list(exportMethod = as.vector(obj@generic))
+  list(exportMethod = as.vector(obj@generic), export = NULL)
 }
 #' @S3method
 default_export.function <- function(obj, name) {
