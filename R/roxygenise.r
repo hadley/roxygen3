@@ -43,6 +43,7 @@ block_parse <- function(text, roccers = base_roccers()) {
   rocblocks[[1]]$roc
 }
 
-block_out <- function(text, roccers = base_roccers) {
-  
+block_out <- function(text, roccers = base_roccers()) {
+  parsed <- block_parse(text, roccers)
+  generate_output(roccers, list(list(roc = parsed)))
 }

@@ -25,25 +25,16 @@ test_that("export detects method name", {
     setClass('a')
     #' @export\n
     setMethod('max', 'a', function(x, ...) x[1])")
-  expect_equal(out$exportMethod, "max")
+  expect_equal(out$exportMethods, "max")
   expect_equal(out[["export"]], NULL) # damn you partial name matching
 })
 
-# test_that("export method escapes if needed", {
-#   out <- block_parse("
-#     setGeneric('x<-', function(x, value) standardGeneric('x<-'))
-#     #' @export\n
-#     setMethod('x<-', 'a', function(x, value) value)")
-#   expect_equal(out, 'exportMethods("x<-")')  
-# })
-# 
-# 
 test_that("exportMethod overrides default method name", {
   out <- block_parse("
     setClass('a')
-    #' @exportMethod c
+    #' @exportMethods c
     setMethod('max', 'a', function(x, ...) x[1])")
-    expect_equal(out$exportMethod, "c")
+    expect_equal(out$exportMethods, "c")
 })
 # 
 test_that("other namespace tags produce correct output", {

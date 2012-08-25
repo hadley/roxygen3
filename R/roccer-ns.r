@@ -54,10 +54,10 @@ ns_export_class <- ns_roccer(
   words_tag(), 
   ns_each("exportClass")
 )
-ns_export_method <- ns_roccer(
-  "exportMethod", 
+ns_export_methods <- ns_roccer(
+  "exportMethods", 
   words_tag(), 
-  ns_each("exportMethod")
+  ns_each("exportMethods")
 )
 ns_export_pattern <- ns_roccer(
   "exportPattern", 
@@ -96,7 +96,7 @@ default_export.classRepresentation <- function(obj, name) {
 }
 #' @S3method
 default_export.MethodDefinition <- function(obj, name) {
-  list(exportMethod = as.vector(obj@generic), export = NULL)
+  list(exportMethods = as.vector(obj@generic), export = NULL)
 }
 #' @S3method
 default_export.function <- function(obj, name) {

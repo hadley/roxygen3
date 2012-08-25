@@ -10,6 +10,17 @@ write_output <- function(writer, rocblocks) {
 write_out <- function(roccers, rocblocks, out_path) {
   out <- list()
   
+  out <- generate_output(roccers, rocblocks)
+  
+  writers <- names(out)
+  for (writer in writers) {
+    match.fun(writer)(out[[writer]], out_path)
+  }
+  
+}
+
+generate_output <- function(roccers, rocblocks) {
+  out <- list()
   for (roccer in roccers) {
     rocout <- roccer$output
     if (is.null(rocout)) next
@@ -27,12 +38,7 @@ write_out <- function(roccers, rocblocks, out_path) {
       out[[type]][[path]][n] <- rocout$tag(tag)
     }
   }
-  
-  writers <- names(out)
-  for (writer in writers) {
-    match.fun(writer)(out[[writer]], out_path)
-  }
-  
+  out
 }
 
 output_path <- function(writer, rocblock) {
