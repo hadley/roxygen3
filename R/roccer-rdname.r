@@ -3,6 +3,8 @@ roc_rdname <- roccer("rdname",
     list(rdname = roc$rdname %||% nice_name(roc$name))
   })
 )
+base_prereqs[["rdname"]] <- "name"
+
 
 subs <- matrix(ncol = 2, byrow = T, c(
   '[]', 'sub',

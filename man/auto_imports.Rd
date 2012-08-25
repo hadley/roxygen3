@@ -2,7 +2,7 @@
 
 \alias{auto_imports}
 
-\title{Scans a function and determines what functions it uses from other packages}
+\title{Scans a function and determines what functions it uses from other packages.}
 
 \usage{
   auto_imports(f, name, imported = NULL, loaded = NULL)
