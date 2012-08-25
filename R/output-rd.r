@@ -31,7 +31,7 @@ rd_write <- function(output, out_path) {
   mapply(write_rdlist, paths, output)
 }
 
-#' @importFrom tools checkRd
+#' @auto_imports
 write_rdlist <- function(path, commands) {
   # Merge matching tags
   command_names <- vapply(commands, "[[", "command", FUN.VALUE = character(1))

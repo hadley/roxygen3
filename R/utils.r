@@ -33,3 +33,16 @@ the_same <- function(path, new) {
   return(identical(old, new))
 }
 
+invert <- function(x) {
+  if (length(x) == 0) return()
+  unstack(rev(stack(x)))
+}
+
+is.syntactic <- function(x) make.names(x) == x
+has.quotes <- function(x) str_detect(x, "'|\"")
+quote_if_needed <- function(x) {
+  needs_quotes <- !has.quotes(x) & !is.syntactic(x)
+  x[needs_quotes] <- str_c('"', x[needs_quotes], '"')
+  x
+}
+

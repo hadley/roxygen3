@@ -30,9 +30,3 @@ parse_family <- function(rocblocks) {
 
 roc_family <- roccer("family", 
   roc_parser(tag = sentence_tag(), all = parse_family))
-
-
-invert <- function(x) {
-  if (length(x) == 0) return()
-  unstack(rev(stack(x)))
-}

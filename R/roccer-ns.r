@@ -12,11 +12,6 @@ ns_import <- ns_roccer(
   words_tag(), 
   ns_each("import")
 )
-ns_import_from <- ns_roccer(
-  "importFrom", 
-  words_tag(), 
-  ns_repeat1("importFrom")
-)
 ns_import_classes_from <- ns_roccer(
   "importClassesFrom", 
   words_tag(), 
