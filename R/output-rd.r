@@ -10,6 +10,7 @@
 #' @param name name of the input tag - this is usually not specified as it
 #'   is filled in by \code{\link{roccer}} but is useful for testing.
 #' @dev
+#' @export
 rd_out <- function(tag, name = NULL) {
   rocout(tag, name, subclass = "rd_out")
 }
@@ -23,12 +24,6 @@ output_path.rd_out <- function(writer, rocblock) {
 
 output_type.rd_out <- function(writer) {
   "rd_write"
-}
-
-rd_command <- function(command) {
-  function(tag) {
-    new_command(command, tag)
-  }
 }
 
 rd_write <- function(output, out_path) {
@@ -72,3 +67,10 @@ write_rdlist <- function(path, commands) {
   }
 }
 
+# Useful output commands -----------------------------------------------------
+
+rd_command <- function(command) {
+  function(tag) {
+    new_command(command, tag)
+  }
+}

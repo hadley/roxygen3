@@ -7,25 +7,6 @@ ns_roccer <- function(name, input, output) {
 # But how would you document these? Generally, how to do you create and
 # document bundles of related roccers?
 
-ns_each <- function(directive) {
-  function(values) {
-    lines(directive, "(", values, ")")
-  }
-}
-ns_call <- function(directive) {
-  function(values) {
-    args <- paste(names(values), " = ", values, collapse = ", ", sep = "")
-    lines(directive, "(", args, ")")
-  }
-}
-ns_repeat1 <- function(directive) {
-  function(values) {
-    lines(directive, "(", values[1], ",", values[-1], ")")
-  }
-}
-
-lines <- function(...) paste(..., sep = "", collapse = "\n")
-
 ns_import <- ns_roccer(
   "import", 
   words_tag(), 

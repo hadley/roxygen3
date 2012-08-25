@@ -1,3 +1,4 @@
+export(rd_out)
 export(parse_directory)
 export(parse_file)
 export(default_export)
