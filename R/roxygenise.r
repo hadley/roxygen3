@@ -24,13 +24,13 @@ roxygenise <- function(path, roccers = base_roccers()) {
 #' @importFrom digest digest
 block_parse <- function(text, roccers = base_roccers()) {
   env <- new.env(parent = globalenv())
-  src <- srcfile(digest(text))
-  expr <- parse(text = text)
+  src <- srcfilecopy(digest(text), text)
+  expr <- parse(text = text, srcfile = src)
   eval(expr, env = env)
   
   lines <- str_split(text, "\n")[[1]]
   
-  rocblocks <- parse_text(lines, env, NULL)
+  rocblocks <- parse_text(lines, env, src)
   for (roccer in roccers) {
     rocblocks <- parse_rocblocks(roccer$parser, rocblocks)
   }

@@ -40,7 +40,7 @@ parse_file <- function(path, env = NULL) {
 }
 
 parse_text <- function(lines, env, src) {
-  parsed <- parse(text = lines)
+  parsed <- parse(text = lines, src = src)
   refs <- attr(parsed, "srcref")
   
   # Walk through each src ref and match code and comments
