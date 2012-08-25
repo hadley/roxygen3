@@ -33,13 +33,13 @@ object_from_call <- function(call, env) {
     val <- getClass(name, where = env)    
   } else if (fun_name == "setRefClass") {
     name <- as.character(call$Class)
-    getRefClass(val, where = env)    
+    val <- getRefClass(object$value, where = env)    
   } else if (fun_name == "setGeneric") {
     name <- as.character(call$name)
-    getGeneric(name, where = env)
+    val <- getGeneric(name, where = env)
   } else if (fun_name == "setMethod") {
     name <- as.character(call$f)
-    getMethod(name, eval(call$signature), where = env)
+    val <- getMethod(name, eval(call$signature), where = env)
   } else {
     return(NULL)
   }

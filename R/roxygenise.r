@@ -23,7 +23,12 @@ roxygenise <- function(path, roccers = base_roccers()) {
 
 #' @importFrom digest digest
 block_parse <- function(text, roccers = base_roccers()) {
-  env <- new.env(parent = globalenv())
+  pkg_dummy <- structure(
+    list(path = tempfile(), package = "temp", version = 0.01), 
+    class = "package")  
+  env <- devtools:::create_ns_env(pkg_dummy)
+  on.exit(unload(pkg_dummy))
+  
   src <- srcfilecopy(digest(text), text)
   expr <- parse(text = text, srcfile = src)
   eval(expr, env = env)

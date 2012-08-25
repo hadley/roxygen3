@@ -12,21 +12,22 @@ test_that("export parameter overrides default", {
 
 test_that("export detects S4 class", {
   out <- block_parse("#' @export\nsetClass('a')")
-  expect_equal(out$exportClasses, "a")
+  expect_equal(out$exportClass, "a")
 })
-# 
-# test_that("exportClass overrides default class name", {
-#   out <- block_parse("#' @exportClass b\nsetClass('a')")
-#   expect_equal(out, 'exportClasses(b)')
-# })
-# 
-# test_that("export detects method name", {
-#   out <- block_parse("
-#     #' @export\n
-#     setMethod('max', 'a', function(x, ...) x[1])")
-#   expect_equal(out, 'exportMethods(max)')  
-# })
-# 
+
+test_that("exportClass overrides default class name", {
+  out <- block_parse("#' @exportClass b\nsetClass('a')")
+  expect_equal(out$exportClass, "b")
+})
+
+test_that("export detects method name", {
+  out <- block_parse("
+    setClass('a')
+    #' @export\n
+    setMethod('max', 'a', function(x, ...) x[1])")
+  expect_equal(out$exportMethod, "max")  
+})
+
 # test_that("export method escapes if needed", {
 #   out <- block_parse("
 #     setGeneric('x<-', function(x, value) standardGeneric('x<-'))
