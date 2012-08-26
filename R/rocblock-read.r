@@ -62,11 +62,11 @@ parse_text <- function(lines, env, src) {
   compact(lapply(seq_along(parsed), extract))
 }
 
-parse_roc <- function(lines, match = "^\\s*#+\'") {
+parse_roc <- function(lines, match = "^\\s*#+\' ?") {
   lines <- lines[str_detect(lines, match)]
   if (length(lines) == 0) return(NULL)
   
-  trimmed <- str_trim(str_replace(lines, match, ""))
+  trimmed <- str_replace(lines, match, "")
   joined <- str_c(trimmed, collapse = '\n')
 
   # If the comment block does not start with a @, then it must be the

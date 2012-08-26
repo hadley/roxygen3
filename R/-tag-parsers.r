@@ -1,5 +1,5 @@
 split_pieces <- function(text, key, split_with, min, max) {
-  pieces <- str_split(text, split_with)[[1]]
+  pieces <- unlist(str_split(text, split_with))
   
   if (length(pieces) < min) {
     stop(key, " requires at least ", min, " values.")

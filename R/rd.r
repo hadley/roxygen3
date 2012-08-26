@@ -172,5 +172,6 @@ format.section_command <- function(x, ...) {
 #' @S3method
 format.examples_command <- function(x, ...) {
   values <- str_c(x$values, collapse = "\n")
-  make_rd_command(x$command, values, space = TRUE)  
+  escaped <- str_replace_all(values, fixed("%"), "\\%")
+  make_rd_command(x$command, escaped, space = TRUE)  
 }
