@@ -1,5 +1,7 @@
+#' @S3method
 usage.roccer <- function(...) NULL
 
+#' @S3method
 doctype.roccer <- function(x) "roccer"
 doctype_roccer <- function(roc, obj, ...) {
   if (!is.roccer(obj$value)) return()
