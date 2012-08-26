@@ -2,10 +2,16 @@ compact <- function(x) Filter(Negate(is.null), x)
 
 "%||%" <- function(a, b) if (is.null(a)) b else a
 
+modify_list <- function(a, b) {
+  if (is.null(a)) return(b)
+  if (is.null(b)) return(a)
+  modifyList(a, b)
+}
+
 recursive_merge <- function(lists) {
   lists <- compact(lists)
   if (length(lists) <= 1) return(lists)
-  Reduce(modifyList, lists)
+  Reduce(modify_list, lists)
 }
 
 write_if_different <- function(path, contents) {
@@ -46,3 +52,12 @@ quote_if_needed <- function(x) {
   x
 }
 
+
+find_function <- function(name, env = parent.frame(2)) {
+  env <- parent.frame(2)
+  if (!exists(name, envir = env, mode = "function")) {
+    return(NULL)
+  }
+  
+  get(name, envir = env, mode = "function")
+}

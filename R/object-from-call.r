@@ -40,6 +40,9 @@ object_from_call <- function(call, env) {
   } else if (fun_name == "setMethod") {
     name <- as.character(call$f)
     val <- getMethod(name, eval(call$signature), where = env)
+  } else if (fun_name %in% c("add_roccer", "add_tag_roccer")) {
+    name <- str_c("@", call$name)
+    val <- get(name, env)
   } else {
     return(NULL)
   }

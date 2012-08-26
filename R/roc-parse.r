@@ -44,14 +44,14 @@ parse_rocblocks.roc_parser <- function(parser, rocblocks) {
   if (!is.null(parser$one)) {
     for(i in seq_along(rocblocks)) {
       out <- do.call(parser$one, rocblocks[[i]])
-      rocblocks[[i]]$roc <- modifyList(rocblocks[[i]]$roc, out)
+      rocblocks[[i]]$roc <- modify_list(rocblocks[[i]]$roc, out)
     }
   }
   
   # Parsing function should return named list specifying changes.
   if (!is.null(parser$all)) {
     out <- parser$all(rocblocks)
-    rocblocks <- modifyList(rocblocks, out)
+    rocblocks <- modify_list(rocblocks, out)
   }
   
   rocblocks

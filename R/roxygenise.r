@@ -19,6 +19,7 @@ roxygenise <- function(path, roccers = base_roccers()) {
     write_out(roccers, rocblocks, ".")
     
   })
+  invisible(rocblocks)
 }
 
 #' @importFrom digest digest

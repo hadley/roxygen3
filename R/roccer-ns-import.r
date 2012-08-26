@@ -19,8 +19,8 @@ ns_import_from <- roccer("importFrom",
 ns_auto_import <- roccer("auto_import", 
   roc_parser(one = 
     function(roc, obj, ...) {
-      if (is.null(roc$auto_import)) return(list())
-      if (!is.function(obj$value)) return(list())
+      if (is.null(roc$auto_import)) return()
+      if (!is.function(obj$value)) return()
       
       auto <- auto_imports(obj$value, obj$name, roc$importFrom)
       list(importFrom = c(auto, roc$importFrom), auto_import = NULL)

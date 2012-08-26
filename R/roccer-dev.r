@@ -1,5 +1,5 @@
 parse_dev <- function(roc, ...) {  
-  if (is.null(roc$dev)) return(list())
+  if (is.null(roc$dev)) return()
   list(
     title = str_c("[DEV] ", roc$title),
     description = c("This function is useful only for developers",

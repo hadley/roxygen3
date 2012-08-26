@@ -1,6 +1,12 @@
-roc_comment <- basic_roccer("comment", sentence_tag())
+#' Add comments to the Rd file.
+#'
+#' @usage @@comment This is a comment that will not be user visible.
+add_tag_roccer("comment", sentence_tag())
 
-roc_path <- roccer("path", 
+#' Automatically add the path as an Rd comment.
+#' 
+#' @usage None: this is added automatically.
+add_roccer("path", 
   roc_parser(one = function(roc, path, ...) {
     list(path = roc$path %||% path)
   }),

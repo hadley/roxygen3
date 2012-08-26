@@ -32,8 +32,8 @@ ns_s3_method <- roccer("S3method",
     words_tag(0, 2),
     one = function(roc, obj, ...) {
       n <- length(roc$S3method)
-      if (n == 0) return(list())
-      if (n == 2) return(list())
+      if (n == 0) return()
+      if (n == 2) return()
       
       if (roc$S3method == "") {
         # Empty, so guess from name
@@ -71,7 +71,7 @@ ns_export <- roccer("export",
     function(roc, obj, ...) {
       # Not specified, or ot empty, so just return
       if (is.null(roc$export) || roc$export != "") {
-        return(list())
+        return()
       }
       
       # Special case for s3 methods
