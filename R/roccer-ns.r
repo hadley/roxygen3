@@ -46,7 +46,12 @@ ns_s3_method <- roccer("S3method",
       }
       list(S3method = c(generic, class))
   }),
-  namespace_out(ns_repeat1("S3method"))
+  namespace_out(function(methods) {
+    if (is.vector(methods)) methods <- matrix(methods, ncol = 2)
+    
+    str_c("S3method(", quote_if_needed(methods[, 1]), ",",
+      quote_if_needed(methods[, 2]), ")", collapse = "\n")
+  })
 )
 
 ns_export_class <- ns_roccer(
@@ -74,34 +79,13 @@ ns_export <- roccer("export",
         return()
       }
       
-      # Special case for s3 methods
-      if (!is.null(roc$method)) {
-        return(list(S3method = roc$method))
-      }
-      
       default_export(obj$value, obj$name)
     }
   ),
   namespace_out(ns_each("export"))
 )
-base_prereqs[["export"]] <- c("S3method")
+base_prereqs[["export"]] <- c("S3method", "docType")
 
-#' @export
-default_export <- function(obj, name) {
-  UseMethod("default_export")
-}
-#' @S3method
-default_export.classRepresentation <- function(obj, name) {
-  list(exportClass = as.vector(obj@className), export = NULL)
-}
-#' @S3method
-default_export.MethodDefinition <- function(obj, name) {
-  list(exportMethods = as.vector(obj@generic), export = NULL)
-}
-#' @S3method
-default_export.function <- function(obj, name) {
-  list(export = name)
-}
 
 # Also need to think about more consistent naming scheme:
 # 

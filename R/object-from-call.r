@@ -28,12 +28,20 @@ object_from_call <- function(call, env) {
     if (!exists(name, env)) return()
     
     val <- get(name, env)
+    val <- add_s3_metadata(val, name, env)
+    
+    # Figure out if it's an s3 method or generic and add that info.
+    if (is_s3_generic(name, env)) {
+      class(val) <- "s3generic"
+    } else if (is_s3_method(name, env)) {
+      class(val) <- "s3method"
+    }
   } else if (fun_name == "setClass") {
     name <- as.character(call$Class)
-    val <- getClass(name, where = env)    
+    val <- getClass(name, where = env)
   } else if (fun_name == "setRefClass") {
     name <- as.character(call$Class)
-    val <- getRefClass(object$value, where = env)    
+    val <- getRefClass(object$value, where = env)
   } else if (fun_name == "setGeneric") {
     name <- as.character(call$name)
     val <- getGeneric(name, where = env)

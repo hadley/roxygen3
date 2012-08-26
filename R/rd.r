@@ -117,7 +117,10 @@ format.seealso_command <- format_collapse
 format.source_command <- format_collapse
 
 #' @S3method
-format.usage_command <- function(x, ...) format_collapse(x, ..., exdent = 4)
+format.usage_command <- function(x, ...) {
+  x$values <- format(x$values)
+  format_collapse(x, ..., exdent = 4)
+}
 
 #' @S3method
 format.value_command <- format_collapse
