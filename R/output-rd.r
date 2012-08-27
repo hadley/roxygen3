@@ -16,7 +16,6 @@ rd_out <- function(tag, name = NULL) {
 
 output_path.rd_out <- function(writer, rocblock) {
   tags <- names(rocblock$roc)
-  if (!all(c("title", "name") %in% tags)) return()
   if ("noRd" %in% tags) return()
   
   if (is.null(rocblock$roc$rdname)) {
@@ -26,9 +25,12 @@ output_path.rd_out <- function(writer, rocblock) {
 }
 
 output_postproc.rd_out <- function(commands) {
-  # Merge matching tags
   command_names <- vapply(commands, "[[", "command", FUN.VALUE = character(1))
+  
+  # Must have at least name and title to generate a file
+  if (!all(c("title", "name") %in% command_names)) return()
 
+  # Merge matching tags
   if (anyDuplicated(command_names)) {
     dedup <- list()
     for (i in seq_along(command_names)) {
@@ -56,6 +58,7 @@ output_postproc.rd_out <- function(commands) {
 
 #' @auto_imports
 output_write.rd_out <- function(commands, path) {
+  if (length(commands) == 0) return()
   
   formatted <- vapply(commands, "format", character(1))
   if (write_if_different(path, formatted)) {

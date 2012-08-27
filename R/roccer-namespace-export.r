@@ -21,7 +21,7 @@
 #' @usage 
 #'   @@export 
 #'   @@export function name
-#' @rdname tag_export
+#' @rdname tag-export
 add_roccer("export",
   roc_parser(
     words_tag(),
@@ -39,19 +39,19 @@ add_roccer("export",
 base_prereqs[["export"]] <- c("S3method", "docType")
 
 #' @usage @@exportClass class1 class2
-#' @rdname tag_export
+#' @rdname tag-export
 add_ns_roccer("exportClass", 
   words_tag(), 
   ns_each("exportClass")
 )
 #' @usage @@exportMethods generic1 generic2
-#' @rdname tag_export
+#' @rdname tag-export
 add_ns_roccer("exportMethods", 
   words_tag(), 
   ns_each("exportMethods")
 )
 #' @usage @@exportPattern pattern
-#' @rdname tag_export
+#' @rdname tag-export
 add_ns_roccer("exportPattern", 
   words_tag(), 
   ns_each("exportPattern")
@@ -61,7 +61,7 @@ add_ns_roccer("exportPattern",
 #'   @@S3method generic class
 #'   @@S3method generic
 #'   @@S3method
-#' @rdname tag_export
+#' @rdname tag-export
 add_roccer("S3method",
   roc_parser(
     words_tag(0, 2),
