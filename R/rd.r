@@ -14,6 +14,8 @@ new_command <- function(command, values) {
 
 is.rd_command <- function(x) inherits(x, "rd_command")
 
+escape_comments <- function(x) str_replace_all(x, fixed("%"), "\\%")
+
 #' @S3method
 print.rd_command <- function(x, ...) {
   cat(format(x), "\n")
@@ -56,7 +58,7 @@ format.keyword_command <- format_rd
 
 #' @S3method
 format.alias_command <- function(x, ...) {
-  x$values <- str_replace_all(x$values, fixed("%"), "\\%")
+  x$values <- escape_comments(x$values)
   format_rd(x)
 }
 
@@ -70,7 +72,7 @@ format_first <- function(x, ...) {
 
 #' @S3method
 format.name_command <- function(x, ...) {
-  x$values <- str_replace_all(x$values, fixed("%"), "\\%")
+  x$values <- escape_comments(x$values)
   format_first(x, ...)
 }
 #' @S3method
@@ -175,6 +177,6 @@ format.section_command <- function(x, ...) {
 #' @S3method
 format.examples_command <- function(x, ...) {
   values <- str_c(x$values, collapse = "\n")
-  escaped <- str_replace_all(values, fixed("%"), "\\%")
+  escaped <- escape_comments(x$values)
   make_rd_command(x$command, escaped, space = TRUE)  
 }

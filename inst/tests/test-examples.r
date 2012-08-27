@@ -52,10 +52,11 @@ test_that("indentation in examples preserved", {
 
 test_that("% in @example escaped", {
   out <- test_output("
+    #' Example
     #' @name a
     #' @example Rd-example-4.R
     NULL")
-    
+  
   rd_contents <- out$rd_write[[1]]
   examples <- Filter(function(x) x$command == "examples", rd_contents)
   expect_match(format(examples[[1]]), fixed("x \\%*\\% y"))
