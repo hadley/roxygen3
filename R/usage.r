@@ -17,11 +17,6 @@ print.usage <- function(x, ...) {
   print(format(x))
 }
 
-usage.MethodDefinition <- function(obj, name) {
-  signature <- str_c(as.character(obj@defined), collapse = ",")
-  str_c("\\S4method{", obj@generic, "}{", signature, "}")
-}
-
 usage.data.frame <- function(obj, name) {
   name
 }

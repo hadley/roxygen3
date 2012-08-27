@@ -1,4 +1,8 @@
-usage.s3generic <- usage.function
+doctype_s3 <- function(roc, obj, ...) {
+  method <- find_generic(obj$name, environment(obj$value))
+  
+  list(method = method)
+}
 
 usage.s3method <- function(obj, name) {
   args <- usage_args(formals(obj))
@@ -7,6 +11,10 @@ usage.s3method <- function(obj, name) {
     method = s3_method_info(obj),
     args = args, 
     subclass = "usage_s3method")
+}
+
+default_export.s3method <- function(obj, name) {
+  list(S3method = s3_method_info(obj), export = NULL)
 }
 
 format.usage_s3method <- function(x) {
