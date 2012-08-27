@@ -20,7 +20,7 @@ format.usage_function <- function(x, ...) {
     x$args, collapse = ", ")
   if (is_replacement_fun(x$name)) {
     name <- str_replace(x$name, fixed("<-"), "")
-    usage <- str_c(name, "(", arglist, ") <- value", )
+    usage <- str_c(name, "(", arglist, ") <- value")
   } else {
     usage <- str_c(x$name, "(", arglist, ")")
   }
