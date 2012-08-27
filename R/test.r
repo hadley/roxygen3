@@ -1,6 +1,6 @@
 test_process <- function(text, roccers = base_roccers()) {
   rocblocks <- parse_block(text)
-  roxy_process(rocblocks, roccers)[[1]]$roc
+  roxy_process(rocblocks, roccers)[[length(rocblocks)]]$roc
 }
 
 test_output <- function(text, roccers = base_roccers()) {

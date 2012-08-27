@@ -17,10 +17,10 @@ inherit_params <- function(rocblocks) {
     }
     
     params <- names(formals(obj$value))
-    missing_params <- setdiff(params, names(roc$params))
+    missing_params <- setdiff(params, names(roc$param))
     matching_params <- intersect(missing_params, names(inherited))
-    
-    out[[i]]$roc <- list(params = c(roc$params, inherited[matching_params]))
+
+    out[[i]]$roc <- list(param = c(roc$param, inherited[matching_params]))
   }
   out
 }
