@@ -10,7 +10,7 @@
 #' 
 #' @usage @@importFrom package function1 function2
 #' @auto_import
-ns_import_from <- roccer("importFrom", 
+add_roccer("importFrom", 
   roc_parser(
     function(tag, name) {
       pieces <- str_split(tag, "[[:space:]]+")[[1]]
@@ -41,7 +41,7 @@ ns_import_from <- roccer("importFrom",
 #'
 #' @usage @@auto_import
 #' @auto_import
-ns_auto_import <- roccer("auto_import", 
+add_roccer("auto_import", 
   roc_parser(one = 
     function(roc, obj, ...) {
       if (is.null(roc$auto_import)) return()
