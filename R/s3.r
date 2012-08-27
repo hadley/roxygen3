@@ -11,6 +11,7 @@
 #' @param name name of function.
 #' @param env environment to search in.
 #' @rdname s3
+#' @aliases roxgyen_s3
 #' @export
 #' @dev
 is_s3_generic <- function(name, env = parent.frame()) {

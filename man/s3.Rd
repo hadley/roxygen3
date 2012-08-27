@@ -1,6 +1,7 @@
 \name{is_s3_generic}
 
 \alias{is_s3_generic}
+\alias{roxgyen_s3}
 
 \title{[DEV] Determine if a function is an S3 generic or S3 method.}
 

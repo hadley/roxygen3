@@ -45,34 +45,7 @@ add_roccer("S3method",
   })
 )
 
-add_ns_roccer("exportClass", 
-  words_tag(), 
-  ns_each("exportClass")
-)
-add_ns_roccer("exportMethods", 
-  words_tag(), 
-  ns_each("exportMethods")
-)
-add_ns_roccer("exportPattern", 
-  words_tag(), 
-  ns_each("exportPattern")
-)
 
-add_roccer("export",
-  roc_parser(
-    words_tag(),
-    function(roc, obj, ...) {
-      # Not specified, or ot empty, so just return
-      if (is.null(roc$export) || roc$export != "") {
-        return()
-      }
-      
-      default_export(obj$value, obj$name)
-    }
-  ),
-  namespace_out(ns_each("export"))
-)
-base_prereqs[["export"]] <- c("S3method", "docType")
 
 
 # Also need to think about more consistent naming scheme:
