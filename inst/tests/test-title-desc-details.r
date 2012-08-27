@@ -1,4 +1,4 @@
-content("Title, description, details")
+context("Title, description, details")
 
 test_that("title and description taken from first line if only one", {
   out <- test_process("
