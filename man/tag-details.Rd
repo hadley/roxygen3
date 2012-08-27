@@ -1,8 +1,7 @@
-\docType{roccer}
 
-\name{@details}
+\name{tag_details}
 
-\alias{@details}
+\alias{tag_details}
 
 \title{Override default details.}
 

@@ -1,8 +1,7 @@
-\docType{roccer}
 
-\name{@description}
+\name{tag_description}
 
-\alias{@description}
+\alias{tag_description}
 
 \title{Override default description.}
 

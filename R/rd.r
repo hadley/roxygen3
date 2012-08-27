@@ -81,9 +81,6 @@ format.name_command <- function(x, ...) {
 format.title_command <- format_first
 
 #' @S3method
-format.docType_command <- format_first
-
-#' @S3method
 format.format_command <- format_first
 
 #' @S3method

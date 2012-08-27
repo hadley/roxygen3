@@ -1,8 +1,7 @@
-\docType{roccer}
 
-\name{@comment}
+\name{tag_comment}
 
-\alias{@comment}
+\alias{tag_comment}
 
 \title{Add comments to the Rd file.}
 

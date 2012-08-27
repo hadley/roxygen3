@@ -7,8 +7,9 @@ doctype_roccer <- function(roc, obj, ...) {
   if (!is.roccer(obj$value)) return()
   out <- list()
   
-  out$rdname <- out$rdname %||% 
-    str_c("tag-", str_replace(obj$name, "@", ""))
+  bare_name <- str_replace(obj$name, "@", "")
+  out$rdname <- out$rdname %||% str_c("tag-", bare_name)
+  out$name <- out$name %||% str_c("tag_", bare_name)
   out$docType <- "roccer"
   
   if (!is.null(roc$usage)) {

@@ -1,8 +1,7 @@
-\docType{roccer}
 
-\name{@inheritParams}
+\name{tag_inheritParams}
 
-\alias{@inheritParams}
+\alias{tag_inheritParams}
 
 \title{\item{\code{@inheritParams source_function}}{Alternatively, you can
    inherit parameter description from another function. This tag will

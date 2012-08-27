@@ -1,8 +1,7 @@
-\docType{roccer}
 
-\name{@noRd}
+\name{tag_noRd}
 
-\alias{@noRd}
+\alias{tag_noRd}
 
 \title{Do not produce rd file for this object.}
 

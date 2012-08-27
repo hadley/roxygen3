@@ -1,5 +1,4 @@
 \docType{package}
-
 \name{roxygen3}
 
 \alias{roxygen3}

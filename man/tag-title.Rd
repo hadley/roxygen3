@@ -1,8 +1,7 @@
-\docType{roccer}
 
-\name{@title}
+\name{tag_title}
 
-\alias{@title}
+\alias{tag_title}
 
 \title{Override default topic title.}
 

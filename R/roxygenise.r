@@ -2,8 +2,14 @@
 #'   will just be the roccers provided by roxygen3.
 #' @param path path to package
 #' @auto_imports
-roxygenise <- function(path, roccers = base_roccers()) {
+roxygenise <- function(path, roccers = base_roccers(), check = FALSE, clean = FALSE) {
   pkg <- as.package(path)
+  
+  man_path <- file.path(path, "man")
+  if (clean && file.exists(man_path)) {
+    rd <- dir(man_path, pattern = "\\.Rd$", full.names = TRUE)
+    file.remove(rd)
+  }
   
   load_all(pkg)
   in_dir(pkg$path, {
@@ -13,6 +19,11 @@ roxygenise <- function(path, roccers = base_roccers()) {
     out <- roxy_out(rocblocks, roccers)
     roxy_write(out, ".")
   })
+  
+  if (check) {
+    check_doc(pkg)
+  }
+  
   invisible(rocblocks)
 }
 

@@ -1,8 +1,7 @@
-\docType{roccer}
 
-\name{@path}
+\name{tag_path}
 
-\alias{@path}
+\alias{tag_path}
 
 \title{Automatically add the path as an Rd comment.}
 
