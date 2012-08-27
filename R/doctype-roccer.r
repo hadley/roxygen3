@@ -3,6 +3,8 @@ usage.roccer <- function(...) NULL
 
 #' @S3method
 doctype.roccer <- function(x) "roccer"
+
+#' @auto_imports
 doctype_roccer <- function(roc, obj, ...) {
   if (!is.roccer(obj$value)) return()
   out <- list()

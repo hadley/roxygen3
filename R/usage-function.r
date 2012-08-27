@@ -13,6 +13,7 @@ is_replacement_fun <- function(name) {
   str_detect(name, fixed("<-"))
 }
 
+#' @auto_imports
 format.usage_function <- function(x, ...) {
   missing_arg <- x$args == ""
   

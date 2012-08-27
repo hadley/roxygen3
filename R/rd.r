@@ -5,6 +5,7 @@
 # commands, merge just combines all values, and format selects from these to 
 # display the commands in the appropriate way. 
 #
+#' @auto_imports
 new_command <- function(command, values) {
   if (is.null(values)) return()
   
@@ -14,6 +15,7 @@ new_command <- function(command, values) {
 
 is.rd_command <- function(x) inherits(x, "rd_command")
 
+#' @auto_imports
 escape_comments <- function(x) str_replace_all(x, fixed("%"), "\\%")
 
 #' @S3method
@@ -153,6 +155,7 @@ format.arguments_command <- function(x, ...) {
 }
 
 #' @S3method
+#' @auto_imports
 format.slot_command <- function(x, ...) {
   names <- names(x$values)
   items <- str_c("\\item{", names, "}{", x$values, "}", collapse = "\n\n")

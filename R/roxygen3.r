@@ -5,5 +5,5 @@
 #'
 #' @docType package
 #' @name roxygen3
-#' @import stringr
+#' @import memoise
 NULL

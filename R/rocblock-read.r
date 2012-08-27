@@ -41,7 +41,7 @@ parse_file <- function(path, env = NULL) {
 
 # Parse and execute a block of text in a package like environment.
 # This is used cheifly for testing.
-#' @importFrom digest digest
+#' @auto_imports
 parse_block <- function(text) {
   pkg_dummy <- structure(
     list(path = tempfile(), package = "temp", version = 0.01), 
@@ -81,6 +81,7 @@ parse_text <- function(lines, env, src) {
   compact(lapply(seq_along(parsed), extract))
 }
 
+#' @auto_imports
 parse_roc <- function(lines, match = "^\\s*#+\' ?") {
   lines <- lines[str_detect(lines, match)]
   if (length(lines) == 0) return(NULL)

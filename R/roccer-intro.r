@@ -1,3 +1,4 @@
+#' @auto_imports
 parse_intro <- function(roc, obj, ...) {
   if (!is.null(roc$`_intro`)) {
     paragraphs <- str_trim(str_split(roc$`_intro`, fixed('\n\n'))[[1]])

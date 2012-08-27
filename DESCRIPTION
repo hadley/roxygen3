@@ -17,6 +17,8 @@ Imports:
     digest,
     codetools,
     igraph,
-    devtools
+    devtools,
+    memoise,
+    methods
 Suggests:
     testthat

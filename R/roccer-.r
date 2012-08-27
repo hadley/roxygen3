@@ -46,7 +46,7 @@ find_roccers <- function(env = asNamespace("roxygen3")) {
 }
 
 
-#' @import igraph
+#' @auto_import
 roccer_graph <- function(roccers, prereqs) {
   nodes <- names(roccers)
 
@@ -60,6 +60,7 @@ roccer_graph <- function(roccers, prereqs) {
   graph
 }
 
+#' @auto_import
 sort_roccers <- function(roccers, prereqs = NULL) {
   if (is.null(prereqs)) return(roccers)
   

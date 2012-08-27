@@ -1,4 +1,5 @@
 
+#' @auto_imports
 doctype_package <- function(roc, ...) {
   name <- roc$name
   
