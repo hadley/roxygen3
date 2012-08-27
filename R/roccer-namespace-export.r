@@ -14,6 +14,10 @@
 #' better to individually label the functions to be exported), but this may 
 #' be useful for legacy packages.
 #'
+#' \code{@@S3method} exists largely for compatibility with roxygen2. Roxygen3
+#' now automatically determines if an object is an S3 method, and so only
+#' \code{@@export is necessary.}
+#'
 #' @usage 
 #'   @@export 
 #'   @@export function name
@@ -51,4 +55,36 @@ add_ns_roccer("exportMethods",
 add_ns_roccer("exportPattern", 
   words_tag(), 
   ns_each("exportPattern")
+)
+
+#' @usage
+#'   @@S3method generic class
+#'   @@S3method generic
+#'   @@S3method
+#' @rdname tag_export
+add_roccer("S3method",
+  roc_parser(
+    words_tag(0, 2),
+    one = function(roc, obj, ...) {
+      n <- length(roc$S3method)
+      if (n == 0) return()
+      if (n == 2) return()
+      
+      if (roc$S3method == "") {
+        # Empty, so guess from name
+        pieces <- s3_method_info(obj$value)
+        generic <- pieces[1]
+        class <- pieces[2]
+      } else {
+        generic <- roc$S3method
+        class <- str_replace(obj$name, fixed(str_c(generic, ".")), "")
+      }
+      list(S3method = c(generic, class))
+  }),
+  namespace_out(function(methods) {
+    if (is.vector(methods)) methods <- matrix(methods, ncol = 2)
+    
+    str_c("S3method(", quote_if_needed(methods[, 1]), ",",
+      quote_if_needed(methods[, 2]), ")", collapse = "\n")
+  })
 )
