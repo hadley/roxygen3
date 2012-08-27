@@ -22,3 +22,22 @@ test_that("All rocs with the same @rdfile are merged into one", {
   expect_match(usage, fixed("a(a)"), all = FALSE)
   expect_match(usage, fixed("b(b)"), all = FALSE)  
 })
+
+test_that("Manual usage lines are merged", {
+  out <- test_output("
+    #' Function a
+    #' @usage a() # a is for apple
+    #' @rdname shared
+    a <- function() {}
+    
+    #' Function b
+    #' @usage b() # b is for ball
+    #' @rdname shared
+    b <- function() {}
+    ")
+  shared <- out$rd_out$`man/shared.Rd`
+  
+  expect_equal(length(shared$usage$values), 2)
+  expect_equal(shared$usage$values[[2]], "b() # b is for ball")
+  
+})
