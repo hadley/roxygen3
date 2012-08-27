@@ -19,11 +19,11 @@
 #' @dev
 #' @export
 roc_parser <- function(tag = NULL, one = NULL, all = NULL, name = NULL) {
-  # tag <- memoise(tag)
-  # one <- memoise(one)
-  # all <- memoise(all)
+  tag_m <- if (!is.null(tag)) memoise(tag) else tag
+  one_m <- if (!is.null(one)) memoise(one) else one
+  all_m <- if (!is.null(all)) memoise(all) else all
   
-  structure(list(tag = tag, one = one, all = all), 
+  structure(list(tag = tag_m, one = one_m, all = all_m), 
     class = "roc_parser")
 }
 

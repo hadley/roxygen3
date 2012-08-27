@@ -19,9 +19,12 @@ write_if_different <- function(path, contents) {
   if (!file.exists(dirname(path))) {
     dir.create(dirname(path), showWarnings = FALSE)
   }
+  contents <- str_c(str_c(contents, collapse = "\n"), "\n")
   
-  contents <- str_c(contents, collapse = "\n")
-  if (the_same(path, contents)) return(FALSE)
+  text_hash <- digest(contents, serialize = FALSE)
+  file_hash <- digest(file = path)
+  
+  if (identical(text_hash, file_hash)) return(FALSE)
   
   name <- basename(path)
   if (!str_detect(name, "^[a-zA-Z][a-zA-Z0-9_.-]*$")) {
@@ -32,12 +35,6 @@ write_if_different <- function(path, contents) {
     writeLines(contents, path)
     TRUE
   }  
-}
-the_same <- function(path, new) {
-  if (!file.exists(path)) return(FALSE)
-
-  old <- str_c(readLines(path), collapse = "\n")
-  return(identical(old, new))
 }
 
 invert <- function(x) {

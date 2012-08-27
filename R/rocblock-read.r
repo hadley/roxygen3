@@ -62,7 +62,7 @@ parse_block <- function(text) {
   parse_text(lines, env, src)
 }
 
-parse_text <- function(lines, env, src) {
+parse_text <- memoise(function(lines, env, src) {
   parsed <- parse(text = lines, src = src)
   refs <- attr(parsed, "srcref")
   
@@ -83,7 +83,7 @@ parse_text <- function(lines, env, src) {
       lines = c(beg, end))
   }  
   compact(lapply(seq_along(parsed), extract))
-}
+})
 
 #' @auto_imports
 parse_roc <- function(lines, match = "^\\s*#+\' ?") {

@@ -31,7 +31,7 @@ is_s3_method <- function(name, env = parent.frame()) {
   !is.null(find_generic(name, env))
 }
 
-find_generic <- function(name, env = parent.frame()) {
+find_generic <- memoise(function(name, env = parent.frame()) {
   pieces <- str_split(name, fixed("."))[[1]]
   n <- length(pieces)
   
@@ -44,12 +44,12 @@ find_generic <- function(name, env = parent.frame()) {
     if (is_s3_generic(generic, env)) return(c(generic, class))
   }
   NULL
-}
+})
 
-all_s3_methods <- function(env = parent.frame()) {
+all_s3_methods <- memoise(function(env = parent.frame()) {
   names <- ls(envir = env)
   t(simplify2array(compact(lapply(names, find_generic, env = env))))
-}
+})
 
 is.s3 <- function(x) inherits(x, c("s3method", "s3generic"))
 add_s3_metadata <- function(val, name, env) {
