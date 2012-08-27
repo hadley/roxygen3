@@ -1,7 +1,4 @@
-context("Rd")
-
-# Names and filenames --------------------------------------------------------
-
+context("Simple tags")
 
 test_that("keywords and aliases split into pieces", {
   out <- test_process("
