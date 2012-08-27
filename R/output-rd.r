@@ -7,8 +7,7 @@
 #'
 #' @param tag a function that takes a single argument (tag) as input, and
 #'   returns a list of \code{rd_commands} as output
-#' @param name name of the input tag - this is usually not specified as it
-#'   is filled in by \code{\link{roccer}} but is useful for testing.
+#' @param name input tag name, usually set by \code{\link{roccer}}.
 #' @dev
 #' @export
 rd_out <- function(tag, name = NULL) {

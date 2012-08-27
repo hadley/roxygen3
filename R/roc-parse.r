@@ -3,7 +3,7 @@
 #' @section Parsing order:
 #' The functions \code{tag}, \code{one} and \code{all} are called in that
 #' order, so if multiple are supplied, each can rely on having access to
-#' the results of the previous.  See \code{\link{roc_name}} for an example
+#' the results of the previous.  See \code{\link{tag_name}} for an example
 #' of this.
 #'
 #' @param tag a function that takes a single argument and returns an 

@@ -51,7 +51,7 @@ parse_intro <- function(roc, obj, ...) {
 #'
 #' The third and subsequent paragraph go into the details.
 #'
-#' @seealso \code{\link{@@title}}, \code{\link{@@description}},
-#'  \code{\link{@@details}} to set each component individually.
+#' @seealso \code{\link{tag_title}}, \code{\link{tag_description}},
+#'  \code{\link{tag_details}} to set each component individually.
 add_roccer("_intro", roc_parser(one = parse_intro))
 base_prereqs[["_intro"]] <- c("title", "description", "details")

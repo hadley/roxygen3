@@ -1,3 +1,10 @@
+#' An output generator for the \file{NAMESPACE} file.
+#'
+#' @param tag function that processes a single tag. It should return a
+#'   character vector of lines to be included in the \file{NAMESPACE}. 
+#'   Duplicates will be automatically removed.
+#' @param name input tag name, usually set by \code{\link{roccer}}.
+#' @dev
 #' @export
 namespace_out <- function(tag, name = NULL)  {
   rocout(tag, name, subclass = "namespace_out")

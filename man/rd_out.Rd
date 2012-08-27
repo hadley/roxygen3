@@ -13,9 +13,8 @@
   as input, and returns a list of \code{rd_commands} as
   output}
 
-  \item{name}{name of the input tag - this is usually not
-  specified as it is filled in by \code{\link{roccer}} but
-  is useful for testing.}
+  \item{name}{input tag name, usually set by
+  \code{\link{roccer}}.}
 }
 
 \description{
