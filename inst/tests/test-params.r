@@ -1,7 +1,7 @@
 context("Params")
 
 test_that("@param documents arguments", {
-  out <- test_parse("
+  out <- test_process("
     #' @param a an incipit letter
     #' @param z a terminal letter
     a <- function(a=1, z=2) {}")
@@ -22,7 +22,7 @@ test_that("@param documents arguments", {
 # })
 
 test_that("multiple @inheritParam inherits from existing topics", {
-  out <- test_parse("
+  out <- test_process("
     #' My mean
     #' 
     #' @inheritParams base::mean

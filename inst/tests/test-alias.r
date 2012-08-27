@@ -1,11 +1,11 @@
 context("Alias")
 
 # test_that("aliases escaped, not quoted", {
-#   out1 <- test_parse("
+#   out1 <- test_process("
 #     #' @aliases a
 #     #' @name %a%
 #     NULL")
-#   out2 <- test_parse("
+#   out2 <- test_process("
 #     #' @aliases %a%
 #     #' @name a
 #     NULL")

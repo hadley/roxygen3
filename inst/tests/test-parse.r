@@ -11,7 +11,7 @@ test_that("NULL gives empty list", {
 })
 
 test_that("`$` not to be parsed as assignee in foo$bar(a = 1)", {
-  out <- test_parse("
+  out <- test_process("
     #' foo object
     foo <- list(bar = function(a) a)
     foo$bar(a = 1)")
@@ -27,7 +27,7 @@ test_that("deleted objects not documented", {
 })
 
 test_that("@noRd inhibits rd, but not namespace output", {
-  rocblock <- test_parse("
+  rocblock <- test_process("
     #' Would be title
     #' @title Overridden title
     #' @name a

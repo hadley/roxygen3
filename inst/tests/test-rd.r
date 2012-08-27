@@ -4,7 +4,7 @@ context("Rd")
 
 
 test_that("keywords and aliases split into pieces", {
-  out <- test_parse("
+  out <- test_process("
     #' @keywords a b
     #' @aliases a b
     #' @name a
@@ -17,7 +17,7 @@ test_that("keywords and aliases split into pieces", {
 })
 
 test_that("generic keys produce expected output", {
-  out <- test_parse("
+  out <- test_process("
     #' @references test
     #' @note test
     #' @author test

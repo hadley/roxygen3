@@ -1,14 +1,14 @@
 context("Rd - usage")
 
 test_that("usage captured from formals", {
-  out <- test_parse("
+  out <- test_process("
     #' Title.
     a <- function(a=1) {}")
   expect_equal(format(out$usage), "a(a\u{A0}=\u{A0}1)")
 })
 
 test_that("usage correct for modification functions", {
-  out <- test_parse("
+  out <- test_process("
     #' Title.
     `foo<-` <- function(a=1) {}")
   
@@ -16,7 +16,7 @@ test_that("usage correct for modification functions", {
 })
 
 test_that("usage correct for functions with no arguments", {
-  out <- test_parse("
+  out <- test_process("
       #' Function without parameters
       f <- function() 1")
   
@@ -25,14 +25,14 @@ test_that("usage correct for functions with no arguments", {
 
 
 test_that("@usage overrides default", {
-  out <- test_parse("
+  out <- test_process("
     #' @usage a(a=2)
     a <- function(a=1) {}")
     expect_equal(format(out$usage), "a(a=2)")
 })
 
 test_that("@usage overrides default for @docType data", {
-  out <- test_parse("
+  out <- test_process("
     #' Title.
     #'
     #' @name abc
@@ -44,7 +44,7 @@ test_that("@usage overrides default for @docType data", {
 })
 
 test_that("quoted topics have usage statements", {
-  out <- test_parse("
+  out <- test_process("
     #' Title.
     \"f\" <- function(a = 1, b = 2, c = a + b) {}")
   
@@ -56,14 +56,14 @@ test_that("quoted topics have usage statements", {
 # Output ---------------------------------------------------------------------
 
 test_that("% is escaped in usage", {
-  out <- test_parse("
+  out <- test_process("
     #' Title.
     a <- function(a='%') {}")
   expect_equal(format(out$usage), "a(a\u{A0}=\u{A0}\"\\%\")")
 })
 
 test_that("long usages protected from incorrect breakage", {
-  out <- test_parse("
+  out <- test_process("
       #' Function long usage
       f <- function(a = '                             a', 
                     b = '                             b', 

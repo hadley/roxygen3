@@ -1,4 +1,4 @@
-test_parse <- function(text, roccers = base_roccers()) {
+test_process <- function(text, roccers = base_roccers()) {
   rocblocks <- parse_block(text)
   roxy_process(rocblocks, roccers)[[1]]$roc
 }

@@ -1,7 +1,7 @@
 content("Title, description, details")
 
 test_that("title and description taken from first line if only one", {
-  out <- test_parse("
+  out <- test_process("
     #' description
     #' @name a
     NULL")
@@ -10,7 +10,7 @@ test_that("title and description taken from first line if only one", {
 })
 
 test_that("title, description and details extracted correctly", {
-  out <- test_parse("
+  out <- test_process("
     #' title
     #'
     #' description
@@ -23,7 +23,7 @@ test_that("title, description and details extracted correctly", {
 })
 
 test_that("title taken from first paragraph", {
-  out <- test_parse("
+  out <- test_process("
     #' Description with sentence. 
     #'
     #' That continueth.
@@ -35,7 +35,7 @@ test_that("title taken from first paragraph", {
 })
 
 test_that("@title overrides default title", {
-  out <- test_parse("
+  out <- test_process("
     #' Would be title
     #' @title Overridden title
     #' @name a
@@ -45,7 +45,7 @@ test_that("@title overrides default title", {
 })
 
 test_that("docs parsed correctly if no blank text", {
-  out <- test_parse("
+  out <- test_process("
     #' @title My title
     #' @description My description
     #' @param x value
@@ -56,7 +56,7 @@ test_that("docs parsed correctly if no blank text", {
 })
 
 test_that("question mark ends sentence", {
-  out <- test_parse("
+  out <- test_process("
     #' Is a number odd?
     is.odd <- function(a) {}")
   expect_equal(out$title, "Is a number odd?")
@@ -64,7 +64,7 @@ test_that("question mark ends sentence", {
 })
 
 test_that("no ending punctuation does not produce ellipsis", {
-  out <- test_parse("
+  out <- test_process("
     #' Whether a number is odd
     is.odd <- function(a) {}")
   expect_equal(out$title, "Whether a number is odd")
