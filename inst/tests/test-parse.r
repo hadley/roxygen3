@@ -10,6 +10,11 @@ test_that("NULL gives empty list", {
   expect_identical(out, list())
 })
 
+test_that("empty roxygen comment doesn't give error", {
+  parse_block("#'\nNULL")
+})
+
+
 test_that("`$` not to be parsed as assignee in foo$bar(a = 1)", {
   out <- test_process("
     #' foo object
