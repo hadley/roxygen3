@@ -11,6 +11,9 @@ usage.s3generic <- usage.function
 is_replacement_fun <- function(name) {
   str_detect(name, fixed("<-"))
 }
+is_infix_fun <- function(name) {
+  str_detect(name, "^%.*%$")
+}
 
 #' @auto_imports
 format.usage_function <- function(x, ...) {
@@ -19,7 +22,10 @@ format.usage_function <- function(x, ...) {
   if (is_replacement_fun(x$name)) {
     name <- str_replace(x$name, fixed("<-"), "")
     str_c(name, "(", arglist, ") <- value")
-  } else {
+  } else if (is_infix_fun(x$name)) {
+    arg_names <- names(x$args)
+    str_c(arg_names[1], " ", x$name, " ", arg_names[2])
+  } else {    
     str_c(x$name, "(", arglist, ")")
   }
 }

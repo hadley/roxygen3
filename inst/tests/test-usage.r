@@ -71,6 +71,14 @@ test_that("S3 replace methods use \\method and <- value", {
   expect_equal(format(out$usage[[1]]), "\\method{foo}{numeric}(x) <- value")
 })
 
+test_that("custom infix operators look right", {
+  out <- test_process("
+    #' Title.
+    '%test%' <- function(a, b) {}")
+    
+  expect_equal(format(out$usage[[1]]), "a %test% b")
+})
+
 # Output ---------------------------------------------------------------------
 
 test_that("% is escaped in usage", {
