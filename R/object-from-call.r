@@ -33,14 +33,6 @@ object_from_call <- function(call, env) {
   f(call, name, env)
 }
 
-object_from_call_roccer <- function(call, name, env) {
-  name <- str_c("@", call$name)
-  val <- get(name, env)  
-  list(name = name, value = val)
-}
-object_from_call.add_roccer <- object_from_call_roccer
-object_from_call.add_tag_roccer <- object_from_call_roccer
-
 object_from_call_assignment <- function(call, name, env) {
   name <- as.character(call[[2]])
 

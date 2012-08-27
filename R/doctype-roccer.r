@@ -2,6 +2,15 @@ usage.roccer <- function(...) NULL
 
 doctype.roccer <- function(x) "roccer"
 
+object_from_call_roccer <- function(call, name, env) {
+  name <- str_c("@", call$name)
+  val <- get(name, env)  
+  list(name = name, value = val)
+}
+object_from_call.add_roccer <- object_from_call_roccer
+object_from_call.add_tag_roccer <- object_from_call_roccer
+
+
 #' @auto_imports
 doctype_roccer <- function(roc, obj, ...) {
   if (!is.roccer(obj$value)) return()
