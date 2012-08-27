@@ -121,7 +121,7 @@ format.source_command <- format_collapse
 
 #' @export
 format.usage_command <- function(x, ...) {
-  x$values <- format(x$values)
+  x$values <- vapply(x$values, format, character(1))
   format_collapse(x, ..., exdent = 4)
 }
 

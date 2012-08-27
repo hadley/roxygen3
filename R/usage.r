@@ -9,7 +9,7 @@ usage <- function(obj, name) {
 }
 
 new_usage <- function(..., subclass) {
-  structure(list(...), class = c(subclass, "usage"))
+  list(structure(list(...), class = c(subclass, "usage")))
 }
 
 #' @export
@@ -33,5 +33,4 @@ usage.default <- function(obj, name) {
     str_c(class(obj), collapse = ", "))
   NULL
 }
-
 

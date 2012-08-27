@@ -31,13 +31,12 @@ output_postproc.rd_out <- function(commands) {
 
   if (anyDuplicated(command_names)) {
     dedup <- list()
-    browser()
     for (i in seq_along(command_names)) {
-      existing <- dedup[command_names[i]]
+      existing <- dedup[[command_names[i]]]
       if (is.null(existing)) {
         dedup[command_names[i]] <- commands[i]
       } else {
-        dedup[command_names[i]] <- merge(existing, commands[i])
+        dedup[command_names[i]] <- merge(existing, commands[[i]])
       }
     }
     commands <- dedup
