@@ -10,6 +10,16 @@ test_that("NULL gives empty list", {
   expect_identical(out, list())
 })
 
+test_that("single comment gives empty list", {
+  out <- parse_block("# comment")
+  expect_identical(out, list())
+})
+
+test_that("commented out roxygen block gives empty list", {
+  out <- parse_block("# #' comment")
+  expect_identical(out, list())
+})
+
 test_that("empty roxygen comment doesn't give error", {
   parse_block("#'\nNULL")
 })
