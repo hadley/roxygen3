@@ -1,4 +1,5 @@
 context("Usage")
+library(stringr)
 
 test_that("usage captured from formals", {
   out <- test_process("
@@ -22,7 +23,6 @@ test_that("usage correct for functions with no arguments", {
   
   expect_equal(format(out$usage), "f()")
 })
-
 
 test_that("@usage overrides default", {
   out <- test_process("
@@ -51,6 +51,15 @@ test_that("quoted topics have usage statements", {
   expect_equal(format(out$usage), 
     "f(a\u{A0}=\u{A0}1, b\u{A0}=\u{A0}2, c\u{A0}=\u{A0}a\u{A0}+\u{A0}b)")
   
+})
+
+test_that("S3 methods use \\method", {
+  out <- test_process("
+    foo <- function(x) UseMethod('foo')
+    #' Title.
+    foo.numeric <- function(x) x")
+  
+  expect_equal(format(out$usage), "\\method{foo}{numeric}(x)")
 })
 
 # Output ---------------------------------------------------------------------

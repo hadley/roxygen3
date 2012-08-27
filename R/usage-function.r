@@ -14,10 +14,8 @@ is_replacement_fun <- function(name) {
 
 #' @auto_imports
 format.usage_function <- function(x, ...) {
-  missing_arg <- x$args == ""
   
-  arglist <- str_c(names(x$args), ifelse(!missing_arg, "\u{A0}=\u{A0}", ""),
-    x$args, collapse = ", ")
+  arglist <- args_string(x$args)
   if (is_replacement_fun(x$name)) {
     name <- str_replace(x$name, fixed("<-"), "")
     usage <- str_c(name, "(", arglist, ") <- value")
@@ -26,6 +24,13 @@ format.usage_function <- function(x, ...) {
   }
   
   usage
+}
+
+args_string <- function(x) {
+  missing_arg <- x == ""
+  sep <- ifelse(!missing_arg, "\u{A0}=\u{A0}", "")
+  
+  str_c(names(x), sep, x, collapse = ", ")
 }
 
 # Given argument list, produce usage specification for it.
