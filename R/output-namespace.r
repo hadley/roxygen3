@@ -13,16 +13,15 @@ namespace_out <- function(tag, name = NULL)  {
 output_path.namespace_out <- function(writer, rocblock) {
   "NAMESPACE" 
 }
-output_type.namespace_out <- function(writer) {
-  "ns_write"
-}
 
 #' @auto_imports
-ns_write <- function(output, out_path) {
-  out <- file.path(out_path, "NAMESPACE")  
+output_postproc.namespace_out <- function(output) {
   lines <- unlist(str_split(unlist(output), "\n"))
-  formatted <- with_collate("C", sort(unique(lines)))
-  write_if_different(out, formatted)
+  with_collate("C", sort(unique(lines)))
+}
+
+output_write.namespace_out <- function(output, path) {
+  write_if_different(path, output)
 }
 
 

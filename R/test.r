@@ -7,5 +7,6 @@ test_output <- function(text, roccers = base_roccers()) {
   rocblocks <- parse_block(text)
   rocblocks <- roxy_process(rocblocks, roccers)
   
-  roxy_out(rocblocks, roccers)
+  out <- roxy_out(rocblocks, roccers)
+  roxy_postproc(out)
 }

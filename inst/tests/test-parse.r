@@ -23,7 +23,7 @@ test_that("deleted objects not documented", {
   rocblocks <- roxy_process(parse_file("rd-closure.r"))
   out <- roxy_out(rocblocks)
   
-  expect_equal(length(out$rd_write), 1)
+  expect_equal(length(out$rd_out), 1)
 })
 
 test_that("@noRd inhibits rd, but not namespace output", {
@@ -34,6 +34,6 @@ test_that("@noRd inhibits rd, but not namespace output", {
     #' @noRd
     NULL")
   out <- roxy_out(list(rocblock))
-  expect_equal(length(out$rd_write), 0)
+  expect_equal(length(out$rd_out), 0)
 })
 

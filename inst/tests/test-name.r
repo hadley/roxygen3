@@ -36,7 +36,7 @@ test_that("filename doesn't contain invalid characters", {
     #' Title.
     #' @name a[]
     NULL")
-  expect_equal(names(out$rd_write), c("man/a-set.Rd", "man/a-sub.Rd"))
+  expect_equal(names(out$rd_out), c("man/a-set.Rd", "man/a-sub.Rd"))
 })
 
 test_that("quoted names captured from assignment", {

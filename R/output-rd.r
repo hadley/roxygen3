@@ -25,20 +25,10 @@ output_path.rd_out <- function(writer, rocblock) {
   file.path("man", paste(rocblock$roc$rdname, ".Rd", sep = ""))
 }
 
-output_type.rd_out <- function(writer) {
-  "rd_write"
-}
-
-rd_write <- function(output, out_path) {
-  paths <- file.path(out_path, names(output))
-  mapply(write_rdlist, paths, output)
-}
-
-#' @auto_imports
-write_rdlist <- function(path, commands) {
+output_postproc.rd_out <- function(commands) {
   # Merge matching tags
   command_names <- vapply(commands, "[[", "command", FUN.VALUE = character(1))
-  
+
   if (anyDuplicated(command_names)) {
     dedup <- list()
     browser()
@@ -61,6 +51,12 @@ write_rdlist <- function(path, commands) {
     "concept", "keyword")
   commands <- commands[c(intersect(order, names(commands)),
     setdiff(names(commands), order))]
+  
+  commands
+}
+
+#' @auto_imports
+output_write.rd_out <- function(commands, path) {
   
   formatted <- vapply(commands, "format", character(1))
   if (write_if_different(path, formatted)) {

@@ -57,7 +57,7 @@ test_that("% in @example escaped", {
     #' @example Rd-example-4.R
     NULL")
   
-  rd_contents <- out$rd_write[[1]]
+  rd_contents <- out$rd_out[[1]]
   examples <- Filter(function(x) x$command == "examples", rd_contents)
   expect_match(format(examples[[1]]), fixed("x \\%*\\% y"))
 })

@@ -5,17 +5,14 @@ rocout <- function(tag, name, subclass) {
 }
 
 
-#' @export
-write_output <- function(writer, rocblocks) {
-  UseMethod("write_output")
+output_postproc <- function(output) {
+  UseMethod("output_postproc")
+}
+output_write <- function(commands, path) {
+  UseMethod("output_write")
 }
 
 #' @export
 output_path <- function(writer, rocblock) {
   UseMethod("output_path")
-}
-
-#' @export
-output_type <- function(writer, rocblock) {
-  UseMethod("output_type")
 }

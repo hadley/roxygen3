@@ -18,6 +18,7 @@ roxygenise <- function(path, roccers = base_roccers(), check = FALSE, clean = FA
     rocblocks <- roxy_process(rocblocks, roccers)
     
     out <- roxy_out(rocblocks, roccers)
+    out <- roxy_postproc(out)
     roxy_write(out, ".")
   })
   
@@ -44,7 +45,7 @@ roxy_out <- function(rocblocks, roccers = base_roccers()) {
     rocout <- roccer$output
     if (is.null(rocout)) next
     
-    type <- output_type(rocout)
+    type <- class(rocout)[1]
     if (is.null(out[[type]])) out[[type]] <- list()
     
     for (rocblock in rocblocks) {
@@ -60,9 +61,29 @@ roxy_out <- function(rocblocks, roccers = base_roccers()) {
   }
   out
 }
+
+# Post-processing of output objects before they're written to disk
+roxy_postproc <- function(output) {
+  out <- list()
+  for (writer in names(output)) {
+    fname <- str_c("output_postproc.", writer)
+    f <- find_fun(fname)
+    if (is.null(f)) stop("Can't find method ", fname)
+    out[[writer]] <- lapply(output[[writer]], f)
+  }
+  out
+}
+
 roxy_write <- function(out, out_path) {
   writers <- names(out)
   for (writer in writers) {
-    match.fun(writer)(out[[writer]], out_path)
+    fname <- str_c("output_write.", writer)
+    f <- find_fun(fname)
+    if (is.null(f)) stop("Can't find method ", fname)
+    
+    for(path in names(out[[writer]])) {
+      f(out[[writer]][[path]], file.path(out_path, path))
+    }
   }
+  invisible()
 }
