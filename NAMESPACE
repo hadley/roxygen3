@@ -105,3 +105,4 @@ importFrom(stringr,str_split_fixed)
 importFrom(stringr,str_trim)
 importFrom(stringr,str_wrap)
 importFrom(tools,checkRd)
+
