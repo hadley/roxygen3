@@ -63,14 +63,13 @@ test_that("% is escaped in usage", {
 })
 
 test_that("long usages protected from incorrect breakage", {
-  out <- test_output("
+  out <- test_process("
       #' Function long usage
       f <- function(a = '                             a', 
                     b = '                             b', 
                     c = '                             c', 
                     d = '                             ') 1")
   
-  browser()
-  usage <- format(out$usage)
+  usage <- format(new_command("usage", out$usage)[[1]])
   expect_equal(str_count(usage, "\n"), 6)
 })
