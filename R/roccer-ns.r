@@ -1,33 +1,24 @@
-ns_roccer <- function(name, input, output) {
-  roccer(name, 
-    roc_parser(tag = input),
-    namespace_out(output))
-}
 
 # But how would you document these? Generally, how to do you create and
 # document bundles of related roccers?
 
-ns_import <- ns_roccer(
-  "import", 
+add_ns_roccer("import", 
   words_tag(), 
   ns_each("import")
 )
-ns_import_classes_from <- ns_roccer(
-  "importClassesFrom", 
+add_ns_roccer("importClassesFrom", 
   words_tag(), 
   ns_repeat1("importClassesFrom")
 )
-ns_import_methods_from <- ns_roccer(
-  "importMethodsFrom", 
+add_ns_roccer("importMethodsFrom", 
   words_tag(), 
   ns_repeat1("importMethodsFrom")
 )
-ns_use_dyn_lib <- ns_roccer(
-  "useDynLib", 
+add_ns_roccer("useDynLib", 
   arguments_tag(), 
   ns_each("useDynLib")
 )
-ns_s3_method <- roccer("S3method",
+add_roccer("S3method",
   roc_parser(
     words_tag(0, 2),
     one = function(roc, obj, ...) {
@@ -54,23 +45,20 @@ ns_s3_method <- roccer("S3method",
   })
 )
 
-ns_export_class <- ns_roccer(
-  "exportClass", 
+add_ns_roccer("exportClass", 
   words_tag(), 
   ns_each("exportClass")
 )
-ns_export_methods <- ns_roccer(
-  "exportMethods", 
+add_ns_roccer("exportMethods", 
   words_tag(), 
   ns_each("exportMethods")
 )
-ns_export_pattern <- ns_roccer(
-  "exportPattern", 
+add_ns_roccer("exportPattern", 
   words_tag(), 
   ns_each("exportPattern")
 )
 
-ns_export <- roccer("export",
+add_roccer("export",
   roc_parser(
     words_tag(),
     function(roc, obj, ...) {

@@ -9,6 +9,7 @@ object_from_call_roccer <- function(call, name, env) {
 }
 object_from_call.add_roccer <- object_from_call_roccer
 object_from_call.add_tag_roccer <- object_from_call_roccer
+object_from_call.add_ns_roccer <- object_from_call_roccer
 
 
 #' @auto_imports
