@@ -28,7 +28,7 @@ test_that("name also captured from assignment by =", {
 # })
 
 test_that("filename doesn't contain invalid characters", {
-  out <- test_process("
+  out <- test_output("
     #' Title.
     #' @name a<-
     NULL
@@ -36,7 +36,7 @@ test_that("filename doesn't contain invalid characters", {
     #' Title.
     #' @name a[]
     NULL")
-  expect_equal(names(out), c("a-set.Rd", "a-sub.Rd"))
+  expect_equal(names(out$rd_write), c("man/a-set.Rd", "man/a-sub.Rd"))
 })
 
 test_that("quoted names captured from assignment", {
