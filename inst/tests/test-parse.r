@@ -19,13 +19,6 @@ test_that("`$` not to be parsed as assignee in foo$bar(a = 1)", {
     expect_equal(out$name, "foo")
 })
 
-test_that("deleted objects not documented", {
-  rocblocks <- roxy_process(parse_file("rd-closure.r"))
-  out <- roxy_out(rocblocks)
-  
-  expect_equal(length(out$rd_out), 1)
-})
-
 test_that("@noRd inhibits rd, but not namespace output", {
   rocblock <- test_process("
     #' Would be title
