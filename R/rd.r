@@ -18,7 +18,7 @@ is.rd_command <- function(x) inherits(x, "rd_command")
 #' @auto_imports
 escape_comments <- function(x) str_replace_all(x, fixed("%"), "\\%")
 
-#' @S3method
+#' @export
 print.rd_command <- function(x, ...) {
   cat(format(x), "\n")
 }
@@ -36,12 +36,12 @@ make_rd_command <- function(command, ..., space = FALSE) {
   str_c("\\", command, str_c("{", values, "}", collapse = ""), "\n")                         
 }
 
-#' @S3method
+#' @export
 format.rd_command <- function(x, ...) {
   stop("Unimplemented format: ", class(x)[1], call. = FALSE)
 }
 
-#' @S3method
+#' @export
 merge.rd_command <- function(x, y, ...) {
   stopifnot(identical(class(x), class(y)))  
   new_command(x$command, c(x$values, y$values))
@@ -55,16 +55,16 @@ format_rd <- function(x, ...) {
   str_c(out, collapse = "")
 }
 
-#' @S3method
+#' @export
 format.keyword_command <- format_rd
 
-#' @S3method
+#' @export
 format.alias_command <- function(x, ...) {
   x$values <- escape_comments(x$values)
   format_rd(x)
 }
 
-#' @S3method
+#' @export
 format.comment_command <- function(x, ...) {
   str_c("% " , x$values, collapse = "\n\n")
 }
@@ -74,18 +74,18 @@ format_first <- function(x, ...) {
   make_rd_command(x$command, x$values[1])
 } 
 
-#' @S3method
+#' @export
 format.name_command <- function(x, ...) {
   x$values <- escape_comments(x$values)
   format_first(x, ...)
 }
-#' @S3method
+#' @export
 format.title_command <- format_first
 
-#' @S3method
+#' @export
 format.format_command <- format_first
 
-#' @S3method
+#' @export
 format.encoding_command <- format_first
 
 # commands collapse their values into a single string ----------------------------
@@ -95,37 +95,37 @@ format_collapse <- function(x, ..., indent = 2, exdent = 2) {
   make_rd_command(x$command, str_wrap(values, width = 60, indent = indent, 
     exdent = exdent), space = TRUE)
 } 
-#' @S3method
+#' @export
 format.author_command <- format_collapse
 
-#' @S3method
+#' @export
 format.concept_command <- format_collapse
 
-#' @S3method
+#' @export
 format.description_command <- format_collapse
 
-#' @S3method
+#' @export
 format.details_command <- format_collapse
 
-#' @S3method
+#' @export
 format.note_command <- format_collapse
 
-#' @S3method
+#' @export
 format.references_command <- format_collapse
 
-#' @S3method
+#' @export
 format.seealso_command <- format_collapse
 
-#' @S3method
+#' @export
 format.source_command <- format_collapse
 
-#' @S3method
+#' @export
 format.usage_command <- function(x, ...) {
   x$values <- format(x$values)
   format_collapse(x, ..., exdent = 4)
 }
 
-#' @S3method
+#' @export
 format.value_command <- format_collapse
 
 
@@ -133,18 +133,18 @@ format.value_command <- format_collapse
 
 format_null <- function(x, ...) NULL
 
-#' @S3method
+#' @export
 format.family_command <- format_null
 
-#' @S3method
+#' @export
 format.inheritParams_command <- format_null
 
-#' @S3method
+#' @export
 format.formals_command <- format_null
 
 # commands with special errors or other semantics --------------------------------
 
-#' @S3method
+#' @export
 format.arguments_command <- function(x, ...) {
   names <- names(x$values)
   dups <- duplicated(names)
@@ -154,7 +154,7 @@ format.arguments_command <- function(x, ...) {
     space = TRUE)
 }
 
-#' @S3method
+#' @export
 #' @auto_imports
 format.slot_command <- function(x, ...) {
   names <- names(x$values)
@@ -165,7 +165,7 @@ format.slot_command <- function(x, ...) {
     "\n}\n")
 }
 
-#' @S3method
+#' @export
 format.section_command <- function(x, ...) {
   names <- vapply(x$values, "[[", "name", FUN.VALUE = character(1))
 
@@ -176,7 +176,7 @@ format.section_command <- function(x, ...) {
     collapse = "\n")
 }
 
-#' @S3method
+#' @export
 format.examples_command <- function(x, ...) {
   values <- str_c(x$values, collapse = "\n")
   escaped <- escape_comments(x$values)

@@ -39,9 +39,13 @@ parse_file <- function(path, env = NULL) {
   parse_text(lines, env, src)
 }
 
-# Parse and execute a block of text in a package like environment.
-# This is used cheifly for testing.
+#' Parse and execute a block of text in a package like environment.
+#'
+#' This is used cheifly for testing.
+#'
+#' @param text code to parse/execute
 #' @auto_imports
+#' @export
 parse_block <- function(text) {
   pkg_dummy <- structure(
     list(path = tempfile(), package = "temp", version = 0.01), 

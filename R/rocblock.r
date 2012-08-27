@@ -1,3 +1,4 @@
+#' @export
 rocblock <- function(obj, roc, path, lines) {  
   structure(
     list(obj = obj, roc = roc, path = path, lines = lines),
@@ -5,6 +6,7 @@ rocblock <- function(obj, roc, path, lines) {
   )
 }
 
+#' @export
 print.rocblock <- function(x, ...) {
   path <- if (is.null(x$path)) "[text]" else x$path
   cat("rocblock: ", x$obj$name, "@",

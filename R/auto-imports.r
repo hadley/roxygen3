@@ -58,7 +58,6 @@ auto_imports <- function(f, name = deparse(substitute(f)), imported = NULL, impo
   vapply(non_base, "[", 1, FUN.VALUE = character(1))
 }
 
-
 loaded_funs <- memoise(function(pkgs) {
   envs <- setNames(lapply(pkgs, asNamespace), pkgs)
   exports <- lapply(envs, function(x) ls(getNamespaceInfo(x, "exports")))

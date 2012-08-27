@@ -2,6 +2,7 @@
 #'   will just be the roccers provided by roxygen3.
 #' @param path path to package
 #' @auto_imports
+#' @export
 roxygenise <- function(path, roccers = base_roccers(), check = FALSE, clean = FALSE) {
   pkg <- as.package(path)
   

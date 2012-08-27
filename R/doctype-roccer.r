@@ -1,7 +1,5 @@
-#' @S3method
 usage.roccer <- function(...) NULL
 
-#' @S3method
 doctype.roccer <- function(x) "roccer"
 
 #' @auto_imports

@@ -2,7 +2,7 @@
 
 \alias{usage}
 
-\title{Generate usage statement for an R object.}
+\title{[DEV] Generate usage statement for an R object.}
 
 \usage{
   usage(obj, name)
@@ -16,6 +16,8 @@
 }
 
 \description{
+  This function is useful only for developers
+
   Generate usage statement for an R object.
 }
 

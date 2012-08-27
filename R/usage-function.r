@@ -1,4 +1,3 @@
-#' @S3method
 usage.function <- function(obj, name) {
   args <- usage_args(formals(obj))
   

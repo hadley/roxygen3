@@ -9,6 +9,7 @@
 #'   provides one parser: \code{\link{roc_parser}}.
 #' @param output output generated, like an object created by
 #'   \code{\link{rd_out}} or \code{\link{namespace_out}}.
+#' @export
 roccer <- function(name, parser = NULL, output = NULL) {
   
   # Copy name into parser and output so they have access to it
@@ -23,8 +24,10 @@ roccer <- function(name, parser = NULL, output = NULL) {
     class = "roccer")
 }
 
+#' @export
 is.roccer <- function(x) inherits(x, "roccer")
 
+#' @export
 print.roccer <- function(x, ...) {
   cat("Roccer: ", x$name, "\n", sep = "")
 }
@@ -36,6 +39,7 @@ basic_roccer <- function(name, input, command = name) {
   )
 }
 
+#' @export
 find_roccers <- function(env = asNamespace("roxygen3")) {
   rocs <- compact(lapply(ls(env), function(x) {
     obj <- get(x, env)

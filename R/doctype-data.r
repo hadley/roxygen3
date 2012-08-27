@@ -1,4 +1,3 @@
-#' @S3method
 doctype.data.frame <- function(obj) "data"
 
 doctype_data <- function(roc, obj, ...) {

@@ -3,6 +3,7 @@
 #' @param obj object to generate usage for
 #' @param name name of object (if not computable from \code{obj})
 #' @export
+#' @dev
 usage <- function(obj, name) {
   UseMethod("usage")
 }

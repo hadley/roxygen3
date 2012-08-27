@@ -35,7 +35,7 @@ roc_doctype <- roccer("docType",
   rd_out(rd_command("docType"))
 )
 
-#' @S3method
+#' @export
 format.docType_command <- function(x, ...) {
   vals <- unique(x$value)
   if (length(vals) != 1) stop("Documentation can only have single docType")

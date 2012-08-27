@@ -17,6 +17,7 @@
 #' @param name when \code{NULL} will automatically be giving the name of the
 #'   roccer that uses it.
 #' @dev
+#' @export
 roc_parser <- function(tag = NULL, one = NULL, all = NULL, name = NULL) {
   # tag <- memoise(tag)
   # one <- memoise(one)

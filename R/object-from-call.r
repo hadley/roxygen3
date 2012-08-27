@@ -11,6 +11,7 @@
 #' a <- 1
 #' object_from_call(quote(a <- 1), environment())
 #' @auto_imports
+#' @export
 object_from_call <- function(call, env) {
   if (is.null(call)) return()
   

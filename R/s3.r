@@ -11,6 +11,8 @@
 #' @param name name of function.
 #' @param env environment to search in.
 #' @rdname s3
+#' @export
+#' @dev
 is_s3_generic <- function(name, env = parent.frame()) {
   known_generics <- c(names(.knownS3Generics),
     tools:::.get_internal_S3_generics())
