@@ -1,2 +1,11 @@
-* `@S3method` now takes 0-2 arguments: if less than two are supplied it will
-  attempt to guess the others.
+* `@export`ing an S3 generic will also export all of its methods
+
+* roxygen3 automatically determines if a function is an s3 generic or method
+  and modifies the components accordingly
+
+* By implementing s3 methods for `usage`, `default_exports`, `doctype`, ...
+  you can customise roxygen3 to document any type of object.
+
+* `@auto_import` automatically figures out all the functions you need to
+  import. You just need to make sure the packages are listed in the
+  `DESCRIPTION` file under imports.
