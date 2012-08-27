@@ -62,6 +62,15 @@ test_that("S3 methods use \\method", {
   expect_equal(format(out$usage), "\\method{foo}{numeric}(x)")
 })
 
+test_that("S3 replace methods use \\method and <- value", {
+  out <- test_process("
+    'foo<-' <- function(x) UseMethod('foo<-')
+    #' Title.
+    'foo<-.numeric' <- function(x) x")
+  
+  expect_equal(format(out$usage), "\\method{foo}{numeric}(x) <- value")
+})
+
 # Output ---------------------------------------------------------------------
 
 test_that("% is escaped in usage", {

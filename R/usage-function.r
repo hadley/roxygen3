@@ -18,12 +18,10 @@ format.usage_function <- function(x, ...) {
   arglist <- args_string(x$args)
   if (is_replacement_fun(x$name)) {
     name <- str_replace(x$name, fixed("<-"), "")
-    usage <- str_c(name, "(", arglist, ") <- value")
+    str_c(name, "(", arglist, ") <- value")
   } else {
-    usage <- str_c(x$name, "(", arglist, ")")
+    str_c(x$name, "(", arglist, ")")
   }
-  
-  usage
 }
 
 args_string <- function(x) {
