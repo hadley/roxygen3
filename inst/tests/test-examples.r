@@ -1,4 +1,4 @@
-context("Rd - examples")
+context("Examples")
 
 test_that("@example loads from specified files", {
   out <- test_process("

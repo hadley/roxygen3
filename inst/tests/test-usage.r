@@ -1,4 +1,4 @@
-context("Rd - usage")
+context("Usage")
 
 test_that("usage captured from formals", {
   out <- test_process("
@@ -63,13 +63,14 @@ test_that("% is escaped in usage", {
 })
 
 test_that("long usages protected from incorrect breakage", {
-  out <- test_process("
+  out <- test_output("
       #' Function long usage
       f <- function(a = '                             a', 
                     b = '                             b', 
                     c = '                             c', 
                     d = '                             ') 1")
   
+  browser()
   usage <- format(out$usage)
   expect_equal(str_count(usage, "\n"), 6)
 })
