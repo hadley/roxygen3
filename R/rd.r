@@ -63,7 +63,9 @@ format.alias_command <- function(x, ...) {
 }
 
 #' @S3method
-format.comment_command <- format_rd
+format.comment_command <- function(x, ...) {
+  str_c("% " , x$values, collapse = "\n\n")
+}
 
 # commands that keep the first occurence -----------------------------------------
 format_first <- function(x, ...) {
