@@ -6,7 +6,8 @@ roc_name <- roccer("name",
     one = function(roc, obj, ...) {
       name <- roc$name %||% obj$name
       if (is.null(name)) {
-        stop("Missing name")
+        message("Missing name. This object will not be documented")
+        return()
       }
 
       list(name = name, aliases = union(roc$aliases, name))

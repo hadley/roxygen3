@@ -1,27 +1,27 @@
 context("Namespace: parsing")
 
 test_that("export detects object name", {
-  out <- block_parse("#' @export\na <- function(){}")
+  out <- test_parse("#' @export\na <- function(){}")
   expect_equal(out$export, "a")
 })
 
 test_that("export parameter overrides default", {
-  out <- block_parse("#' @export b\na <- function(){}")
+  out <- test_parse("#' @export b\na <- function(){}")
   expect_equal(out$export, "b")
 })
 
 test_that("export detects S4 class", {
-  out <- block_parse("#' @export\nsetClass('a')")
+  out <- test_parse("#' @export\nsetClass('a')")
   expect_equal(out$exportClass, "a")
 })
 
 test_that("exportClass overrides default class name", {
-  out <- block_parse("#' @exportClass b\nsetClass('a')")
+  out <- test_parse("#' @exportClass b\nsetClass('a')")
   expect_equal(out$exportClass, "b")
 })
 
 test_that("export detects method name", {
-  out <- block_parse("
+  out <- test_parse("
     setClass('a')
     #' @export\n
     setMethod('max', 'a', function(x, ...) x[1])")
@@ -30,7 +30,7 @@ test_that("export detects method name", {
 })
 
 test_that("exportMethod overrides default method name", {
-  out <- block_parse("
+  out <- test_parse("
     setClass('a')
     #' @exportMethods c
     setMethod('max', 'a', function(x, ...) x[1])")
@@ -38,7 +38,7 @@ test_that("exportMethod overrides default method name", {
 })
 # 
 test_that("other namespace tags produce correct output", {
-  out <- block_parse("
+  out <- test_parse("
     #' @exportPattern test
     #' @S3method test test
     #' @import test
@@ -57,15 +57,15 @@ test_that("other namespace tags produce correct output", {
 })
 
 test_that("S3method completes as needed", {
-  out1 <- block_parse("
+  out1 <- test_parse("
     #' @S3method
     print.x <- function() {}
   ")
-  out2 <- block_parse("
+  out2 <- test_parse("
     #' @S3method print
     print.x <- function() {}
   ")
-  out3 <- block_parse("
+  out3 <- test_parse("
     #' @S3method print x
     print.x <- function() {}
   ")
@@ -76,15 +76,15 @@ test_that("S3method completes as needed", {
 })
 
 test_that("S3method completes as needed for compound object", {
-  out1 <- block_parse("
+  out1 <- test_parse("
     #' @S3method
     print.data.frame <- function() {}
   ")
-  out2 <- block_parse("
+  out2 <- test_parse("
     #' @S3method print
     print.data.frame <- function() {}
   ")
-  out3 <- block_parse("
+  out3 <- test_parse("
     #' @S3method print data.frame
     print.data.frame <- function() {}
   ")

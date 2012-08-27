@@ -1,7 +1,7 @@
 context("Rd - examples")
 
 test_that("@example loads from specified files", {
-  out <- block_parse("
+  out <- test_parse("
     #' @name a
     #' @example Rd-example-1.R
     #' @example Rd-example-2.R
@@ -12,7 +12,7 @@ test_that("@example loads from specified files", {
 })
 
 test_that("@examples captures examples", {
-  out <- block_parse("
+  out <- test_parse("
     #' @name a
     #' @examples a <- 2
     NULL")
@@ -21,7 +21,7 @@ test_that("@examples captures examples", {
 })
 
 test_that("@examples and @example combine", {
-  out <- block_parse("
+  out <- test_parse("
     #' @name a
     #' @example Rd-example-1.R
     #' @examples a <- 2
@@ -32,7 +32,7 @@ test_that("@examples and @example combine", {
 })
 
 test_that("@example does not introduce extra empty lines", {
-  out <- block_parse("
+  out <- test_parse("
     #' @name a
     #' @example Rd-example-3.R
     NULL")
@@ -41,7 +41,7 @@ test_that("@example does not introduce extra empty lines", {
 })
 
 test_that("indentation in examples preserved", {
-  out <- block_parse("
+  out <- test_parse("
     #' @name a
     #' @examples a <-
     #'     2
@@ -51,7 +51,7 @@ test_that("indentation in examples preserved", {
 })
 
 test_that("% in @example escaped", {
-  out <- block_out("
+  out <- test_output("
     #' @name a
     #' @example Rd-example-4.R
     NULL")

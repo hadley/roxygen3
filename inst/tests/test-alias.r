@@ -1,11 +1,11 @@
 context("Alias")
 
 # test_that("aliases escaped, not quoted", {
-#   out1 <- block_parse("
+#   out1 <- test_parse("
 #     #' @aliases a
 #     #' @name %a%
 #     NULL")
-#   out2 <- block_parse("
+#   out2 <- test_parse("
 #     #' @aliases %a%
 #     #' @name a
 #     NULL")

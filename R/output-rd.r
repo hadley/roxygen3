@@ -16,6 +16,10 @@ rd_out <- function(tag, name = NULL) {
 }
 
 output_path.rd_out <- function(writer, rocblock) {
+  tags <- names(rocblock$roc)
+  if (!all(c("title", "name") %in% tags)) return()
+  if ("noRd" %in% tags) return()
+  
   if (is.null(rocblock$roc$rdname)) {
     stop("rdname not specified", call. = FALSE)
   }
@@ -35,8 +39,6 @@ rd_write <- function(output, out_path) {
 write_rdlist <- function(path, commands) {
   # Merge matching tags
   command_names <- vapply(commands, "[[", "command", FUN.VALUE = character(1))
-  
-  if (!any(command_names %in% "title")) return()
   
   if (anyDuplicated(command_names)) {
     dedup <- list()

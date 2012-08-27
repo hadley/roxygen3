@@ -1,17 +1,17 @@
 context("Parse")
 
 test_that("empty file gives empty list", {
-  out <- block_parse("")
+  out <- parse_block("")
   expect_identical(out, list())
 })
 
 test_that("NULL gives empty list", {
-  out <- block_parse("NULL")
+  out <- parse_block("NULL")
   expect_identical(out, list())
 })
 
 test_that("`$` not to be parsed as assignee in foo$bar(a = 1)", {
-  out <- block_parse("
+  out <- test_parse("
     #' foo object
     foo <- list(bar = function(a) a)
     foo$bar(a = 1)")
@@ -20,18 +20,20 @@ test_that("`$` not to be parsed as assignee in foo$bar(a = 1)", {
 })
 
 test_that("deleted objects not documented", {
-  out <- roc_process(roc, parse.files("Rd-closure.R"), base_path = ".")
-  expect_equal(names(out), "f2.Rd")
+  rocblocks <- roxy_process(parse_file("rd-closure.r"))
+  out <- roxy_out(rocblocks)
+  
+  expect_equal(length(out$rd_write), 1)
 })
 
-test_that("@noRd inhibits documentation", {
-  out <- block_parse("
+test_that("@noRd inhibits rd, but not namespace output", {
+  rocblock <- test_parse("
     #' Would be title
     #' @title Overridden title
     #' @name a
     #' @noRd
     NULL")
-  
-  expect_equal(length(out), 0)
+  out <- roxy_out(list(rocblock))
+  expect_equal(length(out$rd_write), 0)
 })
 

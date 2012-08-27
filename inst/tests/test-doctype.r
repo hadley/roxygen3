@@ -3,11 +3,11 @@ context("Rd - docTypes")
 # Package --------------------------------------------------------------------
 
 test_that("@docType package automatically adds package alias when needed", {
-  out1 <- block_parse("
+  out1 <- test_parse("
     #' @name a
     #' @docType package
     NULL")
-  out2 <- block_parse("
+  out2 <- test_parse("
     #' @name a-package
     #' @docType package
     NULL")
@@ -20,7 +20,7 @@ test_that("@docType package automatically adds package alias when needed", {
 # Data --------------------------------------------------------------------
 
 test_that("@docType data automatically adds sensible defaults", {
-  out <- block_parse("
+  out <- test_parse("
     #' Title.
     #'
     #' @docType data
@@ -32,7 +32,7 @@ test_that("@docType data automatically adds sensible defaults", {
 })
 
 test_that("@docType data automatically added to data objects", {
-  out <- block_parse("
+  out <- test_parse("
     #' Title.
     a <- data.frame(a = 1:10)")
   
@@ -42,7 +42,7 @@ test_that("@docType data automatically added to data objects", {
 # Reference classes ----------------------------------------------------------
 
 test_that("@docType data not automatically added to reference classes", {
-  out <- block_parse("
+  out <- test_parse("
     #' Title.
     a <- setRefClass('a')")
   

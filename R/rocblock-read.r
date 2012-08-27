@@ -39,6 +39,25 @@ parse_file <- function(path, env = NULL) {
   parse_text(lines, env, src)
 }
 
+# Parse and execute a block of text in a package like environment.
+# This is used cheifly for testing.
+#' @importFrom digest digest
+parse_block <- function(text) {
+  pkg_dummy <- structure(
+    list(path = tempfile(), package = "temp", version = 0.01), 
+    class = "package")  
+  env <- devtools:::create_ns_env(pkg_dummy)
+  on.exit(unload(pkg_dummy))
+
+  src <- srcfilecopy(digest(text), text)
+  expr <- parse(text = text, srcfile = src)
+  eval(expr, env = env)
+
+  lines <- str_split(text, "\n")[[1]]
+  
+  parse_text(lines, env, src)
+}
+
 parse_text <- function(lines, env, src) {
   parsed <- parse(text = lines, src = src)
   refs <- attr(parsed, "srcref")

@@ -1,7 +1,7 @@
 context("Name")
 
 test_that("name captured from assignment", {
-  out <- block_parse("
+  out <- test_parse("
     #' Title.
     a <- function() {} ")
   
@@ -11,7 +11,7 @@ test_that("name captured from assignment", {
 })
 
 test_that("name also captured from assignment by =", {
-  out <- block_parse("
+  out <- test_parse("
     #' Title.
     a = function() {} ")
   
@@ -21,14 +21,14 @@ test_that("name also captured from assignment by =", {
 })
 
 # test_that("names escaped, not quoted", {
-#   out <- block_parse("
+#   out <- test_parse("
 #     #' Title
 #     '%a%' <- function(x, y) x + y")
 #   expect_equal(format(out$name), "\\name{\\%a\\%}\n")
 # })
 
 test_that("filename doesn't contain invalid characters", {
-  out <- block_parse("
+  out <- test_parse("
     #' Title.
     #' @name a<-
     NULL
@@ -40,20 +40,20 @@ test_that("filename doesn't contain invalid characters", {
 })
 
 test_that("quoted names captured from assignment", {
-  out <- block_parse("
+  out <- test_parse("
     #' Title.
     \"myfunction\" <- function(...) {}")
   
   expect_equal(out$name, "myfunction")
   expect_equal(out$alias, "myfunction")
   
-  out <- block_parse("
+  out <- test_parse("
     #' Title.
     `myfunction` <- function(...) {}")
   expect_equal(out$name, "myfunction")
   expect_equal(out$alias, "myfunction")
   
-  out <- block_parse("
+  out <- test_parse("
     #' Title.
     \"my function\" <- function(...) {}")
   
@@ -62,7 +62,7 @@ test_that("quoted names captured from assignment", {
 })
 
 test_that("@name overides default", {
-  out <- block_parse("
+  out <- test_parse("
     #' @name b
     a <- function() {}")
     
