@@ -1,7 +1,8 @@
 roc_seealso <- basic_roccer("seealso", sentence_tag())
 
 parse_family <- function(rocblocks) {
-  return(rocblocks)
+  out <- rep(list(list()), length(rocblocks))
+  return(out)
   names(rocblocks) <- vapply(rocblocks, function(x) x$name, character(1))
   
   families <- lapply(rocblocks, function(x) x$roc$family)

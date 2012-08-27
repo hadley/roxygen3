@@ -51,7 +51,7 @@ parse_rocblocks.roc_parser <- function(parser, rocblocks) {
   # Parsing function should return named list specifying changes.
   if (!is.null(parser$all)) {
     out <- parser$all(rocblocks)
-    rocblocks <- modify_list(rocblocks, out)
+    rocblocks <- Map(modify_list, rocblocks, out)
   }
   
   rocblocks
