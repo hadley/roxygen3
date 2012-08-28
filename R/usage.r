@@ -4,7 +4,7 @@
 #' @param name name of object (if not computable from \code{obj})
 #' @export
 #' @dev
-usage <- function(obj, name) {
+usage <- function(obj, name, ref) {
   UseMethod("usage")
 }
 
@@ -17,15 +17,21 @@ print.usage <- function(x, ...) {
   print(format(x))
 }
 
-usage.data.frame <- function(obj, name) {
+usage.data.frame <- function(obj, name, ref) {
   name
 }
 
-usage.NULL <- function(obj, name) NULL
+usage.NULL <- function(obj, name, ref) NULL
 
-usage.default <- function(obj, name) {
+usage.default <- function(obj, name, ref) {
   message("No usage method defined for object of class ", 
-    str_c(class(obj), collapse = ", "))
+    str_c(class(obj), collapse = ", "), ref_location(ref))
   NULL
 }
 
+ref_location <- function(srcref) {
+  if (is.null(srcref)) return("")
+  
+  file <- getSrcFilename(srcref)
+  str_c(" @", file, ":", srcref[1], ":", srcref[5])
+}

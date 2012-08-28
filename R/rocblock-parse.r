@@ -74,7 +74,7 @@ parse_text <- memoise(function(lines, env, src) {
     end <- refs[[i]][[1]] - 1
 
     roc <- parse_roc(lines[beg:end])
-    obj <- object_from_call(parsed[[i]], env)
+    obj <- object_from_call(parsed[[i]], env, refs[[i]])
     
     if (is.null(roc) && is.null(obj)) return()
     

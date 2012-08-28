@@ -1,6 +1,6 @@
 doctype.MethodDefinition <- function(obj) "method"
 
-usage.MethodDefinition <- function(obj, name) {
+usage.MethodDefinition <- function(obj, name, ...) {
   args <- usage_args(formals(obj))
   new_usage(
     args = usage_args(formals(obj@.Data)),

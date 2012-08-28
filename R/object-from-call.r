@@ -17,7 +17,7 @@
 #' @auto_imports
 #' @export
 #' @dev
-object_from_call <- function(call, env) {
+object_from_call <- function(call, env, srcref) {
   if (is.null(call)) return()
   
   # Find function, then use match.call to construct complete call
@@ -30,7 +30,10 @@ object_from_call <- function(call, env) {
   f <- find_fun(str_c("object_from_call.", fun_name))
 
   if (is.null(f)) return(NULL)
-  f(call, name, env)
+  
+  out <- f(call, name, env)
+  out$srcref <- srcref
+  out
 }
 
 object_from_call_assignment <- function(call, name, env) {

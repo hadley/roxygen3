@@ -4,7 +4,7 @@ doctype_s3 <- function(roc, obj, ...) {
   list(method = method)
 }
 
-usage.s3method <- function(obj, name) {
+usage.s3method <- function(obj, name, ...) {
   args <- usage_args(formals(obj))
   
   new_usage(

@@ -6,7 +6,7 @@
 it creates.}
 
 \usage{
-  object_from_call(call, env)
+  object_from_call(call, env, srcref)
 }
 
 \arguments{

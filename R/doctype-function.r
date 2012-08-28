@@ -2,7 +2,7 @@ default_export.function <- function(obj, name) {
   list(export = name)
 }
 
-usage.function <- function(obj, name) {
+usage.function <- function(obj, name, ...) {
   args <- usage_args(formals(obj))
   
   new_usage(

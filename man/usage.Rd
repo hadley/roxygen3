@@ -5,7 +5,7 @@
 \title{[DEV] Generate usage statement for an R object.}
 
 \usage{
-  usage(obj, name)
+  usage(obj, name, ref)
 }
 
 \arguments{
