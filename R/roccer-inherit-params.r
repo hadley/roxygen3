@@ -9,7 +9,7 @@ inherit_params <- function(rocblocks) {
     inherit_from <- roc$inheritParams
     if (is.null(inherit_from)) next
     
-    inherited <- find_params(inherit_from, rocblocks)
+    inherited <- unlist(lapply(inherit_from, find_params, rocblocks))
     if (is.null(inherited)) {
       message("@inheritParams: can't find topic ", inherit_from)
       next
@@ -19,8 +19,7 @@ inherit_params <- function(rocblocks) {
     missing_params <- setdiff(params, names(roc$param))
     matching_params <- intersect(missing_params, names(inherited))
 
-    rocblocks[[i]]$roc <- list(param = c(roc$param,
-      inherited[matching_params]))
+    rocblocks[[i]]$roc$param <- c(roc$param, inherited[matching_params])
   }
   rocblocks
 }

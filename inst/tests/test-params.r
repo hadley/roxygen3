@@ -11,15 +11,26 @@ test_that("@param documents arguments", {
   expect_equivalent(args["z"], "a terminal letter")
 })
 
-# test_that("multiple @inheritParam tags gathers all params", {
-#   out <- roc_process(roc, parse.files("rd-params.r"), base_path = ".")
-#   
-#   params <- get_tag(out[["c.Rd"]], "arguments")$values
-#   expect_equal(length(params), 2)
-#   
-#   expect_equal(params[["x"]], "X")
-#   expect_equal(params[["y"]], "Y")  
-# })
+test_that("multiple @inheritParam tags gathers all params", {
+  out <- test_process("  
+    #' A.
+    #' @param x X
+    a <- function(x) {}
+
+    #' B
+    #' @param y Y
+    b <- function(y) {}
+
+    #' C
+    #' @inheritParams a
+    #' @inheritParams b
+    c <- function(x, y) {}")
+
+  expect_equal(length(out$param), 2)
+  
+  expect_equal(out$param[["x"]], "X")
+  expect_equal(out$param[["y"]], "Y")  
+})
 
 test_that("@inheritParam inherits from functions in other packages", {
   out <- test_process("
