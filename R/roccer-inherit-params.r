@@ -1,5 +1,4 @@
 inherit_params <- function(rocblocks) {
-  out <- rep(list(list()), length(rocblocks))
   
   for(i in seq_along(rocblocks)) {
     obj <- rocblocks[[i]]$obj
@@ -20,9 +19,10 @@ inherit_params <- function(rocblocks) {
     missing_params <- setdiff(params, names(roc$param))
     matching_params <- intersect(missing_params, names(inherited))
 
-    out[[i]]$roc <- list(param = c(roc$param, inherited[matching_params]))
+    rocblocks[[i]]$roc <- list(param = c(roc$param,
+      inherited[matching_params]))
   }
-  out
+  rocblocks
 }
 
 #' Inherit parameters from another function.
@@ -33,7 +33,7 @@ inherit_params <- function(rocblocks) {
 #' \code{function}, or another package \code{package::function}.
 #'
 #' @usage @@inheritParams source_function
-add_roccer("inheritParams", roc_parser(all = inherit_params))
+add_roccer("inheritParams", rocblock_parser(inherit_params))
 base_prereqs[["inheritParams"]] <- c("param", "name")
 
 

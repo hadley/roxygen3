@@ -1,7 +1,11 @@
-#' Create a rocblock parser.
+#' A roc parser.
+#'
+#' This parser focus on access at the roc level, sacrificing generality for
+#' simplicity. It is suitable for tags that need only local access, modifying
+#' only roc component of the rocblock where the tag is located.
 #'
 #' @section Parsing order:
-#' The functions \code{tag}, \code{one} and \code{all} are called in that
+#' The functions \code{tag} and \code{one} are called in that
 #' order, so if multiple are supplied, each can rely on having access to
 #' the results of the previous.  See \code{\link{tag_name}} for an example
 #' of this.
@@ -11,9 +15,6 @@
 #' @param one a function with named arguments corresponding to any component
 #'   of a rocblock (e.g. \code{roc}, \code{obj}, \code{path}) that returns
 #'   a named list specifying the modifications that should be made to the roc.
-#' @param all a function with one parameter that is giving a list of all
-#'   rocblocks and should return a named list containing named list specifying
-#'   changes to the rocs.
 #' @param name when \code{NULL} will automatically be giving the name of the
 #'   roccer that uses it.
 #' @dev
@@ -21,10 +22,8 @@
 roc_parser <- function(tag = NULL, one = NULL, all = NULL, name = NULL) {
   tag_m <- if (!is.null(tag)) memoise(tag) else tag
   one_m <- if (!is.null(one)) memoise(one) else one
-  all_m <- if (!is.null(all)) memoise(all) else all
   
-  structure(list(tag = tag_m, one = one_m, all = all_m), 
-    class = "roc_parser")
+  structure(list(tag = tag_m, one = one_m), class = "roc_parser")
 }
 
 parse_rocblocks.roc_parser <- function(parser, rocblocks) {
@@ -47,12 +46,6 @@ parse_rocblocks.roc_parser <- function(parser, rocblocks) {
       out <- do.call(parser$one, rocblocks[[i]])
       rocblocks[[i]]$roc <- modify_list(rocblocks[[i]]$roc, out)
     }
-  }
-  
-  # Parsing function should return named list specifying changes.
-  if (!is.null(parser$all)) {
-    out <- parser$all(rocblocks)
-    rocblocks <- Map(modify_list, rocblocks, out)
   }
   
   rocblocks
