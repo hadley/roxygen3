@@ -15,7 +15,7 @@ field <- function(name) {
 #' @auto_imports
 output_postproc.description_out <- function(output) {
   out <- unlist(output, recursive = FALSE)
-  out$Collate <- str_c(out$Collate, collapse = "\n")
+  out$Collate <- str_c(out$Collate, collapse = "\n")    
   
   out
 }
@@ -23,7 +23,7 @@ output_postproc.description_out <- function(output) {
 output_write.description_out <- function(output, path) {
   old <- read_description(path)
   new <- modify_list(old, output)
-  
+
   desc <- render_description(new)
   write_if_different(path, desc)
 }
@@ -37,7 +37,7 @@ read_description <- function(file) {
   lapply(dcf_list, str_trim)
 }
 
-render_description <- function(desc, file) {
+render_description <- function(desc) {
   cat.description <- function(field, value) {
     comma_sep <- any(field %in% c("Suggests", "Depends", "Extends", "Imports"))
     individual_lines <- field %in% c("Collate")
@@ -51,7 +51,7 @@ render_description <- function(desc, file) {
       wrap_field_if_necessary(field, value, wrap.threshold = width)    
     }
   }
-  
+  desc <- Filter(function(x) length(x) > 0 && !identical(x, ""), desc)
   fields <- Map(cat.description, names(desc), desc)
   str_c(unlist(fields), collapse = "\n")
 }

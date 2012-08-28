@@ -2,8 +2,6 @@
 # without parsing the code - because correct collate is needed before you
 # can source the code.
 
-# 
-
 include <- function(rocblocks) {
   with_collate("C", {
     dirs <- unique(vapply(rocblocks, function(x) dirname(x$path),
@@ -33,20 +31,44 @@ include <- function(rocblocks) {
   })
   collate <- str_replace(collate, "R/", "")
   
-  rocblocks[[i]]$roc <- modify_list(rocblocks[[i]]$roc, 
+  rocblocks[[1]]$roc <- modify_list(rocblocks[[i]]$roc, 
     list(collate = collate))
   rocblocks
 }
 
 collate_from_includes <- function(includes, paths) {
   if (length(includes) == 0) return(NULL)
+  if (is_topo_sorted(paths, includes)) return(NULL)
   
   used <- unique(c(names(includes), unlist(includes)))
   graph <- graph_from_list(used, includes)
-  collate <- union(topo_sort(graph), paths)  
+  union(topo_sort(graph), paths)
 }
 
+is_topo_sorted <- function(nodes, edges) {
+  # Check to see if topology already satified
+  
+  before <- function(a, b) {
+    all(which(nodes %in% a) < which(nodes %in% b))
+  }
 
+  for (i in seq_along(edges)) {
+    src <- edges[[i]]
+    trg <- names(edges)[i]
+    
+    if (!before(src, trg)) return(FALSE)
+  }
+  
+  TRUE
+}
+
+#' Control order of collation.
+#'
+#' @details 
+#' The collation order is only modified if it is different from alphabetical
+#' order (in the C locale). That is R's default ordering.
+#' 
+#' @@usage @@include file-1.r file-2.r
 add_roccer("include",
   rocblock_parser(include)
 )
