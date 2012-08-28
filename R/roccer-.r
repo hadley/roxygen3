@@ -61,3 +61,5 @@ base_roccers <- function() {
   base <- find_roccers(asNamespace("roxygen3"))
   sort_roccers(base, base_prereqs)
 }
+
+base_prereqs <- list()
