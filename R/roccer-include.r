@@ -68,7 +68,7 @@ is_topo_sorted <- function(nodes, edges) {
 #' The collation order is only modified if it is different from alphabetical
 #' order (in the C locale). That is R's default ordering.
 #' 
-#' @@usage @@include file-1.r file-2.r
+#' @usage @@include file-1.r file-2.r
 add_roccer("include",
   rocblock_parser(include)
 )
