@@ -1,7 +1,7 @@
 #' Add comments to the Rd file.
 #'
 #' @usage @@comment This is a comment that will not be user visible.
-add_tag_roccer("comment", sentence_tag())
+add_tag_roccer("comment", text_tag())
 
 #' Automatically add the path as an Rd comment.
 #' 

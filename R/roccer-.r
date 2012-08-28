@@ -10,7 +10,6 @@
 #' @param output output generated, like an object created by
 #'   \code{\link{rd_out}} or \code{\link{namespace_out}}.
 #' @export
-#' @include -tag-parsers.r
 roccer <- function(name, parser = NULL, output = NULL) {
   
   # Copy name into parser and output so they have access to it

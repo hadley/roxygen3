@@ -4,7 +4,7 @@
 #' roxygen block. See \code{\link{tag__intro}} for more details.
 #'
 #' @usage @@title Topic title
-add_tag_roccer("title", sentence_tag())
+add_tag_roccer("title", text_tag())
 
 #' Override default description.
 #'
@@ -12,7 +12,7 @@ add_tag_roccer("title", sentence_tag())
 #' roxygen block. See \code{\link{tag__intro}} for more details.
 #'
 #' @usage @@description Text goes here.
-add_tag_roccer("description", paragraph_tag())
+add_tag_roccer("description", text_tag())
 
 #' Override default details.
 #'
@@ -21,4 +21,4 @@ add_tag_roccer("description", paragraph_tag())
 #' details.
 #'
 #' @usage @@details Text goes here.
-add_tag_roccer("details", paragraph_tag())
+add_tag_roccer("details", text_tag())
