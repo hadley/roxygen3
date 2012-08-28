@@ -54,6 +54,7 @@ roxy_out <- function(rocblocks, roccers = base_roccers()) {
       
       path <- output_path(rocout, rocblock)
       if (is.null(path)) next
+      
       n <- length(out[[type]][[path]]) + 1
       if (n == 1) out[[type]][[path]] <- list()
       out[[type]][[path]][n] <- rocout$tag(tag)
