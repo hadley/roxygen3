@@ -72,12 +72,11 @@ parse_text <- memoise(function(lines, env, src) {
     # first line of this block
     beg <- if (i == 1) 1 else refs[[i - 1]][[3]] + 1 
     end <- refs[[i]][[1]] - 1
-    # if (beg == end) return()
 
     roc <- parse_roc(lines[beg:end])
-    if (is.null(roc)) return()
-
     obj <- object_from_call(parsed[[i]], env)
+    
+    if (is.null(roc) && is.null(obj)) return()
     
     rocblock(obj = obj, roc = roc, path = src$filename, 
       lines = c(beg, end))

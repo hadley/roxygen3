@@ -35,7 +35,10 @@ object_from_call <- function(call, env) {
 
 object_from_call_assignment <- function(call, name, env) {
   name <- as.character(call[[2]])
-
+  
+  # If it's a compound assignment like x[[2]] <- ignore it
+  if (length(name) > 1)  return()
+  
   # If it doesn't exist (any more), don't document it.
   if (!exists(name, env)) return()
   

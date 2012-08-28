@@ -33,7 +33,10 @@ parse_rocblocks.roc_parser <- function(parser, rocblocks) {
   # Loop through all rocblocks, extracting tag. 
   if (!is.null(parser$tag)) {
     for(i in seq_along(rocblocks)) {
-      tag <- rocblocks[[i]]$roc[[parser$name]]
+      roc <- rocblocks[[i]]$roc      
+      if (is.null(roc)) next
+      
+      tag <- roc[[parser$name]]
       if (is.null(tag)) next
       
       rocblocks[[i]]$roc[[parser$name]] <- parser$tag(tag, parser$name)
@@ -43,6 +46,8 @@ parse_rocblocks.roc_parser <- function(parser, rocblocks) {
   # Loop through all rocblocks, calling parser with do.call.
   if (!is.null(parser$one)) {
     for(i in seq_along(rocblocks)) {
+      if (is.null(rocblocks[[i]]$roc)) next
+      
       out <- do.call(parser$one, rocblocks[[i]])
       rocblocks[[i]]$roc <- modify_list(rocblocks[[i]]$roc, out)
     }
