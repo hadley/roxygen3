@@ -31,7 +31,7 @@ include <- function(rocblocks) {
   })
   collate <- str_replace(collate, "R/", "")
   
-  rocblocks[[1]]$roc <- modify_list(rocblocks[[i]]$roc, 
+  rocblocks[[1]]$roc <- modify_list(rocblocks[[1]]$roc, 
     list(collate = collate))
   rocblocks
 }
