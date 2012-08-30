@@ -31,12 +31,12 @@ object_from_call <- function(call, env, srcref) {
 
   if (is.null(f)) return(NULL)
   
-  out <- f(call, name, env)
+  out <- f(call, env)
   out$srcref <- srcref
   out
 }
 
-object_from_call_assignment <- function(call, name, env) {
+object_from_call_assignment <- function(call, env) {
   name <- as.character(call[[2]])
   
   # If it's a compound assignment like x[[2]] <- ignore it
