@@ -1,7 +1,7 @@
 
-\name{tag__intro}
+\name{tag_intro}
 
-\alias{tag__intro}
+\alias{tag_intro}
 
 \title{Title, description and details.}
 

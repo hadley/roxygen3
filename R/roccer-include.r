@@ -1,8 +1,17 @@
+#' Control order of collation.
+#'
+#' @details 
+#' The collation order is only modified if it is different from alphabetical
+#' order (in the C locale). That is R's default ordering.
+#' 
+#' @usage @@include file-1.r file-2.r
+
 # Need to be able to run this separately from the others, preferrably
 # without parsing the code - because correct collate is needed before you
 # can source the code.
-
-include <- function(rocblocks) {
+roccer_include <- function(package) {
+  
+  rocblocks <- package@blocks
   with_collate("C", {
     dirs <- unique(vapply(rocblocks, function(x) dirname(x$path),
       character(1)))
@@ -31,9 +40,12 @@ include <- function(rocblocks) {
   })
   collate <- str_replace(collate, "R/", "")
   
-  rocblocks[[1]]$roc <- modify_list(rocblocks[[1]]$roc, 
-    list(collate = collate))
-  rocblocks
+  tag <- new("CollateTag", files = collate)
+  ref <- srcfilecopy("collate_block")
+  block <- new("Block", tags = list(tag), srcref = ref, object = NULL)
+  
+  package@blocks <- c(package@blocks, list(block))
+  package
 }
 
 collate_from_includes <- function(includes, paths) {
@@ -61,19 +73,4 @@ is_topo_sorted <- function(nodes, edges) {
   
   TRUE
 }
-
-#' Control order of collation.
-#'
-#' @details 
-#' The collation order is only modified if it is different from alphabetical
-#' order (in the C locale). That is R's default ordering.
-#' 
-#' @usage @@include file-1.r file-2.r
-add_roccer("include",
-  rocblock_parser(include)
-)
-add_roccer("collate",
-  null_parser(),
-  description_out(field("Collate"))
-)
 

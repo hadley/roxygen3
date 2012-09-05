@@ -15,7 +15,7 @@ parse_directory <- function(path, env = NULL) {
     env <- new.env(parent = globalenv())
     lapply(r_files, sys.source, envir = env, chdir = TRUE)
   }
-
+  
   unlist(lapply(r_files, parse_file, env = env), recursive = FALSE)
 }
 
@@ -95,7 +95,7 @@ parse_roc <- function(lines, match = "^\\s*#+\' ?") {
   # If the comment block does not start with a @, then it must be the
   # introduction section
   if (!str_detect(joined, "^@")) {
-    joined <- str_c("@_intro ", joined)
+    joined <- str_c("@intro ", joined)
   }
 
   ## Thanks to Fegis at #regex on Freenode for the
@@ -108,5 +108,17 @@ parse_roc <- function(lines, match = "^\\s*#+\' ?") {
   cols[, 2] <- str_trim(cols[, 2])
 
   tapply(cols[, 2], cols[, 1], list)
+  # TODO: init_tag here
+}
+
+find_tag <- function(name, text, block) {
+  # find matching class for name
+  class_name <- str_c("Tag", name)
+  if (!isClass(class_name)) {
+    message("Unknown tag @", name, " at ", location(block))
+    return(NULL)
+  }
+  
+  new(class_name, text = text)
 }
 

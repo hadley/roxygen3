@@ -16,14 +16,18 @@
 #' @usage @@importFrom package function1 function2
 #' @rdname tag-import
 #' @auto_import
+setClass("TagImportFrom", contains = "Tag")
+setMethod("procTag", "TagImportFrom", function(tag) {
+  pieces <- str_split(tag@text, "[[:space:]]+")[[1]]
+  if (length(pieces) < 2) {
+    stop("@importFrom needs at least two components.", call. = FALSE)
+  }
+  tag@text <- setNames(rep(pieces[1], length(pieces[-1])), pieces[-1])
+  
+})
 add_roccer("importFrom", 
   roc_parser(
     function(tag, name) {
-      pieces <- str_split(tag, "[[:space:]]+")[[1]]
-      if (length(pieces) < 2) {
-        stop("@importFrom needs at least two components.", call. = FALSE)
-      }
-      setNames(rep(pieces[1], length(pieces[-1])), pieces[-1])
     }
   ),
   namespace_out(function(tag) {

@@ -1,0 +1,33 @@
+* translate namespace functions
+* roccers -> functions which take package as input, plus associated tag
+* rewrite all output methods
+* load_all and fix errors until everything works
+* run tests
+* fix usage of rd_command and *_tag
+
+* "tags" that previously applied to all blocks:
+  * docType
+
+Questions for Vitalie:
+
+* How would you write modify_tags?
+* procBlockObject vs procBlock - only three tags need to dispatch on object
+  * need to think of common function name for that scenario 
+    procObj(tag, obj, block)
+
+* What's a better way of writing procBlock for docType so that it doesn't use
+  pseudo dispatch
+
+* Should procTag be initTag?
+
+
+* A roccer is something that operates on the whole package - 
+
+Better to call them processors? They take a Package and return a modified Package. They have a separate argument?
+
+Roxygenise gets arguments:
+* tags
+* roccers
+
+family, include, 
+writeNamespace(), writeDescription(), write()

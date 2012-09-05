@@ -66,3 +66,10 @@ find_function <- function(name, env = parent.frame(2)) {
   
   get(name, envir = env, mode = "function")
 }
+
+ref_location <- function(srcref) {
+  if (is.null(srcref)) return("")
+
+  file <- getSrcFilename(srcref)
+  str_c(" @", file, ":", srcref[1], ":", srcref[5])
+}

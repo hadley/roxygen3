@@ -1,0 +1,1 @@
+setClass("TagInclude", contains = "Tag")

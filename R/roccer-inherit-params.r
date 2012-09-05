@@ -1,3 +1,12 @@
+#' Inherit parameters from another function.
+#'
+#' This tag will bring in all documentation for parameters that are
+#' undocumented in the current function, but documented in the source
+#' function. The source can be a function in the current package,
+#' \code{function}, or another package \code{package::function}.
+#'
+#' @usage @@inheritParams source_function
+
 inherit_params <- function(rocblocks) {
   
   for(i in seq_along(rocblocks)) {
@@ -24,16 +33,6 @@ inherit_params <- function(rocblocks) {
   rocblocks
 }
 
-#' Inherit parameters from another function.
-#'
-#' This tag will bring in all documentation for parameters that are
-#' undocumented in the current function, but documented in the source
-#' function. The source can be a function in the current package,
-#' \code{function}, or another package \code{package::function}.
-#'
-#' @usage @@inheritParams source_function
-add_roccer("inheritParams", rocblock_parser(inherit_params))
-base_prereqs[["inheritParams"]] <- c("param", "name")
 
 
 find_params <- function(name, rocblocks) {
