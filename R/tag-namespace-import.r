@@ -25,11 +25,11 @@ setMethod("procTag", "TagImportFrom", function(tag) {
   tag@text <- setNames(rep(pieces[1], length(pieces[-1])), pieces[-1])
   tag
 })
-setMethod("writeNamespace", "TagImportFrom", function(tag) {
-  tag <- tag[tag != "base"]
-  if (length(tag) == 0) return()
+setMethod("writeNamespace", "TagImportFrom", function(object) {
+  object <- object[object != "base"]
+  if (length(object) == 0) return()
   
-  str_c("importFrom(", tag, ",", quote_if_needed(names(tag)), ")", 
+  str_c("importFrom(", object, ",", quote_if_needed(names(object)), ")", 
     collapse = "\n")
 })
 setMethod("getPrereqs", "TagImportFrom", function(tag) {
@@ -57,8 +57,8 @@ setMethod("procTag", "TagImport", function(tag) {
   tag@text <- str_split(tag@text, " ")[[1]]
   tag
 })
-setMethod("writeNamespace", "TagImport", function(tag) {
-  ns_each("import")(tag@text)
+setMethod("writeNamespace", "TagImport", function(object) {
+  ns_each("import")(object@text)
 })
 
 #' @rdname tag-import
@@ -68,8 +68,8 @@ setMethod("procTag", "TagImportClassesFrom", function(tag) {
   tag@text <- str_split(tag@text, " ")[[1]]
   tag
 })
-setMethod("writeNamespace", "TagImportClassesFrom", function(tag) {
-  ns_repeat1("importClassesFrom")(tag@text)
+setMethod("writeNamespace", "TagImportClassesFrom", function(object) {
+  ns_repeat1("importClassesFrom")(object@text)
 })
 
 #' @rdname tag-import
@@ -79,6 +79,6 @@ setMethod("procTag", "TagImportMethodsFrom", function(tag) {
   tag@text <- str_split(tag@text, " ")[[1]]
   tag
 })
-setMethod("writeNamespace", "TagImportMethodsFrom", function(tag) {
-  ns_repeat1("importMethodsFrom")(tag@text)
+setMethod("writeNamespace", "TagImportMethodsFrom", function(object) {
+  ns_repeat1("importMethodsFrom")(object@text)
 })

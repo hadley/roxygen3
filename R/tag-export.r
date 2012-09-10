@@ -32,8 +32,8 @@ setMethod("procBlock", "TagExport", function(tag, block) {
     "export" = default_export(block@object@value, block@object@name))
 })
 
-setMethod("writeNamespace", "TagExport", function(tag) {
-  ns_each("export")(tag@text)
+setMethod("writeNamespace", "TagExport", function(object) {
+  ns_each("export")(object@text)
 })
 
 setMethod("getPrereqs", "TagExport", function(tag) {

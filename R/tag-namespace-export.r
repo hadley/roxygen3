@@ -6,8 +6,8 @@ setMethod("procTag", "TagExportClass", function(tag) {
   tag@text <- words_tag()(tag@text)
   tag
 })
-setMethod("writeNamespace", "TagExportClass", function(tag) {
-  ns_each("exportClass")(tag@text)
+setMethod("writeNamespace", "TagExportClass", function(object) {
+  ns_each("exportClass")(object@text)
 })
 
 #' @usage @@exportMethods generic1 generic2
@@ -17,8 +17,8 @@ setMethod("procTag", "TagExportMethods", function(tag) {
   tag@text <- words_tag()(tag@text)
   tag
 })
-setMethod("writeNamespace", "TagExportMethods", function(tag) {
-  ns_each("exportMethods")(tag@text)
+setMethod("writeNamespace", "TagExportMethods", function(object) {
+  ns_each("exportMethods")(object@text)
 })
 
 #' @usage @@exportPattern pattern
@@ -28,8 +28,8 @@ setMethod("procTag", "TagExportPattern", function(tag) {
   tag@text <- words_tag()(tag@text)
   tag
 })
-setMethod("writeNamespace", "TagExportPattern", function(tag) {
-  ns_each("exportPattern")(tag@text)
+setMethod("writeNamespace", "TagExportPattern", function(object) {
+  ns_each("exportPattern")(object@text)
 })
 
 #' @usage
@@ -60,11 +60,11 @@ setMethod("procBlock", "TagS3method", function(tag, block) {
     methods = list(methods = cbind(generic, class)))
 })
 
-setMethod("writeNamespace", "TagS3method", function(tag) {
-  if (is.vector(tag@methods)) {
+setMethod("writeNamespace", "TagS3method", function(object) {
+  if (is.vector(object@methods)) {
     methods <- matrix(methods, ncol = 2)
   } else {
-    methods <- tag@methods
+    methods <- object@methods
   }
   
   str_c("S3method(", quote_if_needed(methods[, 1]), ",",

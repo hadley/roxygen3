@@ -33,8 +33,8 @@ setMethod("procBlock", "TagDocType", function(tag, block) {
   default(roc, obj)
 })
 
-setMethod("writeRd", "TagDocType", function(tag) {
-  new_command("docType", tag@text)
+setMethod("writeRd", "TagDocType", function(object) {
+  new_command("docType", object@text)
 })
 
 #' @export

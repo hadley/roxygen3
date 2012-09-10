@@ -6,6 +6,6 @@
 #'
 #' @usage @@details Text goes here.
 setClass("TagDetails", contains = "Tag")
-setMethod("writeRd", "TagDetails", function(tag) {
-  new_command("details", tag@text)
+setMethod("writeRd", "TagDetails", function(object) {
+  new_command("details", object@text)
 })

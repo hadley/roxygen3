@@ -13,6 +13,6 @@ setMethod("procTag", "TagAliases", function(tag) {
   tag
 })
 
-setMethod("writeRd", "TagAliases", function(tag) {
-  new_command("alias", tag@text)
+setMethod("writeRd", "TagAliases", function(object) {
+  new_command("alias", object@text)
 })

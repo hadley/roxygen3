@@ -13,6 +13,6 @@ setMethod("procBlock", "TagName", function(tag, block) {
     aliases = suffix(tag@text))
 })
 
-setMethod("writeRd", "TagName", function(output) {
-  new_command("name", output@text)
+setMethod("writeRd", "TagName", function(object) {
+  new_command("name", object@text)
 })

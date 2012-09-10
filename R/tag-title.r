@@ -5,6 +5,6 @@
 #'
 #' @usage @@title Topic title
 setClass("TagTitle", contains = "Tag")
-setMethod("writeRd", "TagTitle", function(tag) {
-  new_command("title", tag@text)
+setMethod("writeRd", "TagTitle", function(object) {
+  new_command("title", object@text)
 })

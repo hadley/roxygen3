@@ -3,6 +3,6 @@ setMethod("procTag", "TagKeywords", function(tag) {
   tag@text <- words_tag()(tag@text)
   tag
 })
-setMethod("writeRd", "TagKeywords", function(tag) {
-  new_command("keyword", tag@text)
+setMethod("writeRd", "TagKeywords", function(object) {
+  new_command("keyword", object@text)
 })

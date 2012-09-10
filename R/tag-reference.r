@@ -1,4 +1,4 @@
 setClass("TagReference", contains = "Tag")
-setMethod("writeRd", "TagReference", function(tag) {
-  new_command("reference", tag@text)
+setMethod("writeRd", "TagReference", function(object) {
+  new_command("reference", object@text)
 })

@@ -11,6 +11,6 @@ setMethod("procTag", "TagSection", function(tag) {
   tag
 })
 
-setMethod("writeRd", "TagSection", function(tag) {
-  new_command("section", tag@sections)
+setMethod("writeRd", "TagSection", function(object) {
+  new_command("section", object@sections)
 })

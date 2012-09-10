@@ -1,4 +1,4 @@
 setClass("TagFormat", contains = "Tag")
-setMethod("writeRd", "TagFormat", function(tag) {
-  new_command("format", tag@text)
+setMethod("writeRd", "TagFormat", function(object) {
+  new_command("format", object@text)
 })

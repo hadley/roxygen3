@@ -4,6 +4,6 @@
 
 setClass("TagComment", contains = "Tag")
 
-setMethod("writeRd", "TagComment", function(tag) {
-  new_command("comment", tag@text)
+setMethod("writeRd", "TagComment", function(object) {
+  new_command("comment", object@text)
 })

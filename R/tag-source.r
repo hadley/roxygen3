@@ -1,5 +1,5 @@
 setClass("TagSource", contains = "Tag")
-setMethod("writeRd", "TagSource", function(tag) {
-  new_command("source", tag@text)
+setMethod("writeRd", "TagSource", function(object) {
+  new_command("source", object@text)
 })
 
