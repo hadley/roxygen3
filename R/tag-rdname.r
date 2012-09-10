@@ -1,14 +1,5 @@
 setClass("TagRdname", contains = "Tag")
 
-setMethod("procBlock", "TagRdname", function(tag, block) {
-  rdname <- tag@text %||% nice_name(block@object@name)
-  modify_tags(block, rdname = rdname)  
-})
-
-setMethod("getPrereqs", "TagRdname", function(tag) {
-  "TagName"
-})
-
 subs <- matrix(ncol = 2, byrow = T, c(
   '[]', 'sub',
   '<-', 'set',

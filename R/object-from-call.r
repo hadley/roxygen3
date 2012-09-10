@@ -26,7 +26,7 @@ object_from_call <- function(call, env, srcref) {
     call <- match.call(eval(call[[1]], env), call)
   }
   
-  class <- paste("Call", first_upper(deparse(call[[1]])))
+  class <- paste("Call", first_upper(deparse(call[[1]])), sep = "")
   
   method <- selectMethod("objectFromCall", c(call = class))
   method(call, env, srcref)
@@ -76,7 +76,7 @@ setMethod("objectFromCall", "CallSetClass", function(call, env, srcref) {
   name <- as.character(call$Class)
   val <- getClass(name, where = env)
   
-  new("RoxyObject", name = name, value = value, srcref = srcref, 
+  new("RoxyObject", name = name, value = val, srcref = srcref, 
     docType = "s4class")
 })
 
@@ -86,7 +86,7 @@ setMethod("objectFromCall", "CallSetGeneric", function(call, env, srcref) {
   name <- as.character(call$name)
   val <- getGeneric(name, where = env)
 
-  new("RoxyObject", name = name, value = value, srcref = srcref, 
+  new("RoxyObject", name = name, value = val, srcref = srcref, 
     docType = "s4generic")
 })
 
@@ -96,7 +96,7 @@ setMethod("objectFromCall", "CallSetMethod", function(call, env, srcref) {
   name <- as.character(call$f)
   val <- getMethod(name, eval(call$signature), where = env)
 
-  new("RoxyObject", name = name, value = value, srcref = srcref, 
+  new("RoxyObject", name = name, value = val, srcref = srcref, 
     docType = "s4method")
 })
 
@@ -106,6 +106,6 @@ setMethod("objectFromCall", "CallSetRefClass", function(call, env, srcref) {
   name <- as.character(call$Class)
   val <- getRefClass(name, where = env)
 
-  new("RoxyObject", name = name, value = value, srcref = srcref, 
+  new("RoxyObject", name = name, value = val, srcref = srcref, 
     docType = "r5class")
 })

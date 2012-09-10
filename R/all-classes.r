@@ -18,4 +18,5 @@ setClass("RoxyBlock", representation(
 
 # A list of rocblocks - will usually create subclass
 setClass("RoxyBundle", representation(
-  blocks = "list"))
+  blocks = "list",
+  processors = "character"))

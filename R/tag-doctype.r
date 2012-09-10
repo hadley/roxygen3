@@ -34,7 +34,7 @@ setMethod("procBlock", "TagDocType", function(tag, block) {
 })
 
 setMethod("writeRd", "TagDocType", function(tag) {
-  rd_command("docType")(tag@text)
+  new_command("docType", tag@text)
 })
 
 #' @export

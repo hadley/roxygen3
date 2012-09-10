@@ -6,6 +6,18 @@
 #'
 #' @export
 
+RoxyBlock <- function(tags, object, srcref) {
+  if (is.null(tags$name) && !is.null(object@value)) {
+    tags$name <- new("TagName", text = object@name, srcref = srcref)
+  }
+  if (is.null(tags$rdname) && !is.null(tags$name)) {
+    tags$rdname <- new("TagRdname", text = nice_name(tags$name@text), 
+      srcref = srcref)
+  }
+  
+  new("RoxyBlock", tags = tags, object = object, srcref = srcref)
+}
+
 setMethod("show", "RoxyBlock", function(object) {
   cat("RoxyBlock: ", object@object@name, "@", 
     location(object@srcref), "\n", sep = "")
@@ -47,6 +59,8 @@ modify_tag <- function(block, tag_name, changes) {
 suffix <- function(x) structure(x, class = "suffix")
 prefix <- function(x) structure(x, class = "prefix")
 action <- function(old, new) {
+  if (length(old) == 0) return(new)
+  
   switch(class(new),
     prefix =    append(old, new, after = 0),
     suffix =    append(old, new),

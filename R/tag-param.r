@@ -15,5 +15,5 @@ setMethod("procTag", "TagParam", function(tag) {
 })
 
 setMethod("writeRd", "TagParam", function(tag) {
-  new_command("arguments", tag)
+  new_command("arguments", tag@arguments)
 })

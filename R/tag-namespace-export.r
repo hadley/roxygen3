@@ -39,7 +39,7 @@ setMethod("writeNamespace", "TagExportPattern", function(tag) {
 #' @rdname tag-export
 setClass("TagS3method", contains = "Tag",
   list("methods" = "character"))
-setMethod("procBlock", "TagExportPattern", function(tag, block) {
+setMethod("procBlock", "TagS3method", function(tag, block) {
   s3method <- words_tag(0, 2)(tag@text)
 
   n <- length(s3method)
@@ -57,7 +57,7 @@ setMethod("procBlock", "TagExportPattern", function(tag, block) {
   }
 
   modify_tags(block,
-    S3method = list(methods = cbind(generic, class)))
+    methods = list(methods = cbind(generic, class)))
 })
 
 setMethod("writeNamespace", "TagS3method", function(tag) {

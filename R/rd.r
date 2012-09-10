@@ -10,7 +10,7 @@ new_command <- function(command, values) {
   if (is.null(values)) return()
   
   subc <- str_c(command, "_command")
-  list(structure(list(command = command, values = values), class = c(subc, "rd_command")))
+  structure(list(command = command, values = values), class = c(subc, "rd_command"))
 }
 
 is.rd_command <- function(x) inherits(x, "rd_command")
@@ -167,10 +167,8 @@ format.slot_command <- function(x, ...) {
 
 #' @export
 format.section_command <- function(x, ...) {
-  names <- vapply(x$values, "[[", "name", FUN.VALUE = character(1))
-
-  contents <- vapply(x$values, "[[", "content", FUN.VALUE = character(1))
-  contents <- str_wrap(str_trim(contents), width = 60, exdent = 2, indent = 2)
+  names <- names(x$values)
+  contents <- str_wrap(str_trim(x$values), width = 60, exdent = 2, indent = 2)
   
   setions <- str_c("\\section{", names, "}{\n", contents, "\n}\n", 
     collapse = "\n")

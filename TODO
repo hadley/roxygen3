@@ -18,7 +18,6 @@ Questions for Vitalie:
 
 * Should procTag be initTag?
 
-
 * A roccer is something that operates on the whole package - 
 
 Better to call them processors? They take a Package and return a modified Package. They have a separate argument?

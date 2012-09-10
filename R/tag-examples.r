@@ -1,4 +1,4 @@
 setClass("TagExamples", contains = "Tag")
-setMethod("writeRd", "TagExamples", function(tag) {
-  new_command("examples")
+setMethod("writeRd", "TagExamples", function(object) {
+  new_command("examples", object@text)
 })

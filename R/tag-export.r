@@ -25,6 +25,7 @@
 setClass("TagExport", contains = "Tag")
 
 setMethod("procBlock", "TagExport", function(tag, block) {
+  return(block)
   if (isNull(block@object)) return(block)
 
   modify_tags(block,

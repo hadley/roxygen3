@@ -10,23 +10,49 @@
 #' @param name input tag name, usually set by \code{\link{roccer}}.
 #' @dev
 #' @export
-rd_out <- function(tag, name = NULL) {
-  rocout(tag, name, subclass = "rd_out")
+setMethod("writeRd", "RoxyPackage", function(object) {
+  in_dir(object@path, callNextMethod())
+})
+setMethod("writeRd", "RoxyBundle", function(object) {
+  rd <- build_rd(object@blocks)
+  Map(write_rd, rd, names(rd))
+})
+setMethod("writeRd", "RoxyBlock", function(object) {
+  compact(lapply(object@tags, writeRd))
+})
+setMethod("writeRd", "Tag", function(object) NULL)
+
+build_rd <- function(blocks) {
+  commands <- lapply(blocks, writeRd)
+  has_command <- vapply(commands, function(x) length(x) > 0, logical(1))
+
+  paths <- lapply(blocks, output_path)
+  has_path <- vapply(paths, Negate(is.null), logical(1))
+  
+  # Only write files with both path and contents
+  complete <- has_command & has_path
+  commands <- commands[complete]
+  paths <- unlist(paths[complete])
+  
+  compact(tapply(commands, paths, collapse_rd))
 }
 
-output_path.rd_out <- function(writer, rocblock) {
-  tags <- names(rocblock$roc)
+output_path <- function(block) {
+  tags <- names(block@tags)
   if ("noRd" %in% tags) return()
   
-  if (is.null(rocblock$roc$rdname)) {
-    stop("rdname not specified", call. = FALSE)
+  rdname <- block@tags$rdname
+  if (is.null(rdname)) {
+    # message("rdname not specified, skipping.")
+    return()
   }
-  file.path("man", paste(rocblock$roc$rdname, ".Rd", sep = ""))
+  file.path("man", paste(rdname@text, ".Rd", sep = ""))
 }
 
-output_postproc.rd_out <- function(commands) {
+collapse_rd <- function(blocks) {
+  commands <- unlist(blocks, recursive = FALSE)
   command_names <- vapply(commands, "[[", "command", FUN.VALUE = character(1))
-  
+
   # Must have at least name and title to generate a file
   if (!all(c("title", "name") %in% command_names)) return()
 
@@ -36,9 +62,9 @@ output_postproc.rd_out <- function(commands) {
     for (i in seq_along(command_names)) {
       existing <- dedup[[command_names[i]]]
       if (is.null(existing)) {
-        dedup[command_names[i]] <- commands[i]
+        dedup[[command_names[i]]] <- commands[[i]]
       } else {
-        dedup[command_names[i]] <- merge(existing, commands[[i]])
+        dedup[[command_names[i]]] <- merge(existing, commands[[i]])
       }
     }
     commands <- dedup
@@ -56,20 +82,11 @@ output_postproc.rd_out <- function(commands) {
   commands
 }
 
-#' @autoImports
-output_write.rd_out <- function(commands, path) {
+write_rd <- function(commands, path) {
   if (length(commands) == 0) return()
   
   formatted <- vapply(commands, "format", character(1))
   if (write_if_different(path, formatted)) {
     try(checkRd(path))
-  }
-}
-
-# Useful output commands -----------------------------------------------------
-
-rd_command <- function(command) {
-  function(tag) {
-    new_command(command, tag)
   }
 }

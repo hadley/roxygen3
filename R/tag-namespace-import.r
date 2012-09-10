@@ -45,7 +45,7 @@ setMethod("procBlock", "TagAutoImports", function(tag, block) {
   if (!is.function(obj@value)) return(block)
   
   auto <- auto_imports(obj@value, obj@name, block@tags$importFrom)
-  modifyBlock(block,
+  modify_tags(block,
     importFrom = prefix(auto),
     autoImport = NULL)
 })

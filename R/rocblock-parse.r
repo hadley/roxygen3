@@ -75,7 +75,7 @@ parse_text <- memoise(function(lines, env, src) {
     
     if (is.null(tags) && is.null(obj)) return()
     
-    new("RoxyBlock", tags = tags, object = obj, srcref = ref)
+    RoxyBlock(tags, obj, ref)
   }
   compact(lapply(seq_along(parsed), extract))
 })

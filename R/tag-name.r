@@ -9,15 +9,10 @@
 setClass("TagName", contains = "Tag")
 
 setMethod("procBlock", "TagName", function(tag, block) {
-  name <- tag@text %||% block@obj@name
-  if (is.null(name)) {
-    message("Missing name. This object will not be documented")
-    return()
-  }
-
   modify_tags(block,
-    name = name,
-    aliases = suffix(name)
-  )
+    aliases = suffix(tag@text))
 })
-base_prereqs[["name"]] <- "aliases"
+
+setMethod("writeRd", "TagName", function(output) {
+  new_command("name", output@text)
+})
