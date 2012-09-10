@@ -25,9 +25,9 @@
 setClass("TagExport", contains = "Tag")
 
 setMethod("procBlock", "TagExport", function(tag, block) {
-  if (tag@text != "") return(tag)
-  
-  modify_block(block,
+  if (isNull(block@object)) return(block)
+
+  modify_tags(block,
     "export" = default_export(block@object@value, block@object@name))
 })
 

@@ -3,7 +3,7 @@
 #' @param path path to package
 #' @autoImports
 #' @export
-roxygenise <- function(path, roccers = base_roccers(), check = FALSE, clean = FALSE) {
+roxygenise <- function(path, tags = base_roccers(), check = FALSE, clean = FALSE) {
   pkg <- as.package(path)
   
   man_path <- file.path(path, "man")
@@ -31,11 +31,14 @@ roxygenise <- function(path, roccers = base_roccers(), check = FALSE, clean = FA
 
 # Roccers need to be run in a specific order and later roccers need to be
 # able to see results of earlier roccers.
-roxy_process <- function(rocblocks, roccers = base_roccers()) {
+roxy_process <- function(blocks, roccers = list()) {
+  blocks <- lapply(blocks, roxyProcess)
+  
   for (roccer in roccers) {
-    rocblocks <- parse_rocblocks(roccer$parser, rocblocks)
+    blocks <- roccer(blocks)
   }
-  rocblocks
+
+  blocks
 }
 
 # Rocouts can be run in any order and are completely independent.
@@ -87,4 +90,8 @@ roxy_write <- function(out, out_path) {
     }
   }
   invisible()
+}
+
+subclassnames <- function(class) {
+  names(getClass(class)@subclasses)
 }

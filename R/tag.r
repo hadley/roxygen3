@@ -9,7 +9,7 @@ setMethod("show", "Tag", function(object) {
   cat(str_truncate(out), "\n", sep = "")
 })
 
-setMethod("procBlock", "Tag", function(tag, block) tag)
+setMethod("procBlock", "Tag", function(tag, block) block)
 setMethod("procTag", "Tag", function(tag) tag)
 
 setMethod("getPrereqs", "Tag", function(tag) {

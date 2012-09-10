@@ -16,3 +16,6 @@ setClass("RoxyBlock", representation(
   srcref = "srcref",
   object = "RoxyObject"))
 
+# A list of rocblocks - will usually create subclass
+setClass("RoxyBundle", representation(
+  blocks = "list"))

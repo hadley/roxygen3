@@ -17,7 +17,9 @@
 setClass("TagDocType", contains = "Tag")
 
 setMethod("procBlock", "TagDocType", function(tag, block) {
-  doctype <- tag@text %||% doctype(obj$value)
+  return(block) 
+  
+  doctype <- tag@text %||% block@object@docType
   if (is.null(doctype)) return()
   
   fname <- str_c("doctype_", doctype)
@@ -28,7 +30,7 @@ setMethod("procBlock", "TagDocType", function(tag, block) {
     return()
   }
   
-  default(roc, obj, ...)
+  default(roc, obj)
 })
 
 setMethod("writeRd", "TagDocType", function(tag) {

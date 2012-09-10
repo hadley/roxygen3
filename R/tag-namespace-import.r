@@ -54,7 +54,7 @@ setMethod("procBlock", "TagAutoImports", function(tag, block) {
 #' @usage @@import package1 package2 package3
 setClass("TagImport", contains = "Tag")
 setMethod("procTag", "TagImport", function(tag) {
-  tag@text <- str_split(tag@text)
+  tag@text <- str_split(tag@text, " ")[[1]]
   tag
 })
 setMethod("writeNamespace", "TagImport", function(tag) {
@@ -65,7 +65,7 @@ setMethod("writeNamespace", "TagImport", function(tag) {
 #' @usage @@importClassesFrom package fun1 fun2
 setClass("TagImportClassesFrom", contains = "Tag")
 setMethod("procTag", "TagImportClassesFrom", function(tag) {
-  tag@text <- str_split(tag@text)
+  tag@text <- str_split(tag@text, " ")[[1]]
   tag
 })
 setMethod("writeNamespace", "TagImportClassesFrom", function(tag) {
@@ -76,7 +76,7 @@ setMethod("writeNamespace", "TagImportClassesFrom", function(tag) {
 #' @usage @@importMethodsFrom package fun1 fun2
 setClass("TagImportMethodsFrom", contains = "Tag")
 setMethod("procTag", "TagImportMethodsFrom", function(tag) {
-  tag@text <- str_split(tag@text)
+  tag@text <- str_split(tag@text, " ")[[1]]
   tag
 })
 setMethod("writeNamespace", "TagImportMethodsFrom", function(tag) {

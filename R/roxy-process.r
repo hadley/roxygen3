@@ -6,16 +6,16 @@ setMethod("roxyProcess", "RoxyPackage", function(input) {
   # Process each block individually for local tags
   input@blocks <- lapply(input@blocks, roxyProcess)
   
-  # Process the roccers, tags with global behaviour
-  for (roccer in input@roccers) {
-    input@blocks <- procPackage(roccer, package = input)
-  }
+  # # Process the roccers, tags with global behaviour
+  # for (roccer in input@roccers) {
+  #   input@blocks <- procPackage(roccer, package = input)
+  # }
 
   input
 })
 
 setMethod("roxyProcess", "RoxyBlock", function(input) {
-  for (tag in names(input@tags)) {
+  for (tag in names(input@tags)) {    
     input@tags[[tag]] <- procTag(input@tags[[tag]])
     input <- procBlock(input@tags[[tag]], block = input)
   }

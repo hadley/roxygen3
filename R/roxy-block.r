@@ -16,35 +16,40 @@ setMethod("show", "RoxyBlock", function(object) {
 modify_tags <- function(block, ...) {
   changes <- list(...)
   for(tag_name in names(changes)) {
-    change <- changes[[tag_names]]
-    if (is.null(changes)) {
-      blocks@tags[[tag_name]] <- NULL
+    change <- changes[[tag_name]]
+    if (is.null(change)) {
+      block@tags[[tag_name]] <- NULL
     } else if (isS4(change)) {      
-      blocks@tags[[tag_name]] <- change
+      block@tags[[tag_name]] <- change
     } else if (is.character(change)) {
-      stopifnot(length(change = 1))
-      blocks@tags[[tag_name]] <- modify_tag(block, tag_name, 
+      # stopifnot(length(change) == 1)
+      block@tags[[tag_name]] <- modify_tag(block, tag_name, 
         list(text = change))
     } else if (is.list(change)) {
-      blocks@tags[[tag_name]] <- modify_tag(block, tag_name, change)
+      block@tags[[tag_name]] <- modify_tag(block, tag_name, change)
     }
   }
-  blocks
+  block
 }
 modify_tag <- function(block, tag_name, changes) {
-  tag <- block@tags[[tag_name]] %||% find_tag(tag_name) %||% return(NULL)
+  tag <- block@tags[[tag_name]]
+  if (is.null(tag)) {
+    tag <- find_tag(tag_name, "")
+    if (is.null(tag)) stop("No ", tag_name)
+  }
   
-  for(slot in name(changes)) {
-    slot(block, name) <- action(values[slot])(slot(block, name))
+  for(slot_name in names(changes)) {
+    old <- slot(tag, slot_name)
+    slot(tag, slot_name) <- action(old, changes[[slot_name]])
   }
   tag
 }
 suffix <- function(x) structure(x, class = "suffix")
 prefix <- function(x) structure(x, class = "prefix")
-action <- function(old) {
-  switch(class(old) %||% "replace",
-    prefix =  function(new) append(old, new, after = 0),
-    suffix =  function(new) append(old, new),
-    replace = function(new) new
+action <- function(old, new) {
+  switch(class(new),
+    prefix =    append(old, new, after = 0),
+    suffix =    append(old, new),
+    character = new
   )
 }

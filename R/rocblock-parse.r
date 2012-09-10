@@ -76,7 +76,7 @@ parse_text <- memoise(function(lines, env, src) {
     if (is.null(tags) && is.null(obj)) return()
     
     new("RoxyBlock", tags = tags, object = obj, srcref = ref)
-  }  
+  }
   compact(lapply(seq_along(parsed), extract))
 })
 
@@ -140,7 +140,7 @@ parse_roc <- function(lines, match = "^\\s*#+\' ?") {
   cols[, 2] <- str_trim(cols[, 2])
 
   tags <- tapply(cols[, 2], cols[, 1], list)
-  Map(find_tag, names(tags), tags)
+  compact(Map(find_tag, names(tags), tags))
 }
 
 find_tag <- function(name, text) {

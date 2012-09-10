@@ -14,7 +14,7 @@ setClass("TagIntro", contains = "Tag")
 #' @autoImports
 setMethod("procBlock", "TagIntro", function(tag, block) {
   tags <- block@tags
-  paragraphs <- str_trim(str_split(tags$intro, fixed('\n\n'))[[1]])
+  paragraphs <- str_trim(str_split(tag@text, fixed('\n\n'))[[1]])
 
   if (length(paragraphs) == 0) return(block)
 

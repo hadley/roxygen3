@@ -56,7 +56,7 @@ setMethod("procBlock", "TagExportPattern", function(tag, block) {
     class <- str_replace(block@obj@name, fixed(str_c(generic, ".")), "")
   }
 
-  modify_block(block,
+  modify_tags(block,
     S3method = list(methods = cbind(generic, class)))
 })
 
