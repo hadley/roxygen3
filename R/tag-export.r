@@ -25,11 +25,11 @@
 setClass("TagExport", contains = "Tag")
 
 setMethod("procBlock", "TagExport", function(tag, block) {
-  return(block)
-  if (isNull(block@object)) return(block)
+  defaults <- block@tags@defaultExports
+  if (is.null(defaults)) return(block)
 
   modify_tags(block,
-    "export" = default_export(block@object@value, block@object@name))
+    "export" = defaults)
 })
 
 setMethod("writeNamespace", "TagExport", function(object) {

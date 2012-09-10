@@ -33,6 +33,32 @@ setMethod("procBlock", "TagDocType", function(tag, block) {
   default(roc, obj)
 })
 
+setMethod("defaultTag", c("TagDocType", "S4MethodObject"),
+  function(tag, object) {
+    new("TagDocType", text = "methods")
+  }
+)
+setMethod("defaultTag", c("TagDocType", "S4ClassObject"),
+  function(tag, object) {
+    new("TagDocType", text = "class")
+  }
+)
+setMethod("defaultTag", c("TagDocType", "DataObject"),
+  function(tag, object) {
+    new("TagDocType", text = "data")
+  }
+)
+setMethod("defaultTag", c("TagDocType", "R5ClassObject"),
+  function(tag, object) {
+    new("TagDocType", text = "class")
+  }
+)
+setMethod("defaultTag", c("TagDocType", "PackageObject"),
+  function(tag, object) {
+    new("TagDocType", text = "package")
+  }
+)
+
 setMethod("writeRd", "TagDocType", function(object) {
   new_command("docType", object@text)
 })

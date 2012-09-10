@@ -1,15 +1,21 @@
 setOldClass("srcref")
+setClass("SrcrefNull", contains = "srcref")
 
-setClass("Tag", representation(
-  text = "character",
-  srcref = "srcref",
-  "VIRTUAL"))
+setClass("Tag", 
+  contains = "VIRTUAL",
+  prototype = list(srcref = new("SrcrefNull")),
+  representation(
+    text = "character",
+    srcref = "srcref"))
 
 setClass("RoxyObject", representation(
   name = "character",
   value = "ANY",
   srcref = "srcref",
   docType = "character"))
+
+setClass("Usage")
+setClass("NullUsage", contains = "Usage")
 
 setClass("RoxyBlock", representation(
   tags = "list",

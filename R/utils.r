@@ -83,3 +83,5 @@ str_truncate <- function(x, width = getOption("width")) {
   
   str_c(str_sub(lines[1], 1, width - 3), "...")
 }
+
+call_fun <- function(f, ...) f(...)

@@ -13,6 +13,13 @@ setMethod("procBlock", "TagName", function(tag, block) {
     aliases = suffix(tag@text))
 })
 
+setMethod("defaultTag", c("TagName", "RoxyObject"),
+  function(tag, object) {
+    print(object@name)
+    new("TagName", text = object@name)
+  }
+)
+
 setMethod("writeRd", "TagName", function(object) {
   new_command("name", object@text)
 })

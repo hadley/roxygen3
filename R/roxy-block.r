@@ -6,16 +6,19 @@
 #'
 #' @export
 RoxyBlock <- function(tags, object, srcref) {
-  if (is.null(tags$name) && !is.null(object@value)) {
-    tags$name <- new("TagName", text = object@name, srcref = srcref)
-  }
-  if (is.null(tags$rdname) && !is.null(tags$name)) {
-    tags$rdname <- new("TagRdname", text = nice_name(tags$name@text), 
-      srcref = srcref)
-  }
   
+  # Automatically add default tags based on the object.
+  super <- names(getClass(object@class)@contains)
+  methods <- findMethods("defaultTag",
+    classes = c(object@class, super))
+
+  defaults <- lapply(unname(methods), call_fun, object = object)
+  # if (length(defaults) > 0 & length(tags) > 0) browser()
+  tags <- c(tags, defaults)
+
   new("RoxyBlock", tags = tags, object = object, srcref = srcref)
 }
+
 
 setMethod("show", "RoxyBlock", function(object) {
   cat("RoxyBlock: ", object@object@name, "@", 

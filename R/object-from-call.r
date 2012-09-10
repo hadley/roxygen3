@@ -53,16 +53,18 @@ object_from_assignment <- function(call, env, srcref) {
   
   # Figure out if it's an s3 method or generic and add that info.
   if (is_s3_generic(name, env)) {
-    doctype <- "s3generic"
+    objtype <- "S3GenericObject"
   } else if (is_s3_method(name, env)) {
-    doctype <- "s3method"
+    objtype <- "S3MethodObject"
+  } else if (is.function(val)) {
+    objtype <- "FunctionObject"
   } else {
-    doctype <- "function"
+    objtype <- "DataObject"
   }
 
-  new("RoxyObject", name = name, value = val, srcref = srcref, 
-    docType = doctype)
+  new(objtype, name = name, value = val, srcref = srcref)
 }
+
 setClass("Call<<-")
 setMethod("objectFromCall", "Call<<-", object_from_assignment)
 setClass("Call<-")
@@ -76,7 +78,7 @@ setMethod("objectFromCall", "CallSetClass", function(call, env, srcref) {
   name <- as.character(call$Class)
   val <- getClass(name, where = env)
   
-  new("RoxyObject", name = name, value = val, srcref = srcref, 
+  new("S4ClassObject", name = name, value = val, srcref = srcref, 
     docType = "s4class")
 })
 
@@ -86,8 +88,7 @@ setMethod("objectFromCall", "CallSetGeneric", function(call, env, srcref) {
   name <- as.character(call$name)
   val <- getGeneric(name, where = env)
 
-  new("RoxyObject", name = name, value = val, srcref = srcref, 
-    docType = "s4generic")
+  new("S4GenericObject", name = name, value = val, srcref = srcref)
 })
 
 setClass("CallSetMethod")
@@ -96,8 +97,7 @@ setMethod("objectFromCall", "CallSetMethod", function(call, env, srcref) {
   name <- as.character(call$f)
   val <- getMethod(name, eval(call$signature), where = env)
 
-  new("RoxyObject", name = name, value = val, srcref = srcref, 
-    docType = "s4method")
+  new("S4MethodObject", name = name, value = val, srcref = srcref)
 })
 
 setClass("CallSetRefClass")
@@ -106,6 +106,5 @@ setMethod("objectFromCall", "CallSetRefClass", function(call, env, srcref) {
   name <- as.character(call$Class)
   val <- getRefClass(name, where = env)
 
-  new("RoxyObject", name = name, value = val, srcref = srcref, 
-    docType = "r5class")
+  new("R5ClassObject", name = name, value = val, srcref = srcref)
 })

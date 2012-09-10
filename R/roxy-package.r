@@ -18,8 +18,7 @@ RoxyPackage <- function(path, output = c("writeRd", "writeNamespace", "writeDesc
   new("RoxyPackage",
     name = pkg$package,
     path = pkg$path, 
-    blocks = blocks,
-    processors = processors)
+    blocks = blocks)
 }
 
 setMethod("process", "RoxyPackage", function(input) {

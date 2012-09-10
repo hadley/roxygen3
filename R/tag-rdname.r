@@ -1,4 +1,9 @@
 setClass("TagRdname", contains = "Tag")
+setMethod("defaultTag", c("TagName", "RoxyObject"),
+  function(tag, object) {
+    new("TagName", text = nice_name(object@name))
+  }
+)
 
 subs <- matrix(ncol = 2, byrow = T, c(
   '[]', 'sub',

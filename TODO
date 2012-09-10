@@ -35,30 +35,12 @@ A processor stores information about what should be done with a bundle: which ta
 
 Extension of roxygen3 should be through adding new tags, new processors and new writers. It is not desirable for extensions to work "invisibly" - i.e. it is ok to demand that if you want to use an extension you must manually specify a tag, a processor or a writer.
 
-# Objects/calls
-
-docTypes: s3method, s3generic, s4method, s4generic, s4class, function, r5class, data, package
-
-@docType data - adds format, keywords and docType
-@docType package - adds docType, and package alias, if needed
-
-The docType is determined from @docType or by matching the call with known types. This is used to instantiate a class of ObjectS3Method, ObjectS4Class, ObjectFunction etc, initialised with the call, environment, srcref.
-
-Currently automatically added tags include: 
-
-* @name
-* @rdname
-* @usage
-* @defaultExports
-* @format
-* @keywords
-* @docType
-
-These are added through the following process: for each object, find all methods of objectDefaults that have a second argument that match this function. If the first argument matches a tag already present, don't call it. objectDefaults should return a tag object.
-
-setGeneric("objectDefaults", function(tag, object) standardGeneric("object")) setMethod("objectDefaults", c("TagUsage", "ObjectFunction")) setMethod("objectDefaults", c("TagUsage", "ObjectS4Generic")) setMethod("objectDefaults", c("TagUsage", "ObjectS3Generic")) setMethod("objectDefaults", c("TagDefaultExports", "ObjectS3Generic")) setMethod("objectDefaults", c("TagDefaultExports", "ObjectS3Method")) setMethod("objectDefaults", c("TagFormat", "ObjectPackage")) setMethod("objectDefaults", c("TagDoctype", "ObjectData"))
-
 # S4 usage questions
+
+Do you try to ensure that class names are unique?
+
+1. setClass("Animal")
+2. setClass("MyPackageAnimal")
 
 How do you name subclasses?
 

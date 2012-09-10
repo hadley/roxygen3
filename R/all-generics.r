@@ -22,4 +22,7 @@ setGeneric("process", function(input) {
 setGeneric("isNull", function(x) standardGeneric("isNull"))
 setMethod("isNull", "NULL", function(x) TRUE)
 setMethod("isNull", "ANY", function(x) FALSE)
+setMethod("isNull", "NullUsage", function(x) TRUE)
+setMethod("isNull", "SrcrefNull", function(x) TRUE)
 
+setGeneric("defaultTag", function(tag, object) standardGeneric("defaultTag")) 
