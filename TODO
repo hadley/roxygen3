@@ -1,7 +1,5 @@
-* translate namespace functions
 * roccers -> functions which take package as input, plus associated tag
 * rewrite all output methods
-* load_all and fix errors until everything works
 * run tests
 * fix usage of rd_command and *_tag
 
