@@ -3,9 +3,6 @@
 #' used.
 #'
 #'
-setGeneric("usage", function(value, name, srcref) {
-  standardGeneric("usage")
-})
 
 setMethod("usage", "ANY", function(value, name, srcref) {
   message("No usage method defined for object of class ", 

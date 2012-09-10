@@ -12,7 +12,6 @@ format_string <- function(obj) {
   str_c(capture.output(str(obj, max.level = 1)), collapse = "\n")
 }
 
-
 setMethod("usage", "data.frame", function(value, name, srcref) {
   name
 })

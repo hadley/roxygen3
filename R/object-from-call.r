@@ -18,7 +18,7 @@
 #' @export
 #' @dev
 object_from_call <- function(call, env, srcref) {
-  if (is.null(call)) return()
+  if (is.null(call)) return(new("ObjectNull"))
   
   # Find function, then use match.call to construct complete call
   f <- eval(call[[1]], env)
@@ -29,12 +29,12 @@ object_from_call <- function(call, env, srcref) {
   fun_name <- deparse(call[[1]])
   f <- find_fun(str_c("object_from_call.", fun_name))
 
-  if (is.null(f)) return(NULL)
+  if (is.null(f)) return(new("ObjectNull"))
   
   out <- f(call, env)
-  out$srcref <- srcref
-  out
+  new("RoxyObject", value = out$value, name = out$name, srcref = srcref)
 }
+
 
 object_from_call_assignment <- function(call, env) {
   name <- as.character(call[[2]])

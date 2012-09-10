@@ -1,5 +1,6 @@
 setOldClass("srcref")
 
+
 setClass("Tag",
   representation(text = "character", srcref = "srcref", "VIRTUAL"))
 
@@ -8,3 +9,4 @@ setClass("RoxyObject",
 
 setClass("RoxyBlock",
   representation(tags = "list", srcref = "srcref", object = "RoxyObject"))
+

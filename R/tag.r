@@ -1,18 +1,16 @@
 #' Tag class
 #' 
 #' The tag class is the base class for all roxygen3 tags. 
-setClass("Tag",
-  representation(text = "character", srcref = "srcref", "VIRTUAL"))
 
-setMethod("print", "Tag", function(x, indent = 0, ...) {
-  class <- x@className
-  width <- getOptions(width) - nchar(class) - 2 - indent
+setMethod("show", "Tag", function(object) {
+  class <- getClass(class(object))@className
+  width <- getOption("width") - nchar(class) - 2
   
-  cat(str_dup(" ", indent), class, ": ", str_sub(x@text, 1, width))
+  cat(class, ": ", str_sub(object@text, 1, width), sep = "")
 })
 
 setMethod("procBlock", "Tag", function(tag, block) tag)
-setMethod("procTag", "Tag", function(tags) tag)
+setMethod("procTag", "Tag", function(tag) tag)
 
 setMethod("getPrereqs", "Tag", function(tag) {
   character()

@@ -64,30 +64,63 @@ parse_block <- function(text) {
 
 parse_text <- memoise(function(lines, env, src) {
   parsed <- parse(text = lines, src = src)
-  refs <- attr(parsed, "srcref")
+  refs <- getSrcref(parsed)
+  comment_refs <- comments(refs)
   
   # Walk through each src ref and match code and comments
   extract <- function(i) {
-    # Comments begin after last line of last block, and continue to 
-    # first line of this block
-    beg <- if (i == 1) 1 else refs[[i - 1]][[3]] + 1 
-    end <- refs[[i]][[1]] - 1
-
-    roc <- parse_roc(lines[beg:end])
+    ref <- comment_refs[[i]]
     obj <- object_from_call(parsed[[i]], env, refs[[i]])
+    tags <- parse_roc(as.character(ref))
     
-    if (is.null(roc) && is.null(obj)) return()
+    if (is.null(tags) && is.null(obj)) return()
     
-    rocblock(obj = obj, roc = roc, path = src$filename, 
-      lines = c(beg, end))
+    if (is.null(tags)) browser()
+    new("RoxyBlock", tags = tags, object = obj, srcref = ref)
   }  
   compact(lapply(seq_along(parsed), extract))
 })
 
+# For each src ref, find the comment block preceeding it
+comments <- function(refs) {
+  srcfile <- attr(refs[[1]], "srcfile")
+
+  # first_line, first_byte, last_line, last_byte
+  com <- vector("list", length(refs))
+  for(i in seq_along(refs)) {
+    # Comments begin after last line of last block, and continue to 
+    # first line of this block
+    if (i == 1) {
+      first_byte <- 1
+      first_line <- 1
+    } else {
+      first_byte <- refs[[i - 1]][4] + 1
+      first_line <- refs[[i - 1]][3]
+    }
+
+    last_line <- refs[[i]][1]
+    last_byte <- refs[[i]][2] - 1
+    if (last_byte == 0) {
+      if (last_line == 1) {
+        last_byte <- 1
+        last_line <- 1
+      } else {
+        last_line <- last_line - 1
+        last_byte <- 1e3
+      }
+    }
+    
+    lloc <- c(first_line, first_byte, last_line, last_byte)
+    com[[i]] <- srcref(srcfile, lloc)
+  }
+  
+  com
+}
+
 #' @auto_imports
 parse_roc <- function(lines, match = "^\\s*#+\' ?") {
   lines <- lines[str_detect(lines, match)]
-  if (length(lines) == 0) return(NULL)
+  if (length(lines) == 0) return(list())
   
   trimmed <- str_replace(lines, match, "")
   joined <- str_c(trimmed, collapse = '\n')
@@ -107,18 +140,22 @@ parse_roc <- function(lines, match = "^\\s*#+\' ?") {
   cols <- str_split_fixed(elements, "[[:space:]]+", 2)
   cols[, 2] <- str_trim(cols[, 2])
 
-  tapply(cols[, 2], cols[, 1], list)
-  # TODO: init_tag here
+  tags <- tapply(cols[, 2], cols[, 1], list)
+  Map(find_tag, names(tags), tags)
 }
 
-find_tag <- function(name, text, block) {
+find_tag <- function(name, text) {
   # find matching class for name
-  class_name <- str_c("Tag", name)
+  class_name <- str_c("Tag", first_upper(name))
   if (!isClass(class_name)) {
-    message("Unknown tag @", name, " at ", location(block))
+    message("Unknown tag @", name, " at ") #, location(block))
     return(NULL)
   }
   
-  new(class_name, text = text)
+  new(class_name, text = text, srcref = new("SrcrefNull"))
 }
 
+first_upper <- function(x) {
+  str_sub(x, 1, 1) <- toupper(str_sub(x, 1, 1))
+  x
+}
