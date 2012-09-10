@@ -73,3 +73,13 @@ ref_location <- function(srcref) {
   file <- getSrcFilename(srcref)
   str_c(" @", file, ":", srcref[1], ":", srcref[5])
 }
+
+
+str_truncate <- function(x, width = getOption("width")) {
+  lines <- str_split(x, "\n")[[1]]
+  
+  n <- str_length(lines[1])
+  if (n <= width && length(lines) == 1) return(lines[1])
+  
+  str_c(str_sub(lines[1], 1, width - 3), "...")
+}

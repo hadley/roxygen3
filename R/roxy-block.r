@@ -7,10 +7,9 @@
 #' @export
 
 setMethod("show", "RoxyBlock", function(object) {
-  path <- getSrcFilename(object@srcref)
-  cat("rocblock: ", object@obj@name, "@",
-    path, ":", object@srcref[1], ":", object@srcref[3], "\n", sep = "")
-  lapply(object@tags, print, indent = 2)
+  cat("RoxyBlock: ", object@object@name, "@", 
+    location(object@srcref), "\n", sep = "")
+  lapply(object@tags, show)
 })
 
 # Convenience methods for modifying the tags in a block

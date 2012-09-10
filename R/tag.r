@@ -3,10 +3,10 @@
 #' The tag class is the base class for all roxygen3 tags. 
 
 setMethod("show", "Tag", function(object) {
-  class <- getClass(class(object))@className
-  width <- getOption("width") - nchar(class) - 2
+  tag <- tag_name(object)
   
-  cat(class, ": ", str_sub(object@text, 1, width), sep = "")
+  out <- str_c("@", tag, " ", str_c(object@text, collapse = "\n"))
+  cat(str_truncate(out), "\n", sep = "")
 })
 
 setMethod("procBlock", "Tag", function(tag, block) tag)
@@ -15,3 +15,9 @@ setMethod("procTag", "Tag", function(tag) tag)
 setMethod("getPrereqs", "Tag", function(tag) {
   character()
 })
+
+
+tag_name <- function(x) {
+  class <- getClass(class(x))@className
+  first_lower(str_replace(class, "^Tag", ""))
+}
