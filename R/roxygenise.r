@@ -4,23 +4,16 @@
 #' @autoImports
 #' @export
 roxygenise <- function(path, tags = base_roccers(), check = FALSE, clean = FALSE) {
-  pkg <- as.package(path)
+  pkg <- RoxyPackage(path)
   
-  man_path <- file.path(path, "man")
+  man_path <- file.path(pkg@path, "man")
   if (clean && file.exists(man_path)) {
     rd <- dir(man_path, pattern = "\\.Rd$", full.names = TRUE)
     file.remove(rd)
   }
   
-  load_all(pkg)
-  in_dir(pkg$path, {
-    rocblocks <- parse_directory("R", ns_env(pkg))
-    rocblocks <- roxy_process(rocblocks, roccers)
-    
-    out <- roxy_out(rocblocks, roccers)
-    out <- roxy_postproc(out)
-    roxy_write(out, ".")
-  })
+  pkg <- process(pkg)
+  write(pkg)
   
   if (check) {
     check_doc(pkg)

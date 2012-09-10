@@ -9,7 +9,7 @@ setClass("RoxyPackage", contains = "RoxyBundle", representation(
   path = "character"
 ))
 
-RoxyPackage <- function(path, processors = c("writeRd", "writeNamespace")) {
+RoxyPackage <- function(path, output = c("writeRd", "writeNamespace", "writeDescription")) {
   pkg <- as.package(path)
   
   load_all(pkg)

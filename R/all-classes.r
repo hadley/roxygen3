@@ -16,7 +16,9 @@ setClass("RoxyBlock", representation(
   srcref = "srcref",
   object = "RoxyObject"))
 
-# A list of rocblocks - will usually create subclass
+# A bundle represents a list of blocks and how they should be processed
+# and output.
 setClass("RoxyBundle", representation(
   blocks = "list",
-  processors = "character"))
+  processors = "list",
+  writers = "list"))

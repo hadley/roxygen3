@@ -2,7 +2,7 @@ context("Include")
 
 roxy_dir <- function(path, roccers = base_roccers()) {
   rocblocks <- parse_directory(path)
-  rocblocks <- roxy_process(rocblocks, roccers)  
+  rocblocks <- roxy_process(rocblocks, roccers)
   out <- roxy_out(rocblocks, roccers)
   roxy_postproc(out)
 }

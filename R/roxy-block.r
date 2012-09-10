@@ -5,7 +5,6 @@
 #' with the block.
 #'
 #' @export
-
 RoxyBlock <- function(tags, object, srcref) {
   if (is.null(tags$name) && !is.null(object@value)) {
     tags$name <- new("TagName", text = object@name, srcref = srcref)
@@ -23,6 +22,7 @@ setMethod("show", "RoxyBlock", function(object) {
     location(object@srcref), "\n", sep = "")
   lapply(object@tags, show)
 })
+
 
 # Convenience methods for modifying the tags in a block
 modify_tags <- function(block, ...) {
