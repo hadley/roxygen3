@@ -4,7 +4,7 @@
 #' of a tag with a \code{parser} and a \code{output} write.
 #' 
 #' @dev
-#' @param name string giving the tag name. Do not include "@" in the name.
+#' @param name string giving the tag name. Do not include "@@" in the name.
 #' @param parser parser to use to parse the tag. Currently roxygen3 only
 #'   provides one parser: \code{\link{roc_parser}}.
 #' @param output output generated, like an object created by
