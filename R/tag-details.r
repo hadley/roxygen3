@@ -5,7 +5,6 @@
 #' details.
 #'
 #' @usage @@details Text goes here.
-add_tag_roccer("details", text_tag())
 setClass("TagDetails", contains = "Tag")
 setMethod("writeRd", "TagDetails", function(tag) {
   new_command("details", tag@text)

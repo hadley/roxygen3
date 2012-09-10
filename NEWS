@@ -6,6 +6,6 @@
 * By implementing s3 methods for `usage`, `default_exports`, `doctype`, ...
   you can customise roxygen3 to document any type of object.
 
-* `@auto_import` automatically figures out all the functions you need to
+* `@autoImports` automatically figures out all the functions you need to
   import. You just need to make sure the packages are listed in the
   `DESCRIPTION` file under imports.

@@ -12,7 +12,7 @@
 \usage{
   #' @importFrom package function1 function2
 
-  #' @auto_import
+  #' @autoImports
 
   #' @import package1 package2 package3
 
@@ -22,7 +22,7 @@
 }
 
 \description{
-  By and large, \code{@auto_imports} should be the only
+  By and large, \code{@autoImports} should be the only
   imports tag that you need to use. It automatically
   generates the necessary \code{importFrom} statements to
   import all external functions used by this function.  See

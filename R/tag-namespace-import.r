@@ -1,6 +1,6 @@
 #' Namespace: tags for importing functions.
 #' 
-#' By and large, \code{@@auto_imports} should be the only imports 
+#' By and large, \code{@@autoImports} should be the only imports 
 #' tag that you need to use. It automatically generates the necessary
 #' \code{importFrom} statements to import all external functions used by this
 #' function.  See \code{\link{auto_imports}} for more implementation details.
@@ -15,7 +15,7 @@
 #' 
 #' @usage @@importFrom package function1 function2
 #' @rdname tag-import
-#' @auto_import
+#' @autoImports
 setClass("TagImportFrom", contains = "Tag")
 setMethod("procTag", "TagImportFrom", function(tag) {
   pieces <- str_split(tag@text, "[[:space:]]+")[[1]]
@@ -23,54 +23,62 @@ setMethod("procTag", "TagImportFrom", function(tag) {
     stop("@importFrom needs at least two components.", call. = FALSE)
   }
   tag@text <- setNames(rep(pieces[1], length(pieces[-1])), pieces[-1])
-  
+  tag
 })
-add_roccer("importFrom", 
-  roc_parser(
-    function(tag, name) {
-    }
-  ),
-  namespace_out(function(tag) {
-    tag <- tag[tag != "base"]
-    if (length(tag) == 0) return()
-    
-    str_c("importFrom(", tag, ",", quote_if_needed(names(tag)), ")", 
-      collapse = "\n")
-  })
-)
-base_prereqs[["auto_import"]] <- "importFrom"
+setMethod("writeNamespace", "TagImportFrom", function(tag) {
+  tag <- tag[tag != "base"]
+  if (length(tag) == 0) return()
+  
+  str_c("importFrom(", tag, ",", quote_if_needed(names(tag)), ")", 
+    collapse = "\n")
+})
+setMethod("getPrereqs", "TagImportFrom", function(tag) {
+  "TagImportFrom"
+})
 
 #' @rdname tag-import
-#' @usage @@auto_import
-#' @auto_import
-add_roccer("auto_import", 
-  roc_parser(one = 
-    function(roc, obj, ...) {
-      if (is.null(roc$auto_import)) return()
-      if (!is.function(obj$value)) return()
-      
-      auto <- auto_imports(obj$value, obj$name, roc$importFrom)
-      list(importFrom = c(auto, roc$importFrom), auto_import = NULL)
-    }
-  )
-)
+#' @usage @@autoImports
+#' @autoImports
+setClass("TagAutoImports", contains = "Tag")
+setMethod("procBlock", "TagAutoImports", function(tag, block) {
+  obj <- block@object
+  if (!is.function(obj@value)) return(block)
+  
+  auto <- auto_imports(obj@value, obj@name, block@tags$importFrom)
+  modifyBlock(block,
+    importFrom = prefix(auto),
+    autoImport = NULL)
+})
 
 #' @rdname tag-import
 #' @usage @@import package1 package2 package3
-add_ns_roccer("import", 
-  words_tag(), 
-  ns_each("import")
-)
+setClass("TagImport", contains = "Tag")
+setMethod("procTag", "TagImport", function(tag) {
+  tag@text <- str_split(tag@text)
+  tag
+})
+setMethod("writeNamespace", "TagImport", function(tag) {
+  ns_each("import")(tag@text)
+})
+
 #' @rdname tag-import
 #' @usage @@importClassesFrom package fun1 fun2
-add_ns_roccer("importClassesFrom", 
-  words_tag(), 
-  ns_repeat1("importClassesFrom")
-)
+setClass("TagImportClassesFrom", contains = "Tag")
+setMethod("procTag", "TagImportClassesFrom", function(tag) {
+  tag@text <- str_split(tag@text)
+  tag
+})
+setMethod("writeNamespace", "TagImportClassesFrom", function(tag) {
+  ns_repeat1("importClassesFrom")(tag@text)
+})
+
 #' @rdname tag-import
 #' @usage @@importMethodsFrom package fun1 fun2
-add_ns_roccer("importMethodsFrom", 
-  words_tag(), 
-  ns_repeat1("importMethodsFrom")
-)
-
+setClass("TagImportMethodsFrom", contains = "Tag")
+setMethod("procTag", "TagImportMethodsFrom", function(tag) {
+  tag@text <- str_split(tag@text)
+  tag
+})
+setMethod("writeNamespace", "TagImportMethodsFrom", function(tag) {
+  ns_repeat1("importMethodsFrom")(tag@text)
+})

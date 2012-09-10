@@ -11,7 +11,7 @@ setClass("TagIntro", contains = "Tag")
 #'
 #' @seealso \code{\link{tag_title}}, \code{\link{tag_description}},
 #'  \code{\link{tag_details}} to set each component individually.
-#' @auto_imports
+#' @autoImports
 setMethod("procBlock", "TagIntro", function(tag, block) {
   tags <- block@tags
   paragraphs <- str_trim(str_split(tags$intro, fixed('\n\n'))[[1]])

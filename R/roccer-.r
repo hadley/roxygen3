@@ -49,7 +49,7 @@ find_roccers <- function(env = asNamespace("roxygen3")) {
   rocs
 }
 
-#' @auto_import
+#' @autoImports
 sort_roccers <- function(roccers, prereqs = NULL) {
   if (is.null(prereqs)) return(roccers)
   

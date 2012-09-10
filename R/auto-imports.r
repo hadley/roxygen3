@@ -17,7 +17,7 @@
 #' @param imports list of imported packages. If omitted, \code{auto_imports}
 #'   will attempted to determine automatically by inspecting the the 
 #'   \file{DESCRIPTION} of the package that \code{f} belongs to.
-#' @auto_imports
+#' @autoImports
 #' @dev
 auto_imports <- function(f, name = deparse(substitute(f)), imported = NULL, imports = NULL) {
   globals <- findGlobals(f, merge = FALSE)$functions

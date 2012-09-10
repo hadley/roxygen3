@@ -56,7 +56,7 @@ output_postproc.rd_out <- function(commands) {
   commands
 }
 
-#' @auto_imports
+#' @autoImports
 output_write.rd_out <- function(commands, path) {
   if (length(commands) == 0) return()
   

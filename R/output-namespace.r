@@ -14,7 +14,7 @@ output_path.namespace_out <- function(writer, rocblock) {
   "NAMESPACE" 
 }
 
-#' @auto_imports
+#' @autoImports
 output_postproc.namespace_out <- function(output) {
   lines <- unlist(str_split(unlist(output), "\n"))
   with_collate("C", sort(unique(lines)))

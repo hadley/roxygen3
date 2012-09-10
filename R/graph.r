@@ -1,4 +1,4 @@
-#' @auto_import
+#' @autoImports
 graph_from_list <- function(nodes, edges) {
   n <- vapply(edges, length, integer(1))
   edge_df <- cbind(unlist(edges), rep(names(edges), n))
@@ -16,7 +16,7 @@ graph_from_list <- function(nodes, edges) {
   graph
 }
 
-#' @auto_import
+#' @autoImports
 topo_sort <- function(graph) {
   V(graph)$name[topological.sort(graph)]
 }

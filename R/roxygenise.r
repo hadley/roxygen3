@@ -1,7 +1,7 @@
 #' @param roccer a list of roccers that you want to use.  By default these
 #'   will just be the roccers provided by roxygen3.
 #' @param path path to package
-#' @auto_imports
+#' @autoImports
 #' @export
 roxygenise <- function(path, roccers = base_roccers(), check = FALSE, clean = FALSE) {
   pkg <- as.package(path)

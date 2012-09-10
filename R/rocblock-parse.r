@@ -44,7 +44,7 @@ parse_file <- function(path, env = NULL) {
 #' This is used cheifly for testing.
 #'
 #' @param text code to parse/execute
-#' @auto_imports
+#' @autoImports
 #' @export
 parse_block <- function(text) {
   pkg_dummy <- structure(
@@ -117,7 +117,7 @@ comments <- function(refs) {
   com
 }
 
-#' @auto_imports
+#' @autoImports
 parse_roc <- function(lines, match = "^\\s*#+\' ?") {
   lines <- lines[str_detect(lines, match)]
   if (length(lines) == 0) return(list())

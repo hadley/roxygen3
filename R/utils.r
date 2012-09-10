@@ -14,7 +14,7 @@ recursive_merge <- function(lists) {
   Reduce(modify_list, lists)
 }
 
-#' @auto_imports
+#' @autoImports
 write_if_different <- function(path, contents) {
   if (!file.exists(dirname(path))) {
     dir.create(dirname(path), showWarnings = FALSE)

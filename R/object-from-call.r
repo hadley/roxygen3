@@ -14,7 +14,7 @@
 #' @examples
 #' a <- 1
 #' object_from_call(quote(a <- 1), environment())
-#' @auto_imports
+#' @autoImports
 #' @export
 #' @dev
 object_from_call <- function(call, env, srcref) {
@@ -28,10 +28,11 @@ object_from_call <- function(call, env, srcref) {
   
   fun_name <- deparse(call[[1]])
   f <- find_fun(str_c("object_from_call.", fun_name))
-
   if (is.null(f)) return(new("ObjectNull"))
   
   out <- f(call, env)
+  if (is.null(out)) return(new("ObjectNull"))
+
   new("RoxyObject", value = out$value, name = out$name, srcref = srcref)
 }
 
@@ -62,29 +63,29 @@ object_from_call_assignment <- function(call, env) {
 "object_from_call.=" <- object_from_call_assignment
 
 
-#' @auto_imports
-object_from_call.setClass <- function(call, name, env) {
+#' @autoImports
+object_from_call.setClass <- function(call, env) {
   name <- as.character(call$Class)
   val <- getClass(name, where = env)
   list(name = name, value = val)
 }
 
-#' @auto_imports
-object_from_call.setMethod <- function(call, name, env) {
+#' @autoImports
+object_from_call.setMethod <- function(call, env) {
   name <- as.character(call$f)
   val <- getMethod(name, eval(call$signature), where = env)
   list(name = name, value = val)
 }
 
-#' @auto_imports
-object_from_call.setRefClass <- function(call, name, env) {
+#' @autoImports
+object_from_call.setRefClass <- function(call, env) {
   name <- as.character(call$Class)
   val <- getRefClass(name, where = env)
   list(name = name, value = val)
 }
 
-#' @auto_imports
-object_from_call.setGeneric <- function(call, name, env) {
+#' @autoImports
+object_from_call.setGeneric <- function(call, env) {
   name <- as.character(call$name)
   val <- getGeneric(name, where = env)
   list(name = name, value = val)

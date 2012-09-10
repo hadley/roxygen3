@@ -12,7 +12,7 @@ field <- function(name) {
   }
 }
 
-#' @auto_imports
+#' @autoImports
 output_postproc.description_out <- function(output) {
   out <- unlist(output, recursive = FALSE)
   out$Collate <- str_c(out$Collate, collapse = "\n")    
@@ -59,7 +59,7 @@ render_description <- function(desc) {
 # Print the field-value pair to a given file or standard out.
 
 # Determine whether a given field is too long and should be text-wrapped
-#' @auto_import
+#' @autoImports
 wrap_field_if_necessary <- function(field, value, wrap.threshold) {
    text <- simulate_formatted_text(field, value)
    longest.line <- max(str_length(text))

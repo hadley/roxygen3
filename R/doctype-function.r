@@ -19,7 +19,7 @@ is_infix_fun <- function(name) {
   str_detect(name, "^%.*%$")
 }
 
-#' @auto_imports
+#' @autoImports
 format.usage_function <- function(x, ...) {
   
   arglist <- args_string(x$args)
