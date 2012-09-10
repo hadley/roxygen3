@@ -1,5 +1,5 @@
-setClass("ConceptTag", contains = "Tag")
-setMethod("procTag", "ConceptTag", function(tag) {
+setClass("TagConcept", contains = "Tag")
+setMethod("procTag", "TagConcept", function(tag) {
   tag@text <- words_tag()(tag)
   tag
 })
