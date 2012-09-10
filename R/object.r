@@ -1,8 +1,11 @@
 setMethod("show", "RoxyObject", function(object) {
   message("RoxyObject: ", object@name)
-  cat(getSrcFilename(object@srcref), ":", 
-    object@srcref[1], ":", object@srcref[2], ":\n", sep = "")
-  print(object@srcref)
+  cat(location(object@srcref), sep = "")
+  if (!isNull(object@srcref)) {
+    print(object@srcref)
+  } else {
+    cat("\n")
+  }
 })
 
 setClass("ObjectNull", contains = "RoxyObject")

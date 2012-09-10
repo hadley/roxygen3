@@ -26,67 +26,86 @@ object_from_call <- function(call, env, srcref) {
     call <- match.call(eval(call[[1]], env), call)
   }
   
-  fun_name <- deparse(call[[1]])
-  f <- find_fun(str_c("object_from_call.", fun_name))
-  if (is.null(f)) return(new("ObjectNull"))
+  class <- paste("Call", first_upper(deparse(call[[1]])))
   
-  out <- f(call, env)
-  if (is.null(out)) return(new("ObjectNull"))
-
-  new("RoxyObject", value = out$value, name = out$name, srcref = srcref)
+  method <- selectMethod("objectFromCall", c(call = class))
+  method(call, env, srcref)
 }
 
+setGeneric("objectFromCall", function(call, env, srcref) {
+  standardGeneric("objectFromCall")
+})
+setMethod("objectFromCall", "ANY", function(call, env, srcref) {
+  new("ObjectNull")
+})
 
-object_from_call_assignment <- function(call, env) {
+object_from_assignment <- function(call, env, srcref) {
   name <- as.character(call[[2]])
   
   # If it's a compound assignment like x[[2]] <- ignore it
-  if (length(name) > 1)  return()
+  if (length(name) > 1)  return(new("ObjectNull"))
   
   # If it doesn't exist (any more), don't document it.
-  if (!exists(name, env)) return()
+  if (!exists(name, env)) return(new("ObjectNull"))
   
   val <- get(name, env)
   val <- add_s3_metadata(val, name, env)
   
   # Figure out if it's an s3 method or generic and add that info.
   if (is_s3_generic(name, env)) {
-    class(val) <- "s3generic"
+    doctype <- "s3generic"
   } else if (is_s3_method(name, env)) {
-    class(val) <- "s3method"
+    doctype <- "s3method"
+  } else {
+    doctype <- "function"
   }
 
-  list(name = name, value = val)
+  new("RoxyObject", name = name, value = val, srcref = srcref, 
+    docType = doctype)
 }
-"object_from_call.<<-" <- object_from_call_assignment
-"object_from_call.<-" <- object_from_call_assignment
-"object_from_call.=" <- object_from_call_assignment
+setClass("Call<<-")
+setMethod("objectFromCall", "Call<<-", object_from_assignment)
+setClass("Call<-")
+setMethod("objectFromCall", "Call<-", object_from_assignment)
+setClass("Call=")
+setMethod("objectFromCall", "Call=", object_from_assignment)
 
-
+setClass("CallSetClass")
 #' @autoImports
-object_from_call.setClass <- function(call, env) {
+setMethod("objectFromCall", "CallSetClass", function(call, env, srcref) {
   name <- as.character(call$Class)
   val <- getClass(name, where = env)
-  list(name = name, value = val)
-}
+  
+  new("RoxyObject", name = name, value = value, srcref = srcref, 
+    docType = "s4class")
+})
 
+setClass("CallSetGeneric")
 #' @autoImports
-object_from_call.setMethod <- function(call, env) {
-  name <- as.character(call$f)
-  val <- getMethod(name, eval(call$signature), where = env)
-  list(name = name, value = val)
-}
-
-#' @autoImports
-object_from_call.setRefClass <- function(call, env) {
-  name <- as.character(call$Class)
-  val <- getRefClass(name, where = env)
-  list(name = name, value = val)
-}
-
-#' @autoImports
-object_from_call.setGeneric <- function(call, env) {
+setMethod("objectFromCall", "CallSetGeneric", function(call, env, srcref) {
   name <- as.character(call$name)
   val <- getGeneric(name, where = env)
-  list(name = name, value = val)
-}
+
+  new("RoxyObject", name = name, value = value, srcref = srcref, 
+    docType = "s4generic")
+})
+
+setClass("CallSetMethod")
+#' @autoImports
+setMethod("objectFromCall", "CallSetMethod", function(call, env, srcref) {
+  name <- as.character(call$f)
+  val <- getMethod(name, eval(call$signature), where = env)
+
+  new("RoxyObject", name = name, value = value, srcref = srcref, 
+    docType = "s4method")
+})
+
+setClass("CallSetRefClass")
+#' @autoImports
+setMethod("objectFromCall", "CallSetRefClass", function(call, env, srcref) {
+  name <- as.character(call$Class)
+  val <- getRefClass(name, where = env)
+
+  new("RoxyObject", name = name, value = value, srcref = srcref, 
+    docType = "r5class")
+})
