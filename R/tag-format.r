@@ -2,7 +2,9 @@ setClass("TagFormat", contains = "Tag")
 
 setMethod("defaultTag", c("TagFormat", "DataObject"), 
   function(tag, object) {
-    str_c(capture.output(str(object@value, max.level = 1)), collapse = "\n")
+    out <- str_c(capture.output(str(object@value, max.level = 1)), 
+      collapse = "\n")
+    new("TagFormat", text = out)
   }
 )
 

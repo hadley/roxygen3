@@ -8,7 +8,7 @@
 #'   environments yourself for more complicated packages.
 #' @dev
 #' @export
-parse_directory <- function(path, env = NULL) {
+parse_directory <- function(path, env = NULL, tags = base_tags()) {
   r_files <- dir(path, pattern = "\\.[RrSs]$", full.names = TRUE)
   
   if (is.null(env)) {
@@ -16,7 +16,8 @@ parse_directory <- function(path, env = NULL) {
     lapply(r_files, sys.source, envir = env, chdir = TRUE)
   }
   
-  unlist(lapply(r_files, parse_file, env = env), recursive = FALSE)
+  unlist(lapply(r_files, parse_file, env = env, tags = tags), 
+    recursive = FALSE)
 }
 
 #' Parse a source file containing roxygen blocks.
@@ -26,7 +27,7 @@ parse_directory <- function(path, env = NULL) {
 #' @return A list of roc objects
 #' @dev
 #' @export
-parse_file <- function(path, env = NULL) {
+parse_file <- function(path, env = NULL, tags = base_tags()) {
   if (is.null(env)) {
     env <- new.env(parent = globalenv())
     sys.source(path, env, chdir = TRUE)
@@ -36,7 +37,7 @@ parse_file <- function(path, env = NULL) {
   lines <- readLines(path, warn = FALSE)
   src <- srcfile(path)
   
-  parse_text(lines, env, src)
+  parse_text(lines, env, src, tags = tags)
 }
 
 #' Parse and execute a block of text in a package like environment.
@@ -46,7 +47,7 @@ parse_file <- function(path, env = NULL) {
 #' @param text code to parse/execute
 #' @autoImports
 #' @export
-parse_block <- function(text) {
+parse_block <- function(text, tags = base_tags()) {
   pkg_dummy <- structure(
     list(path = tempfile(), package = "temp", version = 0.01), 
     class = "package")  
@@ -59,10 +60,10 @@ parse_block <- function(text) {
 
   lines <- str_split(text, "\n")[[1]]
   
-  parse_text(lines, env, src)
+  parse_text(lines, env, src, tags = tags)
 }
 
-parse_text <- memoise(function(lines, env, src) {
+parse_text <- memoise(function(lines, env, src, tags) {
   parsed <- parse(text = lines, src = src)
   refs <- getSrcref(parsed)
   comment_refs <- comments(refs)
@@ -71,7 +72,7 @@ parse_text <- memoise(function(lines, env, src) {
   extract <- function(i) {
     ref <- comment_refs[[i]]
     obj <- object_from_call(parsed[[i]], env, refs[[i]])
-    tags <- parse_roc(as.character(ref))
+    tags <- parse_roc(as.character(ref), tags = tags)
     
     if (is.null(tags) && is.null(obj)) return()
     
@@ -117,7 +118,8 @@ comments <- function(refs) {
 }
 
 #' @autoImports
-parse_roc <- function(lines, match = "^\\s*#+\' ?") {
+# @param tags A character vector of tag names, order is respected.
+parse_roc <- function(lines, match = "^\\s*#+\' ?", tags) {
   lines <- lines[str_detect(lines, match)]
   if (length(lines) == 0) return(list())
   
@@ -138,9 +140,16 @@ parse_roc <- function(lines, match = "^\\s*#+\' ?") {
   
   cols <- str_split_fixed(elements, "[[:space:]]+", 2)
   cols[, 2] <- str_trim(cols[, 2])
-
-  tags <- tapply(cols[, 2], cols[, 1], list)
-  compact(Map(find_tag, names(tags), tags))
+  parsed_tags <- tapply(cols[, 2], cols[, 1], list)
+  
+  # Remove unknown tags and reorder
+  unknown <- setdiff(names(parsed_tags), tags)
+  if (length(unknown) > 0) {
+    message("Unknown tags: ", str_c("@", unique(unknown), collapse = ", "))
+  }
+  parsed_tags <- parsed_tags[intersect(tags, names(parsed_tags))]
+  
+  compact(Map(find_tag, names(parsed_tags), parsed_tags))
 }
 
 find_tag <- function(name, text) {

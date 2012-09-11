@@ -25,7 +25,7 @@
 setClass("TagExport", contains = "Tag")
 
 setMethod("procBlock", "TagExport", function(tag, block) {
-  defaults <- block@tags@defaultExports
+  defaults <- block@tags$defaultExports
   if (is.null(defaults)) return(block)
 
   modify_tags(block,

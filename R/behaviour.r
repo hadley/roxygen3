@@ -12,3 +12,11 @@ default_behaviour <- function() {
     writers = local_apropos("^writer[A-Z]")
   )
 }
+
+manual_behaviour <- function(tags = character(), processors = character(), writers = character()) {
+  new("RoxyBehaviour", 
+    tags = tags,
+    processors = processors,
+    writers = writers
+  )
+}

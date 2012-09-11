@@ -16,14 +16,17 @@
 #' @usage @@importFrom package function1 function2
 #' @rdname tag-import
 #' @autoImports
-setClass("TagImportFrom", contains = "Tag")
+setClass("TagImportFrom", contains = "Tag", representation(
+  imports = "character"))
 setMethod("procTag", "TagImportFrom", function(tag) {
-
+  if (length(tag@text) == 0) return(tag)
+  
   pieces <- str_split(tag@text, "[[:space:]]+")[[1]]
   if (length(pieces) < 2) {
     stop("@importFrom needs at least two components.", call. = FALSE)
   }
-  tag@text <- setNames(rep(pieces[1], length(pieces[-1])), pieces[-1])
+  tag@imports <- c(tag@imports, 
+    setNames(rep(pieces[1], length(pieces[-1])), pieces[-1]))
   tag
 })
 setMethod("writeNamespace", "TagImportFrom", function(object) {
@@ -42,9 +45,17 @@ setMethod("procBlock", "TagAutoImports", function(tag, block) {
   obj <- block@object
   if (!is.function(obj@value)) return(block)
   
-  auto <- auto_imports(obj@value, obj@name, block@tags$importFrom)
+  importFrom <- block@tags$importFrom
+  auto <- auto_imports(obj@value, obj@name, importFrom)
+  
+  if (!is.null(importFrom)) {
+    importFrom@imports <- c(importFrom@imports, auto)
+  } else {
+    importFrom <- new("TagImportFrom", imports = auto)
+  }
+  
   modify_tags(block,
-    importFrom = prefix(auto),
+    importFrom = importFrom,
     autoImport = NULL)
 })
 setMethod("getPrereqs", "TagAutoImports", function(tag) {

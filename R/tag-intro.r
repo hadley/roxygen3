@@ -28,7 +28,7 @@ setMethod("procBlock", "TagIntro", function(tag, block) {
 
   # 2nd paragraph = description (unless has @description)
   if (!is.null(tags$description)) {
-    description <- tags$title@text
+    description <- tags$description@text
   } else if (length(paragraphs) > 0) {
     description <- paragraphs[1]
     paragraphs <- paragraphs[-1]
