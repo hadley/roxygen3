@@ -3,9 +3,13 @@ setClass("TagDev", contains = "Tag")
 setMethod("procBlock", "TagDev", function(tag, block) {
   desc <- "This function is useful only for developers"
   
-  browser()
+  title <- block@tags$title
+  if (!is.null(title)) {
+    title@text <- str_c("[DEV] ", title@text)
+  }
+  
   modify_tags(block,
-    title = prefix("[DEV] "),
+    title = title,
     description = prefix(desc))
 })
 

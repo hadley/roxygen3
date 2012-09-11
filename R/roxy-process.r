@@ -18,11 +18,15 @@ setMethod("process", "RoxyPackage", function(input) {
 })
 
 setMethod("process", "RoxyBlock", function(input) {
+  
   for (i in seq_along(input@tags)) {
-    if (is.character(input@tags[[i]])) browser()
     input@tags[[i]] <- procTag(input@tags[[i]])
-    input <- procBlock(input@tags[[i]], block = input)
   }
+  
+  for (tag in names(input@tags)) {
+    input <- procBlock(input@tags[[tag]], block = input)
+  }
+  
   input
 })
 

@@ -4,7 +4,7 @@
 \alias{}
 \alias{writeRd}
 
-\title{Output to Rd files in the man directory.}
+\title{[DEV] Output to Rd files in the man directory.}
 
 \usage{
   \S4method{writeRd}{TagAliases}(object)
@@ -68,6 +68,8 @@
 }
 
 \description{
+  This function is useful only for developers
+
   This uses the \code{@rdname} tag to determine which file
   the output from each rocblock is sent to.
 }

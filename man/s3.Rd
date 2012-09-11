@@ -3,7 +3,7 @@
 \alias{is_s3_generic}
 \alias{roxgyen_s3}
 
-\title{Determine if a function is an S3 generic or S3 method.}
+\title{[DEV] Determine if a function is an S3 generic or S3 method.}
 
 \usage{
   is_s3_generic(name, env = parent.frame())
@@ -16,6 +16,8 @@
 }
 
 \description{
+  This function is useful only for developers
+
   \code{is_s3_generic} compares name to
   \code{.knownS3Generics} and \code{.S3PrimitiveGenerics},
   then uses \code{\link[codetools]{findGlobals}} to see if

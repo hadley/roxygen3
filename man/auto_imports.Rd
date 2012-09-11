@@ -2,7 +2,7 @@
 
 \alias{auto_imports}
 
-\title{Scans a function and determines what functions it uses from other packages.}
+\title{[DEV] Scans a function and determines what functions it uses from other packages.}
 
 \usage{
   auto_imports(f, name = deparse(substitute(f)),
@@ -26,6 +26,8 @@
 }
 
 \description{
+  This function is useful only for developers
+
   Scans a function and determines what functions it uses
   from other packages.
 }

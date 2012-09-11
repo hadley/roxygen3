@@ -2,7 +2,7 @@
 
 \alias{parse_directory}
 
-\title{Parse directory of source files.}
+\title{[DEV] Parse directory of source files.}
 
 \usage{
   parse_directory(path, env = NULL, tags = base_tags())
@@ -21,6 +21,8 @@
 }
 
 \description{
+  This function is useful only for developers
+
   Parse directory of source files.
 }
 

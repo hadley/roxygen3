@@ -2,7 +2,7 @@
 
 \alias{namespace_out}
 
-\title{An output generator for the \file{NAMESPACE} file.}
+\title{[DEV] An output generator for the \file{NAMESPACE} file.}
 
 \usage{
   namespace_out(tag, name = NULL)
@@ -19,6 +19,8 @@
 }
 
 \description{
+  This function is useful only for developers
+
   An output generator for the \file{NAMESPACE} file.
 }
 
