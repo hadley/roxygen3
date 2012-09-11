@@ -3,9 +3,9 @@ setClass("TagUsage", contains = "Tag",
   prototype = list(usage = new("NullUsage")))
 
 setMethod("procTag", "TagUsage", function(tag) {
-  if (!is.null(tag@usage)) return(tag)
+  if (!isNull(tag@usage)) return(tag)
   
-  tag@usage <- new("TextUsage", usage@text)
+  tag@usage <- new("TextUsage", text = tag@text)
   tag
 })
 
