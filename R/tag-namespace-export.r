@@ -3,8 +3,7 @@
 #' @rdname tag-export
 setClass("TagExportClass", contains = "Tag")
 setMethod("procTag", "TagExportClass", function(tag) {
-  tag@text <- words_tag()(tag@text)
-  tag
+  parse_words(tag)
 })
 setMethod("writeNamespace", "TagExportClass", function(object) {
   ns_each("exportClass")(object@text)
@@ -14,8 +13,7 @@ setMethod("writeNamespace", "TagExportClass", function(object) {
 #' @rdname tag-export
 setClass("TagExportMethods", contains = "Tag")
 setMethod("procTag", "TagExportMethods", function(tag) {
-  tag@text <- words_tag()(tag@text)
-  tag
+  parse_words(tag)
 })
 setMethod("writeNamespace", "TagExportMethods", function(object) {
   ns_each("exportMethods")(object@text)
@@ -25,8 +23,7 @@ setMethod("writeNamespace", "TagExportMethods", function(object) {
 #' @rdname tag-export
 setClass("TagExportPattern", contains = "Tag")
 setMethod("procTag", "TagExportPattern", function(tag) {
-  tag@text <- words_tag()(tag@text)
-  tag
+  parse_words(tag)
 })
 setMethod("writeNamespace", "TagExportPattern", function(object) {
   ns_each("exportPattern")(object@text)
@@ -39,10 +36,13 @@ setMethod("writeNamespace", "TagExportPattern", function(object) {
 #' @rdname tag-export
 setClass("TagS3method", contains = "Tag",
   list("methods" = "character"))
+setMethod("procTag", "TagS3method", function(tag) {
+  parse_words(tag, 0, 2)
+})
 setMethod("procBlock", "TagS3method", function(tag, block) {
-  s3method <- words_tag(0, 2)(tag@text)
-
+  s3method <- tag@text
   n <- length(s3method)
+
   if (n == 0) return()
   if (n == 2) return()
 

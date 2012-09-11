@@ -9,8 +9,7 @@
 setClass("TagAliases", contains = "Tag")
 
 setMethod("procTag", "TagAliases", function(tag) {
-  tag@text <- words_tag(min = 1)(tag@text)
-  tag
+  parse_words(tag, min = 1)
 })
 
 setMethod("writeRd", "TagAliases", function(object) {
