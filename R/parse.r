@@ -40,29 +40,6 @@ parse_file <- function(path, env = NULL, tags = base_tags()) {
   parse_text(lines, env, src, tags = tags)
 }
 
-#' Parse and execute a block of text in a package like environment.
-#'
-#' This is used cheifly for testing.
-#'
-#' @param text code to parse/execute
-#' @autoImports
-#' @export
-parse_block <- function(text, tags = base_tags()) {
-  pkg_dummy <- structure(
-    list(path = tempfile(), package = "temp", version = 0.01), 
-    class = "package")  
-  env <- devtools:::create_ns_env(pkg_dummy)
-  on.exit(unload(pkg_dummy))
-
-  src <- srcfilecopy(digest(text), text)
-  expr <- parse(text = text, srcfile = src)
-  eval(expr, env = env)
-
-  lines <- str_split(text, "\n")[[1]]
-  
-  parse_text(lines, env, src, tags = tags)
-}
-
 parse_text <- memoise(function(lines, env, src, tags) {
   parsed <- parse(text = lines, src = src)
   refs <- getSrcref(parsed)

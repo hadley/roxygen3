@@ -12,8 +12,8 @@ test_that("@docType package automatically adds package alias when needed", {
     #' @docType package
     NULL")
   
-  expect_equal(sort(out1$aliases), sort(c("a", "a-package")))
-  expect_equal(out2$aliases, c("a-package"))
+  expect_equal(sort(out1$aliases@text), sort(c("a", "a-package")))
+  expect_equal(out2$aliases@text, c("a-package"))
 })
 
 
@@ -26,9 +26,9 @@ test_that("@docType data automatically adds sensible defaults", {
     #' @docType data
     a <- data.frame(a = 1:10)")
   
-  expect_equal(out$usage, "a")
-  expect_equal(out$keywords, "datasets")
-  expect_match(out$format, "data\\.frame")
+  expect_equal(out$usage@text, "a")
+  expect_equal(out$keywords@text, "datasets")
+  expect_match(out$format@text, "data\\.frame")
 })
 
 test_that("@docType data automatically added to data objects", {
@@ -36,7 +36,7 @@ test_that("@docType data automatically added to data objects", {
     #' Title.
     a <- data.frame(a = 1:10)")
   
-  expect_equal(out$docType, "data")  
+  expect_equal(out$docType, "data")
 })
 
 # Reference classes ----------------------------------------------------------

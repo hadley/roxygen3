@@ -1,4 +1,4 @@
-setMethod("process", "RoxyPackage", function(input) {
+setMethod("process", "RoxyBundle", function(input) {
   # Process each block individually for local tags
   input@blocks <- lapply(input@blocks, process)
   

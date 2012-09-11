@@ -16,13 +16,6 @@ setMethod("writeRd", "TagAliases", function(object) {
   new_command("alias", object@text)
 })
 
-
-setMethod("defaultTag", c("TagAliases", "FunctionObject"), 
-  function(tag, object) {
-    new("TagAliases", text = object@name)
-  }
-)
-
 setMethod("defaultTag", c("TagAliases", "PackageObject"), 
   function(tag, object) {
     new("TagAliases", text = str_c(object@name, "-package"))

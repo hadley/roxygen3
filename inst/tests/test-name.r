@@ -5,9 +5,9 @@ test_that("name captured from assignment", {
     #' Title.
     a <- function() {} ")
   
-  expect_equal(out$name, "a")
-  expect_equal(out$alias, "a")
-  expect_equal(out$title, "Title.")
+  expect_equal(out$name@text, "a")
+  expect_equal(out$alias@text, "a")
+  expect_equal(out$title@text, "Title.")
 })
 
 test_that("name also captured from assignment by =", {
@@ -15,9 +15,9 @@ test_that("name also captured from assignment by =", {
     #' Title.
     a = function() {} ")
   
-  expect_equal(out$name, "a")
-  expect_equal(out$alias, "a")
-  expect_equal(out$title, "Title.")
+  expect_equal(out$name@text, "a")
+  expect_equal(out$alias@text, "a")
+  expect_equal(out$title@text, "Title.")
 })
 
 # test_that("names escaped, not quoted", {
@@ -28,7 +28,7 @@ test_that("name also captured from assignment by =", {
 # })
 
 test_that("filename doesn't contain invalid characters", {
-  out <- test_output("
+  out <- test_rd("
     #' Title.
     #' @name a<-
     NULL
@@ -36,7 +36,7 @@ test_that("filename doesn't contain invalid characters", {
     #' Title.
     #' @name a[]
     NULL")
-  expect_equal(names(out$rd_out), c("man/a-set.Rd", "man/a-sub.Rd"))
+  expect_equal(names(out), c("man/a-set.Rd", "man/a-sub.Rd"))
 })
 
 test_that("quoted names captured from assignment", {
@@ -44,21 +44,21 @@ test_that("quoted names captured from assignment", {
     #' Title.
     \"myfunction\" <- function(...) {}")
   
-  expect_equal(out$name, "myfunction")
-  expect_equal(out$alias, "myfunction")
+  expect_equal(out$name@text, "myfunction")
+  expect_equal(out$alias@text, "myfunction")
   
   out <- test_process("
     #' Title.
     `myfunction` <- function(...) {}")
-  expect_equal(out$name, "myfunction")
-  expect_equal(out$alias, "myfunction")
+  expect_equal(out$name@text, "myfunction")
+  expect_equal(out$alias@text, "myfunction")
   
   out <- test_process("
     #' Title.
     \"my function\" <- function(...) {}")
   
-  expect_equal(out$name, "my function")
-  expect_equal(out$alias, "my function")
+  expect_equal(out$name@text, "my function")
+  expect_equal(out$alias@text, "my function")
 })
 
 test_that("@name overides default", {
@@ -66,6 +66,6 @@ test_that("@name overides default", {
     #' @name b
     a <- function() {}")
     
-    expect_equal(out$name, "b")
-    expect_equal(out$alias, "b")
+    expect_equal(out$name@text, "b")
+    expect_equal(out$alias@text, "b")
 })

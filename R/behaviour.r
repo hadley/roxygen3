@@ -13,6 +13,14 @@ default_behaviour <- function() {
   )
 }
 
+no_output <- function() {
+  new("RoxyBehaviour", 
+    tags = base_tags(),
+    processors = local_apropos("^process[A-Z]"),
+    writers = character()
+  )
+}
+
 manual_behaviour <- function(tags = character(), processors = character(), writers = character()) {
   new("RoxyBehaviour", 
     tags = tags,

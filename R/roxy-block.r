@@ -63,6 +63,7 @@ suffix <- function(x) structure(x, class = "suffix")
 prefix <- function(x) structure(x, class = "prefix")
 action <- function(old, new) {
   if (length(old) == 0) return(new)
+  if (length(old) == 1 && old == "") return(unclass(new))
   
   switch(class(new),
     prefix =    append(old, new, after = 0),
