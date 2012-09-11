@@ -18,7 +18,7 @@
 #' @export
 #' @dev
 object_from_call <- function(call, env, srcref) {
-  if (is.null(call)) return(new("ObjectNull"))
+  if (is.null(call)) return(new("ObjectNull", srcref = srcref))
   
   # Find function, then use match.call to construct complete call
   f <- eval(call[[1]], env)
@@ -36,7 +36,7 @@ setGeneric("objectFromCall", function(call, env, srcref) {
   standardGeneric("objectFromCall")
 })
 setMethod("objectFromCall", "ANY", function(call, env, srcref) {
-  new("ObjectNull")
+  new("ObjectNull", srcref = srcref)
 })
 
 object_from_assignment <- function(call, env, srcref) {
@@ -78,8 +78,7 @@ setMethod("objectFromCall", "CallSetClass", function(call, env, srcref) {
   name <- as.character(call$Class)
   val <- getClass(name, where = env)
   
-  new("S4ClassObject", name = name, value = val, srcref = srcref, 
-    docType = "s4class")
+  new("S4ClassObject", name = name, value = val, srcref = srcref)
 })
 
 setClass("CallSetGeneric")

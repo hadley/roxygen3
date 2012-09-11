@@ -12,7 +12,7 @@ RoxyBlock <- function(tags, object, srcref) {
   methods <- findMethods("defaultTag",
     classes = c(object@class, super))
 
-  defaults <- lapply(methods, call_fun, object = object)
+  defaults <- compact(lapply(methods, call_fun, object = object))
   names(defaults) <- vapply(defaults, tag_name, character(1))
   tags <- c(tags, defaults[setdiff(names(defaults), names(tags))])
 
