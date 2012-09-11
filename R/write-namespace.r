@@ -30,29 +30,23 @@ write_namespace <- function(ns) {
 
 # Useful output commands -----------------------------------------------------
 
-ns_each <- function(directive) {
-  function(values) {
-    values <- values[values != ""]
-    if (length(values) == 0) return()
+ns_each <- function(directive, values) {
+  values <- values[values != ""]
+  if (length(values) == 0) return()
 
-    str_c(directive, "(", quote_if_needed(values), ")")
-  }
+  str_c(directive, "(", quote_if_needed(values), ")")
 }
-ns_call <- function(directive) {
-  function(values) {
-    values <- values[values != ""]
-    if (length(values) == 0) return()
+ns_call <- function(directive, values) {
+  values <- values[values != ""]
+  if (length(values) == 0) return()
 
-    args <- paste(names(values), " = ", values, collapse = ", ", sep = "")
-    str_c(directive, "(", args, ")")
-  }
+  args <- paste(names(values), " = ", values, collapse = ", ", sep = "")
+  str_c(directive, "(", args, ")")
 }
-ns_repeat1 <- function(directive) {
-  function(values) {
-    values <- values[values != ""]
-    if (length(values) == 0) return()
+ns_repeat1 <- function(directive, values) {
+  values <- values[values != ""]
+  if (length(values) == 0) return()
 
-    str_c(directive, "(", quote_if_needed(values[1]), ",",
-      quote_if_needed(values[-1]), ")")
-  }
+  str_c(directive, "(", quote_if_needed(values[1]), ",",
+    quote_if_needed(values[-1]), ")")
 }

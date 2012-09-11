@@ -71,7 +71,7 @@ setMethod("procTag", "TagImport", function(tag) {
   tag
 })
 setMethod("writeNamespace", "TagImport", function(object) {
-  ns_each("import")(object@text)
+  ns_each("import", object@text)
 })
 
 #' @rdname tag-import
@@ -82,7 +82,7 @@ setMethod("procTag", "TagImportClassesFrom", function(tag) {
   tag
 })
 setMethod("writeNamespace", "TagImportClassesFrom", function(object) {
-  ns_repeat1("importClassesFrom")(object@text)
+  ns_repeat1("importClassesFrom",object@text)
 })
 
 #' @rdname tag-import
@@ -93,5 +93,5 @@ setMethod("procTag", "TagImportMethodsFrom", function(tag) {
   tag
 })
 setMethod("writeNamespace", "TagImportMethodsFrom", function(object) {
-  ns_repeat1("importMethodsFrom")(object@text)
+  ns_repeat1("importMethodsFrom",object@text)
 })

@@ -6,7 +6,7 @@ setMethod("procTag", "TagExportClass", function(tag) {
   parse_words(tag)
 })
 setMethod("writeNamespace", "TagExportClass", function(object) {
-  ns_each("exportClass")(object@text)
+  ns_each("exportClass", object@text)
 })
 
 #' @usage @@exportMethods generic1 generic2
@@ -16,7 +16,7 @@ setMethod("procTag", "TagExportMethods", function(tag) {
   parse_words(tag)
 })
 setMethod("writeNamespace", "TagExportMethods", function(object) {
-  ns_each("exportMethods")(object@text)
+  ns_each("exportMethods", object@text)
 })
 
 #' @usage @@exportPattern pattern
@@ -26,7 +26,7 @@ setMethod("procTag", "TagExportPattern", function(tag) {
   parse_words(tag)
 })
 setMethod("writeNamespace", "TagExportPattern", function(object) {
-  ns_each("exportPattern")(object@text)
+  ns_each("exportPattern", object@text)
 })
 
 #' @usage
