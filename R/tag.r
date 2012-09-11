@@ -16,9 +16,6 @@ setMethod("show", "Tag", function(object) {
 # Default behaviour for all tags: don't change and no prereqs.
 setMethod("procBlock", "Tag", function(tag, block) block)
 setMethod("procTag", "Tag", function(tag) tag)
-setMethod("getPrereqs", "Tag", function(tag) {
-  character()
-})
 
 tag_name <- function(x) {
   if (isS4(x)) {
@@ -47,5 +44,5 @@ base_tags <- function() {
   methods <- findMethods("getPrereqs", classes = base)
   prereqs <- lapply(methods, call_fun)
   
-  sort_tags(base, prereqs)
+  tag_name(sort_tags(base, prereqs))
 }

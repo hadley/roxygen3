@@ -15,10 +15,6 @@ Bundles take care of sourcing the code appropriately, breaking the source code i
 * file
 * text block
 
-# Processor
-
-A processor stores information about what should be done with a bundle: which tags should be processed, what roccers should be run on the bundle as a whole, and what output should be written. It also stores the output directory.
-
 # Extension
 
 Extension of roxygen3 should be through adding new tags, new processors and new writers. It is not desirable for extensions to work "invisibly" - i.e. it is ok to demand that if you want to use an extension you must manually specify a tag, a processor or a writer.

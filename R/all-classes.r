@@ -22,6 +22,12 @@ setClass("RoxyBlock", representation(
   srcref = "srcref",
   object = "RoxyObject"))
 
+setClass("RoxyBehaviour", representation(
+  tags = "character",
+  processors = "character",
+  writers = "character"
+))
+
 # A bundle represents a list of blocks and how they should be processed
 # and output.
 setClass("RoxyBundle", representation(
