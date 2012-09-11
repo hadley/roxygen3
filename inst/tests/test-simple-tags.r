@@ -7,10 +7,10 @@ test_that("keywords and aliases split into pieces", {
     #' @name a
     NULL")
     
-  expect_match(out$keyword, fixed("a"), all = FALSE)
-  expect_match(out$keyword, fixed("b"), all = FALSE)
-  expect_match(out$alias, fixed("a"), all = FALSE)
-  expect_match(out$alias, fixed("b"), all = FALSE)
+  expect_match(out$keyword@text, fixed("a"), all = FALSE)
+  expect_match(out$keyword@text, fixed("b"), all = FALSE)
+  expect_match(out$alias@text, fixed("a"), all = FALSE)
+  expect_match(out$alias@text, fixed("b"), all = FALSE)
 })
 
 test_that("generic keys produce expected output", {
@@ -23,11 +23,11 @@ test_that("generic keys produce expected output", {
     #' @encoding test
     #' @name a
     NULL")
-  expect_equal(out$references, "test")
-  expect_equal(out$note, "test")
-  expect_equal(out$seealso, "test")
-  expect_equal(out$concept, "test")
-  expect_equal(out$encoding, "test")
-  expect_equal(out$author, "test")
+  expect_equal(out$references@text, "test")
+  expect_equal(out$note@text, "test")
+  expect_equal(out$seealso@text, "test")
+  expect_equal(out$concept@text, "test")
+  expect_equal(out$encoding@text, "test")
+  expect_equal(out$author@text, "test")
 })
 
