@@ -4,6 +4,7 @@ setMethod("procBlock", "TagExample", function(tag, block) {
   examples <- unlist(lapply(paths, readLines))
   
   modify_tags(block, 
-    examples = c(text = suffix(examples)))
+    examples = suffix(examples))
 })
 
+setMethod("getPrereqs", "TagExample", function(tag) "TagExamples")
