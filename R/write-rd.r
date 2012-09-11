@@ -42,10 +42,8 @@ output_path <- function(block) {
   if ("noRd" %in% tags) return()
   
   rdname <- block@tags$rdname
-  if (is.null(rdname)) {
-    # message("rdname not specified, skipping.")
-    return()
-  }
+  if (is.null(rdname)) return()
+
   file.path("man", paste(rdname@text, ".Rd", sep = ""))
 }
 
