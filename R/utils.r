@@ -8,12 +8,6 @@ modify_list <- function(a, b) {
   modifyList(a, b)
 }
 
-recursive_merge <- function(lists) {
-  lists <- compact(lists)
-  if (length(lists) <= 1) return(lists)
-  Reduce(modify_list, lists)
-}
-
 #' @autoImports
 write_if_different <- function(path, contents) {
   if (!file.exists(dirname(path))) {
@@ -56,24 +50,6 @@ quote_if_needed <- function(x) {
   x[needs_quotes] <- str_c('"', x[needs_quotes], '"')
   x
 }
-
-
-find_function <- function(name, env = parent.frame(2)) {
-  env <- parent.frame(2)
-  if (!exists(name, envir = env, mode = "function")) {
-    return(NULL)
-  }
-  
-  get(name, envir = env, mode = "function")
-}
-
-ref_location <- function(srcref) {
-  if (is.null(srcref)) return("")
-
-  file <- getSrcFilename(srcref)
-  str_c(" @", file, ":", srcref[1], ":", srcref[5])
-}
-
 
 str_truncate <- function(x, width = getOption("width")) {
   lines <- str_split(x, "\n")[[1]]

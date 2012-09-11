@@ -2,7 +2,6 @@
 #' used.
 #'
 #'
-setGeneric("format")
 
 setClass("TextUsage", contains = "Usage", representation(
   text = "character"))
@@ -20,6 +19,7 @@ setClass("S3MethodUsage", contains = "FunctionUsage", representation(
   signature = "character"
 ))
 
+setGeneric("format")
 setMethod("format", "TextUsage", function(x, ...) {
   x@text
 })

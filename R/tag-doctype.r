@@ -16,23 +16,6 @@
 #' parser supplied to \code{\link{roc_parsers}}.
 setClass("TagDocType", contains = "Tag")
 
-setMethod("procBlock", "TagDocType", function(tag, block) {
-  return(block) 
-  
-  doctype <- tag@text %||% block@object@docType
-  if (is.null(doctype)) return()
-  
-  fname <- str_c("doctype_", doctype)
-  default <- find_function(fname)
-  if (is.null(default)) {
-    message("No default doctype function ", str_c("doctype_", doctype), 
-      " found.")
-    return()
-  }
-  
-  default(roc, obj)
-})
-
 setMethod("defaultTag", c("TagDocType", "S4MethodObject"),
   function(tag, object) {
     new("TagDocType", text = "methods")

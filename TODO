@@ -1,8 +1,7 @@
 * run tests
-* fix usage of rd_command and *_tag
-
-* "tags" that previously applied to all blocks:
-  * docType
+* fix usage for words_tag etc
+* rewrite namespace and description writers
+* rewrite family, include, and inheritParam processors
 
 Questions for Vitalie:
 
@@ -10,11 +9,6 @@ Questions for Vitalie:
 * procBlockObject vs procBlock - only three tags need to dispatch on object
   * need to think of common function name for that scenario 
     procObj(tag, obj, block)
-
-* What's a better way of writing procBlock for docType so that it doesn't use
-  pseudo dispatch
-
-* Should procTag be initTag?
 
 # Bundles
 
