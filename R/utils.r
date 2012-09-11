@@ -65,3 +65,5 @@ call_fun <- function(f, ...) f(...)
 local_apropos <- function(x) {
   grep(x, ls(topenv(environment())), ignore.case = TRUE, value = TRUE)
 }
+
+is_empty <- function(tag) identical(tag@text, "")

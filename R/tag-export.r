@@ -25,14 +25,16 @@
 setClass("TagExport", contains = "Tag")
 
 setMethod("procBlock", "TagExport", function(tag, block) {
+  if (!is_empty(tag)) return(block)
+  
   defaults <- block@tags$defaultExport
-  if (is.null(defaults)) return(block)
+  if (isNull(defaults)) return(block)
   
   modify_tags(block,
-    export = suffix(defaults@export),
+    export = defaults@export,
     exportMethods = suffix(defaults@exportMethods),
     exportClass = suffix(defaults@exportClass),
-    S3method = new("TagS3method", methods = as.character(defaults@S3method))
+    S3method = new("TagS3method", methods = defaults@S3method)
   )
 })
 

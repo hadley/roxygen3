@@ -35,29 +35,29 @@ setMethod("writeNamespace", "TagExportPattern", function(object) {
 #'   @@S3method
 #' @rdname tag-export
 setClass("TagS3method", contains = "Tag",
-  list("methods" = "character"))
+  list("methods" = "matrix"))
 setMethod("procTag", "TagS3method", function(tag) {
   parse_words(tag, 0, 2)
 })
 setMethod("procBlock", "TagS3method", function(tag, block) {
-  s3method <- tag@text
-  n <- length(s3method)
-
-  if (n == 0) return()
-  if (n == 2) return()
-
-  if (s3method == "") {
+  n <- length(tag@text)
+  
+  if (n == 0) {
     # Empty, so guess from name
-    pieces <- s3_method_info(block@obj@value)
+    pieces <- s3_method_info(block@object@value)
     generic <- pieces[1]
     class <- pieces[2]
+  } else if (n == 1) {
+    # Empty, generic provided
+    generic <- tag@text
+    class <- str_replace(block@object@name, fixed(str_c(generic, ".")), "")
   } else {
-    generic <- s3method
-    class <- str_replace(block@obj@name, fixed(str_c(generic, ".")), "")
+    generic <- tag@text[1]
+    class <- tag@text[2]
   }
-
+  
   modify_tags(block,
-    methods = list(methods = cbind(generic, class)))
+    s3method = list(methods = cbind(generic, class)))
 })
 
 setMethod("writeNamespace", "TagS3method", function(object) {

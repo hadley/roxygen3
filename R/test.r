@@ -1,12 +1,18 @@
 test_process <- function(text, behaviour = no_output()) {  
   bundle <- parse_block(text)
-  process(bundle)@blocks[[1]]@tags
+  blocks <- process(bundle)@blocks
+  blocks[[length(blocks)]]@tags
 }
 
 test_rd <- function(text) {
   bundle <- parse_block(text)
   bundle <- process(bundle)
   build_rd(bundle@blocks)
+}
+test_ns <- function(text) {
+  bundle <- parse_block(text)
+  bundle <- process(bundle)
+  build_namespace(bundle@blocks)
 }
 
 #' Parse and execute a block of text in a package like environment.

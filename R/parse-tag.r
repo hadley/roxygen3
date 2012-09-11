@@ -1,5 +1,6 @@
 split_pieces <- function(tag, split_with, min, max) {
   pieces <- unlist(str_split(tag@text, split_with))
+  pieces <- pieces[pieces != ""]
   
   if (length(pieces) < min) {
     stop(tag_name(tag), " requires at least ", min, " values.")
