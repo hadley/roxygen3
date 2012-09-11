@@ -1,7 +1,7 @@
 setClass("TagRdname", contains = "Tag")
-setMethod("defaultTag", c("TagName", "RoxyObject"),
+setMethod("defaultTag", c("TagRdname", "RoxyObject"),
   function(tag, object) {
-    new("TagName", text = nice_name(object@name))
+    new("TagRdname", text = nice_name(object@name))
   }
 )
 

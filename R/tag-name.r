@@ -15,7 +15,6 @@ setMethod("procBlock", "TagName", function(tag, block) {
 
 setMethod("defaultTag", c("TagName", "RoxyObject"),
   function(tag, object) {
-    print(object@name)
     new("TagName", text = object@name)
   }
 )

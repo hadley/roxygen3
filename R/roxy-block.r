@@ -12,9 +12,9 @@ RoxyBlock <- function(tags, object, srcref) {
   methods <- findMethods("defaultTag",
     classes = c(object@class, super))
 
-  defaults <- lapply(unname(methods), call_fun, object = object)
-  # if (length(defaults) > 0 & length(tags) > 0) browser()
-  tags <- c(tags, defaults)
+  defaults <- lapply(methods, call_fun, object = object)
+  names(defaults) <- vapply(defaults, tag_name, character(1))
+  tags <- c(tags, defaults[setdiff(names(defaults), names(tags))])
 
   new("RoxyBlock", tags = tags, object = object, srcref = srcref)
 }

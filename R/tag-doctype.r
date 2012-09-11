@@ -55,6 +55,6 @@ format.docType_command <- function(x, ...) {
   vals <- intersect(vals, ok)
   if (length(vals) == 0) return("")
   
-  str_c("\\docType{", x$value, "}")
+  str_c("\\docType{", vals, "}")
 }
 
