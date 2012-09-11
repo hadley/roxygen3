@@ -42,6 +42,10 @@ parse_file <- function(path, env = NULL, tags = base_tags()) {
 
 parse_text <- memoise(function(lines, env, src, tags) {
   parsed <- parse(text = lines, src = src)
+  if (length(parsed) == 0) {
+    return(list())
+  }
+
   refs <- getSrcref(parsed)
   comment_refs <- comments(refs)
   
