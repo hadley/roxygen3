@@ -6,7 +6,7 @@ test_that("correct usage for S4 generics", {
     #' Test generic.
     setGeneric('test', function(object) {standardGeneric('test')})")
   
-  expect_equal(format(out$usage[[1]]), "test(object)")
+  expect_equal(format(out$usage), "test(object)")
 })
 
 test_that("correct usage for S4 methods", {
@@ -18,6 +18,6 @@ test_that("correct usage for S4 methods", {
     ")
   
   expect_equal(
-    format(out$usage[[1]]), 
+    format(out$usage), 
     "\\S4method{test}{numeric}(x\u{A0}=\u{A0}1)")
 })

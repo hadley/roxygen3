@@ -9,6 +9,8 @@ setMethod("procTag", "TagUsage", function(tag) {
   tag
 })
 
+setMethod("format", "TagUsage", function(x, ...) format(x@usage))
+
 setMethod("writeRd", "TagUsage", function(object) {
   new_command("usage", format(object@usage))
 })
