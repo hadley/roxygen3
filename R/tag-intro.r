@@ -47,4 +47,7 @@ setMethod("procBlock", "TagIntro", function(tag, block) {
   )
 })
 
-base_prereqs[["TagIntro"]] <- c("TagTitle", "TagDescription", "TagDetails")
+setMethod("getPrereqs", "TagIntro", function(tag) {
+  c("TagTitle", "TagDescription", "TagDetails")
+})
+

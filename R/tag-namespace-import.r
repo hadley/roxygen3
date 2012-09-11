@@ -18,6 +18,7 @@
 #' @autoImports
 setClass("TagImportFrom", contains = "Tag")
 setMethod("procTag", "TagImportFrom", function(tag) {
+
   pieces <- str_split(tag@text, "[[:space:]]+")[[1]]
   if (length(pieces) < 2) {
     stop("@importFrom needs at least two components.", call. = FALSE)
@@ -32,9 +33,6 @@ setMethod("writeNamespace", "TagImportFrom", function(object) {
   str_c("importFrom(", object, ",", quote_if_needed(names(object)), ")", 
     collapse = "\n")
 })
-setMethod("getPrereqs", "TagImportFrom", function(tag) {
-  "TagImportFrom"
-})
 
 #' @rdname tag-import
 #' @usage @@autoImports
@@ -48,6 +46,9 @@ setMethod("procBlock", "TagAutoImports", function(tag, block) {
   modify_tags(block,
     importFrom = prefix(auto),
     autoImport = NULL)
+})
+setMethod("getPrereqs", "TagAutoImports", function(tag) {
+  "TagImportFrom"
 })
 
 #' @rdname tag-import

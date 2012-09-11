@@ -1,5 +1,5 @@
 setMethod("process", "RoxyBlock", function(input) {
-  for (tag in names(input@tags)) {
+  for (tag in seq_along(input@tags)) {
     input@tags[[tag]] <- procTag(input@tags[[tag]])
     input <- procBlock(input@tags[[tag]], block = input)
   }

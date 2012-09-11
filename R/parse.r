@@ -155,10 +155,10 @@ find_tag <- function(name, text) {
 }
 
 first_upper <- function(x) {
-  str_sub(x, 1, 1) <- toupper(str_sub(x, 1, 1))
+  substr(x, 1, 1) <- toupper(substr(x, 1, 1))
   x
 }
 first_lower <- function(x) {
-  str_sub(x, 1, 1) <- tolower(str_sub(x, 1, 1))
+  substr(x, 1, 1) <- tolower(substr(x, 1, 1))
   x
 }

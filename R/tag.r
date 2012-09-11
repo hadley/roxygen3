@@ -21,6 +21,31 @@ setMethod("getPrereqs", "Tag", function(tag) {
 })
 
 tag_name <- function(x) {
-  class <- getClass(class(x))@className
+  if (isS4(x)) {
+    class <- getClass(class(x))@className
+  } else if (is.character(x)) {
+    class <- x
+  }
   first_lower(str_replace(class, "^Tag", ""))
+}
+
+#' @export
+find_tags <- function() {
+  names(getClass("Tag")@subclasses)
+}
+
+#' @autoImports
+sort_tags <- function(tags, prereqs = NULL) {
+  if (is.null(prereqs)) return(tags)
+  
+  graph <- graph_from_list(tags, prereqs)
+  topo_sort(graph)
+}
+
+base_tags <- function() {
+  base <- find_tags()
+  methods <- findMethods("getPrereqs", classes = base)
+  prereqs <- lapply(methods, call_fun)
+  
+  sort_tags(base, prereqs)
 }

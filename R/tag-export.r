@@ -37,5 +37,5 @@ setMethod("writeNamespace", "TagExport", function(object) {
 })
 
 setMethod("getPrereqs", "TagExport", function(tag) {
-  c("S3method", "docType")
+  c("TagS3method", "TagDocType")
 })
