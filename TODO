@@ -5,6 +5,12 @@
 * convert modifyTag to S4
 * need tests for multiple tags in a single block
 
+# Default tags
+
+* Move out of RoxyBlock and into parse.r
+* Really need to be given whole block, and run in the same order as other tags. 
+* Aliases needs to add @name, not override, rdname should use @name
+
 # Bundles
 
 A bundle represents a list of blocks, and how they should be processed (represented by a Processor)

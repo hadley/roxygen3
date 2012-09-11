@@ -1,0 +1,22 @@
+\docType{class}
+\name{RoxyPackage}
+
+\alias{}
+\alias{RoxyPackage}
+
+\title{RoxyPackage class.}
+
+\usage{
+  RoxyPackage(path, behaviour = default_behaviour())
+}
+
+\description{
+  The package class captures all the information about the
+  package: its name, path, and all the
+  \code{\link{RoxyBlock}}s that it contains.
+}
+
+\details{
+
+}
+

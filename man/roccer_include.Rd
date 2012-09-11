@@ -1,0 +1,20 @@
+\name{roccer_include}
+
+\alias{roccer_include}
+
+\title{Control order of collation.}
+
+\usage{
+
+}
+
+\description{
+  Control order of collation.
+}
+
+\details{
+  The collation order is only modified if it is different
+  from alphabetical order (in the C locale). That is R's
+  default ordering.
+}
+

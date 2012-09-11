@@ -20,23 +20,31 @@ setClass("S3MethodUsage", contains = "FunctionUsage", representation(
 ))
 
 setGeneric("format")
+setMethod("format", "Usage", function(x, ...) {
+  browser()
+})
+setMethod("format", "NullUsage", function(x, ...) {
+  character()
+})
+
 setMethod("format", "TextUsage", function(x, ...) {
   x@text
 })
 setMethod("format", "S4MethodUsage", function(x, ...) {
-  signature <- str_c(as.character(x$signature), collapse = ",")
+  signature <- str_c(as.character(x@signature), collapse = ",")
   
-  str_c("\\S4method{", x$generic, "}{", signature, "}(", 
-    args_string(usage_args(x$args)), ")")
+  str_c("\\S4method{", x@generic, "}{", signature, "}(", 
+    args_string(usage_args(x@formals)), ")")
 })
 setMethod("format", "S3MethodUsage", function(x, ...) {
-  arglist <- args_string(usage_args(x$args))
+  browser()
+  arglist <- args_string(usage_args(x@formals))
 
   method <- function(x) {
-    str_c("\\method", "{", x[1], "}{", x[2], "}", collapse = "")
+    str_c("\\method", "{", x@generic, "}{", x@signature, "}", collapse = "")
   }
   
-  if (is_replacement_fun(x$method[1])) {
+  if (is_replacement_fun(x@generic)) {
     name <- str_replace(x$method, fixed("<-"), "")
     str_c(method(name), "(", arglist, ") <- value")
   } else {
@@ -46,15 +54,15 @@ setMethod("format", "S3MethodUsage", function(x, ...) {
 
 #' @autoImports
 setMethod("format", "FunctionUsage", function(x, ...) {  
-  arglist <- args_string(usage_args(x$args))
-  if (is_replacement_fun(x$name)) {
-    name <- str_replace(x$name, fixed("<-"), "")
+  arglist <- args_string(usage_args(x@formals))
+  if (is_replacement_fun(x@name)) {
+    name <- str_replace(x@name, fixed("<-"), "")
     str_c(name, "(", arglist, ") <- value")
-  } else if (is_infix_fun(x$name)) {
-    arg_names <- names(x$args)
-    str_c(arg_names[1], " ", x$name, " ", arg_names[2])
+  } else if (is_infix_fun(x@name)) {
+    arg_names <- names(x@formals)
+    str_c(arg_names[1], " ", x@name, " ", arg_names[2])
   } else {    
-    str_c(x$name, "(", arglist, ")")
+    str_c(x@name, "(", arglist, ")")
   }
 })
 is_replacement_fun <- function(name) {

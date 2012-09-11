@@ -1,0 +1,31 @@
+\docType{methods}
+\name{show}
+
+\alias{}
+\alias{show}
+
+\title{Tag class}
+
+\usage{
+  \S4method{show}{RoxyObject}(object)
+
+  \S4method{show}{RoxyBlock}(object)
+
+  \S4method{show}{Tag}(object)
+}
+
+\description{
+  The tag class is the base class for all roxygen3 tags.
+}
+
+\details{
+
+}
+
+\section{Parsing order}{
+  The functions \code{procTag} and \code{procBlock} are
+  called in that order, so if both are supplied,
+  \code{procBlock} can rely on the tag already being
+  parsed.
+}
+

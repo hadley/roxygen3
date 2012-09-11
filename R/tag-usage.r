@@ -9,17 +9,19 @@ setMethod("procTag", "TagUsage", function(tag) {
   tag
 })
 
-setMethod("defaultTag", c("TagUsage", "FunctionObject"), 
+setMethod("writeRd", "TagUsage", function(object) {
+  new_command("usage", format(object@usage))
+})
+
+setMethod("defaultTag", c("TagUsage", "FunctionObject"),
   function(tag, object) {
-    if (object@name == "subs") browser()
-    
-    usage <- new("FunctionUsage", 
+    usage <- new("FunctionUsage",
       name = object@name,
       formals = as.list(formals(object@value)))
     new("TagUsage", usage = usage)
   }
 )
-setMethod("defaultTag", c("TagUsage", "S3MethodObject"), 
+setMethod("defaultTag", c("TagUsage", "S3MethodObject"),
   function(tag, object) {
     method <- s3_method_info(object@value)
     

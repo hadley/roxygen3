@@ -1,0 +1,18 @@
+\docType{class}
+\name{TextUsage}
+
+\alias{}
+\alias{TextUsage}
+
+\title{Given an object, return a string showing how that object should be
+used.}
+
+\description{
+  Given an object, return a string showing how that object
+  should be used.
+}
+
+\details{
+
+}
+

@@ -1,0 +1,22 @@
+\docType{class}
+\name{RoxyBlock}
+
+\alias{}
+\alias{RoxyBlock}
+
+\title{RoxyBlock class.}
+
+\usage{
+  RoxyBlock(tags, object, srcref)
+}
+
+\description{
+  The block class encapsulates the data about a single
+  roxygen comment block, along with its location in the src
+  code, and the object associated with the block.
+}
+
+\details{
+
+}
+
