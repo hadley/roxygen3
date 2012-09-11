@@ -88,6 +88,14 @@ test_that("% is escaped in usage", {
   expect_equal(format(out$usage[[1]]), "a(a\u{A0}=\u{A0}\"\\%\")")
 })
 
+test_that("\\ is not over escaped in usage", {
+  out <- test_process("
+    #' Title.
+    a <- function(a='\\\"') {}")
+  expect_equal(format(out$usage[[1]]), "a(a\u{A0}=\u{A0}\"\\%\")")
+})
+
+
 test_that("long usages protected from incorrect breakage", {
   out <- test_process("
       #' Function long usage
