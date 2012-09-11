@@ -1,9 +1,29 @@
-description_out <- function(tag, name = NULL)  {
-  rocout(tag, name, subclass = "description_out")
+setMethod("writeDescription", "RoxyPackage", function(object) {
+  in_dir(object@path, callNextMethod())
+})
+setMethod("writeDescription", "RoxyBundle", function(object) {
+  desc <- build_description(object@blocks)
+  write_description(desc)
+})
+setMethod("writeDescription", "RoxyBlock", function(object) {
+  compact(lapply(object@tags, writeDescription))
+})
+setMethod("writeDescription", "Tag", function(object) NULL)
+
+build_description <- function(blocks) {
+  output <- lapply(blocks, writeDescription)
+  out <- unlist(output, recursive = FALSE)
+  out$Collate <- str_c(out$Collate, collapse = "\n")
+  
+  out
 }
 
-output_path.description_out <- function(writer, rocblock) {
-  "DESCRIPTION" 
+write_description <- function(output) {
+  old <- read_description("DESCRIPTION")
+  new <- modify_list(old, output)
+
+  desc <- render_description(new)
+  write_if_different("DESCRIPTION", desc)
 }
 
 field <- function(name) {
@@ -12,21 +32,6 @@ field <- function(name) {
   }
 }
 
-#' @autoImports
-output_postproc.description_out <- function(output) {
-  out <- unlist(output, recursive = FALSE)
-  out$Collate <- str_c(out$Collate, collapse = "\n")    
-  
-  out
-}
-
-output_write.description_out <- function(output, path) {
-  old <- read_description(path)
-  new <- modify_list(old, output)
-
-  desc <- render_description(new)
-  write_if_different(path, desc)
-}
 
 # Functions to manipulate the description file -------------------------------
 

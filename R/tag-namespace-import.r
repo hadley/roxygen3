@@ -30,11 +30,12 @@ setMethod("procTag", "TagImportFrom", function(tag) {
   tag
 })
 setMethod("writeNamespace", "TagImportFrom", function(object) {
-  object <- object[object != "base"]
-  if (length(object) == 0) return()
+  imports <- object@imports
   
-  str_c("importFrom(", object, ",", quote_if_needed(names(object)), ")", 
-    collapse = "\n")
+  imports <- imports[imports != "base"]
+  if (length(imports) == 0) return()
+  
+  str_c("importFrom(", imports, ",", quote_if_needed(names(imports)), ")")
 })
 
 #' @rdname tag-import

@@ -9,6 +9,7 @@ setClass("RoxyPackage", contains = "RoxyBundle", representation(
   path = "character"
 ))
 
+#' @autoImports
 RoxyPackage <- function(path, behaviour = default_behaviour()) {
   pkg <- as.package(path)
   

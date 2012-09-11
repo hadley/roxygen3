@@ -61,8 +61,10 @@ setMethod("procBlock", "TagS3method", function(tag, block) {
 })
 
 setMethod("writeNamespace", "TagS3method", function(object) {
+  if (length(object@methods) == 0) return()
+  
   if (is.vector(object@methods)) {
-    methods <- matrix(methods, ncol = 2)
+    methods <- matrix(object@methods, ncol = 2)
   } else {
     methods <- object@methods
   }

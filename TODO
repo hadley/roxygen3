@@ -1,4 +1,3 @@
-* rewrite namespace and description writers
 * rewrite family, include, and inheritParam processors
 * complete
 * run tests

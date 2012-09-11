@@ -25,11 +25,15 @@
 setClass("TagExport", contains = "Tag")
 
 setMethod("procBlock", "TagExport", function(tag, block) {
-  defaults <- block@tags$defaultExports
+  defaults <- block@tags$defaultExport
   if (is.null(defaults)) return(block)
-
+  
   modify_tags(block,
-    "export" = defaults)
+    export = suffix(defaults@export),
+    exportMethods = suffix(defaults@exportMethods),
+    exportClass = suffix(defaults@exportClass),
+    S3method = new("TagS3method", methods = as.character(defaults@S3method))
+  )
 })
 
 setMethod("writeNamespace", "TagExport", function(object) {

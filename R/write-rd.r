@@ -80,6 +80,7 @@ collapse_rd <- function(blocks) {
   commands
 }
 
+#' @autoImports
 write_rd <- function(commands, path) {
   if (length(commands) == 0) return()
   
