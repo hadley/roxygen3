@@ -67,3 +67,12 @@ local_apropos <- function(x) {
 }
 
 is_empty <- function(tag) identical(tag@text, "")
+
+first_upper <- function(x) {
+  substr(x, 1, 1) <- toupper(substr(x, 1, 1))
+  x
+}
+first_lower <- function(x) {
+  substr(x, 1, 1) <- tolower(substr(x, 1, 1))
+  x
+}

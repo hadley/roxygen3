@@ -130,10 +130,10 @@ parse_roc <- function(lines, match = "^\\s*#+\' ?", tags) {
   }
   parsed_tags <- parsed_tags[intersect(tags, names(parsed_tags))]
   
-  compact(Map(find_tag, names(parsed_tags), parsed_tags))
+  compact(Map(build_tag, names(parsed_tags), parsed_tags))
 }
 
-find_tag <- function(name, text) {
+build_tag <- function(name, text) {
   # find matching class for name
   class_name <- str_c("Tag", first_upper(name))
   if (!isClass(class_name)) {
@@ -142,13 +142,4 @@ find_tag <- function(name, text) {
   }
   
   new(class_name, text = text, srcref = new("SrcrefNull"))
-}
-
-first_upper <- function(x) {
-  substr(x, 1, 1) <- toupper(substr(x, 1, 1))
-  x
-}
-first_lower <- function(x) {
-  substr(x, 1, 1) <- tolower(substr(x, 1, 1))
-  x
 }

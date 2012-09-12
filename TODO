@@ -1,33 +1,22 @@
-* rewrite family, include, and inheritParam processors
-* complete
-* run tests
+* update object_from_call and default tags system to resolve last test issues
 * convert modifyTag to S4
-* need tests for multiple tags in a single block
-  * esp. @s3method
+* need tests for multiple tags in a single block (e.g. @s3method)
 * need to extend object from call to deal with a <- set[Ref]Class("a") and
   to generate package objects.  Would be nice to be able to document non-local
   objects - @objValue a, @objValue getClass("a") ?
+* convert rd object to S4 for consistency
+* implement format methods for tags to make it easier to get their contents
+* refactor bundles code and file structure
+* standard s4 usage
+* DOCUMENTATION!
+* implement useDynLib with test cases
+* is_s3_generic should do better if you do c <- function() 1
 
 # Default tags
 
 * Move out of RoxyBlock and into parse.r
-* Really need to be given whole block, and run in the same order as other tags. 
+* Really need to be given whole block, and run in the same order as other tags.
 * Aliases needs to add @name, not override, rdname should use @name
-
-# Bundles
-
-A bundle represents a list of blocks, and how they should be processed (represented by a Processor)
-
-Bundles take care of sourcing the code appropriately, breaking the source code into blocks and then processing each block. Need the following types of bundle:
-
-* package
-* directory
-* file
-* text block
-
-# Extension
-
-Extension of roxygen3 should be through adding new tags, new processors and new writers. It is not desirable for extensions to work "invisibly" - i.e. it is ok to demand that if you want to use an extension you must manually specify a tag, a processor or a writer.
 
 # S4 usage questions
 
@@ -48,6 +37,5 @@ How do you create a new class?
 
 1. new("Chicken", name = "Andy")
 
-2. # Or create a constructor function and do:
-Chicken("Andy")
+2. Or do you create a constructor function and do Chicken("Andy")
 
