@@ -12,12 +12,11 @@ roxygenise <- function(path, check = FALSE, clean = FALSE) {
     file.remove(rd)
   }
   
-  pkg <- process(pkg)
-  write(pkg)
+  process(pkg)
   
   if (check) {
     check_doc(pkg)
   }
   
-  invisible(rocblocks)
+  invisible(pkg)
 }
