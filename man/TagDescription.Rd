@@ -1,13 +1,12 @@
 \docType{class}
 \name{TagDescription}
 
-\alias{}
 \alias{TagDescription}
 
 \title{Override default description.}
 
 \usage{
-
+  @description Text goes here.
 }
 
 \description{

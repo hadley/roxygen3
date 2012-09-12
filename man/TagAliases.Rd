@@ -1,13 +1,12 @@
 \docType{class}
 \name{TagAliases}
 
-\alias{}
 \alias{TagAliases}
 
 \title{Add additional topic aliases.}
 
 \usage{
-
+  @aliases space separated aliases
 }
 
 \description{

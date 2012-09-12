@@ -1,13 +1,12 @@
 \docType{class}
 \name{TagDocType}
 
-\alias{}
 \alias{TagDocType}
 
 \title{Set object documentation type.}
 
 \usage{
-
+  @docType data @docType package @docType custom doctype
 }
 
 \description{

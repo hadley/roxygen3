@@ -1,13 +1,12 @@
 \docType{class}
 \name{TagNoRd}
 
-\alias{}
 \alias{TagNoRd}
 
 \title{Do not produce rd file for this object.}
 
 \usage{
-
+  @noRd
 }
 
 \description{

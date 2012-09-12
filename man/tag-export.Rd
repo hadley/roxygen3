@@ -1,7 +1,6 @@
 \docType{class}
 \name{TagExport}
 
-\alias{}
 \alias{TagExport}
 \alias{TagExportClass}
 \alias{TagExportMethods}
@@ -11,7 +10,15 @@
 \title{Namespace: tags for exporting objects}
 
 \usage{
+  @export @export function name
 
+  @exportClass class1 class2
+
+  @exportMethods generic1 generic2
+
+  @exportPattern pattern
+
+  @S3method generic class @S3method generic @S3method
 }
 
 \description{
@@ -23,8 +30,6 @@
 }
 
 \details{
-
-
   The convention in \pkg{roxygen3} is that exporting a
   generic automatically exports all associated methods.
   This happens automatically for S4 with the

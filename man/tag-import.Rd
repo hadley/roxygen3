@@ -1,7 +1,6 @@
 \docType{class}
 \name{TagImportFrom}
 
-\alias{}
 \alias{TagAutoImports}
 \alias{TagImport}
 \alias{TagImportClassesFrom}
@@ -11,7 +10,15 @@
 \title{Namespace: tags for importing functions.}
 
 \usage{
+  @importFrom package function1 function2
 
+  @autoImports
+
+  @import package1 package2 package3
+
+  @importClassesFrom package fun1 fun2
+
+  @importMethodsFrom package fun1 fun2
 }
 
 \description{
@@ -24,8 +31,6 @@
 }
 
 \details{
-
-
   If there is a conflict, use \code{tag_importFrom} to
   resolve it. You can do \code{@importFrom base function} -
   this is not normally allowed in the \file{NAMESPACE}, but

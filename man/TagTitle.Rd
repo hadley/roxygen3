@@ -1,13 +1,12 @@
 \docType{class}
 \name{TagTitle}
 
-\alias{}
 \alias{TagTitle}
 
 \title{Override default topic title.}
 
 \usage{
-
+  @title Topic title
 }
 
 \description{
