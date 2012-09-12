@@ -7,7 +7,8 @@
 \title{Block class.}
 
 \usage{
-  Block(tags, object, srcref)
+  Block(tags = list(), object = new("NullObject"),
+    srcref = new("NullSrcref"))
 }
 
 \description{

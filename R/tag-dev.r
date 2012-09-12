@@ -8,9 +8,9 @@ setMethod("procBlock", "TagDev", function(tag, block) {
     title@text <- str_c("[DEV] ", title@text)
   }
 
-  modify_tags(block,
-    title = title,
-    description = prefix(desc))
+  tag(block, "title") <- title
+  tag(block, "description") <- prefix(desc)
+  block
 })
 
 setMethod("getPrereqs", "TagDev", function(tag) {

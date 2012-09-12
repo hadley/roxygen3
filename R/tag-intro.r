@@ -38,12 +38,11 @@ setMethod("procBlock", "TagIntro", function(tag, block) {
   }
 
   # Every thing else is details and gets combined with existing
-  modify_tags(block,
-    intro = NULL,
-    title = title,
-    description = description,
-    details = suffix(paragraphs)
-  )
+  tag(block, "intro") <- NULL
+  tag(block, "title") <- title
+  tag(block, "description") <- description
+  tag(block, "details") <- suffix(paragraphs)
+  block
 })
 
 setMethod("getPrereqs", "TagIntro", function(tag) {

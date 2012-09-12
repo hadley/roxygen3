@@ -1,21 +1,27 @@
 #' Override the default topic name.
-#' 
-#' By default, the topic name is derived from the object following the 
+#'
+#' By default, the topic name is derived from the object following the
 #' roxygen comments. This tag is rarely needed - if you are using it often
-#' it's probably an indication that you need to extend roxygen3 for you 
+#' it's probably an indication that you need to extend roxygen3 for you
 #' object type.
 #'
 #' @tagUsage @@name name
 setClass("TagName", contains = "Tag")
 
 setMethod("procBlock", "TagName", function(tag, block) {
-  modify_tags(block,
-    aliases = suffix(tag@text))
+  tag(block, "aliases") <- suffix(tag@text)
+  block
 })
 
 setMethod("defaultTag", c("TagName", "Object"),
   function(tag, object) {
     new("TagName", text = object@name)
+  }
+)
+
+setMethod("defaultTag", c("TagName", "NullObject"),
+  function(tag, object) {
+    NULL
   }
 )
 
