@@ -4,6 +4,7 @@
 * convert modifyTag to S4
 * need tests for multiple tags in a single block
   * esp. @s3method
+* need to extend object from call to deal with a <- set[Ref]Class("a")
 
 # Default tags
 

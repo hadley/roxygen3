@@ -26,7 +26,7 @@ test_that("@docType data automatically adds sensible defaults", {
     #' @docType data
     a <- data.frame(a = 1:10)")
   
-  expect_equal(out$usage@text, "a")
+  expect_equal(format(out$usage), "a")
   expect_equal(out$keywords@text, "datasets")
   expect_match(out$format@text, "data\\.frame")
 })
@@ -36,15 +36,33 @@ test_that("@docType data automatically added to data objects", {
     #' Title.
     a <- data.frame(a = 1:10)")
   
-  expect_equal(out$docType, "data")
+  expect_equal(out$docType@text, "data")
 })
 
 # Reference classes ----------------------------------------------------------
 
-test_that("@docType data not automatically added to reference classes", {
-  out <- test_process("
+test_that("reference classes given docType class", {
+  out1 <- test_process("
     #' Title.
     a <- setRefClass('a')")
+  out2 <- test_process("
+    #' Title.
+    setRefClass('a')")
   
-  expect_equal(out$docType, NULL)  
+  expect_equal(out1$docType@text, "class")
+  expect_equal(out2$docType@text, "class")
+})
+
+# S4 classes ----------------------------------------------------------
+
+test_that("S4 classes given docType class", {
+  out1 <- test_process("
+    #' Title.
+    a <- setClass('a')")
+  out2 <- test_process("
+    #' Title.
+    setClass('a')")
+  
+  expect_equal(out1$docType@text, "class")
+  expect_equal(out2$docType@text, "class")
 })
