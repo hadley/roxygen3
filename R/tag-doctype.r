@@ -4,16 +4,11 @@
 #'   the Rd file if it is one of the standard R doctypes: data, package,
 #'   methods and class.
 #'
-#' @usage 
+#' @tagUsage 
 #'   @@docType data
 #'   @@docType package
 #'   @@docType custom doctype
 #'
-#' @Section Extension
-#' To automatically add new docTypes with their own defaults, implement
-#' a method of \code{\link{doctype}} that returns a string, and function
-#' \code{doctype_[doctype]} which works in the same way as a \code{one}
-#' parser supplied to \code{\link{roc_parsers}}.
 setClass("TagDocType", contains = "Tag")
 
 setMethod("defaultTag", c("TagDocType", "S4MethodObject"),
