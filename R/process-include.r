@@ -46,7 +46,7 @@ process_include <- function(bundle, path = rPath(bundle)) {
   if (is.null(collate)) return(bundle)
   
   tag <- new("TagCollate", files = collate)
-  block <- new("RoxyBlock", tags = list(tag))
+  block <- new("Block", tags = list(tag))
   
   bundle@blocks <- c(bundle@blocks, list(block))
   bundle

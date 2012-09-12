@@ -9,11 +9,11 @@
 setMethod("writeNamespace", "RoxyPackage", function(object) {
   in_dir(object@path, callNextMethod())
 })
-setMethod("writeNamespace", "RoxyBundle", function(object) {
+setMethod("writeNamespace", "Bundle", function(object) {
   ns <- build_namespace(object@blocks)
   write_namespace(ns)
 })
-setMethod("writeNamespace", "RoxyBlock", function(object) {
+setMethod("writeNamespace", "Block", function(object) {
   compact(lapply(object@tags, writeNamespace))
 })
 setMethod("writeNamespace", "Tag", function(object) NULL)

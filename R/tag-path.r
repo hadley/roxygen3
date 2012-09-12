@@ -4,7 +4,7 @@
 setClass("TagPath", contains = "Tag",
   list(path = "character"))
 
-setMethod("defaultTag", c("TagPath", "RoxyObject"), function(tag, object) {
+setMethod("defaultTag", c("TagPath", "Object"), function(tag, object) {
   if (isNull(object)) return()
   new("TagPath", path = location(object@srcref))
 })

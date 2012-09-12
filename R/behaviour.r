@@ -6,7 +6,7 @@
 #'
 #' @dev
 default_behaviour <- function() {
-  new("RoxyBehaviour", 
+  new("Behaviour", 
     tags = base_tags(),
     processors = local_apropos("^process[A-Z_]"),
     writers = local_apropos("^write[A-Z]")
@@ -14,7 +14,7 @@ default_behaviour <- function() {
 }
 
 manual_behaviour <- function(tags = character(), processors = character(), writers = character()) {
-  new("RoxyBehaviour", 
+  new("Behaviour", 
     tags = tags,
     processors = processors,
     writers = writers

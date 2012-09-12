@@ -1,6 +1,6 @@
 S3method(merge,rd_command)
 S3method(print,rd_command)
-export(RoxyBlock)
+export(Block)
 export(find_tags)
 export(format.alias_command)
 export(format.arguments_command)

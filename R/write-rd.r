@@ -13,11 +13,11 @@
 setMethod("writeRd", "RoxyPackage", function(object) {
   in_dir(object@path, callNextMethod())
 })
-setMethod("writeRd", "RoxyBundle", function(object) {
+setMethod("writeRd", "Bundle", function(object) {
   rd <- build_rd(object@blocks)
   Map(write_rd, rd, names(rd))
 })
-setMethod("writeRd", "RoxyBlock", function(object) {
+setMethod("writeRd", "Block", function(object) {
   compact(lapply(object@tags, writeRd))
 })
 setMethod("writeRd", "Tag", function(object) NULL)

@@ -1,4 +1,4 @@
-setClass("RoxyDir", contains = "RoxyBundle", representation(
+setClass("RoxyDir", contains = "Bundle", representation(
   path = "character")
 )
 
@@ -15,7 +15,7 @@ RoxyDir <- function(path, behaviour = default_behaviour()) {
 #' RoxyPackage class.
 #'
 #' The package class captures all the information about the package:
-#' its name, path, and all the \code{\link{RoxyBlock}}s that it contains.
+#' its name, path, and all the \code{\link{Block}}s that it contains.
 setClass("RoxyPackage", contains = "RoxyDir", representation(
   name = "character"))
 
@@ -45,6 +45,6 @@ setMethod("rPath", "RoxyPackage", function(bundle) {
 setMethod("rPath", "RoxyDir", function(bundle) { 
   bundle@path
 })
-setMethod("rPath", "RoxyBundle", function(bundle) { 
+setMethod("rPath", "Bundle", function(bundle) { 
   NULL
 })

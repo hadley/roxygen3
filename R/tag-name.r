@@ -13,7 +13,7 @@ setMethod("procBlock", "TagName", function(tag, block) {
     aliases = suffix(tag@text))
 })
 
-setMethod("defaultTag", c("TagName", "RoxyObject"),
+setMethod("defaultTag", c("TagName", "Object"),
   function(tag, object) {
     new("TagName", text = object@name)
   }

@@ -1,4 +1,4 @@
-setMethod("process", "RoxyBundle", function(input) {
+setMethod("process", "Bundle", function(input) {
   # Process each block individually for local tags
   input@blocks <- lapply(input@blocks, process)
   
@@ -17,7 +17,7 @@ setMethod("process", "RoxyBundle", function(input) {
   invisible(input)
 })
 
-setMethod("process", "RoxyBlock", function(input) {
+setMethod("process", "Block", function(input) {
   
   for (i in seq_along(input@tags)) {
     input@tags[[i]] <- procTag(input@tags[[i]])
@@ -32,7 +32,7 @@ setMethod("process", "RoxyBlock", function(input) {
 
 setGeneric("procBlock", function(tag, block) {
   standardGeneric("procBlock")
-}, valueClass = "RoxyBlock")
+}, valueClass = "Block")
 
 setGeneric("procTag", function(tag) {
   standardGeneric("procTag")

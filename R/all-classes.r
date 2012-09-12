@@ -1,44 +1,56 @@
 setOldClass("srcref")
-setClass("SrcrefNull", contains = "srcref")
+setClass("NullSrcref", contains = "srcref")
 
-setClass("Tag", 
-  contains = "VIRTUAL",
-  prototype = list(srcref = new("SrcrefNull")),
+setClass("Tag", contains = "VIRTUAL",
   representation(
     text = "character",
-    srcref = "srcref"))
+    srcref = "srcref"
+  ),
+  prototype(
+    srcref = new("NullSrcref")
+  )
+)
 
-setClass("RoxyObject", representation(
-  name = "character",
-  value = "ANY",
-  srcref = "srcref",
-  docType = "character"))
-setClass("ObjectNull", contains = "RoxyObject")
+setClass("Object", 
+  representation(
+    name = "character",
+    value = "ANY",
+    srcref = "srcref",
+    docType = "character"
+  )
+)
+setClass("NullObject", contains = "Object")
 
 setClass("Usage")
 setClass("NullUsage", contains = "Usage")
 
-setClass("RoxyBlock", 
+setClass("Block", 
   representation(
     tags = "list",
     srcref = "srcref",
-    object = "RoxyObject"), 
+    object = "Object"
+  ), 
   prototype(
     tags = list(),
-    srcref = new("SrcrefNull"),
-    object = new("ObjectNull")
-  )  
+    srcref = new("NullSrcref"),
+    object = new("NullObject")
+  )
 )
 
 # A behaviour object describes what tags, processors and writers should be
 # applied to a block
-setClass("RoxyBehaviour", representation(
-  tags = "character",
-  processors = "character",
-  writers = "character"
-))
+setClass("Behaviour", 
+  representation(
+    tags = "character",
+    processors = "character",
+    writers = "character"
+  )
+)
 
 # A bundle represents a list of blocks and how their behaviour
-setClass("RoxyBundle", representation(
-  blocks = "list",
-  behaviour = "RoxyBehaviour"))
+setClass("Bundle", 
+  representation(
+    blocks = "list",
+    behaviour = "Behaviour"
+  )
+)

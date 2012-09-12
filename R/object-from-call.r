@@ -18,7 +18,7 @@
 #' @export
 #' @dev
 object_from_call <- function(call, env, srcref) {
-  if (is.null(call)) return(new("ObjectNull", srcref = srcref))
+  if (is.null(call)) return(new("NullObject", srcref = srcref))
   
   # Find function, then use match.call to construct complete call
   f <- eval(call[[1]], env)
@@ -36,17 +36,17 @@ setGeneric("objectFromCall", function(call, env, srcref) {
   standardGeneric("objectFromCall")
 })
 setMethod("objectFromCall", "ANY", function(call, env, srcref) {
-  new("ObjectNull", srcref = srcref)
+  new("NullObject", srcref = srcref)
 })
 
 object_from_assignment <- function(call, env, srcref) {
   name <- as.character(call[[2]])
   
   # If it's a compound assignment like x[[2]] <- ignore it
-  if (length(name) > 1)  return(new("ObjectNull"))
+  if (length(name) > 1)  return(new("NullObject"))
   
   # If it doesn't exist (any more), don't document it.
-  if (!exists(name, env)) return(new("ObjectNull"))
+  if (!exists(name, env)) return(new("NullObject"))
   
   val <- get(name, env)
   val <- add_s3_metadata(val, name, env)

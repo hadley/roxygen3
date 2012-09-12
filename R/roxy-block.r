@@ -1,11 +1,11 @@
-#' RoxyBlock class.
+#' Block class.
 #'
 #' The block class encapsulates the data about a single roxygen comment 
 #' block, along with its location in the src code, and the object associated
 #' with the block.
 #'
 #' @export
-RoxyBlock <- function(tags, object, srcref) {
+Block <- function(tags, object, srcref) {
   
   # Automatically add default tags based on the object.
   super <- names(getClass(object@class)@contains)
@@ -20,12 +20,12 @@ RoxyBlock <- function(tags, object, srcref) {
   names(defaults) <- vapply(defaults, tag_name, character(1))
   tags <- c(tags, defaults[setdiff(names(defaults), names(tags))])
 
-  new("RoxyBlock", tags = tags, object = object, srcref = srcref)
+  new("Block", tags = tags, object = object, srcref = srcref)
 }
 
 
-setMethod("show", "RoxyBlock", function(object) {
-  cat("RoxyBlock: ", object@object@name, "@", 
+setMethod("show", "Block", function(object) {
+  cat("Block: ", object@object@name, "@", 
     location(object@srcref), "\n", sep = "")
   lapply(object@tags, show)
 })

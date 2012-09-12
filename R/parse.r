@@ -57,7 +57,7 @@ parse_text <- memoise(function(lines, env, src, tags) {
     
     if (is.null(tags) && is.null(obj)) return()
     
-    RoxyBlock(tags, obj, ref)
+    Block(tags, obj, ref)
   }
   compact(lapply(seq_along(parsed), extract))
 })
@@ -141,5 +141,5 @@ build_tag <- function(name, text) {
     return(NULL)
   }
   
-  new(class_name, text = text, srcref = new("SrcrefNull"))
+  new(class_name, text = text, srcref = new("NullSrcref"))
 }

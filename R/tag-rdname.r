@@ -1,5 +1,5 @@
 setClass("TagRdname", contains = "Tag")
-setMethod("defaultTag", c("TagRdname", "RoxyObject"),
+setMethod("defaultTag", c("TagRdname", "Object"),
   function(tag, object) {
     if (length(object@name) == 0) return()
     new("TagRdname", text = nice_name(object@name))

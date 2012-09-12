@@ -1,11 +1,11 @@
 setMethod("writeDescription", "RoxyPackage", function(object) {
   in_dir(object@path, callNextMethod())
 })
-setMethod("writeDescription", "RoxyBundle", function(object) {
+setMethod("writeDescription", "Bundle", function(object) {
   desc <- build_description(object@blocks)
   write_description(desc)
 })
-setMethod("writeDescription", "RoxyBlock", function(object) {
+setMethod("writeDescription", "Block", function(object) {
   compact(lapply(object@tags, writeDescription))
 })
 setMethod("writeDescription", "Tag", function(object) NULL)

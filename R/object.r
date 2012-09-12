@@ -1,15 +1,15 @@
-setClass("PackageObject", contains = "RoxyObject")
-setClass("DataObject", contains = "RoxyObject")
-setClass("FunctionObject", contains = "RoxyObject")
-setClass("S4ClassObject", contains = "RoxyObject")
-setClass("S4MethodObject", contains = "RoxyObject")
-setClass("S4GenericObject", contains = "RoxyObject")
+setClass("PackageObject", contains = "Object")
+setClass("DataObject", contains = "Object")
+setClass("FunctionObject", contains = "Object")
+setClass("S4ClassObject", contains = "Object")
+setClass("S4MethodObject", contains = "Object")
+setClass("S4GenericObject", contains = "Object")
 setClass("S3MethodObject", contains = "FunctionObject")
 setClass("S3GenericObject", contains = "FunctionObject")
 setClass("R5ClassObject", contains = "S4ClassObject")
 
-setMethod("show", "RoxyObject", function(object) {
-  message("RoxyObject: ", object@name)
+setMethod("show", "Object", function(object) {
+  message("Object: ", object@name)
   cat(location(object@srcref), sep = "")
   if (!isNull(object@srcref)) {
     print(object@srcref)
@@ -18,5 +18,5 @@ setMethod("show", "RoxyObject", function(object) {
   }
 })
 
-setClass("ObjectNull", contains = "RoxyObject")
-setMethod("isNull", "ObjectNull", function(x) TRUE)
+setClass("NullObject", contains = "Object")
+setMethod("isNull", "NullObject", function(x) TRUE)

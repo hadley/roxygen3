@@ -8,7 +8,7 @@
 \description{
   The package class captures all the information about the
   package: its name, path, and all the
-  \code{\link{RoxyBlock}}s that it contains.
+  \code{\link{Block}}s that it contains.
 }
 
 \details{

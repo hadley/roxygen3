@@ -1,11 +1,11 @@
-\name{RoxyBlock}
+\name{Block}
 
-\alias{RoxyBlock}
+\alias{Block}
 
-\title{RoxyBlock class.}
+\title{Block class.}
 
 \usage{
-  RoxyBlock(tags, object, srcref)
+  Block(tags, object, srcref)
 }
 
 \description{

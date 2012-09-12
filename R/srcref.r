@@ -1,6 +1,3 @@
-setClass("SrcrefNull", contains = "srcref")
-setMethod("isNull", "SrcrefNull", function(x) TRUE)
-
 
 location <- function(x) {
   if (isNull(x)) return("Unknown")

@@ -40,7 +40,7 @@ Naming conventions:
 
 ## Class overview
 
-* The `RoxyBlock` encapsulates information about all expressions in a package
+* The `Block` encapsulates information about all expressions in a package
   and the the documentation associated with them. Note that all top-level
   calls get roxygen block even if they don't have documentation. A block
   consists of a list of `@tags`, an `@object` that represents the object being
@@ -54,7 +54,7 @@ Naming conventions:
     methods. Tags are also the unit at which output functions operator. See
     the Tags section for more details.
 
-  * A `RoxyObject` represents the object that a block documents. It has
+  * A `Object` represents the object that a block documents. It has
     subclasses `NullObject` (for blocks that don't document an object),
     `FunctionObject`, `DataObject`, `PackageObject`, `S3GenericObject`,
     `S3MethodObject`, `S4GenericObject`, `S4MethodObject`, `S4ClassObject` and
@@ -64,20 +64,20 @@ Naming conventions:
   * A `srcref` is the S3 `srcref` object which stores a file and location of
     source code
 
-* A `RoxyBundle` stores a list of blocks. There are currently two subclasses:
+* A `Bundle` stores a list of blocks. There are currently two subclasses:
   `RoxyDir` and `RoxyPackage` for representing all the blocks in a directory
   or package respectively. The main different between a package and directory
   is that a package has a name, and getting to the R code from the base paths
   are slightly different.
 
-* A `RoxyBehaviour` stores a list of `Tag`s, a list of processors functions
+* A `Behaviour` stores a list of `Tag`s, a list of processors functions
   and a list of writer functions. These are used to control the output, and if
   you extend roxygen with new processors or writers, you will need to provide
   some way for users to easily create behaviours that use them.
 
   * Processors and writers are just functions that should accept a
-    `RoxyBundle` as the first argument. Processors should return a
-    `RoxyBundle` and writers should be run only for their side effects:
+    `Bundle` as the first argument. Processors should return a
+    `Bundle` and writers should be run only for their side effects:
     creating files on disk. Writers will generally be S4 generics that break
     apart the bundle into blocks and tags - see the code for `writeRd`,
     `writeNamespace` and `writeDescription` for examples.
