@@ -19,7 +19,9 @@
 }
 
 \description{
-  This function is useful only for developers
+  This function is aimed primarily at developers extending
+  this package. You shouldn't need to use it for everyday
+  operation of the package.
 
   This uses the \code{@rdname} tag to determine which file
   the output from each rocblock is sent to.

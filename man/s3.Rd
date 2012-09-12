@@ -16,7 +16,9 @@
 }
 
 \description{
-  This function is useful only for developers
+  This function is aimed primarily at developers extending
+  this package. You shouldn't need to use it for everyday
+  operation of the package.
 
   \code{is_s3_generic} compares name to
   \code{.knownS3Generics} and \code{.S3PrimitiveGenerics},

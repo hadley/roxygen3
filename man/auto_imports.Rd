@@ -26,7 +26,9 @@
 }
 
 \description{
-  This function is useful only for developers
+  This function is aimed primarily at developers extending
+  this package. You shouldn't need to use it for everyday
+  operation of the package.
 
   Scans a function and determines what functions it uses
   from other packages.
