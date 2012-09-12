@@ -17,25 +17,3 @@
 * Move out of RoxyBlock and into parse.r
 * Really need to be given whole block, and run in the same order as other tags.
 * Aliases needs to add @name, not override, rdname should use @name
-
-# S4 usage questions
-
-Do you try to ensure that class names are unique?
-
-1. setClass("Animal")
-2. setClass("MyPackageAnimal")
-
-How do you name subclasses?
-
-setClass("Animal")
-
-1. setClass("AnimalChicken", contains = "Animal")
-2. setClass("ChickenAnimal", contains = "Animal")
-3. setClass("Chicken", contains = "Animal")
-
-How do you create a new class?
-
-1. new("Chicken", name = "Andy")
-
-2. Or do you create a constructor function and do Chicken("Andy")
-
