@@ -9,7 +9,7 @@ default_behaviour <- function() {
   new("RoxyBehaviour", 
     tags = base_tags(),
     processors = local_apropos("^process[A-Z_]"),
-    writers = local_apropos("^write[A-Z_]")
+    writers = local_apropos("^write[A-Z]")
   )
 }
 

@@ -1,13 +1,23 @@
-setOldClass("srcref")
+setClass("RoxyDir", contains = "RoxyBundle", representation(
+  path = "character")
+)
+
+RoxyDir <- function(path, behaviour = default_behaviour()) {
+  blocks <- in_dir(path, parse_directory("."))
+
+  new("RoxyDir",
+    path = path,
+    blocks = blocks,
+    behaviour = behaviour)
+}
+
 
 #' RoxyPackage class.
 #'
 #' The package class captures all the information about the package:
 #' its name, path, and all the \code{\link{RoxyBlock}}s that it contains.
-setClass("RoxyPackage", contains = "RoxyBundle", representation(
-  name = "character",
-  path = "character"
-))
+setClass("RoxyPackage", contains = "RoxyDir", representation(
+  name = "character"))
 
 #' @autoImports
 RoxyPackage <- function(path, behaviour = default_behaviour()) {
@@ -24,3 +34,14 @@ RoxyPackage <- function(path, behaviour = default_behaviour()) {
     blocks = blocks,
     behaviour = behaviour)
 }
+
+
+setGeneric("rPath", function(bundle) {
+  standardGeneric("rPath")
+})
+setMethod("rPath", "RoxyPackage", function(bundle) { 
+  file.path(bundle@path, "R")
+})
+setMethod("rPath", "RoxyDir", function(bundle) { 
+  bundle@path
+})

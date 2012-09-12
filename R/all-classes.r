@@ -13,14 +13,22 @@ setClass("RoxyObject", representation(
   value = "ANY",
   srcref = "srcref",
   docType = "character"))
+setClass("ObjectNull", contains = "RoxyObject")
 
 setClass("Usage")
 setClass("NullUsage", contains = "Usage")
 
-setClass("RoxyBlock", representation(
-  tags = "list",
-  srcref = "srcref",
-  object = "RoxyObject"))
+setClass("RoxyBlock", 
+  representation(
+    tags = "list",
+    srcref = "srcref",
+    object = "RoxyObject"), 
+  prototype(
+    tags = list(),
+    srcref = new("SrcrefNull"),
+    object = new("ObjectNull")
+  )  
+)
 
 # A behaviour object describes what tags, processors and writers should be
 # applied to a block

@@ -63,7 +63,7 @@ str_truncate <- function(x, width = getOption("width")) {
 call_fun <- function(f, ...) f(...)
 
 local_apropos <- function(x) {
-  grep(x, ls(topenv(environment())), ignore.case = TRUE, value = TRUE)
+  grep(x, ls(topenv(environment())), ignore.case = FALSE, value = TRUE)
 }
 
 is_empty <- function(tag) identical(tag@text, "")

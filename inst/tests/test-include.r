@@ -1,14 +1,13 @@
 context("Include")
 
-roxy_dir <- function(path, roccers = base_roccers()) {
-  rocblocks <- parse_directory(path)
-  rocblocks <- roxy_process(rocblocks, roccers)
-  out <- roxy_out(rocblocks, roccers)
-  roxy_postproc(out)
+roxy_dir <- function(path, behaviour = no_output()) {
+  bundle <- RoxyDir(path, behaviour)
+  blocks <- process(bundle)@blocks
+  blocks[[length(blocks)]]@tags
 }
 
 test_that("included files come earlier", {
-  out <- in_dir("include-clothes", roxy_dir("."))
+  out <- roxy_dir("include-clothes")
   collate <- out$DESCRIPTION$Collate
 
   before <- function(a, b) {

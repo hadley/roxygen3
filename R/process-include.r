@@ -9,43 +9,45 @@
 # Need to be able to run this separately from the others, preferrably
 # without parsing the code - because correct collate is needed before you
 # can source the code.
-roccer_include <- function(package) {
-  
-  rocblocks <- package@blocks
-  with_collate("C", {
-    dirs <- unique(vapply(rocblocks, function(x) dirname(x$path),
-      character(1)))
-    paths <- dir(dirs, pattern = "\\.[RrSsQs]$", full.names = TRUE)
+process_include <- function(bundle, path = rPath(bundle)) {
+  old <- setwd(path)
+  on.exit(setwd(old))
 
-    includes <- list()
-    for(i in seq_along(rocblocks)) {
-      roc <- rocblocks[[i]]$roc
-      path <- rocblocks[[i]]$path
+  # Build list of all R files
+  r_paths <- dir(pattern = "\\.[RrSsQs]$")
+
+  # Build named list of files to be included
+  includes <- list()
+  blocks <- bundle@blocks
+  for(i in seq_along(blocks)) {
+    tags <- blocks[[i]]@tags
+    if (is.null(tags$include)) next
     
-      if (is.null(roc$include)) next
+    path <- getSrcFilename(blocks[[i]]@srcref)
+    include <- unlist(str_split(tags$include@text, " "))
     
-      include <- file.path(dirname(path), str_split(roc$include, " ")[[1]])
-      
-      exists <- file.exists(include)
-      if (any(!exists)) {
-        message("Can't find @include file: ", 
-          str_c(include[!exists], collapse = ", "))
-        include <- include[exists]
-      }
-      
-      includes[[path]] <- c(includes[[path]], include)
+    exists <- file.exists(include)
+    if (any(!exists)) {
+      message("Can't find @include file: ", 
+        str_c(include[!exists], collapse = ", "))
+      include <- include[exists]
     }
-  
-    collate <- collate_from_includes(includes, paths)
+    
+    includes[[path]] <- c(includes[[path]], include)
+  }
+
+  with_collate("C", {
+    r_paths <- sort(r_paths)
+    collate <- collate_from_includes(includes, r_paths)
   })
-  collate <- str_replace(collate, "R/", "")
   
-  tag <- new("CollateTag", files = collate)
-  ref <- srcfilecopy("collate_block")
-  block <- new("Block", tags = list(tag), srcref = ref, object = NULL)
+  if (is.null(collate)) return(bundle)
   
-  package@blocks <- c(package@blocks, list(block))
-  package
+  tag <- new("TagCollate", files = collate)
+  block <- new("RoxyBlock", tags = list(tag))
+  
+  bundle@blocks <- c(bundle@blocks, list(block))
+  bundle
 }
 
 collate_from_includes <- function(includes, paths) {

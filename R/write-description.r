@@ -13,7 +13,9 @@ setMethod("writeDescription", "Tag", function(object) NULL)
 build_description <- function(blocks) {
   output <- lapply(blocks, writeDescription)
   out <- unlist(output, recursive = FALSE)
-  out$Collate <- str_c(out$Collate, collapse = "\n")
+  if (!is.null(out$Collate)) {
+    out$Collate <- str_c(out$Collate, collapse = "\n")    
+  }
   
   out
 }
