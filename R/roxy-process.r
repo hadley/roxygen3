@@ -5,7 +5,7 @@ setMethod("process", "RoxyBundle", function(input) {
   # Run global processors
   for (process in input@behaviour@processors) {
     f <- match.fun(process)
-    input <- process(input)
+    input <- f(input)
   }
 
   # Write output

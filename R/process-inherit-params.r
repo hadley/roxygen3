@@ -7,35 +7,42 @@
 #'
 #' @usage @@inheritParams source_function
 
-inherit_params <- function(rocblocks) {
+process_inherit_params <- function(package) {
   
-  for(i in seq_along(rocblocks)) {
-    obj <- rocblocks[[i]]$obj
-    roc <- rocblocks[[i]]$roc
+  blocks <- package@blocks
+  for(i in seq_along(blocks)) {
+    obj <- blocks[[i]]@object@value
+    tags <- blocks[[i]]@tags
     
-    if (!is.function(obj$value)) next
+    if (!is.function(obj)) next
     
-    inherit_from <- roc$inheritParams
+    inherit_from <- tags$inheritParams
     if (is.null(inherit_from)) next
     
-    inherited <- unlist(lapply(inherit_from, find_params, rocblocks))
+    inherited <- unlist(lapply(inherit_from@text, find_params, blocks))
     if (is.null(inherited)) {
       message("@inheritParams: can't find topic ", inherit_from)
       next
     }
     
-    params <- names(formals(obj$value))
-    missing_params <- setdiff(params, names(roc$param))
-    matching_params <- intersect(missing_params, names(inherited))
-
-    rocblocks[[i]]$roc$param <- c(roc$param, inherited[matching_params])
+    fun_params <- names(formals(obj))
+    cur_params <- tags$param
+    if (is.null(cur_params)) {
+      cur_params <- new("TagParam", arguments = character())
+    }
+    
+    missing <- setdiff(fun_params, names(cur_params@arguments))
+    matching <- intersect(missing, names(inherited))
+    cur_params@arguments <- c(cur_params@arguments, inherited[matching])
+    
+    blocks[[i]]@tags$param <- cur_params
   }
-  rocblocks
+  
+  package@blocks <- blocks
+  package
 }
 
-
-
-find_params <- function(name, rocblocks) {
+find_params <- function(name, blocks) {
   if (str_detect(name, fixed("::"))) {
     # Reference to another package
     pieces <- str_split(name, fixed("::"))[[1]]
@@ -45,11 +52,11 @@ find_params <- function(name, rocblocks) {
     rd_arguments(rd)
   } else {
     # Reference within this package
-    matching_alias <- function(x) name %in% x$roc$aliases
-    matches <- Filter(matching_alias, rocblocks)
+    matching_alias <- function(x) name %in% x@tags$aliases@text
+    matches <- Filter(matching_alias, blocks)
     
-    if (length(matches) != 1) return(null)
-    matches[[1]]$roc$param
+    if (length(matches) != 1) return(NULL)
+    matches[[1]]@tags$param@arguments
   }
 }
 

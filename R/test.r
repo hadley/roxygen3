@@ -44,7 +44,7 @@ parse_block <- function(text, behaviour = no_output()) {
 no_output <- function() {
   new("RoxyBehaviour", 
     tags = base_tags(),
-    processors = local_apropos("^process[A-Z]"),
+    processors = local_apropos("^process[A-Z_]"),
     writers = character()
   )
 }

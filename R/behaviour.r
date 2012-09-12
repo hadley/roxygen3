@@ -8,16 +8,8 @@
 default_behaviour <- function() {
   new("RoxyBehaviour", 
     tags = base_tags(),
-    processors = local_apropos("^process[A-Z]"),
-    writers = local_apropos("^write[A-Z]")
-  )
-}
-
-no_output <- function() {
-  new("RoxyBehaviour", 
-    tags = base_tags(),
-    processors = local_apropos("^process[A-Z]"),
-    writers = character()
+    processors = local_apropos("^process[A-Z_]"),
+    writers = local_apropos("^write[A-Z_]")
   )
 }
 

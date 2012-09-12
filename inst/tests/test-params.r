@@ -21,10 +21,10 @@ test_that("multiple @inheritParam tags gathers all params", {
     #' @param y Y
     b <- function(y) {}
 
-    #' C
+    #' D
     #' @inheritParams a
     #' @inheritParams b
-    c <- function(x, y) {}")
+    d <- function(x, y) {}")
 
   expect_equal(length(out$param@arguments), 2)
   
