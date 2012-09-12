@@ -4,7 +4,7 @@
 #' with \code{\link{help}}. The topic name is always included in the list of
 #' aliases.
 #'
-#' @usage @@aliases space separated aliases
+#' @tagUsage @@aliases space separated aliases
 
 setClass("TagAliases", contains = "Tag")
 

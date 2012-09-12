@@ -4,7 +4,7 @@
 #' The collation order is only modified if it is different from alphabetical
 #' order (in the C locale). That is R's default ordering.
 #' 
-#' @usage @@include file-1.r file-2.r
+#' @tagUsage @@include file-1.r file-2.r
 
 # Need to be able to run this separately from the others, preferrably
 # without parsing the code - because correct collate is needed before you

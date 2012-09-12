@@ -5,7 +5,7 @@
 #' function. The source can be a function in the current package,
 #' \code{function}, or another package \code{package::function}.
 #'
-#' @usage @@inheritParams source_function
+#' @tagUsage @@inheritParams source_function
 
 process_inherit_params <- function(package) {
   

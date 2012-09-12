@@ -13,7 +13,7 @@
 #' You must have the packages declared in \code{DESCRIPTION} Imports.
 #' 
 #' 
-#' @usage @@importFrom package function1 function2
+#' @tagUsage @@importFrom package function1 function2
 #' @rdname tag-import
 #' @autoImports
 setClass("TagImportFrom", contains = "Tag", representation(
@@ -39,7 +39,7 @@ setMethod("writeNamespace", "TagImportFrom", function(object) {
 })
 
 #' @rdname tag-import
-#' @usage @@autoImports
+#' @tagUsage @@autoImports
 #' @autoImports
 setClass("TagAutoImports", contains = "Tag")
 setMethod("procBlock", "TagAutoImports", function(tag, block) {
@@ -64,7 +64,7 @@ setMethod("getPrereqs", "TagAutoImports", function(tag) {
 })
 
 #' @rdname tag-import
-#' @usage @@import package1 package2 package3
+#' @tagUsage @@import package1 package2 package3
 setClass("TagImport", contains = "Tag")
 setMethod("procTag", "TagImport", function(tag) {
   tag@text <- str_split(tag@text, " ")[[1]]
@@ -75,7 +75,7 @@ setMethod("writeNamespace", "TagImport", function(object) {
 })
 
 #' @rdname tag-import
-#' @usage @@importClassesFrom package fun1 fun2
+#' @tagUsage @@importClassesFrom package fun1 fun2
 setClass("TagImportClassesFrom", contains = "Tag")
 setMethod("procTag", "TagImportClassesFrom", function(tag) {
   tag@text <- str_split(tag@text, " ")[[1]]
@@ -86,7 +86,7 @@ setMethod("writeNamespace", "TagImportClassesFrom", function(object) {
 })
 
 #' @rdname tag-import
-#' @usage @@importMethodsFrom package fun1 fun2
+#' @tagUsage @@importMethodsFrom package fun1 fun2
 setClass("TagImportMethodsFrom", contains = "Tag")
 setMethod("procTag", "TagImportMethodsFrom", function(tag) {
   tag@text <- str_split(tag@text, " ")[[1]]

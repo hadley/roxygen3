@@ -1,5 +1,5 @@
 
-#' @usage @@exportClass class1 class2
+#' @tagUsage @@exportClass class1 class2
 #' @rdname tag-export
 setClass("TagExportClass", contains = "Tag")
 setMethod("procTag", "TagExportClass", function(tag) {
@@ -9,7 +9,7 @@ setMethod("writeNamespace", "TagExportClass", function(object) {
   ns_each("exportClass", object@text)
 })
 
-#' @usage @@exportMethods generic1 generic2
+#' @tagUsage @@exportMethods generic1 generic2
 #' @rdname tag-export
 setClass("TagExportMethods", contains = "Tag")
 setMethod("procTag", "TagExportMethods", function(tag) {
@@ -19,7 +19,7 @@ setMethod("writeNamespace", "TagExportMethods", function(object) {
   ns_each("exportMethods", object@text)
 })
 
-#' @usage @@exportPattern pattern
+#' @tagUsage @@exportPattern pattern
 #' @rdname tag-export
 setClass("TagExportPattern", contains = "Tag")
 setMethod("procTag", "TagExportPattern", function(tag) {
