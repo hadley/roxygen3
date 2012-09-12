@@ -6,7 +6,6 @@
   objects - @objValue a, @objValue getClass("a") ?
 * convert rd object to S4 for consistency
 * implement format methods for tags to make it easier to get their contents
-* refactor bundles code
 * DOCUMENTATION!
 * implement useDynLib with test cases
 * is_s3_generic should do better if you do c <- function() 1

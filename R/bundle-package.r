@@ -1,12 +1,16 @@
-#' PackageBundle class.
+#' A bundle of files in a package.
 #'
 #' The package class captures all the information about the package:
 #' its name, path, and all the \code{\link{Block}}s that it contains.
-
+#'
 #' @autoImports
+#' @inheritParams DirectoryBundle
+#' @param path path of package root directory
+#' @export
+#' @dev
 PackageBundle <- function(path, behaviour = default_behaviour()) {
   pkg <- as.package(path)
-  
+
   load_all(pkg)
   blocks <- in_dir(pkg$path, {
     parse_directory("R", ns_env(pkg), tags = behaviour@tags)
@@ -19,16 +23,15 @@ PackageBundle <- function(path, behaviour = default_behaviour()) {
     behaviour = behaviour)
 }
 
-
 setGeneric("rPath", function(bundle) {
   standardGeneric("rPath")
 })
-setMethod("rPath", "PackageBundle", function(bundle) { 
+setMethod("rPath", "PackageBundle", function(bundle) {
   file.path(bundle@path, "R")
 })
-setMethod("rPath", "DirectoryBundle", function(bundle) { 
+setMethod("rPath", "DirectoryBundle", function(bundle) {
   bundle@path
 })
-setMethod("rPath", "Bundle", function(bundle) { 
+setMethod("rPath", "Bundle", function(bundle) {
   NULL
 })

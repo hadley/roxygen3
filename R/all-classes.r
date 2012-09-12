@@ -1,7 +1,9 @@
 setOldClass("srcref")
+#' @export
 setClass("NullSrcref", contains = "srcref")
 
 #' @rdname Tag
+#' @export
 setClass("Tag", contains = "VIRTUAL",
   representation(
     text = "character",
@@ -13,6 +15,7 @@ setClass("Tag", contains = "VIRTUAL",
 )
 
 #' @rdname Object
+#' @export
 setClass("Object",
   representation(
     name = "character",
@@ -21,13 +24,17 @@ setClass("Object",
     docType = "character"
   )
 )
+#' @export
 setClass("NullObject", contains = "Object")
 
 #' @rdname Usage
+#' @export
 setClass("Usage")
+#' @export
 setClass("NullUsage", contains = "Usage")
 
 #' @rdname Block
+#' @export
 setClass("Block",
   representation(
     tags = "list",
@@ -41,9 +48,8 @@ setClass("Block",
   )
 )
 
-# A behaviour object describes what tags, processors and writers should be
-# applied to a block
 #' @rdname Behaviour
+#' @export
 setClass("Behaviour",
   representation(
     tags = "character",
@@ -53,6 +59,7 @@ setClass("Behaviour",
 )
 
 #' @rdname Bundle
+#' @export
 setClass("Bundle",
   representation(
     blocks = "list",
@@ -61,6 +68,7 @@ setClass("Bundle",
 )
 
 #' @rdname DirectoryBundle
+#' @export
 setClass("DirectoryBundle", contains = "Bundle",
   representation(
     path = "character"
@@ -68,6 +76,7 @@ setClass("DirectoryBundle", contains = "Bundle",
 )
 
 #' @rdname PackageBundle
+#' @export
 setClass("PackageBundle", contains = "DirectoryBundle",
   representation(
     name = "character"
