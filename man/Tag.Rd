@@ -14,10 +14,6 @@
   The tag class is the base class for all roxygen3 tags.
 }
 
-\details{
-
-}
-
 \section{Parsing order}{
   The functions \code{procTag} and \code{procBlock} are
   called in that order, so if both are supplied,

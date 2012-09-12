@@ -10,10 +10,6 @@
   or other files.
 }
 
-\details{
-
-}
-
 \section{Tag Usage}{
   \code{ #' @noRd }
 }

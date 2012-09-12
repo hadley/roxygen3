@@ -37,8 +37,7 @@ setMethod("procBlock", "TagIntro", function(tag, block) {
     description <- title
   }
 
-  # Every thing else is details and gets combined with existing 
-  
+  # Every thing else is details and gets combined with existing
   modify_tags(block,
     intro = NULL,
     title = title,

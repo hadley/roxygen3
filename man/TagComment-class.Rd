@@ -9,10 +9,6 @@
   Add comments to the Rd file.
 }
 
-\details{
-
-}
-
 \section{Tag Usage}{
   \code{ #' @comment This is a comment that will not be
   user visible. }

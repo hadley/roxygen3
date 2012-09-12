@@ -1,12 +1,12 @@
 #' Block class.
 #'
-#' The block class encapsulates the data about a single roxygen comment 
+#' The block class encapsulates the data about a single roxygen comment
 #' block, along with its location in the src code, and the object associated
 #' with the block.
 #'
 #' @export
 Block <- function(tags, object, srcref) {
-  
+
   # Automatically add default tags based on the object.
   super <- names(getClass(object@class)@contains)
   # Find possible methods
@@ -25,7 +25,7 @@ Block <- function(tags, object, srcref) {
 
 
 setMethod("show", "Block", function(object) {
-  cat("Block: ", object@object@name, "@", 
+  cat("Block: ", object@object@name, "@",
     location(object@srcref), "\n", sep = "")
   lapply(object@tags, show)
 })
@@ -38,11 +38,11 @@ modify_tags <- function(block, ...) {
     change <- changes[[tag_name]]
     if (is.null(change)) {
       block@tags[[tag_name]] <- NULL
-    } else if (isS4(change)) {      
+    } else if (isS4(change)) {
       block@tags[[tag_name]] <- change
     } else if (is.character(change)) {
-      # stopifnot(length(change) == 1)
-      block@tags[[tag_name]] <- modify_tag(block, tag_name, 
+      if (length(change) == 0) next
+      block@tags[[tag_name]] <- modify_tag(block, tag_name,
         list(text = change))
     } else if (is.list(change)) {
       block@tags[[tag_name]] <- modify_tag(block, tag_name, change)
@@ -56,7 +56,7 @@ modify_tag <- function(block, tag_name, changes) {
     tag <- build_tag(tag_name, "")
     if (is.null(tag)) stop("No ", tag_name)
   }
-  
+
   for(slot_name in names(changes)) {
     old <- slot(tag, slot_name)
     slot(tag, slot_name) <- action(old, changes[[slot_name]])
@@ -68,7 +68,8 @@ prefix <- function(x) structure(x, class = "prefix")
 action <- function(old, new) {
   if (length(old) == 0) return(new)
   if (length(old) == 1 && old == "") return(unclass(new))
-  
+  if (length(new) == 0) return(old)
+
   switch(class(new),
     prefix =    append(old, new, after = 0),
     suffix =    append(old, new),

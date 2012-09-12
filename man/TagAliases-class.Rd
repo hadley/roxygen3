@@ -11,10 +11,6 @@
   is always included in the list of aliases.
 }
 
-\details{
-
-}
-
 \section{Tag Usage}{
   \code{ #' @aliases space separated aliases }
 }

@@ -16,10 +16,6 @@
   another package \code{package::function}.
 }
 
-\details{
-
-}
-
 \section{Tag Usage}{
   \code{ #' @inheritParams source_function }
 }

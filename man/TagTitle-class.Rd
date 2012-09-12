@@ -11,10 +11,6 @@
   \code{\link{tag_intro}} for more details.
 }
 
-\details{
-
-}
-
 \section{Tag Usage}{
   \code{ #' @title Topic title }
 }
