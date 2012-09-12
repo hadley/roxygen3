@@ -10,6 +10,8 @@
 # without parsing the code - because correct collate is needed before you
 # can source the code.
 process_include <- function(bundle, path = rPath(bundle)) {
+  if (is.null(path)) return(bundle)
+  
   old <- setwd(path)
   on.exit(setwd(old))
 

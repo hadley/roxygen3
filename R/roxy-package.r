@@ -45,3 +45,6 @@ setMethod("rPath", "RoxyPackage", function(bundle) {
 setMethod("rPath", "RoxyDir", function(bundle) { 
   bundle@path
 })
+setMethod("rPath", "RoxyBundle", function(bundle) { 
+  NULL
+})
