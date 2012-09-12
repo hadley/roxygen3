@@ -21,7 +21,7 @@ test_that("commented out roxygen block gives empty list", {
 })
 
 test_that("empty roxygen comment doesn't give error", {
-  parse_block("#'\nNULL")
+  out <- parse_block("#'\nNULL")
   expect_identical(length(out@blocks), 1L)
 })
 
