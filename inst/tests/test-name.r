@@ -69,3 +69,5 @@ test_that("@name overides default", {
     expect_equal(out$name@text, "b")
     expect_equal(out$alias@text, "b")
 })
+
+

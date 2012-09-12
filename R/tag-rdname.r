@@ -6,6 +6,19 @@ setMethod("defaultTag", c("TagRdname", "RoxyObject"),
   }
 )
 
+setMethod("defaultTag", c("TagRdname", "S4MethodObject"),
+  function(tag, object) {
+    name <- str_c(c(object@value@generic, object@value@defined), 
+      collapse = "-")
+    new("TagRdname", text = name)
+  }
+)
+setMethod("defaultTag", c("TagRdname", "S4ClassObject"),
+  function(tag, object) {
+    new("TagRdname", text = str_c(object@name, "-class"))
+  }
+)
+
 subs <- matrix(ncol = 2, byrow = T, c(
   '[]', 'sub',
   '<-', 'set',

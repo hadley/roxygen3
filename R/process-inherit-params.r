@@ -52,7 +52,11 @@ find_params <- function(name, blocks) {
     rd_arguments(rd)
   } else {
     # Reference within this package
-    matching_alias <- function(x) name %in% x@tags$aliases@text
+    matching_alias <- function(x) {
+      aliases <- x@tags$aliases
+      if (is.null(aliases)) return(FALSE)
+      name %in% aliases@text
+    }
     matches <- Filter(matching_alias, blocks)
     
     if (length(matches) != 1) return(NULL)
