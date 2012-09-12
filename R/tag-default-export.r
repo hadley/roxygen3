@@ -1,6 +1,6 @@
-setClass("TagDefaultExport", contains = "Tag", list( 
-  export = "character", 
-  exportMethods = "character", 
+setClass("TagDefaultExport", contains = "Tag", list(
+  export = "character",
+  exportMethods = "character",
   exportClass = "character",
   S3method = "matrix"
 ), prototype = list(
@@ -10,14 +10,19 @@ setClass("TagDefaultExport", contains = "Tag", list(
   S3method = matrix(character(), ncol = 2)
 ))
 
-setMethod("defaultTag", c("TagDefaultExport", "FunctionObject"), 
+setMethod("defaultTag", c("TagDefaultExport", "FunctionObject"),
   function(tag, object) {
     new("TagDefaultExport", export = object@name)
   }
 )
-setMethod("defaultTag", c("TagDefaultExport", "S4MethodObject"), 
+setMethod("defaultTag", c("TagDefaultExport", "S4GenericObject"),
   function(tag, object) {
-    gen <- as.vector(object@value@generic) 
+    new("TagDefaultExport", export = object@name, exportMethods = object@name)
+  }
+)
+setMethod("defaultTag", c("TagDefaultExport", "S4MethodObject"),
+  function(tag, object) {
+    gen <- as.vector(object@value@generic)
     new("TagDefaultExport", exportMethods = gen)
   }
 )
