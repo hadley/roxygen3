@@ -1,12 +1,12 @@
 \docType{methods}
-\name{writeNamespace,RoxyPackage-method}
+\name{writeNamespace,PackageBundle-method}
 
-\alias{writeNamespace,RoxyPackage-method}
+\alias{writeNamespace,PackageBundle-method}
 
 \title{[DEV] An output generator for the \file{NAMESPACE} file.}
 
 \usage{
-  \S4method{writeNamespace}{RoxyPackage}(object)
+  \S4method{writeNamespace}{PackageBundle}(object)
 }
 
 \arguments{

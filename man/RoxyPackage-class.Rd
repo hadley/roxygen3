@@ -1,9 +1,9 @@
 \docType{class}
-\name{RoxyPackage-class}
+\name{PackageBundle-class}
 
-\alias{RoxyPackage-class}
+\alias{PackageBundle-class}
 
-\title{RoxyPackage class.}
+\title{PackageBundle class.}
 
 \description{
   The package class captures all the information about the

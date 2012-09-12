@@ -4,7 +4,7 @@
 #' @autoImports
 #' @export
 roxygenise <- function(path, check = FALSE, clean = FALSE) {
-  pkg <- RoxyPackage(path)
+  pkg <- PackageBundle(path)
   
   man_path <- file.path(pkg@path, "man")
   if (clean && file.exists(man_path)) {

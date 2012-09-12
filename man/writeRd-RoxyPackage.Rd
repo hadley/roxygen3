@@ -1,12 +1,12 @@
 \docType{methods}
-\name{writeRd,RoxyPackage-method}
+\name{writeRd,PackageBundle-method}
 
-\alias{writeRd,RoxyPackage-method}
+\alias{writeRd,PackageBundle-method}
 
 \title{[DEV] Output to Rd files in the man directory.}
 
 \usage{
-  \S4method{writeRd}{RoxyPackage}(object)
+  \S4method{writeRd}{PackageBundle}(object)
 }
 
 \arguments{

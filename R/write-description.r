@@ -1,4 +1,4 @@
-setMethod("writeDescription", "RoxyPackage", function(object) {
+setMethod("writeDescription", "PackageBundle", function(object) {
   in_dir(object@path, callNextMethod())
 })
 setMethod("writeDescription", "Bundle", function(object) {

@@ -47,10 +47,21 @@ setClass("Behaviour",
   )
 )
 
-# A bundle represents a list of blocks and how their behaviour
 setClass("Bundle", 
   representation(
     blocks = "list",
     behaviour = "Behaviour"
+  )
+)
+
+setClass("DirectoryBundle", contains = "Bundle", 
+  representation(
+    path = "character"
+  )
+)
+
+setClass("PackageBundle", contains = "DirectoryBundle", 
+  representation(
+    name = "character"
   )
 )

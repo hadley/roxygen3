@@ -65,7 +65,7 @@ Naming conventions:
     source code
 
 * A `Bundle` stores a list of blocks. There are currently two subclasses:
-  `RoxyDir` and `RoxyPackage` for representing all the blocks in a directory
+  `DirectoryBundle` and `PackageBundle` for representing all the blocks in a directory
   or package respectively. The main different between a package and directory
   is that a package has a name, and getting to the R code from the base paths
   are slightly different.

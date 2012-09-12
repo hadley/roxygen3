@@ -1,7 +1,7 @@
 context("Include")
 
 roxy_dir <- function(path, behaviour = no_output()) {
-  bundle <- RoxyDir(path, behaviour)
+  bundle <- DirectoryBundle(path, behaviour)
   blocks <- process(bundle)@blocks
   blocks[[length(blocks)]]@tags
 }
