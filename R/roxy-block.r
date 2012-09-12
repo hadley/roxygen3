@@ -9,8 +9,12 @@ RoxyBlock <- function(tags, object, srcref) {
   
   # Automatically add default tags based on the object.
   super <- names(getClass(object@class)@contains)
-  methods <- findMethods("defaultTag",
-    classes = c(object@class, super))
+  # Find possible methods
+  tag_names <- unique(findMethodSignatures("defaultTag",
+    classes = c(object@class, super))[, "tag"])
+  methods <- lapply(tag_names, function(x) {
+    selectMethod("defaultTag", c(x, object@class))
+  })
 
   defaults <- compact(lapply(methods, call_fun, object = object))
   names(defaults) <- vapply(defaults, tag_name, character(1))

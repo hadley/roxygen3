@@ -44,6 +44,24 @@ setMethod("defaultTag", c("TagUsage", "S4MethodObject"),
     new("TagUsage", usage = usage)
   }
 )
+setMethod("defaultTag", c("TagUsage", "S4MethodObject"), 
+  function(tag, object) {
+    obj <- object@value
+    usage <- new("S4MethodUsage", 
+      generic = obj@generic,
+      signature = obj@defined,
+      formals = as.list(formals(obj@.Data)))
+    new("TagUsage", usage = usage)
+  }
+)
+setMethod("defaultTag", c("TagUsage", "S4GenericObject"), 
+  function(tag, object) {
+    usage <- new("FunctionUsage",
+      name = object@name,
+      formals = as.list(formals(object@value@.Data)))
+    new("TagUsage", usage = usage)
+  }
+)
 
 setMethod("defaultTag", c("TagUsage", "DataObject"), 
   function(tag, object) {

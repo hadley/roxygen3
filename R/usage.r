@@ -37,7 +37,6 @@ setMethod("format", "S4MethodUsage", function(x, ...) {
     args_string(usage_args(x@formals)), ")")
 })
 setMethod("format", "S3MethodUsage", function(x, ...) {
-  browser()
   arglist <- args_string(usage_args(x@formals))
 
   method <- function(x) {
@@ -45,10 +44,10 @@ setMethod("format", "S3MethodUsage", function(x, ...) {
   }
   
   if (is_replacement_fun(x@generic)) {
-    name <- str_replace(x$method, fixed("<-"), "")
-    str_c(method(name), "(", arglist, ") <- value")
+    x@generic <- str_replace(x@generic, fixed("<-"), "")
+    str_c(method(x), "(", arglist, ") <- value")
   } else {
-    str_c(method(x$method), "(", arglist, ")")
+    str_c(method(x), "(", arglist, ")")
   }
 })
 
