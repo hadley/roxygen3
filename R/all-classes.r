@@ -1,6 +1,7 @@
 setOldClass("srcref")
 setClass("NullSrcref", contains = "srcref")
 
+#' @rdname Tag
 setClass("Tag", contains = "VIRTUAL",
   representation(
     text = "character",
@@ -11,7 +12,8 @@ setClass("Tag", contains = "VIRTUAL",
   )
 )
 
-setClass("Object", 
+#' @rdname Object
+setClass("Object",
   representation(
     name = "character",
     value = "ANY",
@@ -21,15 +23,17 @@ setClass("Object",
 )
 setClass("NullObject", contains = "Object")
 
+#' @rdname Usage
 setClass("Usage")
 setClass("NullUsage", contains = "Usage")
 
-setClass("Block", 
+#' @rdname Block
+setClass("Block",
   representation(
     tags = "list",
     srcref = "srcref",
     object = "Object"
-  ), 
+  ),
   prototype(
     tags = list(),
     srcref = new("NullSrcref"),
@@ -39,7 +43,8 @@ setClass("Block",
 
 # A behaviour object describes what tags, processors and writers should be
 # applied to a block
-setClass("Behaviour", 
+#' @rdname Behaviour
+setClass("Behaviour",
   representation(
     tags = "character",
     processors = "character",
@@ -47,20 +52,23 @@ setClass("Behaviour",
   )
 )
 
-setClass("Bundle", 
+#' @rdname Bundle
+setClass("Bundle",
   representation(
     blocks = "list",
     behaviour = "Behaviour"
   )
 )
 
-setClass("DirectoryBundle", contains = "Bundle", 
+#' @rdname DirectoryBundle
+setClass("DirectoryBundle", contains = "Bundle",
   representation(
     path = "character"
   )
 )
 
-setClass("PackageBundle", contains = "DirectoryBundle", 
+#' @rdname PackageBundle
+setClass("PackageBundle", contains = "DirectoryBundle",
   representation(
     name = "character"
   )
