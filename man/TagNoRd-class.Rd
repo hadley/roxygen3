@@ -1,7 +1,7 @@
 \docType{class}
-\name{TagNoRd}
+\name{TagNoRd-class}
 
-\alias{TagNoRd}
+\alias{TagNoRd-class}
 
 \title{Do not produce rd file for this object.}
 

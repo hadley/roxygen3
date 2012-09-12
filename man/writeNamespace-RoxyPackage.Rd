@@ -1,7 +1,7 @@
 \docType{methods}
-\name{writeNamespace}
+\name{writeNamespace,RoxyPackage-method}
 
-\alias{writeNamespace}
+\alias{writeNamespace,RoxyPackage-method}
 
 \title{[DEV] An output generator for the \file{NAMESPACE} file.}
 

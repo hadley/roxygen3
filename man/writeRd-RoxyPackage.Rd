@@ -1,7 +1,7 @@
 \docType{methods}
-\name{writeRd}
+\name{writeRd,RoxyPackage-method}
 
-\alias{writeRd}
+\alias{writeRd,RoxyPackage-method}
 
 \title{[DEV] Output to Rd files in the man directory.}
 

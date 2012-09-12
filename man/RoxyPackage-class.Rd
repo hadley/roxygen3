@@ -1,7 +1,7 @@
 \docType{class}
-\name{RoxyPackage}
+\name{RoxyPackage-class}
 
-\alias{RoxyPackage}
+\alias{RoxyPackage-class}
 
 \title{RoxyPackage class.}
 

@@ -1,7 +1,7 @@
 \docType{class}
-\name{TagComment}
+\name{TagComment-class}
 
-\alias{TagComment}
+\alias{TagComment-class}
 
 \title{Add comments to the Rd file.}
 

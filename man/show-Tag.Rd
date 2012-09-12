@@ -1,7 +1,7 @@
 \docType{methods}
-\name{show}
+\name{show,Tag-method}
 
-\alias{show}
+\alias{show,Tag-method}
 
 \title{Tag class}
 

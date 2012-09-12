@@ -70,4 +70,38 @@ test_that("@name overides default", {
     expect_equal(out$alias@text, "b")
 })
 
+# S4 -------------------------------------------------------------------------
+
+test_that("S4 class names have -class suffix", {
+  out <- test_process("
+    #' Title
+    setClass('a')")
+    
+  expect_equal(out$name@text, "a-class")
+})
+
+test_that("S4 method names contain signature and have -method suffix", {
+  out <- test_process("
+    setGeneric('a', function(a) standardGeneric('a'))
+    #' Title
+    setMethod('a', 'numeric', function(a) 1)")
+    
+  expect_equal(out$name@text, "a,numeric-method")
+})
+
+test_that("S4 method names contain ANY and MISSING in signature", {
+  out1 <- test_process("
+    setGeneric('a', function(a) standardGeneric('a'))
+    #' Title
+    setMethod('a', 'MISSING', function(a) 1)")
+  out2 <- test_process("
+    setGeneric('a', function(a) standardGeneric('a'))
+    #' Title
+    setMethod('a', 'ANY', function(a) 1)")
+    
+  expect_equal(out1$name@text, "a,MISSING-method")
+  expect_equal(out2$name@text, "a,ANY-method")
+})
+
+
 

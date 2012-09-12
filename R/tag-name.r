@@ -19,6 +19,21 @@ setMethod("defaultTag", c("TagName", "RoxyObject"),
   }
 )
 
+# http://cran.r-project.org/doc/manuals/R-exts.html#Documenting-S4-classes-and-methods
+setMethod("defaultTag", c("TagName", "S4ClassObject"),
+  function(tag, object) {
+    new("TagName", text = str_c(object@name, "-class"))
+  }
+)
+setMethod("defaultTag", c("TagName", "S4MethodObject"),
+  function(tag, object) {
+    sig <- str_c(object@value@defined, collapse = ",")
+    name <- str_c(object@value@generic, ",", sig, "-method")
+    new("TagName", text = name)
+  }
+)
+
+
 setMethod("writeRd", "TagName", function(object) {
   new_command("name", object@text)
 })

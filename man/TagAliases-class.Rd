@@ -1,7 +1,7 @@
 \docType{class}
-\name{TagAliases}
+\name{TagAliases-class}
 
-\alias{TagAliases}
+\alias{TagAliases-class}
 
 \title{Add additional topic aliases.}
 

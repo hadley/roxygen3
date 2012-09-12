@@ -1,7 +1,7 @@
 \docType{class}
-\name{TextUsage}
+\name{TextUsage-class}
 
-\alias{TextUsage}
+\alias{TextUsage-class}
 
 \title{Given an object, return a string showing how that object should be
 used.}

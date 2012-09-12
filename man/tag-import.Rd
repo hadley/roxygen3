@@ -1,11 +1,11 @@
 \docType{class}
-\name{TagImportFrom}
+\name{TagImportFrom-class}
 
-\alias{TagAutoImports}
-\alias{TagImport}
-\alias{TagImportClassesFrom}
-\alias{TagImportFrom}
-\alias{TagImportMethodsFrom}
+\alias{TagAutoImports-class}
+\alias{TagImport-class}
+\alias{TagImportClassesFrom-class}
+\alias{TagImportFrom-class}
+\alias{TagImportMethodsFrom-class}
 
 \title{Namespace: tags for importing functions.}
 

@@ -1,7 +1,7 @@
 \docType{class}
-\name{TagName}
+\name{TagName-class}
 
-\alias{TagName}
+\alias{TagName-class}
 
 \title{Override the default topic name.}
 
