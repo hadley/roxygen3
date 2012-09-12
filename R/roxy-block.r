@@ -53,7 +53,7 @@ modify_tags <- function(block, ...) {
 modify_tag <- function(block, tag_name, changes) {
   tag <- block@tags[[tag_name]]
   if (is.null(tag)) {
-    tag <- find_tag(tag_name, "")
+    tag <- build_tag(tag_name, "")
     if (is.null(tag)) stop("No ", tag_name)
   }
   
