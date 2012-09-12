@@ -40,4 +40,9 @@ setMethod("defaultTag", c("TagDefaultExport", "S4ClassObject"),
     new("TagDefaultExport", exportClass = as.vector(object@value@className))
   }
 )
+setMethod("defaultTag", c("TagDefaultExport", "R5ClassObject"),
+  function(tag, object) {
+    new("TagDefaultExport", exportClass = as.vector(object@value$className))
+  }
+)
 
