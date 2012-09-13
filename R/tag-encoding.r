@@ -1,4 +1,5 @@
 setClass("EncodingTag", contains = "Tag")
-setMethod("procTag", "EncodingTag", function(tag) {
-  parse_words(tag, 1, 1)
+setMethod("value<-", "EncodingTag", function(tag, value) {
+  tag@text <- parse_words(tag, value, 1, 1)
+  tag
 })

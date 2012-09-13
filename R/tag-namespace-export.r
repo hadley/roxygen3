@@ -2,8 +2,9 @@
 #' @usageTag @@exportClass class1 class2
 #' @rdname tag-export
 setClass("ExportClassTag", contains = "Tag")
-setMethod("procTag", "ExportClassTag", function(tag) {
-  parse_words(tag)
+setMethod("value<-", "ExportClassTag", function(tag, value) {
+  tag@text <- parse_words(tag, value)
+  tag
 })
 setMethod("writeNamespace", "ExportClassTag", function(object) {
   ns_each("exportClass", object@text)
@@ -12,8 +13,9 @@ setMethod("writeNamespace", "ExportClassTag", function(object) {
 #' @usageTag @@exportMethods generic1 generic2
 #' @rdname tag-export
 setClass("ExportMethodsTag", contains = "Tag")
-setMethod("procTag", "ExportMethodsTag", function(tag) {
-  parse_words(tag)
+setMethod("value<-", "ExportMethodsTag", function(tag, value) {
+  tag@text <- parse_words(tag, value)
+  tag
 })
 setMethod("writeNamespace", "ExportMethodsTag", function(object) {
   ns_each("exportMethods", object@text)
@@ -22,8 +24,9 @@ setMethod("writeNamespace", "ExportMethodsTag", function(object) {
 #' @usageTag @@exportPattern pattern
 #' @rdname tag-export
 setClass("ExportPatternTag", contains = "Tag")
-setMethod("procTag", "ExportPatternTag", function(tag) {
-  parse_words(tag)
+setMethod("value<-", "ExportPatternTag", function(tag, value) {
+  tag@text <- parse_words(tag, value)
+  tag
 })
 setMethod("writeNamespace", "ExportPatternTag", function(object) {
   ns_each("exportPattern", object@text)
@@ -36,8 +39,9 @@ setMethod("writeNamespace", "ExportPatternTag", function(object) {
 #' @rdname tag-export
 setClass("S3methodTag", contains = "Tag",
   list("methods" = "matrix"))
-setMethod("procTag", "S3methodTag", function(tag) {
-  parse_words(tag, 0, 2)
+setMethod("value<-", "S3methodTag", function(tag, value) {
+  tag@text <- parse_words(tag, value, 0, 2)
+  tag
 })
 setMethod("procBlock", "S3methodTag", function(tag, block) {
   n <- length(tag@text)

@@ -1,11 +1,8 @@
-* switch procTag to initialize method
 * look through tests with an eye to making extraction/testing easier
 * S4 classes: list slots (and types). default usage? or rely on the constructor? only use @slots when not documenting constructor
 * update object_from_call and default tags system to resolve last test issues
 * need tests for multiple tags in a single block (e.g. @s3method)
-* need to extend object from call to deal with a <- set[Ref]Class("a") and
-  to generate package objects.  Would be nice to be able to document non-local
-  objects - @objValue a, @objValue getClass("a") ?
+* need to extend object from call to deal with a <- set[Ref]Class("a") and to generate package objects.  Would be nice to be able to document non-local objects - @objValue a, @objValue getClass("a") ?
 * convert rd object to S4 for consistency
 * implement useDynLib with test cases
 * is_s3_generic should do better if you do c <- function() 1

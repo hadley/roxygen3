@@ -8,8 +8,9 @@
 
 setClass("AliasesTag", contains = "Tag")
 
-setMethod("procTag", "AliasesTag", function(tag) {
-  parse_words(tag, min = 1)
+setMethod("value<-", "AliasesTag", function(tag, value) {
+  tag@text <- parse_words(tag, value, min = 1)
+  tag
 })
 
 setMethod("writeRd", "AliasesTag", function(object) {

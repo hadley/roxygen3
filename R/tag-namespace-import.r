@@ -19,12 +19,12 @@
 setClass("ImportFromTag", contains = "Tag", representation(
   imports = "character"))
 
-setMethod("format", "ImportFromTag", function(x, ...) x@imports %||% x@text)
+setMethod("value", "ImportFromTag", function(tag) tag@imports)
 
-setMethod("procTag", "ImportFromTag", function(tag) {
-  if (length(tag@text) == 0) return(tag)
+setMethod("value<-", "ImportFromTag", function(tag, value) {
+  if (length(value) == 0) return(tag)
 
-  pieces <- str_split(tag@text, "[[:space:]]+")[[1]]
+  pieces <- str_split(value, "[[:space:]]+")[[1]]
   if (length(pieces) < 2) {
     stop("@importFrom needs at least two components.", call. = FALSE)
   }
@@ -70,8 +70,8 @@ setMethod("getPrereqs", "AutoImportsTag", function(tag) {
 #' @rdname tag-import
 #' @usageTag @@import package1 package2 package3
 setClass("ImportTag", contains = "Tag")
-setMethod("procTag", "ImportTag", function(tag) {
-  tag@text <- str_split(tag@text, " ")[[1]]
+setMethod("value<-", "ImportTag", function(tag, value) {
+  tag@text <- str_split(value, " ")[[1]]
   tag
 })
 setMethod("writeNamespace", "ImportTag", function(object) {
@@ -81,8 +81,8 @@ setMethod("writeNamespace", "ImportTag", function(object) {
 #' @rdname tag-import
 #' @usageTag @@importClassesFrom package fun1 fun2
 setClass("ImportClassesFromTag", contains = "Tag")
-setMethod("procTag", "ImportClassesFromTag", function(tag) {
-  tag@text <- str_split(tag@text, " ")[[1]]
+setMethod("value<-", "ImportClassesFromTag", function(tag, value) {
+  tag@text <- str_split(value, " ")[[1]]
   tag
 })
 setMethod("writeNamespace", "ImportClassesFromTag", function(object) {
@@ -92,8 +92,8 @@ setMethod("writeNamespace", "ImportClassesFromTag", function(object) {
 #' @rdname tag-import
 #' @usageTag @@importMethodsFrom package fun1 fun2
 setClass("ImportMethodsFromTag", contains = "Tag")
-setMethod("procTag", "ImportMethodsFromTag", function(tag) {
-  tag@text <- str_split(tag@text, " ")[[1]]
+setMethod("value<-", "ImportMethodsFromTag", function(tag, value) {
+  tag@text <- str_split(value, " ")[[1]]
   tag
 })
 setMethod("writeNamespace", "ImportMethodsFromTag", function(object) {

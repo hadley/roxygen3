@@ -1,10 +1,10 @@
 setClass("ParamTag", contains = "Tag",
   list(arguments = "character"))
 
-setMethod("format", "ParamTag", function(x, ...) x@arguments %||% x@text)
+setMethod("value", "ParamTag", function(tag) tag@arguments)
 
-setMethod("procTag", "ParamTag", function(tag) {
-  pieces <- str_split_fixed(tag@text, "[[:space:]]+", 2)
+setMethod("value<-", "ParamTag", function(tag, value) {
+  pieces <- str_split_fixed(value, "[[:space:]]+", 2)
 
   name <- pieces[, 1]
   desc <- str_trim(pieces[, 2])

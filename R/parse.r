@@ -117,13 +117,3 @@ parse_roc <- function(lines, match = "^\\s*#+\' ?", tags) {
   compact(Map(build_tag, names(parsed_tags), parsed_tags))
 }
 
-build_tag <- function(name, text) {
-  # find matching class for name
-  class_name <- str_c(first_upper(name), "Tag")
-  if (!isClass(class_name)) {
-    message("Unknown tag @", name, " at ") #, location(block))
-    return(NULL)
-  }
-
-  new(class_name, text = text, srcref = new("NullSrcref"))
-}

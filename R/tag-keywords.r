@@ -4,8 +4,9 @@ setMethod("defaultTag", c("KeywordsTag", "DataObject"), function(tag, object) {
   new("KeywordsTag", text = "datasets")
 })
 
-setMethod("procTag", "KeywordsTag", function(tag) {
-  parse_words(tag)
+setMethod("value<-", "KeywordsTag", function(tag, value) {
+  tag@text <- parse_words(tag, value)
+  tag
 })
 
 setMethod("writeRd", "KeywordsTag", function(object) {

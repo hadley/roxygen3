@@ -88,9 +88,8 @@ To implement a new tag for roxygen, you need to subclass `Tag` and implement (at
 
 Tag processing:
 
-* `procTag` is called with a single tag, and should return a
-  modified tag. Use this for simple tag behaviour that depends only on the
-  text of one tag.
+* `value<-` is used to initialize a tag from a text string. Use this to define 
+  basic parsing behaviour.
 
 * `procBlock` is called with the tag and the whole block and should return a
   block. Use this is the tag needs to add multiple tags to the output, or

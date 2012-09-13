@@ -4,7 +4,7 @@
 setClass("PathTag", contains = "Tag",
   list(path = "character"))
 
-setMethod("format", "PathTag", function(x, ...) x@path %||% x@text)
+setMethod("value", "PathTag", function(tag) tag@path)
 
 setMethod("defaultTag", c("PathTag", "Object"), function(tag, object) {
   if (isNull(object)) return()

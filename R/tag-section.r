@@ -5,10 +5,10 @@ setClass("SectionTag", contains = "Tag",
   list(sections = "character")
 )
 
-setMethod("format", "SectionTag", function(x, ...) x@sections %||% x@text)
+setMethod("value", "SectionTag", function(tag) tag@sections)
 
-setMethod("procTag", "SectionTag", function(tag) {
-  pieces <- str_split_fixed(tag@text, ":", n = 2)
+setMethod("value<-", "SectionTag", function(tag, value) {
+  pieces <- str_split_fixed(value, ":", n = 2)
   tag@sections <- setNames(pieces[, 2], pieces[, 1])
   tag
 })

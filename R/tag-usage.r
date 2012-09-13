@@ -2,15 +2,13 @@ setClass("UsageTag", contains = "Tag",
   list(usage = "Usage"),
   prototype = list(usage = new("NullUsage")))
 
-setMethod("procTag", "UsageTag", function(tag) {
-  if (!isNull(tag@usage)) return(tag)
-
-  tag@usage <- new("TextUsage", text = tag@text)
+setMethod("value", "UsageTag", function(tag) tag@usage)
+setMethod("value<-", "UsageTag", function(tag, value) {
+  if (is.character(value)) {
+    value <- new("TextUsage", text = value)
+  }
+  tag@usage <- value
   tag
-})
-
-setMethod("format", "UsageTag", function(x, ...) {
-  if (isNull(x@usage)) x@text else format(x@usage)
 })
 
 setMethod("writeRd", "UsageTag", function(object) {

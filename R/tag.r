@@ -2,10 +2,6 @@
 #'
 #' The tag class is the base class for all roxygen3 tags.
 #'
-#' @section Parsing order:
-#' The functions \code{procTag} and \code{procBlock} are called in that
-#' order, so if both are supplied, \code{procBlock} can rely on the
-#' tag already being parsed.
 Tag <- function(text) {
   new("Tag", text = text)
 }
@@ -17,11 +13,34 @@ setMethod("show", "Tag", function(object) {
   cat(str_truncate(out), "\n", sep = "")
 })
 
-setMethod("format", "Tag", function(x, ...) x@text)
+setMethod("format", "Tag", function(x, ...) format(value(x)))
 
 # Default behaviour for all tags: don't change and no prereqs.
 setMethod("procBlock", "Tag", function(tag, block) block)
-setMethod("procTag", "Tag", function(tag) tag)
+
+setMethod("value<-", "Tag", function(tag, value) {
+  tag@text <- value
+  tag
+})
+setMethod("value", "Tag", function(tag) {
+  tag@text
+})
+
+build_tag <- function(name, text) {
+  # find matching class for name
+  class_name <- str_c(first_upper(name), "Tag")
+  if (!isClass(class_name)) {
+    message("Unknown tag @", name, " at ") #, location(block))
+    return(NULL)
+  }
+
+  tag <- new(class_name, srcref = new("NullSrcref"))
+  if (length(text) > 0) {
+    value(tag) <- text
+  }
+  tag
+}
+
 
 tag_name <- function(x) {
   if (isS4(x)) {

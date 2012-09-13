@@ -1,24 +1,23 @@
-split_pieces <- function(tag, split_with, min, max) {
-  pieces <- unlist(str_split(tag@text, split_with))
+split_pieces <- function(tag, text, split_with, min, max) {
+  pieces <- unlist(str_split(text, split_with))
   pieces <- pieces[pieces != ""]
-  
+
   if (length(pieces) < min) {
     stop(tag_name(tag), " requires at least ", min, " values.")
-  } 
+  }
   if (length(pieces) > max) {
     stop(tag_name(tag), " takes at most ", max, " values.")
   }
-  
-  tag@text <- pieces
-  tag
+
+  pieces
 }
 
-parse_words <- function(tag, min = 0, max = Inf) {
-  split_pieces(tag, "[[:space:]]+", min, max)
+parse_words <- function(tag, text, min = 0, max = Inf) {
+  split_pieces(tag, text, "[[:space:]]+", min, max)
 }
 
 parse_arguments <- function(tag, min = 0, max = Inf) {
-  split_pieces(tag, ",[[:space:]]*", min, max)
+  split_pieces(tag, text, ",[[:space:]]*", min, max)
 }
 
 parse_name_desc <- function(tag) {

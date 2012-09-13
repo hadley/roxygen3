@@ -50,7 +50,7 @@ setMethod("tag<-", "ANY", function(block, NameTag, value) {
 })
 setMethod("tag<-", "character", function(block, NameTag, value) {
   new_tag <- tag(block, NameTag, create = TRUE)
-  new_tag@text <- value
+  value(new_tag) <- value
   tag(block, NameTag) <- new_tag
   block
 })
