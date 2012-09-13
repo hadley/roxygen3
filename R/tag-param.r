@@ -1,6 +1,8 @@
 setClass("TagParam", contains = "Tag",
   list(arguments = "character"))
 
+setMethod("format", "TagParam", function(x, ...) x@arguments %||% x@text)
+
 setMethod("procTag", "TagParam", function(tag) {
   pieces <- str_split_fixed(tag@text, "[[:space:]]+", 2)
 

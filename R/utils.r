@@ -1,6 +1,6 @@
 compact <- function(x) Filter(Negate(is.null), x)
 
-"%||%" <- function(a, b) if (is.null(a)) b else a
+"%||%" <- function(a, b) if (length(a) == 0) b else a
 
 modify_list <- function(a, b) {
   if (is.null(a)) return(b)
@@ -13,9 +13,9 @@ write_if_different <- function(path, contents) {
   if (!file.exists(dirname(path))) {
     dir.create(dirname(path), showWarnings = FALSE)
   }
-  
+
   if (same_contents(path, contents)) return(FALSE)
-  
+
   name <- basename(path)
   if (!str_detect(name, "^[a-zA-Z][a-zA-Z0-9_.-]*$")) {
     cat("Skipping invalid path: ", name, "\n")
@@ -24,17 +24,17 @@ write_if_different <- function(path, contents) {
     cat(sprintf('Writing %s\n', name))
     writeLines(contents, path)
     TRUE
-  }  
+  }
 }
 
 same_contents <- function(path, contents) {
   if (!file.exists(path)) return(FALSE)
-  
+
   contents <- str_c(str_c(contents, collapse = "\n"), "\n")
-  
+
   text_hash <- digest(contents, serialize = FALSE)
   file_hash <- digest(file = path)
-  
+
   identical(text_hash, file_hash)
 }
 
@@ -53,10 +53,10 @@ quote_if_needed <- function(x) {
 
 str_truncate <- function(x, width = getOption("width")) {
   lines <- str_split(x, "\n")[[1]]
-  
+
   n <- str_length(lines[1])
   if (n <= width && length(lines) == 1) return(lines[1])
-  
+
   str_c(str_sub(lines[1], 1, width - 3), "...")
 }
 

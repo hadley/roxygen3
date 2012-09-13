@@ -17,6 +17,8 @@ setMethod("show", "Tag", function(object) {
   cat(str_truncate(out), "\n", sep = "")
 })
 
+setMethod("format", "Tag", function(x, ...) x@text)
+
 # Default behaviour for all tags: don't change and no prereqs.
 setMethod("procBlock", "Tag", function(tag, block) block)
 setMethod("procTag", "Tag", function(tag) tag)

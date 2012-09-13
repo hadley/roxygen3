@@ -18,6 +18,9 @@
 #' @autoImports
 setClass("TagImportFrom", contains = "Tag", representation(
   imports = "character"))
+
+setMethod("format", "TagImportFrom", function(x, ...) x@imports %||% x@text)
+
 setMethod("procTag", "TagImportFrom", function(tag) {
   if (length(tag@text) == 0) return(tag)
 

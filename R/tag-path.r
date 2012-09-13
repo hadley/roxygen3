@@ -1,8 +1,10 @@
 #' Automatically add the path as an Rd comment.
-#' 
+#'
 #' @usage None: this is added automatically.
 setClass("TagPath", contains = "Tag",
   list(path = "character"))
+
+setMethod("format", "TagPath", function(x, ...) x@path %||% x@text)
 
 setMethod("defaultTag", c("TagPath", "Object"), function(tag, object) {
   if (isNull(object)) return()
