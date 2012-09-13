@@ -5,6 +5,11 @@
 #' @rdname tag-export
 setClass("S3methodTag", contains = "Tag",
   list("methods" = "matrix"))
+
+setMethod("value", "S3methodTag", function(tag) {
+  tag@methods
+})
+
 setMethod("value<-", "S3methodTag", function(tag, value) {
   tag@text <- parse_words(tag, value, 0, 2)
   tag

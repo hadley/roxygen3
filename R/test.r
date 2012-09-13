@@ -1,7 +1,7 @@
-test_process <- function(text, behaviour = no_output()) {  
+test_process <- function(text, behaviour = no_output()) {
   bundle <- parse_block(text)
   blocks <- process(bundle)@blocks
-  blocks[[length(blocks)]]@tags
+  blocks[[length(blocks)]]
 }
 
 test_rd <- function(text) {
@@ -24,8 +24,8 @@ test_ns <- function(text) {
 #' @export
 parse_block <- function(text, behaviour = no_output()) {
   pkg_dummy <- structure(
-    list(path = tempfile(), package = "temp", version = 0.01), 
-    class = "package")  
+    list(path = tempfile(), package = "temp", version = 0.01),
+    class = "package")
   env <- devtools:::create_ns_env(pkg_dummy)
   on.exit(unload(pkg_dummy))
 
@@ -35,14 +35,14 @@ parse_block <- function(text, behaviour = no_output()) {
 
   lines <- str_split(text, "\n")[[1]]
   blocks <- parse_text(lines, env, src, tags = behaviour@tags)
-  
+
   new("Bundle",
     blocks = blocks,
-    behaviour = behaviour)  
+    behaviour = behaviour)
 }
 
 no_output <- function() {
-  new("Behaviour", 
+  new("Behaviour",
     tags = base_tags(),
     processors = local_apropos("^process[A-Z_]"),
     writers = character()

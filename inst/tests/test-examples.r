@@ -6,9 +6,11 @@ test_that("@example loads from specified files", {
     #' @example Rd-example-1.R
     #' @example Rd-example-2.R
     NULL")
-  
-  expect_match(out$examples@text, fixed("example <- 'example1'"), all = FALSE)
-  expect_match(out$examples@text, fixed("example <- 'example2'"), all = FALSE)
+
+  expect_match(tag_value(out, "examples"), fixed("example <- 'example1'"),
+    all = FALSE)
+  expect_match(tag_value(out, "examples"), fixed("example <- 'example2'"),
+    all = FALSE)
 })
 
 test_that("@examples captures examples", {
@@ -16,8 +18,8 @@ test_that("@examples captures examples", {
     #' @name a
     #' @examples a <- 2
     NULL")
-  
-  expect_match(out$examples@text, fixed("a <- 2"), all = FALSE)
+
+  expect_match(tag_value(out, "examples"), fixed("a <- 2"), all = FALSE)
 })
 
 test_that("@examples and @example combine", {
@@ -27,8 +29,9 @@ test_that("@examples and @example combine", {
     #' @examples a <- 2
     NULL")
 
-  expect_match(out$examples@text, fixed("example <- 'example1'"), all = FALSE)
-  expect_match(out$examples@text, fixed("a <- 2"), all = FALSE)
+  expect_match(tag_value(out, "examples"), fixed("example <- 'example1'"),
+    all = FALSE)
+  expect_match(tag_value(out, "examples"), fixed("a <- 2"), all = FALSE)
 })
 
 test_that("@example does not introduce extra empty lines", {
@@ -36,8 +39,8 @@ test_that("@example does not introduce extra empty lines", {
     #' @name a
     #' @example Rd-example-3.R
     NULL")
-  
-  expect_identical(length(out$examples@text), 2L)
+
+  expect_identical(length(tag_value(out, "examples")), 2L)
 })
 
 test_that("indentation in examples preserved", {
@@ -47,7 +50,7 @@ test_that("indentation in examples preserved", {
     #'     2
     NULL")
 
-  expect_match(out$examples@text, fixed("a <-\n    2"), all = FALSE)
+  expect_match(tag_value(out, "examples"), fixed("a <-\n    2"), all = FALSE)
 })
 
 test_that("% in @example escaped", {
@@ -56,7 +59,7 @@ test_that("% in @example escaped", {
     #' @name a
     #' @example Rd-example-4.R
     NULL")
-  
-  examples <- writeRd(out$examples)
+
+  examples <- writeRd(tag(out, "examples"))
   expect_match(format(examples), fixed("x \\%*\\% y"))
 })

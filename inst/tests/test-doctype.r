@@ -11,9 +11,9 @@ test_that("@docType package automatically adds package alias when needed", {
     #' @name a-package
     #' @docType package
     NULL")
-  
-  expect_equal(sort(out1$aliases@text), sort(c("a", "a-package")))
-  expect_equal(out2$aliases@text, c("a-package"))
+
+  expect_equal(sort(tag_value(out1, "aliases")), sort(c("a", "a-package")))
+  expect_equal(tag_value(out2, "aliases"), c("a-package"))
 })
 
 
@@ -25,18 +25,18 @@ test_that("@docType data automatically adds sensible defaults", {
     #'
     #' @docType data
     a <- data.frame(a = 1:10)")
-  
-  expect_equal(format(out$usage), "a")
-  expect_equal(out$keywords@text, "datasets")
-  expect_match(out$format@text, "data\\.frame")
+
+  expect_equal(format(tag(out, "usage")), "a")
+  expect_equal(tag_value(out, "keywords"), "datasets")
+  expect_match(tag_value(out, "format"), "data\\.frame")
 })
 
 test_that("@docType data automatically added to data objects", {
   out <- test_process("
     #' Title.
     a <- data.frame(a = 1:10)")
-  
-  expect_equal(out$docType@text, "data")
+
+  expect_equal(tag_value(out, "docType"), "data")
 })
 
 # Reference classes ----------------------------------------------------------
@@ -48,9 +48,9 @@ test_that("reference classes given docType class", {
   out2 <- test_process("
     #' Title.
     setRefClass('a')")
-  
-  expect_equal(out1$docType@text, "class")
-  expect_equal(out2$docType@text, "class")
+
+  expect_equal(tag_value(out1, "docType"), "class")
+  expect_equal(tag_value(out2, "docType"), "class")
 })
 
 # S4 classes ----------------------------------------------------------
@@ -62,7 +62,7 @@ test_that("S4 classes given docType class", {
   out2 <- test_process("
     #' Title.
     setClass('a')")
-  
-  expect_equal(out1$docType@text, "class")
-  expect_equal(out2$docType@text, "class")
+
+  expect_equal(tag_value(out1, "docType"), "class")
+  expect_equal(tag_value(out2, "docType"), "class")
 })

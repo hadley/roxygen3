@@ -30,8 +30,8 @@ test_that("`$` not to be parsed as assignee in foo$bar(a = 1)", {
     #' foo object
     foo <- list(bar = function(a) a)
     foo$bar(a = 1)")
-    
-  expect_equal(out$name@text, character())
+
+  expect_equal(tag_value(out, "name"), NULL)
 })
 
 test_that("@noRd inhibits rd, but not namespace output", {
