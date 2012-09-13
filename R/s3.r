@@ -15,14 +15,16 @@
 #' @export
 #' @dev
 is_s3_generic <- function(name, env = parent.frame()) {
-  known_generics <- c(names(.knownS3Generics),
-    tools:::.get_internal_S3_generics())
-
-  if (name %in% known_generics) return(TRUE)
   if (!exists(name, envir = env)) return(FALSE)
 
   f <- get(name, envir = env)
-  if (is.primitive(f) || !is.function(f)) return(FALSE)
+  if (!is.function(f)) return(FALSE)
+
+  if (is.primitive(f)) {
+    known_generics <- c(names(.knownS3Generics),
+      tools:::.get_internal_S3_generics())
+    return(name %in% known_generics)
+  }
 
   uses <- findGlobals(f, merge = FALSE)$functions
   any(uses == "UseMethod")

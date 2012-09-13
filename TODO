@@ -2,7 +2,6 @@
 * need tests for multiple tags in a single block (e.g. @s3method)
 * need to extend object from call to deal with a <- set[Ref]Class("a") and to generate package objects.  Would be nice to be able to document non-local objects - @objValue a, @objValue getClass("a") ?
 * implement useDynLib with test cases
-* is_s3_generic should do better if you do c <- function() 1
 * DOCUMENTATION!
 
 # Default tags
