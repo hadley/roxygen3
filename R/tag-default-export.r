@@ -10,6 +10,13 @@ setClass("DefaultExportTag", contains = "Tag", list(
   S3method = matrix(character(), ncol = 2)
 ))
 
+setMethod("isEmpty", "DefaultExportTag", function(tag) {
+  length(tag@export) == 0 &&
+    length(tag@exportMethods) == 0 &&
+    length(tag@exportClass) == 0 &&
+    nrow(tag@S3method) == 0
+})
+
 setMethod("defaultTag", c("DefaultExportTag", "FunctionObject"),
   function(tag, object) {
     new("DefaultExportTag", export = object@name)

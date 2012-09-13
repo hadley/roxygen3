@@ -8,8 +8,8 @@
 #' @usageTag @@name name
 setClass("NameTag", contains = "Tag")
 
-setMethod("procBlock", "NameTag", function(tag, block) {
-  tag(block, "aliases") <- suffix(tag@text)
+setMethod("process", "NameTag", function(input, block) {
+  tag(block, "aliases") <- suffix(input@text)
   block
 })
 

@@ -10,6 +10,7 @@ setClass("Tag", contains = "VIRTUAL",
     srcref = "srcref"
   ),
   prototype(
+    text = character(),
     srcref = new("NullSrcref")
   )
 )

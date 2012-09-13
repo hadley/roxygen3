@@ -15,9 +15,9 @@
 }
 
 \section{Parsing order}{
-  The functions \code{procTag} and \code{procBlock} are
+  The functions \code{procTag} and \code{process} are
   called in that order, so if both are supplied,
-  \code{procBlock} can rely on the tag already being
+  \code{process} can rely on the tag already being
   parsed.
 }
 

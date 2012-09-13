@@ -12,36 +12,36 @@ setClass("IntroTag", contains = "Tag")
 #' @seealso \code{\link{tag_title}}, \code{\link{tag_description}},
 #'  \code{\link{tag_details}} to set each component individually.
 #' @autoImports
-setMethod("procBlock", "IntroTag", function(tag, block) {
-  tags <- block@tags
-  paragraphs <- str_trim(str_split(tag@text, fixed('\n\n'))[[1]])
+setMethod("process", "IntroTag", function(input, block) {
+  paragraphs <- str_trim(str_split(input@text, fixed('\n\n'))[[1]])
+  tag(block, "intro") <- NULL
 
   if (length(paragraphs) == 0) return(block)
 
   # 1st paragraph = title (unless has @title)
-  if (!is.null(tags$title)) {
-    title <- tags$title@text
-  } else {
+  title <- tag_value(block, "title")
+  if (is.null(title)) {
     title <- paragraphs[1]
     paragraphs <- paragraphs[-1]
   }
+  tag(block, "title") <- title
 
   # 2nd paragraph = description (unless has @description)
-  if (!is.null(tags$description)) {
-    description <- tags$description@text
-  } else if (length(paragraphs) > 0) {
-    description <- paragraphs[1]
-    paragraphs <- paragraphs[-1]
-  } else {
-    # Description is required, so if missing description, repeat title.
-    description <- title
+  description <- tag_value(block, "description")
+  if (is.null(description)) {
+    if (length(paragraphs) > 0) {
+      description <- paragraphs[1]
+      paragraphs <- paragraphs[-1]
+    } else {
+      # Description is required, so if missing description, repeat title.
+      description <- title
+    }
   }
-
-  # Every thing else is details and gets combined with existing
-  tag(block, "intro") <- NULL
-  tag(block, "title") <- title
   tag(block, "description") <- description
+
+  # Everything else is details and gets combined with existing
   tag(block, "details") <- suffix(paragraphs)
+
   block
 })
 

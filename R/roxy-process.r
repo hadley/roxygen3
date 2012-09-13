@@ -19,12 +19,8 @@ setMethod("process", "Bundle", function(input) {
 
 setMethod("process", "Block", function(input) {
   for (tag in names(input@tags)) {
-    input <- procBlock(input@tags[[tag]], block = input)
+    input <- process(input@tags[[tag]], block = input)
   }
 
   input
 })
-
-setGeneric("procBlock", function(tag, block) {
-  standardGeneric("procBlock")
-}, valueClass = "Block")

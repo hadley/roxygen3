@@ -65,9 +65,6 @@ call_fun <- function(f, ...) f(...)
 local_apropos <- function(x) {
   grep(x, ls(topenv(environment())), ignore.case = FALSE, value = TRUE)
 }
-
-is_empty <- function(tag) identical(tag@text, "")
-
 first_upper <- function(x) {
   substr(x, 1, 1) <- toupper(substr(x, 1, 1))
   x

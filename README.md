@@ -50,7 +50,7 @@ Naming conventions:
   * A `Tag` object corresponds to a single roxygen tag: `#' @tag text`. Tag
     objects are created by the `build_tag` function and come preloaded with a
     `@text` slot. Tags that need richer data structures should define
-    additional slots and fill them up with the `procTag` or `procBlock`
+    additional slots and fill them up with the `procTag` or `process`
     methods. Tags are also the unit at which output functions operator. See
     the Tags section for more details.
 
@@ -91,7 +91,7 @@ Tag processing:
 * `value<-` is used to initialize a tag from a text string. Use this to define 
   basic parsing behaviour.
 
-* `procBlock` is called with the tag and the whole block and should return a
+* `process` is called with the tag and the whole block and should return a
   block. Use this is the tag needs to add multiple tags to the output, or
   needs to access the object or srcref associated with the block.
 

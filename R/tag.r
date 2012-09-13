@@ -16,7 +16,7 @@ setMethod("show", "Tag", function(object) {
 setMethod("format", "Tag", function(x, ...) format(value(x)))
 
 # Default behaviour for all tags: don't change and no prereqs.
-setMethod("procBlock", "Tag", function(tag, block) block)
+setMethod("process", "Tag", function(input, block) block)
 
 setMethod("value<-", "Tag", function(tag, value) {
   tag@text <- value
@@ -25,8 +25,11 @@ setMethod("value<-", "Tag", function(tag, value) {
 setMethod("value", "Tag", function(tag) {
   tag@text
 })
+setMethod("isEmpty", "Tag", function(tag) {
+  identical(value(tag), "")
+})
 
-build_tag <- function(name, text) {
+build_tag <- function(name, text = character()) {
   # find matching class for name
   class_name <- str_c(first_upper(name), "Tag")
   if (!isClass(class_name)) {

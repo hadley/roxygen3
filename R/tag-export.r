@@ -24,11 +24,11 @@
 #' @rdname tag-export
 setClass("ExportTag", contains = "Tag")
 
-setMethod("procBlock", "ExportTag", function(tag, block) {
-  if (!is_empty(tag)) return(block)
+setMethod("process", "ExportTag", function(input, block) {
+  if (!isEmpty(input)) return(block)
 
-  defaults <- block@tags$defaultExport
-  if (isNull(defaults)) return(block)
+  defaults <- tag(block, "defaultExport")
+  if (isEmpty(defaults)) return(block)
 
   tag(block, "export") <- defaults@export
   tag(block, "exportMethods") <- suffix(defaults@exportMethods)

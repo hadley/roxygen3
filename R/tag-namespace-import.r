@@ -45,21 +45,16 @@ setMethod("writeNamespace", "ImportFromTag", function(object) {
 #' @usageTag @@autoImports
 #' @autoImports
 setClass("AutoImportsTag", contains = "Tag")
-setMethod("procBlock", "AutoImportsTag", function(tag, block) {
+setMethod("process", "AutoImportsTag", function(input, block) {
   obj <- block@object
+  tag(block, "autoImport") <- NULL
   if (!is.function(obj@value)) return(block)
 
-  importFrom <- block@tags$importFrom
-  auto <- auto_imports(obj@value, obj@name, importFrom)
-
-  if (!is.null(importFrom)) {
-    importFrom@imports <- c(importFrom@imports, auto)
-  } else {
-    importFrom <- new("ImportFromTag", imports = auto)
-  }
+  importFrom <- tag(block, "importFrom")
+  auto <- auto_imports(obj@value, obj@name, value(importFrom))
+  importFrom@imports <- c(importFrom@imports, auto)
 
   tag(block, "importFrom") <- importFrom
-  tag(block, "autoImport") <- NULL
   block
 })
 

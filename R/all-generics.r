@@ -15,7 +15,7 @@ setGeneric("getPrereqs", function(tag) {
   standardGeneric("getPrereqs")
 }, valueClass = "character")
 
-setGeneric("process", function(input) {
+setGeneric("process", function(input, ...) {
   standardGeneric("process")
 })
 
@@ -26,6 +26,10 @@ setGeneric("value", function(tag) {
   standardGeneric("value")
 })
 setMethod("value", "NULL", function(tag) NULL)
+
+setGeneric("isEmpty", function(tag) {
+  standardGeneric("isEmpty")
+})
 
 setGeneric("isNull", function(x) standardGeneric("isNull"))
 setMethod("isNull", "NULL", function(x) TRUE)

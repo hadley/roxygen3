@@ -43,8 +43,8 @@ setMethod("value<-", "S3methodTag", function(tag, value) {
   tag@text <- parse_words(tag, value, 0, 2)
   tag
 })
-setMethod("procBlock", "S3methodTag", function(tag, block) {
-  n <- length(tag@text)
+setMethod("process", "S3methodTag", function(input, block) {
+  n <- length(input@text)
 
   if (n == 0) {
     # Empty, so guess from name
@@ -53,15 +53,17 @@ setMethod("procBlock", "S3methodTag", function(tag, block) {
     class <- pieces[2]
   } else if (n == 1) {
     # Empty, generic provided
-    generic <- tag@text
+    generic <- input@text
     class <- str_replace(block@object@name, fixed(str_c(generic, ".")), "")
   } else {
-    generic <- tag@text[1]
-    class <- tag@text[2]
+    generic <- input@text[1]
+    class <- input@text[2]
   }
 
-  tag@methods <- cbind(generic, class)
-  tag(block, "s3method") <- tag
+  input@methods <- cbind(generic, class)
+  input@text <- character()
+
+  tag(block, "s3method") <- input
   block
 })
 

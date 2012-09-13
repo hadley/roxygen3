@@ -1,6 +1,6 @@
 setClass("ExampleTag", contains = "Tag")
-setMethod("procBlock", "ExampleTag", function(tag, block) {
-  paths <- str_trim(tag@text)
+setMethod("process", "ExampleTag", function(input, block) {
+  paths <- str_trim(input@text)
   examples <- unlist(lapply(paths, readLines))
 
   tag(block, "examples") <- suffix(examples)
