@@ -2,13 +2,13 @@
 # multiple expressions take their own braces.
 #
 # commands have two methods: \code{merge} and \code{format}.  Currently for all
-# commands, merge just combines all values, and format selects from these to 
-# display the commands in the appropriate way. 
+# commands, merge just combines all values, and format selects from these to
+# display the commands in the appropriate way.
 #
 #' @autoImports
 new_command <- function(command, values) {
   if (is.null(values)) return()
-  
+
   subc <- str_c(command, "_command")
   structure(list(command = command, values = values), class = c(subc, "rd_command"))
 }
@@ -33,7 +33,7 @@ make_rd_command <- function(command, ..., space = FALSE) {
   }
   # Turn non-breaking spaces back into regular spaces
   values <- str_replace_all(values, fixed("\u{A0}"), " ")
-  str_c("\\", command, str_c("{", values, "}", collapse = ""), "\n")                         
+  str_c("\\", command, str_c("{", values, "}", collapse = ""), "\n")
 }
 
 #' @export
@@ -43,14 +43,14 @@ format.rd_command <- function(x, ...) {
 
 #' @export
 merge.rd_command <- function(x, y, ...) {
-  stopifnot(identical(class(x), class(y)))  
+  stopifnot(identical(class(x), class(y)))
   new_command(x$command, c(x$values, y$values))
 }
 
 # commands that repeat multiple times --------------------------------------------
 
 format_rd <- function(x, ...) {
-  out <- vapply(sort(unique(x$values)), make_rd_command, command = x$command, 
+  out <- vapply(sort(unique(x$values)), make_rd_command, command = x$command,
     FUN.VALUE = character(1), USE.NAMES = FALSE)
   str_c(out, collapse = "")
 }
@@ -72,7 +72,7 @@ format.comment_command <- function(x, ...) {
 # commands that keep the first occurence -----------------------------------------
 format_first <- function(x, ...) {
   make_rd_command(x$command, x$values[1])
-} 
+}
 
 #' @export
 format.name_command <- function(x, ...) {
@@ -92,9 +92,9 @@ format.encoding_command <- format_first
 
 format_collapse <- function(x, ..., indent = 2, exdent = 2) {
   values <- str_c(x$values, collapse = "\n\n")
-  make_rd_command(x$command, str_wrap(values, width = 60, indent = indent, 
+  make_rd_command(x$command, str_wrap(values, width = 60, indent = indent,
     exdent = exdent), space = TRUE)
-} 
+}
 #' @export
 format.author_command <- format_collapse
 
@@ -148,7 +148,7 @@ format.formals_command <- format_null
 format.arguments_command <- function(x, ...) {
   names <- names(x$values)
   dups <- duplicated(names)
-  
+
   items <- str_c("\\item{", names, "}{", x$values, "}", collapse = "\n\n")
   make_rd_command("arguments", str_wrap(items, width = 60, exdent = 2, indent = 2),
     space = TRUE)
@@ -160,7 +160,7 @@ format.slot_command <- function(x, ...) {
   names <- names(x$values)
   items <- str_c("\\item{", names, "}{", x$values, "}", collapse = "\n\n")
   str_c("\\section{Slots}\n\n",
-    "\\itemize{\n", 
+    "\\itemize{\n",
     str_wrap(items, width = 60, exdent = 2, indent = 2),
     "\n}\n")
 }
@@ -169,8 +169,8 @@ format.slot_command <- function(x, ...) {
 format.section_command <- function(x, ...) {
   names <- names(x$values)
   contents <- str_wrap(str_trim(x$values), width = 60, exdent = 2, indent = 2)
-  
-  setions <- str_c("\\section{", names, "}{\n", contents, "\n}\n", 
+
+  setions <- str_c("\\section{", names, "}{\n", contents, "\n}\n",
     collapse = "\n")
 }
 
@@ -178,5 +178,5 @@ format.section_command <- function(x, ...) {
 format.examples_command <- function(x, ...) {
   values <- str_c(x$values, collapse = "\n")
   escaped <- escape_comments(x$values)
-  make_rd_command(x$command, escaped, space = TRUE)  
+  make_rd_command(x$command, escaped, space = TRUE)
 }

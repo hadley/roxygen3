@@ -17,13 +17,13 @@
 is_s3_generic <- function(name, env = parent.frame()) {
   known_generics <- c(names(.knownS3Generics),
     tools:::.get_internal_S3_generics())
-  
+
   if (name %in% known_generics) return(TRUE)
   if (!exists(name, envir = env)) return(FALSE)
 
   f <- get(name, envir = env)
   if (is.primitive(f) || !is.function(f)) return(FALSE)
-  
+
   uses <- findGlobals(f, merge = FALSE)$functions
   any(uses == "UseMethod")
 }
@@ -35,10 +35,10 @@ is_s3_method <- function(name, env = parent.frame()) {
 find_generic <- memoise(function(name, env = parent.frame()) {
   pieces <- str_split(name, fixed("."))[[1]]
   n <- length(pieces)
-  
+
   # No . in name, so can't be method
   if (n == 1) return(NULL)
-  
+
   for(i in seq_len(n - 1)) {
     generic <- str_c(pieces[seq_len(i)], collapse = ".")
     class <- str_c(pieces[(i + 1):n], collapse = ".")
@@ -55,15 +55,15 @@ all_s3_methods <- memoise(function(env = parent.frame()) {
 is.s3 <- function(x) inherits(x, c("s3method", "s3generic"))
 add_s3_metadata <- function(val, name, env) {
   if (!is.function(val)) return(val)
-  
+
   if (is_s3_generic(name, env)) {
     class(val) <- "s3generic"
     return(val)
-  } 
-  
+  }
+
   method <- find_generic(name, env)
   if (is.null(method)) return(val)
-  
+
   class(val) <- "s3method"
   attr(val, "s3method") <- method
   val

@@ -1,7 +1,7 @@
 #' An output generator for the \file{NAMESPACE} file.
 #'
 #' @param tag function that processes a single tag. It should return a
-#'   character vector of lines to be included in the \file{NAMESPACE}. 
+#'   character vector of lines to be included in the \file{NAMESPACE}.
 #'   Duplicates will be automatically removed.
 #' @param name input tag name, usually set by \code{\link{roccer}}.
 #' @dev
@@ -21,7 +21,7 @@ setMethod("writeNamespace", "Tag", function(object) NULL)
 build_namespace <- function(blocks) {
   lines <- unlist(lapply(blocks, writeNamespace), use.names = FALSE)
   with_collate("C", sort(unique(lines)))
-}  
+}
 
 write_namespace <- function(ns) {
   write_if_different("NAMESPACE", ns)

@@ -8,6 +8,6 @@ find_fun <- function(name, env = parent.frame()) {
     return(get(name, env))
   }
 
-  
+
   NULL
 }

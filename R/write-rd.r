@@ -2,7 +2,7 @@
 #'
 #' This uses the \code{@@rdname} tag to determine which file the output from
 #' each rocblock is sent to.
-#' 
+#'
 #' Only one of \code{tag} and \code{out} can be supplied.
 #'
 #' @param tag a function that takes a single argument (tag) as input, and
@@ -28,19 +28,19 @@ build_rd <- function(blocks) {
 
   paths <- lapply(blocks, output_path)
   has_path <- vapply(paths, Negate(is.null), logical(1))
-  
+
   # Only write files with both path and contents
   complete <- has_command & has_path
   commands <- commands[complete]
   paths <- unlist(paths[complete])
-  
+
   compact(tapply(commands, paths, collapse_rd))
 }
 
 output_path <- function(block) {
   tags <- names(block@tags)
   if ("noRd" %in% tags) return()
-  
+
   rdname <- block@tags$rdname
   if (is.null(rdname)) return()
 
@@ -69,21 +69,21 @@ collapse_rd <- function(blocks) {
   } else {
     names(commands) <- command_names
   }
-  
+
   order <- c("docType", "encoding", "name", "alias", "title", "format",
     "source", "usage", "arguments", "value", "description", "details", "slot",
     "note", "section", "examples", "author", "references", "seealso",
     "concept", "keyword")
   commands <- commands[c(intersect(order, names(commands)),
     setdiff(names(commands), order))]
-  
+
   commands
 }
 
 #' @autoImports
 write_rd <- function(commands, path) {
   if (length(commands) == 0) return()
-  
+
   formatted <- vapply(commands, "format", character(1))
   if (write_if_different(path, formatted)) {
     try(checkRd(path))

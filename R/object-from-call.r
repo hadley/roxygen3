@@ -1,4 +1,4 @@
-#' Given a call that modifies the R environment, find the object that 
+#' Given a call that modifies the R environment, find the object that
 #' it creates.
 #'
 #' @details
@@ -19,15 +19,15 @@
 #' @dev
 object_from_call <- function(call, env, srcref) {
   if (is.null(call)) return(new("NullObject", srcref = srcref))
-  
+
   # Find function, then use match.call to construct complete call
   f <- eval(call[[1]], env)
   if (!is.primitive(f)) {
     call <- match.call(eval(call[[1]], env), call)
   }
-  
+
   class <- paste("Call", first_upper(deparse(call[[1]])), sep = "")
-  
+
   method <- selectMethod("objectFromCall", c(call = class))
   method(call, env, srcref)
 }
@@ -41,16 +41,16 @@ setMethod("objectFromCall", "ANY", function(call, env, srcref) {
 
 object_from_assignment <- function(call, env, srcref) {
   name <- as.character(call[[2]])
-  
+
   # If it's a compound assignment like x[[2]] <- ignore it
   if (length(name) > 1)  return(new("NullObject"))
-  
+
   # If it doesn't exist (any more), don't document it.
   if (!exists(name, env)) return(new("NullObject"))
-  
+
   val <- get(name, env)
   val <- add_s3_metadata(val, name, env)
-  
+
   # Figure out if it's an s3 method or generic and add that info.
   if (is_s3_generic(name, env)) {
     objtype <- "S3GenericObject"
@@ -77,7 +77,7 @@ setClass("CallSetClass")
 setMethod("objectFromCall", "CallSetClass", function(call, env, srcref) {
   name <- as.character(call$Class)
   val <- getClass(name, where = env)
-  
+
   new("S4ClassObject", name = name, value = val, srcref = srcref)
 })
 

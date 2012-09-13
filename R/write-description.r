@@ -14,9 +14,9 @@ build_description <- function(blocks) {
   output <- lapply(blocks, writeDescription)
   out <- unlist(output, recursive = FALSE)
   if (!is.null(out$Collate)) {
-    out$Collate <- str_c(out$Collate, collapse = "\n")    
+    out$Collate <- str_c(out$Collate, collapse = "\n")
   }
-  
+
   out
 }
 
@@ -39,7 +39,7 @@ field <- function(name) {
 
 read_description <- function(file) {
   dcf <- read.dcf(file)
-  
+
   dcf_list <- setNames(as.list(dcf[1, ]), colnames(dcf))
   lapply(dcf_list, str_trim)
 }
@@ -55,7 +55,7 @@ render_description <- function(desc) {
       str_c(field, ":\n", value_string)
     } else {
       width <- if (individual_lines) 0 else 80
-      wrap_field_if_necessary(field, value, wrap.threshold = width)    
+      wrap_field_if_necessary(field, value, wrap.threshold = width)
     }
   }
   desc <- Filter(function(x) length(x) > 0 && !identical(x, ""), desc)
@@ -70,12 +70,12 @@ render_description <- function(desc) {
 wrap_field_if_necessary <- function(field, value, wrap.threshold) {
    text <- simulate_formatted_text(field, value)
    longest.line <- max(str_length(text))
-   
+
    if (longest.line > wrap.threshold) {
-     text <- str_wrap(str_c(field, ": ", value), exdent = 4, 
+     text <- str_wrap(str_c(field, ": ", value), exdent = 4,
       width = wrap.threshold)
    }
-   
+
    return(text)
 }
 
@@ -83,6 +83,6 @@ wrap_field_if_necessary <- function(field, value, wrap.threshold) {
 simulate_formatted_text <- function(field, value) {
   text     <- str_split(str_c(field, ": ", value), "\n")[[1]]
   text[-1] <- str_c("    ", text[-1]) # indents all *but* the first line
-  
+
   return(text)
 }

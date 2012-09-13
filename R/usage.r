@@ -32,8 +32,8 @@ setMethod("format", "TextUsage", function(x, ...) {
 })
 setMethod("format", "S4MethodUsage", function(x, ...) {
   signature <- str_c(as.character(x@signature), collapse = ",")
-  
-  str_c("\\S4method{", x@generic, "}{", signature, "}(", 
+
+  str_c("\\S4method{", x@generic, "}{", signature, "}(",
     args_string(usage_args(x@formals)), ")")
 })
 setMethod("format", "S3MethodUsage", function(x, ...) {
@@ -42,7 +42,7 @@ setMethod("format", "S3MethodUsage", function(x, ...) {
   method <- function(x) {
     str_c("\\method", "{", x@generic, "}{", x@signature, "}", collapse = "")
   }
-  
+
   if (is_replacement_fun(x@generic)) {
     x@generic <- str_replace(x@generic, fixed("<-"), "")
     str_c(method(x), "(", arglist, ") <- value")
@@ -52,7 +52,7 @@ setMethod("format", "S3MethodUsage", function(x, ...) {
 })
 
 #' @autoImports
-setMethod("format", "FunctionUsage", function(x, ...) {  
+setMethod("format", "FunctionUsage", function(x, ...) {
   arglist <- args_string(usage_args(x@formals))
   if (is_replacement_fun(x@name)) {
     name <- str_replace(x@name, fixed("<-"), "")
@@ -60,7 +60,7 @@ setMethod("format", "FunctionUsage", function(x, ...) {
   } else if (is_infix_fun(x@name)) {
     arg_names <- names(x@formals)
     str_c(arg_names[1], " ", x@name, " ", arg_names[2])
-  } else {    
+  } else {
     str_c(x@name, "(", arglist, ")")
   }
 })
@@ -72,7 +72,7 @@ is_infix_fun <- function(name) {
 }
 
 # Given argument list, produce usage specification for it.
-# 
+#
 # Adapted from \code{\link{prompt}}.
 #
 # @param f function, or name of function, as string
@@ -86,8 +86,8 @@ usage_args <- function(args) {
     text <- deparse(arg, backtick = TRUE, width.cutoff = 500L)
     text <- str_replace_all(text, fixed("%"), "\\%")
     text <- str_replace_all(text, fixed(" "), "\u{A0}")
-    Encoding(text) <- "UTF-8"    
-    
+    Encoding(text) <- "UTF-8"
+
     text
   }
   vapply(args, arg_to_text, character(1))
@@ -96,6 +96,6 @@ usage_args <- function(args) {
 args_string <- function(x) {
   missing_arg <- x == ""
   sep <- ifelse(!missing_arg, "\u{A0}=\u{A0}", "")
-  
+
   str_c(names(x), sep, x, collapse = ", ")
 }
