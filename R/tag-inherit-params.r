@@ -1,1 +1,1 @@
-setClass("TagInheritParams", contains = "Tag")
+setClass("InheritParamsTag", contains = "Tag")

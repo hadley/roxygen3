@@ -1,7 +1,7 @@
 \docType{class}
-\name{TagDocType-class}
+\name{DocTypeTag-class}
 
-\alias{TagDocType-class}
+\alias{DocTypeTag-class}
 
 \title{Set object documentation type.}
 

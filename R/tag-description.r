@@ -3,8 +3,8 @@
 #' The topic title. By default this is taken from the second paragraph of the
 #' roxygen block. See \code{\link{tag_intro}} for more details.
 #'
-#' @tagUsage @@description Text goes here.
-setClass("TagDescription", contains = "Tag")
-setMethod("writeRd", "TagDescription", function(object) {
+#' @usageTag @@description Text goes here.
+setClass("DescriptionTag", contains = "Tag")
+setMethod("writeRd", "DescriptionTag", function(object) {
   new_command("description", object@text)
 })

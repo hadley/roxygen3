@@ -1,6 +1,6 @@
-setClass("TagTagUsage", contains = "Tag")
+setClass("UsageTagTag", contains = "Tag")
 
-setMethod("writeRd", "TagTagUsage", function(object) {
+setMethod("writeRd", "UsageTagTag", function(object) {
   contents <- str_c("\\code{\n#' ", object@text, "\n}")
   new_command("section", c("Tag Usage" = contents))
 })

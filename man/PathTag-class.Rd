@@ -1,7 +1,7 @@
 \docType{class}
-\name{TagPath-class}
+\name{PathTag-class}
 
-\alias{TagPath-class}
+\alias{PathTag-class}
 
 \title{Automatically add the path as an Rd comment.}
 

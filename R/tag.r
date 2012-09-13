@@ -29,7 +29,7 @@ tag_name <- function(x) {
   } else if (is.character(x)) {
     class <- x
   }
-  first_lower(str_replace(class, "^Tag", ""))
+  first_lower(str_replace(class, "Tag$", ""))
 }
 
 #' Find all currently defined tags.

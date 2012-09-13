@@ -1,5 +1,5 @@
-setClass("TagExample", contains = "Tag")
-setMethod("procBlock", "TagExample", function(tag, block) {
+setClass("ExampleTag", contains = "Tag")
+setMethod("procBlock", "ExampleTag", function(tag, block) {
   paths <- str_trim(tag@text)
   examples <- unlist(lapply(paths, readLines))
 
@@ -7,4 +7,4 @@ setMethod("procBlock", "TagExample", function(tag, block) {
   block
 })
 
-setMethod("getPrereqs", "TagExample", function(tag) "TagExamples")
+setMethod("getPrereqs", "ExampleTag", function(tag) "ExampleTag")

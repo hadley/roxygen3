@@ -1,9 +1,9 @@
 #' Add comments to the Rd file.
 #'
-#' @tagUsage @@comment This is a comment that will not be user visible.
+#' @usageTag @@comment This is a comment that will not be user visible.
 
-setClass("TagComment", contains = "Tag")
+setClass("CommentTag", contains = "Tag")
 
-setMethod("writeRd", "TagComment", function(object) {
+setMethod("writeRd", "CommentTag", function(object) {
   new_command("comment", object@text)
 })

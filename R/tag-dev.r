@@ -1,6 +1,6 @@
-setClass("TagDev", contains = "Tag")
+setClass("DevTag", contains = "Tag")
 
-setMethod("procBlock", "TagDev", function(tag, block) {
+setMethod("procBlock", "DevTag", function(tag, block) {
   desc <- "This function is aimed primarily at developers extending this package. You shouldn't need to use it for everyday operation of the package."
 
   title <- block@tags$title
@@ -13,6 +13,6 @@ setMethod("procBlock", "TagDev", function(tag, block) {
   block
 })
 
-setMethod("getPrereqs", "TagDev", function(tag) {
-  c("TagIntro", "TagTitle", "TagDetails")
+setMethod("getPrereqs", "DevTag", function(tag) {
+  c("IntroTag", "TitleTag", "DetailsTag")
 })

@@ -1,14 +1,14 @@
-setClass("TagFormat", contains = "Tag")
+setClass("FormatTag", contains = "Tag")
 
-setMethod("defaultTag", c("TagFormat", "DataObject"), 
+setMethod("defaultTag", c("FormatTag", "DataObject"),
   function(tag, object) {
-    out <- str_c(capture.output(str(object@value, max.level = 1)), 
+    out <- str_c(capture.output(str(object@value, max.level = 1)),
       collapse = "\n")
-    new("TagFormat", text = out)
+    new("FormatTag", text = out)
   }
 )
 
-setMethod("writeRd", "TagFormat", function(object) {
+setMethod("writeRd", "FormatTag", function(object) {
   new_command("format", object@text)
 })
 

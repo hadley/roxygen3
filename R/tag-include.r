@@ -1,1 +1,1 @@
-setClass("TagInclude", contains = "Tag")
+setClass("IncludeTag", contains = "Tag")

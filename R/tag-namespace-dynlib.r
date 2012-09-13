@@ -1,1 +1,1 @@
-setClass("TagUseDynLib", contains = "Tag")
+setClass("UseDynLibTag", contains = "Tag")

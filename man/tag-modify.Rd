@@ -8,9 +8,9 @@
 \title{[DEV] Convenience methods for manipulating tags in a block.}
 
 \usage{
-  tag(block, tagname, create = TRUE)
+  tag(block, NameTag, create = TRUE)
 
-  tag(block, tagname, value) <- value
+  tag(block, NameTag, value) <- value
 
   suffix(x)
 
@@ -20,7 +20,7 @@
 \arguments{
   \item{block}{\code{\link{Block}} object to modify}
 
-  \item{tagname}{name of the tag (as a length 1 character
+  \item{NameTag}{name of the tag (as a length 1 character
   vector)}
 
   \item{create}{if \code{TRUE} will create a new \code{Tag}

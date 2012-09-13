@@ -1,21 +1,21 @@
-setClass("TagRdname", contains = "Tag")
-setMethod("defaultTag", c("TagRdname", "Object"),
+setClass("RdnameTag", contains = "Tag")
+setMethod("defaultTag", c("RdnameTag", "Object"),
   function(tag, object) {
     if (length(object@name) == 0) return()
-    new("TagRdname", text = nice_name(object@name))
+    new("RdnameTag", text = nice_name(object@name))
   }
 )
 
-setMethod("defaultTag", c("TagRdname", "S4MethodObject"),
+setMethod("defaultTag", c("RdnameTag", "S4MethodObject"),
   function(tag, object) {
-    name <- str_c(c(object@value@generic, object@value@defined), 
+    name <- str_c(c(object@value@generic, object@value@defined),
       collapse = "-")
-    new("TagRdname", text = name)
+    new("RdnameTag", text = name)
   }
 )
-setMethod("defaultTag", c("TagRdname", "S4ClassObject"),
+setMethod("defaultTag", c("RdnameTag", "S4ClassObject"),
   function(tag, object) {
-    new("TagRdname", text = str_c(object@name, "-class"))
+    new("RdnameTag", text = str_c(object@name, "-class"))
   }
 )
 
@@ -59,7 +59,7 @@ nice_name <- function(x) {
     x <- str_replace_all(x, fixed(subs[i, 1]), subs[i, 2])
   }
   x <- str_replace(x, "-+", "-")
-  
+
   # From renzao: https://github.com/klutometis/roxygen/pull/95
   # remove leading '-'
   x <- str_replace(x, "^-", "")

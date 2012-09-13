@@ -1,4 +1,4 @@
-setClass("TagIntro", contains = "Tag")
+setClass("IntroTag", contains = "Tag")
 
 #' Title, description and details.
 #'
@@ -12,7 +12,7 @@ setClass("TagIntro", contains = "Tag")
 #' @seealso \code{\link{tag_title}}, \code{\link{tag_description}},
 #'  \code{\link{tag_details}} to set each component individually.
 #' @autoImports
-setMethod("procBlock", "TagIntro", function(tag, block) {
+setMethod("procBlock", "IntroTag", function(tag, block) {
   tags <- block@tags
   paragraphs <- str_trim(str_split(tag@text, fixed('\n\n'))[[1]])
 
@@ -45,7 +45,7 @@ setMethod("procBlock", "TagIntro", function(tag, block) {
   block
 })
 
-setMethod("getPrereqs", "TagIntro", function(tag) {
-  c("TagTitle", "TagDescription", "TagDetails")
+setMethod("getPrereqs", "IntroTag", function(tag) {
+  c("TitleTag", "DescriptionTag", "DetailsTag")
 })
 

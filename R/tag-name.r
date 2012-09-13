@@ -5,41 +5,41 @@
 #' it's probably an indication that you need to extend roxygen3 for you
 #' object type.
 #'
-#' @tagUsage @@name name
-setClass("TagName", contains = "Tag")
+#' @usageTag @@name name
+setClass("NameTag", contains = "Tag")
 
-setMethod("procBlock", "TagName", function(tag, block) {
+setMethod("procBlock", "NameTag", function(tag, block) {
   tag(block, "aliases") <- suffix(tag@text)
   block
 })
 
-setMethod("defaultTag", c("TagName", "Object"),
+setMethod("defaultTag", c("NameTag", "Object"),
   function(tag, object) {
-    new("TagName", text = object@name)
+    new("NameTag", text = object@name)
   }
 )
 
-setMethod("defaultTag", c("TagName", "NullObject"),
+setMethod("defaultTag", c("NameTag", "NullObject"),
   function(tag, object) {
     NULL
   }
 )
 
 # http://cran.r-project.org/doc/manuals/R-exts.html#Documenting-S4-classes-and-methods
-setMethod("defaultTag", c("TagName", "S4ClassObject"),
+setMethod("defaultTag", c("NameTag", "S4ClassObject"),
   function(tag, object) {
-    new("TagName", text = str_c(object@name, "-class"))
+    new("NameTag", text = str_c(object@name, "-class"))
   }
 )
-setMethod("defaultTag", c("TagName", "S4MethodObject"),
+setMethod("defaultTag", c("NameTag", "S4MethodObject"),
   function(tag, object) {
     sig <- str_c(object@value@defined, collapse = ",")
     name <- str_c(object@value@generic, ",", sig, "-method")
-    new("TagName", text = name)
+    new("NameTag", text = name)
   }
 )
 
 
-setMethod("writeRd", "TagName", function(object) {
+setMethod("writeRd", "NameTag", function(object) {
   new_command("name", object@text)
 })

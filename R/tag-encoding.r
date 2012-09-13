@@ -1,4 +1,4 @@
-setClass("TagEncoding", contains = "Tag")
-setMethod("procTag", "TagEncoding", function(tag) {
+setClass("EncodingTag", contains = "Tag")
+setMethod("procTag", "EncodingTag", function(tag) {
   parse_words(tag, 1, 1)
 })

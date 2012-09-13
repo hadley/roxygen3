@@ -1,7 +1,7 @@
 \docType{class}
-\name{TagDescription-class}
+\name{DescriptionTag-class}
 
-\alias{TagDescription-class}
+\alias{DescriptionTag-class}
 
 \title{Override default description.}
 

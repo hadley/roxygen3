@@ -1,5 +1,5 @@
-setClass("TagMethod", contains = "Tag")
+setClass("MethodTag", contains = "Tag")
 
-setMethod("procTag", "TagMethod", function(tag) {
+setMethod("procTag", "MethodTag", function(tag) {
   message("@method is deprecated. S3 methods are now detected automatically.")
 })

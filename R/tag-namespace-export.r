@@ -1,31 +1,31 @@
 
-#' @tagUsage @@exportClass class1 class2
+#' @usageTag @@exportClass class1 class2
 #' @rdname tag-export
-setClass("TagExportClass", contains = "Tag")
-setMethod("procTag", "TagExportClass", function(tag) {
+setClass("ExportClassTag", contains = "Tag")
+setMethod("procTag", "ExportClassTag", function(tag) {
   parse_words(tag)
 })
-setMethod("writeNamespace", "TagExportClass", function(object) {
+setMethod("writeNamespace", "ExportClassTag", function(object) {
   ns_each("exportClass", object@text)
 })
 
-#' @tagUsage @@exportMethods generic1 generic2
+#' @usageTag @@exportMethods generic1 generic2
 #' @rdname tag-export
-setClass("TagExportMethods", contains = "Tag")
-setMethod("procTag", "TagExportMethods", function(tag) {
+setClass("ExportMethodsTag", contains = "Tag")
+setMethod("procTag", "ExportMethodsTag", function(tag) {
   parse_words(tag)
 })
-setMethod("writeNamespace", "TagExportMethods", function(object) {
+setMethod("writeNamespace", "ExportMethodsTag", function(object) {
   ns_each("exportMethods", object@text)
 })
 
-#' @tagUsage @@exportPattern pattern
+#' @usageTag @@exportPattern pattern
 #' @rdname tag-export
-setClass("TagExportPattern", contains = "Tag")
-setMethod("procTag", "TagExportPattern", function(tag) {
+setClass("ExportPatternTag", contains = "Tag")
+setMethod("procTag", "ExportPatternTag", function(tag) {
   parse_words(tag)
 })
-setMethod("writeNamespace", "TagExportPattern", function(object) {
+setMethod("writeNamespace", "ExportPatternTag", function(object) {
   ns_each("exportPattern", object@text)
 })
 
@@ -34,12 +34,12 @@ setMethod("writeNamespace", "TagExportPattern", function(object) {
 #'   @@S3method generic
 #'   @@S3method
 #' @rdname tag-export
-setClass("TagS3method", contains = "Tag",
+setClass("S3methodTag", contains = "Tag",
   list("methods" = "matrix"))
-setMethod("procTag", "TagS3method", function(tag) {
+setMethod("procTag", "S3methodTag", function(tag) {
   parse_words(tag, 0, 2)
 })
-setMethod("procBlock", "TagS3method", function(tag, block) {
+setMethod("procBlock", "S3methodTag", function(tag, block) {
   n <- length(tag@text)
 
   if (n == 0) {
@@ -61,7 +61,7 @@ setMethod("procBlock", "TagS3method", function(tag, block) {
   block
 })
 
-setMethod("writeNamespace", "TagS3method", function(object) {
+setMethod("writeNamespace", "S3methodTag", function(object) {
   if (length(object@methods) == 0) return()
 
   if (is.vector(object@methods)) {

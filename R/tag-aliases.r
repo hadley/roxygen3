@@ -1,23 +1,23 @@
 #' Add additional topic aliases.
-#' 
+#'
 #' Add additional aliases through which the user can find the documentation
 #' with \code{\link{help}}. The topic name is always included in the list of
 #' aliases.
 #'
-#' @tagUsage @@aliases space separated aliases
+#' @usageTag @@aliases space separated aliases
 
-setClass("TagAliases", contains = "Tag")
+setClass("AliasesTag", contains = "Tag")
 
-setMethod("procTag", "TagAliases", function(tag) {
+setMethod("procTag", "AliasesTag", function(tag) {
   parse_words(tag, min = 1)
 })
 
-setMethod("writeRd", "TagAliases", function(object) {
+setMethod("writeRd", "AliasesTag", function(object) {
   new_command("alias", object@text)
 })
 
-setMethod("defaultTag", c("TagAliases", "PackageObject"), 
+setMethod("defaultTag", c("AliasesTag", "PackageObject"),
   function(tag, object) {
-    new("TagAliases", text = str_c(object@name, "-package"))
+    new("AliasesTag", text = str_c(object@name, "-package"))
   }
 )

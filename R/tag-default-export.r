@@ -1,4 +1,4 @@
-setClass("TagDefaultExport", contains = "Tag", list(
+setClass("DefaultExportTag", contains = "Tag", list(
   export = "character",
   exportMethods = "character",
   exportClass = "character",
@@ -10,44 +10,44 @@ setClass("TagDefaultExport", contains = "Tag", list(
   S3method = matrix(character(), ncol = 2)
 ))
 
-setMethod("defaultTag", c("TagDefaultExport", "FunctionObject"),
+setMethod("defaultTag", c("DefaultExportTag", "FunctionObject"),
   function(tag, object) {
-    new("TagDefaultExport", export = object@name)
+    new("DefaultExportTag", export = object@name)
   }
 )
-setMethod("defaultTag", c("TagDefaultExport", "S4GenericObject"),
+setMethod("defaultTag", c("DefaultExportTag", "S4GenericObject"),
   function(tag, object) {
-    new("TagDefaultExport", export = object@name, exportMethods = object@name)
+    new("DefaultExportTag", export = object@name, exportMethods = object@name)
   }
 )
-setMethod("defaultTag", c("TagDefaultExport", "S4MethodObject"),
+setMethod("defaultTag", c("DefaultExportTag", "S4MethodObject"),
   function(tag, object) {
     gen <- as.vector(object@value@generic)
-    new("TagDefaultExport", exportMethods = gen)
+    new("DefaultExportTag", exportMethods = gen)
   }
 )
-setMethod("defaultTag", c("TagDefaultExport", "S3MethodObject"),
+setMethod("defaultTag", c("DefaultExportTag", "S3MethodObject"),
   function(tag, object) {
     s3 <- s3_method_info(object@value)
-    new("TagDefaultExport", S3method = matrix(s3, ncol = 2))
+    new("DefaultExportTag", S3method = matrix(s3, ncol = 2))
   }
 )
-setMethod("defaultTag", c("TagDefaultExport", "S3GenericObject"),
+setMethod("defaultTag", c("DefaultExportTag", "S3GenericObject"),
   function(tag, object) {
     all <- all_s3_methods(environment(object@value))
     matching <- all[all[, 1] == object@name, , drop = FALSE]
 
-    new("TagDefaultExport", S3method = matching, export = object@name)
+    new("DefaultExportTag", S3method = matching, export = object@name)
   }
 )
-setMethod("defaultTag", c("TagDefaultExport", "S4ClassObject"),
+setMethod("defaultTag", c("DefaultExportTag", "S4ClassObject"),
   function(tag, object) {
-    new("TagDefaultExport", exportClass = as.vector(object@value@className))
+    new("DefaultExportTag", exportClass = as.vector(object@value@className))
   }
 )
-setMethod("defaultTag", c("TagDefaultExport", "R5ClassObject"),
+setMethod("defaultTag", c("DefaultExportTag", "R5ClassObject"),
   function(tag, object) {
-    new("TagDefaultExport", exportClass = as.vector(object@value$className))
+    new("DefaultExportTag", exportClass = as.vector(object@value$className))
   }
 )
 

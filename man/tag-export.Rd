@@ -1,11 +1,11 @@
 \docType{class}
-\name{TagExport-class}
+\name{ExportTag-class}
 
-\alias{TagExport-class}
-\alias{TagExportClass-class}
-\alias{TagExportMethods-class}
-\alias{TagExportPattern-class}
-\alias{TagS3method-class}
+\alias{ExportClassTag-class}
+\alias{ExportMethodsTag-class}
+\alias{ExportPatternTag-class}
+\alias{ExportTag-class}
+\alias{S3methodTag-class}
 
 \title{Namespace: tags for exporting objects}
 

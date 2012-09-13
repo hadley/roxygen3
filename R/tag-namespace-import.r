@@ -13,15 +13,15 @@
 #' You must have the packages declared in \code{DESCRIPTION} Imports.
 #'
 #'
-#' @tagUsage @@importFrom package function1 function2
+#' @usageTag @@importFrom package function1 function2
 #' @rdname tag-import
 #' @autoImports
-setClass("TagImportFrom", contains = "Tag", representation(
+setClass("ImportFromTag", contains = "Tag", representation(
   imports = "character"))
 
-setMethod("format", "TagImportFrom", function(x, ...) x@imports %||% x@text)
+setMethod("format", "ImportFromTag", function(x, ...) x@imports %||% x@text)
 
-setMethod("procTag", "TagImportFrom", function(tag) {
+setMethod("procTag", "ImportFromTag", function(tag) {
   if (length(tag@text) == 0) return(tag)
 
   pieces <- str_split(tag@text, "[[:space:]]+")[[1]]
@@ -32,7 +32,7 @@ setMethod("procTag", "TagImportFrom", function(tag) {
     setNames(rep(pieces[1], length(pieces[-1])), pieces[-1]))
   tag
 })
-setMethod("writeNamespace", "TagImportFrom", function(object) {
+setMethod("writeNamespace", "ImportFromTag", function(object) {
   imports <- object@imports
 
   imports <- imports[imports != "base"]
@@ -42,10 +42,10 @@ setMethod("writeNamespace", "TagImportFrom", function(object) {
 })
 
 #' @rdname tag-import
-#' @tagUsage @@autoImports
+#' @usageTag @@autoImports
 #' @autoImports
-setClass("TagAutoImports", contains = "Tag")
-setMethod("procBlock", "TagAutoImports", function(tag, block) {
+setClass("AutoImportsTag", contains = "Tag")
+setMethod("procBlock", "AutoImportsTag", function(tag, block) {
   obj <- block@object
   if (!is.function(obj@value)) return(block)
 
@@ -55,7 +55,7 @@ setMethod("procBlock", "TagAutoImports", function(tag, block) {
   if (!is.null(importFrom)) {
     importFrom@imports <- c(importFrom@imports, auto)
   } else {
-    importFrom <- new("TagImportFrom", imports = auto)
+    importFrom <- new("ImportFromTag", imports = auto)
   }
 
   tag(block, "importFrom") <- importFrom
@@ -63,39 +63,39 @@ setMethod("procBlock", "TagAutoImports", function(tag, block) {
   block
 })
 
-setMethod("getPrereqs", "TagAutoImports", function(tag) {
-  "TagImportFrom"
+setMethod("getPrereqs", "AutoImportsTag", function(tag) {
+  "ImportFromTag"
 })
 
 #' @rdname tag-import
-#' @tagUsage @@import package1 package2 package3
-setClass("TagImport", contains = "Tag")
-setMethod("procTag", "TagImport", function(tag) {
+#' @usageTag @@import package1 package2 package3
+setClass("ImportTag", contains = "Tag")
+setMethod("procTag", "ImportTag", function(tag) {
   tag@text <- str_split(tag@text, " ")[[1]]
   tag
 })
-setMethod("writeNamespace", "TagImport", function(object) {
+setMethod("writeNamespace", "ImportTag", function(object) {
   ns_each("import", object@text)
 })
 
 #' @rdname tag-import
-#' @tagUsage @@importClassesFrom package fun1 fun2
-setClass("TagImportClassesFrom", contains = "Tag")
-setMethod("procTag", "TagImportClassesFrom", function(tag) {
+#' @usageTag @@importClassesFrom package fun1 fun2
+setClass("ImportClassesFromTag", contains = "Tag")
+setMethod("procTag", "ImportClassesFromTag", function(tag) {
   tag@text <- str_split(tag@text, " ")[[1]]
   tag
 })
-setMethod("writeNamespace", "TagImportClassesFrom", function(object) {
+setMethod("writeNamespace", "ImportClassesFromTag", function(object) {
   ns_repeat1("importClassesFrom",object@text)
 })
 
 #' @rdname tag-import
-#' @tagUsage @@importMethodsFrom package fun1 fun2
-setClass("TagImportMethodsFrom", contains = "Tag")
-setMethod("procTag", "TagImportMethodsFrom", function(tag) {
+#' @usageTag @@importMethodsFrom package fun1 fun2
+setClass("ImportMethodsFromTag", contains = "Tag")
+setMethod("procTag", "ImportMethodsFromTag", function(tag) {
   tag@text <- str_split(tag@text, " ")[[1]]
   tag
 })
-setMethod("writeNamespace", "TagImportMethodsFrom", function(object) {
+setMethod("writeNamespace", "ImportMethodsFromTag", function(object) {
   ns_repeat1("importMethodsFrom",object@text)
 })

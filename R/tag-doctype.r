@@ -1,43 +1,43 @@
 #' Set object documentation type.
-#' 
+#'
 #' @details You can use any doctype, but it will only be included in
 #'   the Rd file if it is one of the standard R doctypes: data, package,
 #'   methods and class.
 #'
-#' @tagUsage 
+#' @usageTag
 #'   @@docType data
 #'   @@docType package
 #'   @@docType custom doctype
 #'
-setClass("TagDocType", contains = "Tag")
+setClass("DocTypeTag", contains = "Tag")
 
-setMethod("defaultTag", c("TagDocType", "S4MethodObject"),
+setMethod("defaultTag", c("DocTypeTag", "S4MethodObject"),
   function(tag, object) {
-    new("TagDocType", text = "methods")
+    new("DocTypeTag", text = "methods")
   }
 )
-setMethod("defaultTag", c("TagDocType", "S4ClassObject"),
+setMethod("defaultTag", c("DocTypeTag", "S4ClassObject"),
   function(tag, object) {
-    new("TagDocType", text = "class")
+    new("DocTypeTag", text = "class")
   }
 )
-setMethod("defaultTag", c("TagDocType", "DataObject"),
+setMethod("defaultTag", c("DocTypeTag", "DataObject"),
   function(tag, object) {
-    new("TagDocType", text = "data")
+    new("DocTypeTag", text = "data")
   }
 )
-setMethod("defaultTag", c("TagDocType", "R5ClassObject"),
+setMethod("defaultTag", c("DocTypeTag", "R5ClassObject"),
   function(tag, object) {
-    new("TagDocType", text = "class")
+    new("DocTypeTag", text = "class")
   }
 )
-setMethod("defaultTag", c("TagDocType", "PackageObject"),
+setMethod("defaultTag", c("DocTypeTag", "PackageObject"),
   function(tag, object) {
-    new("TagDocType", text = "package")
+    new("DocTypeTag", text = "package")
   }
 )
 
-setMethod("writeRd", "TagDocType", function(object) {
+setMethod("writeRd", "DocTypeTag", function(object) {
   new_command("docType", object@text)
 })
 
@@ -49,7 +49,7 @@ format.docType_command <- function(x, ...) {
   ok <- c("data", "package", "methods", "class")
   vals <- intersect(vals, ok)
   if (length(vals) == 0) return("")
-  
+
   str_c("\\docType{", vals, "}")
 }
 

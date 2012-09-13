@@ -1,14 +1,14 @@
-setClass("TagKeywords", contains = "Tag")
+setClass("KeywordsTag", contains = "Tag")
 
-setMethod("defaultTag", c("TagKeywords", "DataObject"), function(tag, object) {
-  new("TagKeywords", text = "datasets")
+setMethod("defaultTag", c("KeywordsTag", "DataObject"), function(tag, object) {
+  new("KeywordsTag", text = "datasets")
 })
 
-setMethod("procTag", "TagKeywords", function(tag) {
+setMethod("procTag", "KeywordsTag", function(tag) {
   parse_words(tag)
 })
 
-setMethod("writeRd", "TagKeywords", function(object) {
+setMethod("writeRd", "KeywordsTag", function(object) {
   new_command("keyword", object@text)
 })
 

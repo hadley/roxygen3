@@ -22,9 +22,9 @@
 #'   @@export
 #'   @@export function name
 #' @rdname tag-export
-setClass("TagExport", contains = "Tag")
+setClass("ExportTag", contains = "Tag")
 
-setMethod("procBlock", "TagExport", function(tag, block) {
+setMethod("procBlock", "ExportTag", function(tag, block) {
   if (!is_empty(tag)) return(block)
 
   defaults <- block@tags$defaultExport
@@ -33,14 +33,14 @@ setMethod("procBlock", "TagExport", function(tag, block) {
   tag(block, "export") <- defaults@export
   tag(block, "exportMethods") <- suffix(defaults@exportMethods)
   tag(block, "exportClass") <- suffix(defaults@exportClass)
-  tag(block, "S3method") <- new("TagS3method", methods = defaults@S3method)
+  tag(block, "S3method") <- new("S3methodTag", methods = defaults@S3method)
   block
 })
 
-setMethod("writeNamespace", "TagExport", function(object) {
+setMethod("writeNamespace", "ExportTag", function(object) {
   ns_each("export", object@text)
 })
 
-setMethod("getPrereqs", "TagExport", function(tag) {
-  c("TagS3method", "TagDocType")
+setMethod("getPrereqs", "ExportTag", function(tag) {
+  c("S3methodTag", "DocTypeTag")
 })

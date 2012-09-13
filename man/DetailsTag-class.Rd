@@ -1,7 +1,7 @@
 \docType{class}
-\name{TagDetails-class}
+\name{DetailsTag-class}
 
-\alias{TagDetails-class}
+\alias{DetailsTag-class}
 
 \title{Override default details.}
 

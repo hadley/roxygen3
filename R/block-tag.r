@@ -3,7 +3,7 @@
 #' @dev
 #' @rdname tag-modify
 #' @param block \code{\link{Block}} object to modify
-#' @param tagname name of the tag (as a length 1 character vector)
+#' @param NameTag name of the tag (as a length 1 character vector)
 #' @param create if \code{TRUE} will create a new \code{Tag} of the appropriate
 #'   type if one is not present.  If \code{FALSE}, it will return \code{NULL}.
 #' @examples
@@ -20,13 +20,13 @@
 #' tag(block, "aliases") <- prefix("start")
 #' block
 #' @export
-tag <- function(block, tagname, create = TRUE) {
-  tag <- block@tags[[tagname]]
+tag <- function(block, NameTag, create = TRUE) {
+  tag <- block@tags[[NameTag]]
 
   if (!is.null(tag) || !create) return(tag)
 
-  tag <- build_tag(tagname, character())
-  if (is.null(tag)) stop("Can't find tag called ", tagname)
+  tag <- build_tag(NameTag, character())
+  if (is.null(tag)) stop("Can't find tag called ", NameTag)
   tag
 }
 
@@ -38,20 +38,20 @@ tag <- function(block, tagname, create = TRUE) {
 #' @rdname tag-modify
 #' @export
 setGeneric("tag<-",
-  function(block, tagname, value) {
+  function(block, NameTag, value) {
     standardGeneric("tag<-")
   },
   signature = "value"
 )
 
-setMethod("tag<-", "ANY", function(block, tagname, value) {
-  block@tags[[tagname]] <- value
+setMethod("tag<-", "ANY", function(block, NameTag, value) {
+  block@tags[[NameTag]] <- value
   block
 })
-setMethod("tag<-", "character", function(block, tagname, value) {
-  new_tag <- tag(block, tagname, create = TRUE)
+setMethod("tag<-", "character", function(block, NameTag, value) {
+  new_tag <- tag(block, NameTag, create = TRUE)
   new_tag@text <- value
-  tag(block, tagname) <- new_tag
+  tag(block, NameTag) <- new_tag
   block
 })
 
@@ -64,17 +64,17 @@ suffix <- function(x) new("Suffix", x)
 #' @export
 prefix <- function(x) new("Prefix", x)
 
-setMethod("tag<-", "Suffix", function(block, tagname, value) {
+setMethod("tag<-", "Suffix", function(block, NameTag, value) {
   if (length(value) == 0) return(block)
 
-  old_text <- tag(block, tagname)@text
-  tag(block, tagname) <- c(old_text, value@.Data)
+  old_text <- tag(block, NameTag)@text
+  tag(block, NameTag) <- c(old_text, value@.Data)
   block
 })
-setMethod("tag<-", "Prefix", function(block, tagname, value) {
+setMethod("tag<-", "Prefix", function(block, NameTag, value) {
   if (length(value) == 0) return(block)
 
-  old_text <- tag(block, tagname)@text
-  tag(block, tagname) <- c(value@.Data, old_text)
+  old_text <- tag(block, NameTag)@text
+  tag(block, NameTag) <- c(value@.Data, old_text)
   block
 })

@@ -1,5 +1,5 @@
-setClass("TagReturn", contains = "Tag")
+setClass("ReturnTag", contains = "Tag")
 
-setMethod("writeRd", "TagReturn", function(object) {
+setMethod("writeRd", "ReturnTag", function(object) {
   new_command("value", object@text)
 })

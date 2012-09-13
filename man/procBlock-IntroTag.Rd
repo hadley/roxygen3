@@ -1,7 +1,7 @@
 \docType{methods}
-\name{procBlock,TagIntro-method}
+\name{procBlock,IntroTag-method}
 
-\alias{procBlock,TagIntro-method}
+\alias{procBlock,IntroTag-method}
 
 \title{Title, description and details.}
 

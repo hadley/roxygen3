@@ -1,9 +1,9 @@
-setClass("TagParam", contains = "Tag",
+setClass("ParamTag", contains = "Tag",
   list(arguments = "character"))
 
-setMethod("format", "TagParam", function(x, ...) x@arguments %||% x@text)
+setMethod("format", "ParamTag", function(x, ...) x@arguments %||% x@text)
 
-setMethod("procTag", "TagParam", function(tag) {
+setMethod("procTag", "ParamTag", function(tag) {
   pieces <- str_split_fixed(tag@text, "[[:space:]]+", 2)
 
   name <- pieces[, 1]
@@ -16,6 +16,6 @@ setMethod("procTag", "TagParam", function(tag) {
   tag
 })
 
-setMethod("writeRd", "TagParam", function(object) {
+setMethod("writeRd", "ParamTag", function(object) {
   new_command("arguments", object@arguments)
 })
