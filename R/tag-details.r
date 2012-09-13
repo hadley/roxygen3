@@ -7,5 +7,5 @@
 #' @usageTag @@details Text goes here.
 setClass("DetailsTag", contains = "Tag")
 setMethod("writeRd", "DetailsTag", function(object) {
-  new_command("details", object@text)
+  RdCommand("details", object@text)
 })

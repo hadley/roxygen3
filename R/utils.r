@@ -3,6 +3,8 @@ compact <- function(x) {
   x[!null]
 }
 
+sort_c <- function(x) with_collate("C", sort(x))
+
 "%||%" <- function(a, b) if (length(a) == 0) b else a
 
 modify_list <- function(a, b) {

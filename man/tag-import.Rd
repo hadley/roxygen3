@@ -1,14 +1,11 @@
 \docType{class}
 \name{AutoImportsTag-class}
-
 \alias{AutoImportsTag-class}
 \alias{ImportClassesFromTag-class}
 \alias{ImportFromTag-class}
 \alias{ImportMethodsFromTag-class}
 \alias{ImportTag-class}
-
 \title{Namespace: tags for importing functions.}
-
 \description{
   By and large, \code{@autoImports} should be the only
   imports tag that you need to use. It automatically
@@ -17,7 +14,6 @@
   \code{\link{auto_imports}} for more implementation
   details.
 }
-
 \details{
   If there is a conflict, use \code{tag_importFrom} to
   resolve it. You can do \code{@importFrom base function} -
@@ -28,7 +24,6 @@
   You must have the packages declared in \code{DESCRIPTION}
   Imports.
 }
-
 \section{Tag Usage}{
   \code{ #' @autoImports }
 }

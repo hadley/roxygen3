@@ -9,6 +9,6 @@ setMethod("defaultTag", c("FormatTag", "DataObject"),
 )
 
 setMethod("writeRd", "FormatTag", function(object) {
-  new_command("format", object@text)
+  RdCommand("format", object@text)
 })
 

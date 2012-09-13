@@ -14,7 +14,7 @@ setMethod("value<-", "AliasesTag", function(tag, value) {
 })
 
 setMethod("writeRd", "AliasesTag", function(object) {
-  new_command("alias", object@text)
+  RdCommand("alias", object@text)
 })
 
 setMethod("defaultTag", c("AliasesTag", "PackageObject"),

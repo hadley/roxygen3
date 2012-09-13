@@ -1,13 +1,9 @@
 \name{process_inherit_params}
-
 \alias{process_inherit_params}
-
 \title{Inherit parameters from another function.}
-
 \usage{
   process_inherit_params(package)
 }
-
 \description{
   This tag will bring in all documentation for parameters
   that are undocumented in the current function, but
@@ -15,7 +11,6 @@
   function in the current package, \code{function}, or
   another package \code{package::function}.
 }
-
 \section{Tag Usage}{
   \code{ #' @inheritParams source_function }
 }

@@ -1,23 +1,17 @@
 \name{process_include}
-
 \alias{process_include}
-
 \title{Control order of collation.}
-
 \usage{
   process_include(bundle, path = rPath(bundle))
 }
-
 \description{
   Control order of collation.
 }
-
 \details{
   The collation order is only modified if it is different
   from alphabetical order (in the C locale). That is R's
   default ordering.
 }
-
 \section{Tag Usage}{
   \code{ #' @include file-1.r file-2.r }
 }

@@ -1,15 +1,11 @@
 \docType{class}
 \name{NoRdTag-class}
-
 \alias{NoRdTag-class}
-
 \title{Do not produce rd file for this object.}
-
 \description{
   Note that this only suppresses Rd output, not namespace
   or other files.
 }
-
 \section{Tag Usage}{
   \code{ #' @noRd }
 }

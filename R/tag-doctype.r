@@ -38,18 +38,5 @@ setMethod("defaultTag", c("DocTypeTag", "PackageObject"),
 )
 
 setMethod("writeRd", "DocTypeTag", function(object) {
-  new_command("docType", object@text)
+  RdCommand("docType", object@text)
 })
-
-#' @export
-format.docType_command <- function(x, ...) {
-  vals <- unique(x$value)
-  if (length(vals) != 1) stop("Documentation can only have single docType")
-
-  ok <- c("data", "package", "methods", "class")
-  vals <- intersect(vals, ok)
-  if (length(vals) == 0) return("")
-
-  str_c("\\docType{", vals, "}")
-}
-

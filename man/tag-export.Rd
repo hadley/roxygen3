@@ -1,20 +1,16 @@
 \docType{class}
 \name{ExportClassTag-class}
-
 \alias{ExportClassTag-class}
 \alias{ExportMethodsTag-class}
 \alias{ExportPatternTag-class}
 \alias{ExportTag-class}
 \alias{S3methodTag-class}
-
 \title{Namespace: tags for exporting objects}
-
 \usage{
   @export @export function name
 
   @S3method generic class @S3method generic @S3method
 }
-
 \description{
   Generally, you will only need to use a bare
   \code{@export} - this will inspect the documented object
@@ -22,7 +18,6 @@
   varies based on whether it's a function, s3 method, s4
   class, s4 generic/method).
 }
-
 \details{
   The convention in \pkg{roxygen3} is that exporting a
   generic automatically exports all associated methods.
@@ -40,7 +35,6 @@
   object is an S3 method, and so only \code{@export is
   necessary.}
 }
-
 \section{Tag Usage}{
   \code{ #' @exportClass class1 class2 }
 }

@@ -1,16 +1,12 @@
 \docType{class}
 \name{TitleTag-class}
-
 \alias{TitleTag-class}
-
 \title{Override default topic title.}
-
 \description{
   The topic title. By default this is taken from the first
   paragraph of the roxygen block. See
   \code{\link{tag_intro}} for more details.
 }
-
 \section{Tag Usage}{
   \code{ #' @title Topic title }
 }

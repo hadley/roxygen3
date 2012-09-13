@@ -1,12 +1,9 @@
 \name{tag}
-
 \alias{prefix}
 \alias{suffix}
 \alias{tag}
 \alias{tag<-}
-
 \title{[DEV] Convenience methods for manipulating tags in a block.}
-
 \usage{
   tag(block, tag_name, create = TRUE)
 
@@ -16,7 +13,6 @@
 
   prefix(x)
 }
-
 \arguments{
   \item{block}{\code{\link{Block}} object to modify}
 
@@ -42,7 +38,6 @@
 
   Convenience methods for manipulating tags in a block.
 }
-
 \examples{
 block <- Block()
 tag(block, "name")

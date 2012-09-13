@@ -6,5 +6,5 @@
 #' @usageTag @@title Topic title
 setClass("TitleTag", contains = "Tag")
 setMethod("writeRd", "TitleTag", function(object) {
-  new_command("title", object@text)
+  RdCommand("title", object@text)
 })

@@ -14,8 +14,8 @@ test_that("All rocs with the same @rdfile are merged into one", {
     ")
 
   shared <- out$`man/shared.Rd`
-  expect_equal(length(shared$alias$values), 2)
-  expect_equal(length(shared$arguments$values), 2)
+  expect_equal(length(shared$alias@values), 2)
+  expect_equal(length(shared$arguments@values), 2)
   expect_equal(format(shared$title), "\\title{Function a}\n")
 
   usage <- format(shared$usage)
@@ -36,7 +36,7 @@ test_that("Manual usage lines are merged", {
     b <- function() {}
     ")
   shared <- out$`man/shared.Rd`
-  expect_equal(length(shared$usage$values), 2)
-  expect_equal(shared$usage$values[[2]], "b() # b is for ball")
+  expect_equal(length(shared$usage@values), 2)
+  expect_equal(shared$usage@values[[2]], "b() # b is for ball")
 
 })

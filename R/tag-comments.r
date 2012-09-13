@@ -5,5 +5,5 @@
 setClass("CommentTag", contains = "Tag")
 
 setMethod("writeRd", "CommentTag", function(object) {
-  new_command("comment", object@text)
+  RdCommand("comment", object@text)
 })

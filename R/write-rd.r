@@ -49,7 +49,7 @@ output_path <- function(block) {
 
 collapse_rd <- function(blocks) {
   commands <- unlist(blocks, recursive = FALSE)
-  command_names <- vapply(commands, "[[", "command", FUN.VALUE = character(1))
+  command_names <- vapply(commands, "slot", "name", FUN.VALUE = character(1))
 
   # Must have at least name and title to generate a file
   if (!all(c("title", "name") %in% command_names)) return()
@@ -62,7 +62,7 @@ collapse_rd <- function(blocks) {
       if (is.null(existing)) {
         dedup[[command_names[i]]] <- commands[[i]]
       } else {
-        dedup[[command_names[i]]] <- merge(existing, commands[[i]])
+        dedup[[command_names[i]]] <- merge_rd(existing, commands[[i]])
       }
     }
     commands <- dedup
@@ -84,7 +84,7 @@ collapse_rd <- function(blocks) {
 write_rd <- function(commands, path) {
   if (length(commands) == 0) return()
 
-  formatted <- vapply(commands, "format", character(1))
+  formatted <- unlist(lapply(commands, "format"))
   if (write_if_different(path, formatted)) {
     try(checkRd(path))
   }

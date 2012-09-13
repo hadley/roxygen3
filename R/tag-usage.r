@@ -12,7 +12,7 @@ setMethod("value<-", "UsageTag", function(tag, value) {
 })
 
 setMethod("writeRd", "UsageTag", function(object) {
-  new_command("usage", format(object@usage))
+  RdCommand("usage", format(object@usage))
 })
 
 setMethod("defaultTag", c("UsageTag", "FunctionObject"),

@@ -10,6 +10,6 @@ setMethod("value<-", "KeywordsTag", function(tag, value) {
 })
 
 setMethod("writeRd", "KeywordsTag", function(object) {
-  new_command("keyword", object@text)
+  RdCommand("keyword", object@text)
 })
 

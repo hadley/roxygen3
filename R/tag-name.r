@@ -41,5 +41,5 @@ setMethod("defaultTag", c("NameTag", "S4MethodObject"),
 
 
 setMethod("writeRd", "NameTag", function(object) {
-  new_command("name", object@text)
+  RdCommand("name", object@text)
 })

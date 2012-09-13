@@ -14,5 +14,5 @@ setMethod("value<-", "SectionTag", function(tag, value) {
 })
 
 setMethod("writeRd", "SectionTag", function(object) {
-  new_command("section", object@sections)
+  RdCommand("section", object@sections)
 })

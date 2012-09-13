@@ -17,5 +17,5 @@ setMethod("value<-", "ParamTag", function(tag, value) {
 })
 
 setMethod("writeRd", "ParamTag", function(object) {
-  new_command("arguments", object@arguments)
+  RdCommand("arguments", object@arguments)
 })
