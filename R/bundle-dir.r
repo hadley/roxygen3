@@ -21,3 +21,6 @@ DirectoryBundle <- function(path, behaviour = default_behaviour()) {
     behaviour = behaviour)
 }
 
+setMethod("rPath", "DirectoryBundle", function(bundle) {
+  bundle@path
+})

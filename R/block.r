@@ -29,3 +29,11 @@ setMethod("show", "Block", function(object) {
     location(object@srcref), "\n", sep = "")
   lapply(object@tags, show)
 })
+
+setMethod("process", "Block", function(input) {
+  for (tag in names(input@tags)) {
+    input <- process(input@tags[[tag]], block = input)
+  }
+
+  input
+})

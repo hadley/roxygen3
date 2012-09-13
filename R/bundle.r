@@ -17,10 +17,6 @@ setMethod("process", "Bundle", function(input) {
   invisible(input)
 })
 
-setMethod("process", "Block", function(input) {
-  for (tag in names(input@tags)) {
-    input <- process(input@tags[[tag]], block = input)
-  }
-
-  input
+setMethod("rPath", "Bundle", function(bundle) {
+  NULL
 })

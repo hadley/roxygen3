@@ -23,15 +23,6 @@ PackageBundle <- function(path, behaviour = default_behaviour()) {
     behaviour = behaviour)
 }
 
-setGeneric("rPath", function(bundle) {
-  standardGeneric("rPath")
-})
 setMethod("rPath", "PackageBundle", function(bundle) {
   file.path(bundle@path, "R")
-})
-setMethod("rPath", "DirectoryBundle", function(bundle) {
-  bundle@path
-})
-setMethod("rPath", "Bundle", function(bundle) {
-  NULL
 })

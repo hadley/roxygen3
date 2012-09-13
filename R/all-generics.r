@@ -19,6 +19,10 @@ setGeneric("process", function(input, ...) {
   standardGeneric("process")
 })
 
+setGeneric("rPath", function(bundle) {
+  standardGeneric("rPath")
+})
+
 setGeneric("value<-", function(tag, value) {
   standardGeneric("value<-")
 })
@@ -30,6 +34,8 @@ setMethod("value", "NULL", function(tag) NULL)
 setGeneric("isEmpty", function(tag) {
   standardGeneric("isEmpty")
 })
+
+
 
 setGeneric("isNull", function(x) standardGeneric("isNull"))
 setMethod("isNull", "NULL", function(x) TRUE)
