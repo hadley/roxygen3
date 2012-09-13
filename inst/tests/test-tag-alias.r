@@ -1,4 +1,4 @@
-context("Tag: Alias")
+context("Tag: @alias")
 
 # test_that("aliases escaped, not quoted", {
 #   out1 <- test_process("

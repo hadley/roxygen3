@@ -1,4 +1,4 @@
-context("Tag: docTypes")
+context("Tag: @docType")
 
 # Package --------------------------------------------------------------------
 

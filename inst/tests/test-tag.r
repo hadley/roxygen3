@@ -1,4 +1,4 @@
-context("Tag: Simple")
+context("Tag")
 
 test_that("keywords and aliases split into pieces", {
   out <- test_process("
@@ -30,4 +30,22 @@ test_that("generic keys produce expected output", {
   expect_equal(tag_value(out, "encoding"), "test")
   expect_equal(tag_value(out, "author"), "test")
 })
+
+test_that("other namespace tags produce correct output", {
+  out <- test_process("
+    #' @import test
+    #' @importFrom test test1 test2
+    #' @importClassesFrom test test1 test2
+    #' @importMethodsFrom test test1 test2
+    #' @name dummy
+    NULL")
+
+  expect_equal(tag_value(out, "exportPattern"), "test")
+  expect_equivalent(tag_value(out, "s3method"), cbind("test", "test"))
+  expect_equal(tag_value(out, "import"), "test")
+  expect_equal(tag_value(out, "importFrom"), c("test1" = "test", test2 = "test"))
+  expect_equal(tag_value(out, "importClassesFrom"), c("test", "test1", "test2"))
+  expect_equal(tag_value(out, "importMethodsFrom"), c("test", "test1", "test2"))
+})
+
 

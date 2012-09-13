@@ -1,4 +1,4 @@
-context("Tag: Title, description, details")
+context("Tag: @intro")
 
 test_that("title and description taken from first line if only one", {
   out <- test_process("
