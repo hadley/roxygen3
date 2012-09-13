@@ -1,4 +1,7 @@
-compact <- function(x) Filter(Negate(is.null), x)
+compact <- function(x) {
+  null <- vapply(x, is.null, logical(1))
+  x[!null]
+}
 
 "%||%" <- function(a, b) if (length(a) == 0) b else a
 
