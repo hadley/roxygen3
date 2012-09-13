@@ -1,37 +1,3 @@
-
-#' @usageTag @@exportClass class1 class2
-#' @rdname tag-export
-setClass("ExportClassTag", contains = "Tag")
-setMethod("value<-", "ExportClassTag", function(tag, value) {
-  tag@text <- parse_words(tag, value)
-  tag
-})
-setMethod("writeNamespace", "ExportClassTag", function(object) {
-  ns_each("exportClass", object@text)
-})
-
-#' @usageTag @@exportMethods generic1 generic2
-#' @rdname tag-export
-setClass("ExportMethodsTag", contains = "Tag")
-setMethod("value<-", "ExportMethodsTag", function(tag, value) {
-  tag@text <- parse_words(tag, value)
-  tag
-})
-setMethod("writeNamespace", "ExportMethodsTag", function(object) {
-  ns_each("exportMethods", object@text)
-})
-
-#' @usageTag @@exportPattern pattern
-#' @rdname tag-export
-setClass("ExportPatternTag", contains = "Tag")
-setMethod("value<-", "ExportPatternTag", function(tag, value) {
-  tag@text <- parse_words(tag, value)
-  tag
-})
-setMethod("writeNamespace", "ExportPatternTag", function(object) {
-  ns_each("exportPattern", object@text)
-})
-
 #' @usage
 #'   @@S3method generic class
 #'   @@S3method generic
