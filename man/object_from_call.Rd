@@ -2,7 +2,7 @@
 
 \alias{object_from_call}
 
-\title{[DEV] Given a call that modifies the R environment, find the object that 
+\title{[DEV] Given a call that modifies the R environment, find the object that
 it creates.}
 
 \usage{
