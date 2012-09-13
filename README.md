@@ -1,6 +1,6 @@
 Roxygen3 is a ground-up rewrite of roxygen2 aiming for a design that is simpler, more modular and easier to understand so that bugs can be fixed more rapidly and others can extend roxygen to meet their specific needs.  
 
-It is likely that roxygen3 will never be released on CRAN, but instead will be merged in roxygen2.
+It is likely that roxygen3 will never be released on CRAN, but instead will be merged into roxygen2.
 
 To try it out:
 
@@ -22,9 +22,10 @@ To try it out:
   for all functions that your function uses. It will respect `@importFrom`
   directives if you need to manually resolve conflicts.
 
-# Custom behaviours
+* A new `@dev` tag flags a function as being more suitable for developers who 
+  want to build on top of your package than everyday users.
 
-Roxygen3 has behaviour objects, which captures exactly what tags, processors and writers are applied to the roxygen blocks. By modifying the `default_behaviour()` you can turn off tags that you don't want, or restrict the output to only Rd files, the `NAMESPACE` or the `DESCRIPTION`.
+* Custom behaviour objects allow you to control exactly what tags, processors and writers are applied to the roxygen blocks. By modifying the `default_behaviour()` you can turn off tags that you don't want, or restrict the output to only Rd files, the `NAMESPACE` or the `DESCRIPTION`.
 
 # Developers guide
 
@@ -50,7 +51,7 @@ Naming conventions:
   * A `Tag` object corresponds to a single roxygen tag: `#' @tag text`. Tag
     objects are created by the `build_tag` function and come preloaded with a
     `@text` slot. Tags that need richer data structures should define
-    additional slots and fill them up with the `procTag` or `process`
+    additional slots and fill them up with the `value<-` or `process`
     methods. Tags are also the unit at which output functions operator. See
     the Tags section for more details.
 
@@ -84,18 +85,15 @@ Naming conventions:
 
 ## Tags
 
-To implement a new tag for roxygen, you need to subclass `Tag` and implement (at least) some output methods.
-
-Tag processing:
+To implement a new tag for roxygen, you need to subclass `Tag` and implement the appropriate methods. For a simple tag, all you need to do is implement the `value<-` accessor and at least one output method. For more complex tags, you'll also need to implement the `process` method, and maybe the `defaultTag` method. These are described in more detail below:
 
 * `value<-` is used to initialize a tag from a text string. Use this to define 
-  basic parsing behaviour.
+  basic parsing behaviour.  It will be called with a character vector with one element for each occurence of tag in the documentation block. Most tags just break up into words and store in the common `text` slot. 
 
 * `process` is called with the tag and the whole block and should return a
-  block. Use this is the tag needs to add multiple tags to the output, or
-  needs to access the object or srcref associated with the block.
-
-Default tags:
+  block. Use this if the tag needs to add multiple tags to the output, or
+  needs to access the object or srcref associated with the block. See the 
+  `tag` accessors for convenient ways to modify the tags in a block.
 
 * `defaultTag` provides an object specific way of adding default tags to a
   block. It is called with a tag and an object, and should return a new tag
@@ -110,7 +108,7 @@ Output:
 `writeRd`, `writeNamespace`, and `writeDescription` return objects that will
 be used to modify Rd files, the `NAMESPACE` and `DESCRIPTION` respectively.
 
-* `writeRd` methods should return an Rd command object
+* `writeRd` methods should return an Rd command object - these objects take care of the merging that occurs when multiple blocks are stored into the same file.
 
 * `writeNamespace` methods should return a character vector of namespace
   directives
