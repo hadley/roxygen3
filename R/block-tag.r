@@ -1,6 +1,7 @@
 #' Convenience methods for manipulating tags in a block.
 #'
 #' @dev
+#' @rdname tag-modify
 #' @param block \code{\link{Block}} object to modify
 #' @param tagname name of the tag (as a length 1 character vector)
 #' @param create if \code{TRUE} will create a new \code{Tag} of the appropriate
@@ -34,7 +35,7 @@ tag <- function(block, tagname, create = TRUE) {
 #'   will be added to the end of the tag's text. If it's a \code{prefix}
 #'   object it will be added to the beginning of the tag's text. Otherwise, the
 #'   existing tag will be replaced with the new value.
-#' @rdname tag
+#' @rdname tag-modify
 #' @export
 setGeneric("tag<-",
   function(block, tagname, value) {
@@ -56,10 +57,10 @@ setMethod("tag<-", "character", function(block, tagname, value) {
 
 setClass("Suffix", contains = "character")
 setClass("Prefix", contains = "character")
-#' @rdname tag
+#' @rdname tag-modify
 #' @export
 suffix <- function(x) new("Suffix", x)
-#' @rdname tag
+#' @rdname tag-modify
 #' @export
 prefix <- function(x) new("Prefix", x)
 
