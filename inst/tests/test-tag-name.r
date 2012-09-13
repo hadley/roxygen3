@@ -1,4 +1,4 @@
-context("Name")
+context("Tag: Name")
 
 test_that("name captured from assignment", {
   out <- test_process("

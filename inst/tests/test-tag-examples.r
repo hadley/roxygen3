@@ -1,4 +1,4 @@
-context("Examples")
+context("Tag: Examples")
 
 test_that("@example loads from specified files", {
   out <- test_process("

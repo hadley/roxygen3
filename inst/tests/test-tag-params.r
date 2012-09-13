@@ -1,4 +1,4 @@
-context("Params")
+context("Tag: Params")
 
 test_that("@param documents arguments", {
   out <- test_process("

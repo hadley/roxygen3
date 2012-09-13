@@ -1,4 +1,4 @@
-context("Simple tags")
+context("Tag: Simple")
 
 test_that("keywords and aliases split into pieces", {
   out <- test_process("

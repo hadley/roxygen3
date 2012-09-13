@@ -1,4 +1,4 @@
-context("Usage")
+context("Tag: Usage")
 library(stringr)
 
 test_that("usage captured from formals", {

@@ -1,4 +1,4 @@
-context("rdname")
+context("Tag: rdname")
 
 test_that("All rocs with the same @rdfile are merged into one", {
   out <- test_rd("

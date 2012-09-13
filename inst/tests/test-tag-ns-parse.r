@@ -1,4 +1,4 @@
-context("Namespace: parsing")
+context("Tag: Namespace: parsing")
 
 test_that("export detects object name", {
   out <- test_process("#' @export\na <- function(){}")

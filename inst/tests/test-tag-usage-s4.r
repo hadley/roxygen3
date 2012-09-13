@@ -1,4 +1,4 @@
-context("Usage S4")
+context("Tag: Usage S4")
 
 test_that("correct usage for S4 generics", {
 
