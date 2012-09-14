@@ -1,3 +1,4 @@
+% Built by roxygen3 0.1
 \name{parse_directory}
 \alias{parse_directory}
 \title{Parse directory of source files.}

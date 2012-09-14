@@ -1,3 +1,4 @@
+% Built by roxygen3 0.1
 \docType{class}
 \name{DescriptionTag-class}
 \alias{DescriptionTag-class}

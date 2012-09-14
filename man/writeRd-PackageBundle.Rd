@@ -1,3 +1,4 @@
+% Built by roxygen3 0.1
 \docType{methods}
 \name{writeRd,PackageBundle-method}
 \alias{writeRd,PackageBundle-method}

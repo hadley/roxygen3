@@ -1,3 +1,4 @@
+% Built by roxygen3 0.1
 \docType{methods}
 \name{writeNamespace,PackageBundle-method}
 \alias{writeNamespace,PackageBundle-method}

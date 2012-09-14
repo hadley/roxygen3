@@ -1,3 +1,4 @@
+% Built by roxygen3 0.1
 \name{is_s3_generic}
 \alias{is_s3_generic}
 \alias{roxgyen_s3}

@@ -1,3 +1,4 @@
+% Built by roxygen3 0.1
 \name{add_s3_metadata}
 \alias{add_s3_metadata}
 \title{Add S3 metadata to a function}

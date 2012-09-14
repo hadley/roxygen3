@@ -1,3 +1,4 @@
+% Built by roxygen3 0.1
 \docType{class}
 \name{DocTypeTag-class}
 \alias{DocTypeTag-class}

@@ -1,3 +1,4 @@
+% Built by roxygen3 0.1
 \name{default_behaviour}
 \alias{default_behaviour}
 \title{[DEV] Encapuslate default behaviour.}

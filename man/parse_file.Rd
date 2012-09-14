@@ -1,3 +1,4 @@
+% Built by roxygen3 0.1
 \name{parse_file}
 \alias{parse_file}
 \title{Parse a source file containing roxygen blocks.}

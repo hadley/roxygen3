@@ -1,3 +1,4 @@
+% Built by roxygen3 0.1
 \name{process_inherit_params}
 \alias{process_inherit_params}
 \title{Inherit parameters from another function.}

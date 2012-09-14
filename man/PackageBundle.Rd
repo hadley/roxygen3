@@ -1,3 +1,4 @@
+% Built by roxygen3 0.1
 \docType{class}
 \name{PackageBundle-class}
 \alias{PackageBundle}

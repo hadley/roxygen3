@@ -1,3 +1,4 @@
+% Built by roxygen3 0.1
 \docType{class}
 \name{Tag-class}
 \alias{Tag}

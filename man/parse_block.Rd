@@ -1,3 +1,4 @@
+% Built by roxygen3 0.1
 \name{parse_block}
 \alias{parse_block}
 \title{Parse and execute a block of text in a package like environment.}

@@ -1,3 +1,4 @@
+% Built by roxygen3 0.1
 \name{auto_dynlib}
 \alias{auto_dynlib}
 \title{Automatically determine the dynamic imports that a function needs.}

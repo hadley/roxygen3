@@ -85,7 +85,16 @@ write_rd <- function(commands, path) {
   if (length(commands) == 0) return()
 
   formatted <- unlist(lapply(commands, "format"))
+  formatted <- c(built_by(), formatted)
+
   if (write_if_different(path, formatted)) {
     try(checkRd(path))
   }
+}
+
+built_by <- function() {
+  pkg <- getPackageName()
+  ver <- packageVersion(pkg)
+
+  str_c("% Built by ", pkg, " ", format(ver))
 }
