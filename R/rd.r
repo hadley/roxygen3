@@ -130,6 +130,11 @@ setMethod("format", "DocTypeCommand", function(x, ...) {
   str_c("\\docType{", vals, "}")
 })
 
+setClass("PathCommand", contains = "RdCommand")
+setMethod("format", "PathCommand", function(x, ...) {
+  paths <- str_c(x@values, collapse = ", ")
+  paste("% Generated from [", paths, "]", sep = "")
+})
 
 
 #' @autoImports

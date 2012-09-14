@@ -6,7 +6,7 @@
 parse_directory <- function(path, env, tags = base_tags()) {
   r_files <- dir(path, pattern = "\\.[RrSs]$", full.names = TRUE)
 
-  unlist(lapply(r_files, parse_file, env = env, tags = tags),
+  unlist(lapply(r_files, parse_file, env = env, default_tags = tags),
     recursive = FALSE)
 }
 
@@ -16,15 +16,15 @@ parse_directory <- function(path, env, tags = base_tags()) {
 #' @inheritParams parse_directory
 #' @return A list of roc objects
 #' @keywords internal
-parse_file <- function(path, env, tags = base_tags()) {
+parse_file <- function(path, env, default_tags = base_tags()) {
   # Find the locations of (comment + code) blocks
   lines <- readLines(path, warn = FALSE)
   src <- srcfile(path)
 
-  parse_text(lines, env, src, tags = tags)
+  parse_text(lines, env, src, default_tags = default_tags)
 }
 
-parse_text <- memoise(function(lines, env, src, tags) {
+parse_text <- memoise(function(lines, env, src, default_tags) {
   parsed <- parse(text = lines, src = src)
   if (length(parsed) == 0) {
     return(list())
@@ -37,11 +37,11 @@ parse_text <- memoise(function(lines, env, src, tags) {
   extract <- function(i) {
     ref <- comment_refs[[i]]
     obj <- object_from_call(parsed[[i]], env, refs[[i]])
-    tags <- parse_roc(as.character(ref), tags = tags)
+    tags <- parse_roc(as.character(ref), default_tags = default_tags)
 
     if (is.null(tags) && is.null(obj)) return()
 
-    Block(tags, obj, ref)
+    Block(tags, obj, ref, default_tags = default_tags)
   }
   compact(lapply(seq_along(parsed), extract))
 })
@@ -84,7 +84,7 @@ comments <- function(refs) {
 
 #' @autoImports
 # @param tags A character vector of tag names, order is respected.
-parse_roc <- function(lines, match = "^\\s*#+\' ?", tags) {
+parse_roc <- function(lines, match = "^\\s*#+\' ?", default_tags) {
   lines <- lines[str_detect(lines, match)]
   if (length(lines) == 0) return(list())
 
@@ -108,11 +108,11 @@ parse_roc <- function(lines, match = "^\\s*#+\' ?", tags) {
   parsed_tags <- tapply(cols[, 2], cols[, 1], list)
 
   # Remove unknown tags and reorder
-  unknown <- setdiff(names(parsed_tags), tags)
+  unknown <- setdiff(names(parsed_tags), default_tags)
   if (length(unknown) > 0) {
     message("Unknown tags: ", str_c("@", unique(unknown), collapse = ", "))
   }
-  parsed_tags <- parsed_tags[intersect(tags, names(parsed_tags))]
+  parsed_tags <- parsed_tags[intersect(default_tags, names(parsed_tags))]
 
   compact(Map(build_tag, names(parsed_tags), parsed_tags))
 }

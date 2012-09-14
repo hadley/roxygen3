@@ -31,7 +31,7 @@ setMethod("isEmpty", "Tag", function(tag) {
 
 build_tag <- function(name, text = character()) {
   # find matching class for name
-  class_name <- str_c(first_upper(name), "Tag")
+  class_name <- tag_class(name)
   if (!isClass(class_name)) {
     message("Unknown tag @", name, " at ") #, location(block))
     return(NULL)
@@ -44,6 +44,9 @@ build_tag <- function(name, text = character()) {
   tag
 }
 
+tag_class <- function(name) {
+  str_c(first_upper(name), "Tag")
+}
 
 tag_name <- function(x) {
   if (isS4(x)) {
