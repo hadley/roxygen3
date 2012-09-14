@@ -16,10 +16,6 @@ parse_words <- function(tag, text, min = 0, max = Inf) {
   split_pieces(tag, text, "[[:space:]]+", min, max)
 }
 
-parse_arguments <- function(tag, min = 0, max = Inf) {
-  split_pieces(tag, text, ",[[:space:]]*", min, max)
-}
-
 parse_name_desc <- function(tag) {
   pieces <- str_split_fixed(tag@text, "[[:space:]]+", 2)
 
