@@ -52,9 +52,9 @@ object_from_assignment <- function(call, env, srcref) {
   val <- add_s3_metadata(val, name, env)
 
   # Figure out if it's an s3 method or generic and add that info.
-  if (is.s3generic(name)) {
+  if (is.s3generic(val)) {
     objtype <- "S3GenericObject"
-  } else if (is.s3method(name)) {
+  } else if (is.s3method(val)) {
     objtype <- "S3MethodObject"
   } else if (is.function(val)) {
     objtype <- "FunctionObject"
