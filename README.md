@@ -25,6 +25,10 @@ To try it out:
 * A new `@dev` tag flags a function as being more suitable for developers who 
   want to build on top of your package than everyday users.
 
+* `@useDynLib` with no arguments will automatically figure out what the
+  namespace directive should be. Additionally, arguments are no longer parsed
+  so that you can use the full range of `useDynLib` directives.
+
 * Custom behaviour objects allow you to control exactly what tags, processors and writers are applied to the roxygen blocks. By modifying the `default_behaviour()` you can turn off tags that you don't want, or restrict the output to only Rd files, the `NAMESPACE` or the `DESCRIPTION`.
 
 # Developers guide
