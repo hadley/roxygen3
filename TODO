@@ -1,6 +1,9 @@
+* implement @family
+* add version number to docs
+* only use @path if debug = TRUE
 * update object_from_call and default tags system to resolve last test issues
 * need tests for multiple tags in a single block (e.g. @s3method)
-* need to extend object from call to deal with a <- set[Ref]Class("a") and to generate package objects.  Would be nice to be able to document non-local objects - @objValue a, @objValue getClass("a") ?
+* need to extend object from call to deal with a <- set[Ref]Class("a") and to generate package objects. Would be nice to be able to document non-local objects - @objValue a, @objValue getClass("a") ?
 * DOCUMENTATION!
 * better rd wrapping
 
