@@ -15,6 +15,7 @@
 #' @export
 #' @dev
 is_s3_generic <- function(name, env = parent.frame()) {
+  if (name == "") return(FALSE)
   if (!exists(name, envir = env)) return(FALSE)
 
   f <- get(name, envir = env)
@@ -33,6 +34,9 @@ is_s3_generic <- function(name, env = parent.frame()) {
 is_s3_method <- function(name, env = parent.frame()) {
   !is.null(find_generic(name, env))
 }
+
+is.s3method <- function(x) inherits(x, "s3method")
+is.s3generic <- function(x) inherits(x, "s3generic")
 
 find_generic <- memoise(function(name, env = parent.frame()) {
   pieces <- str_split(name, fixed("."))[[1]]
