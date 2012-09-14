@@ -1,4 +1,3 @@
-* implement @family
 * add version number to docs
 * only use @path if debug = TRUE
 * update object_from_call and default tags system to resolve last test issues

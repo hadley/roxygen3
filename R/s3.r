@@ -10,6 +10,7 @@
 #'
 #' @param name name of function.
 #' @param env environment to search in.
+#' @family s3
 #' @rdname s3
 #' @aliases roxgyen_s3
 #' @export
@@ -37,6 +38,7 @@ is_s3_method <- function(name, env = parent.frame()) {
 
 is.s3method <- function(x) inherits(x, "s3method")
 is.s3generic <- function(x) inherits(x, "s3generic")
+is.s3 <- function(x) inherits(x, c("s3method", "s3generic"))
 
 find_generic <- memoise(function(name, env = parent.frame()) {
   pieces <- str_split(name, fixed("."))[[1]]
@@ -58,7 +60,10 @@ all_s3_methods <- memoise(function(env = parent.frame()) {
   t(simplify2array(compact(lapply(names, find_generic, env = env))))
 })
 
-is.s3 <- function(x) inherits(x, c("s3method", "s3generic"))
+
+#' Add S3 metadata to a function
+#'
+#' @family s3
 add_s3_metadata <- function(val, name, env) {
   if (!is.function(val)) return(val)
 
