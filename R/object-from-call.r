@@ -35,6 +35,7 @@ object_from_call <- function(call, env, srcref) {
   method(call, env, srcref)
 }
 
+#' @autoImports
 call_method <- function(x) {
   class <- paste("Call", first_upper(deparse(x)), sep = "")
   selectMethod("objectFromCall", c(call = class), optional = TRUE)

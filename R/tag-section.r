@@ -1,4 +1,4 @@
-#' @slot sections A named character vector.  The names represent the section
+#' @slot sections A named character vector. The names represent the section
 #'  titles and the values the contents.
 #' @autoImports
 setClass("SectionTag", contains = "Tag",

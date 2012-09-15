@@ -4,6 +4,5 @@
 #' extend.
 #'
 #' @docType package
-#' @name roxygen3
 #' @import memoise
 NULL

@@ -46,6 +46,11 @@ tag(block, "name", create = FALSE)
 
 tag(block, "name") <- "myname"
 block
-tag(block, "aliases") <- tag(block, "name")
+tag(block, "aliases") <- tag(block, "name")@text
+block
+tag(block, "aliases") <- suffix("end")
+block
+tag(block, "aliases") <- prefix("start")
+block
 }
 

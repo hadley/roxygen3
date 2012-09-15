@@ -13,7 +13,7 @@
 #'
 #' tag(block, "name") <- "myname"
 #' block
-#' tag(block, "aliases") <- tag(block, "name")@text
+#' tag(block, "aliases") <- tag(block, "name")@@text
 #' block
 #' tag(block, "aliases") <- suffix("end")
 #' block

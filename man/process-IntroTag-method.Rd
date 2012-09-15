@@ -1,0 +1,21 @@
+% Built by roxygen3 0.1
+\docType{methods}
+\name{process,IntroTag-method}
+\alias{process,IntroTag-method}
+\title{Title, description and details.}
+\usage{
+  The first line becomes the topic title.
+
+  The next paragraph goes into the descrption section.  Any
+    of these sections can span multiple lines.
+
+  The third and subsequent paragraph go into the details.
+}
+\description{
+  Title, description and details.
+}
+\seealso{
+  \code{\link{tag_title}}, \code{\link{tag_description}},
+  \code{\link{tag_details}} to set each component
+  individually.
+}
