@@ -20,26 +20,35 @@
 object_from_call <- function(call, env, srcref) {
   if (is.null(call)) return(new("NullObject", srcref = srcref))
 
+  # Determine if we have a method for dealing with this call
+  method <- call_method(call[[1]])
+  if (is.null(method)) {
+    return(new("NullObject", srcref = srcref))
+  }
+
   # Find function, then use match.call to construct complete call
   f <- eval(call[[1]], env)
   if (!is.primitive(f)) {
     call <- match.call(eval(call[[1]], env), call)
   }
 
-  class <- paste("Call", first_upper(deparse(call[[1]])), sep = "")
-
-  method <- selectMethod("objectFromCall", c(call = class))
   method(call, env, srcref)
+}
+
+call_method <- function(x) {
+  class <- paste("Call", first_upper(deparse(x)), sep = "")
+  selectMethod("objectFromCall", c(call = class), optional = TRUE)
 }
 
 setGeneric("objectFromCall", function(call, env, srcref) {
   standardGeneric("objectFromCall")
 })
-setMethod("objectFromCall", "ANY", function(call, env, srcref) {
-  new("NullObject", srcref = srcref)
-})
 
 object_from_assignment <- function(call, env, srcref) {
+  # Check for assigning the results of a known call
+  obj <- object_from_call(call[[3]], env, srcref)
+  if (!isNull(obj)) return(obj)
+
   name <- as.character(call[[2]])
 
   # If it's a compound assignment like x[[2]] <- ignore it

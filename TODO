@@ -1,6 +1,4 @@
-* update object_from_call and default tags system to resolve last test issues
-* need to extend object from call to deal with a <- set[Ref]Class("a") and to generate package objects. Would be nice to be able to document non-local objects - @objValue a, @objValue getClass("a") ?
-
+* is the topological sort still needed? if so, could it only return tags with procBlock methods?
 * need tests for multiple tags in a single block (e.g. @s3method)
 * DOCUMENTATION!
 * better rd wrapping (waiting on Rd package)
