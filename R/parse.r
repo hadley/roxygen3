@@ -36,8 +36,13 @@ parse_text <- memoise(function(lines, env, src, default_tags) {
   # Walk through each src ref and match code and comments
   extract <- function(i) {
     ref <- comment_refs[[i]]
-    obj <- object_from_call(parsed[[i]], env, refs[[i]])
     tags <- parse_roc(as.character(ref), default_tags = default_tags)
+    obj <- object_from_call(parsed[[i]], env, refs[[i]])
+
+    if (isNull(obj) & !isNull(tags$docType)) {
+      name <- if (isNull(tags$name)) getPackageName(env) else value(tags$name)
+      obj <- new("PackageObject", name = name, srcref = refs[[i]])
+    }
 
     if (is.null(tags) && is.null(obj)) return()
 

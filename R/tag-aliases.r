@@ -19,6 +19,7 @@ setMethod("writeRd", "AliasesTag", function(object) {
 
 setMethod("defaultTag", c("AliasesTag", "PackageObject"),
   function(tag, object) {
+    if (str_detect(object@name, fixed("-package"))) return()
     new("AliasesTag", text = str_c(object@name, "-package"))
   }
 )
