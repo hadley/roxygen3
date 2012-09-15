@@ -40,8 +40,6 @@ test_that("other namespace tags produce correct output", {
     #' @name dummy
     NULL")
 
-  expect_equal(tag_value(out, "exportPattern"), "test")
-  expect_equivalent(tag_value(out, "s3method"), cbind("test", "test"))
   expect_equal(tag_value(out, "import"), "test")
   expect_equal(tag_value(out, "importFrom"), c("test1" = "test", test2 = "test"))
   expect_equal(tag_value(out, "importClassesFrom"), c("test", "test1", "test2"))
