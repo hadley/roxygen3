@@ -106,7 +106,7 @@ test_that("long usages protected from incorrect breakage", {
                     d = '                             ') 1")
 
   usage <- format(writeRd(tag(out, "usage")))
-  expect_equal(str_count(usage, "\n"), 6)
+  expect_equal(str_count(usage, "\n"), 5)
 })
 
 test_that("correct usage for S4 generics", {
