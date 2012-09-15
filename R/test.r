@@ -34,7 +34,7 @@ parse_block <- function(text, behaviour = no_output()) {
   eval(expr, env = env)
 
   lines <- str_split(text, "\n")[[1]]
-  blocks <- parse_text(lines, env, src, tags = behaviour@tags)
+  blocks <- parse_text(lines, env, src, default_tags = behaviour@tags)
 
   new("Bundle",
     blocks = blocks,
