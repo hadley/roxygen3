@@ -58,7 +58,7 @@ test_that("quoted names captured from assignment", {
     \"my function\" <- function(...) {}")
 
   expect_equal(tag_value(out, "name"), "my function")
-  expect_equal(tag_value(out, "aliases"), "my function")
+  expect_equal(tag_value(out, "aliases"), "my-function")
 })
 
 test_that("@name overides default", {

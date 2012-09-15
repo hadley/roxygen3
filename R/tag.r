@@ -26,7 +26,8 @@ setMethod("value", "Tag", function(tag) {
   tag@text
 })
 setMethod("isEmpty", "Tag", function(tag) {
-  identical(value(tag), "")
+  val <- value(tag)
+  length(val) == 0 || identical(val, "")
 })
 
 build_tag <- function(name, text = character()) {

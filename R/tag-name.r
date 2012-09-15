@@ -9,7 +9,11 @@
 setClass("NameTag", contains = "Tag")
 
 setMethod("process", "NameTag", function(input, block) {
-  tag(block, "aliases") <- suffix(input@text)
+  tag(block, "aliases") <- suffix(nice_alias(input@text))
+  if (isEmpty(tag(block, "rdname"))) {
+    tag(block, "rdname") <- nice_name(input@text)
+  }
+
   block
 })
 
