@@ -15,6 +15,9 @@ roxygenise <- function(path, check = FALSE, clean = FALSE) {
 
   man_path <- file.path(pkg@path, "man")
   if (clean && file.exists(man_path)) {
+    forget(cached_process)
+    forget(parse_text)
+
     rd <- dir(man_path, pattern = "\\.Rd$", full.names = TRUE)
     file.remove(rd)
   }
