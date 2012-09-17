@@ -1,4 +1,3 @@
-* is the topological sort still needed? if so, could it only return tags with procBlock methods?
 * need tests for multiple tags in a single block (e.g. @s3method)
 * DOCUMENTATION!
 * better rd wrapping (waiting on Rd package)
