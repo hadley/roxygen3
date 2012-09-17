@@ -6,6 +6,9 @@
 #' @param name input tag name, usually set by \code{\link{roccer}}.
 #' @dev
 #' @export
+#' @rdname writeNamespace
+NULL
+
 setMethod("writeNamespace", "PackageBundle", function(object) {
   in_dir(object@path, callNextMethod())
 })

@@ -10,6 +10,9 @@
 #' @param name input tag name, usually set by \code{\link{roccer}}.
 #' @dev
 #' @export
+#' @rdname writeRd
+NULL
+
 setMethod("writeRd", "PackageBundle", function(object) {
   in_dir(object@path, callNextMethod())
 })

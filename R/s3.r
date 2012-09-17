@@ -64,6 +64,10 @@ all_s3_methods <- memoise(function(env = parent.frame()) {
 #' Add S3 metadata to a function
 #'
 #' @family s3
+#' @param val funtion object
+#' @param name name of the function
+#' @param env environment in which to search
+#' @keywords interal
 add_s3_metadata <- function(val, name, env) {
   if (!is.function(val)) return(val)
 

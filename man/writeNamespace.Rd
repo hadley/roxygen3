@@ -1,10 +1,9 @@
 % Built by roxygen3 0.1
-\docType{methods}
-\name{writeNamespace,PackageBundle-method}
-\alias{writeNamespace,PackageBundle-method}
+\name{writeNamespace}
+\alias{writeNamespace}
 \title{[DEV] An output generator for the \file{NAMESPACE} file.}
 \usage{
-  \S4method{writeNamespace}{PackageBundle}(object)
+  writeNamespace(object)
 }
 \arguments{
   \item{tag}{function that processes a single tag. It

@@ -1,10 +1,9 @@
 % Built by roxygen3 0.1
-\docType{methods}
-\name{writeRd,PackageBundle-method}
-\alias{writeRd,PackageBundle-method}
+\name{writeRd}
+\alias{writeRd}
 \title{[DEV] Output to Rd files in the man directory.}
 \usage{
-  \S4method{writeRd}{PackageBundle}(object)
+  writeRd(object)
 }
 \arguments{
   \item{tag}{a function that takes a single argument (tag)

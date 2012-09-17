@@ -2,15 +2,23 @@ setGeneric("usage", function(value, name, srcref) {
   standardGeneric("usage")
 })
 
+#' @rdname writeRd
+#' @export
 setGeneric("writeRd", function(object) {
   standardGeneric("writeRd")
 })
+
+#' @rdname writeNamespace
+#' @export
 setGeneric("writeNamespace", function(object) {
   standardGeneric("writeNamespace")
 })
+
+#' @rdname writeDescription
 setGeneric("writeDescription", function(object) {
   standardGeneric("writeDescription")
 })
+
 setGeneric("getPrereqs", function(tag) {
   standardGeneric("getPrereqs")
 }, valueClass = "character")
