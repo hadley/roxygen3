@@ -13,8 +13,7 @@ setMethod("value", "S3methodTag", function(tag) {
 
 setMethod("process", "S3methodTag", function(input, block) {
   entries <- str_split(input@text, "[[:space:]]+")
-
-  directives <- lapply(entries, auto_s3, object = block@object)
+  directives <- compact(lapply(entries, auto_s3, object = block@object))
 
   input@methods <- do.call("rbind", directives)
   tag(block, "s3method") <- input
@@ -37,6 +36,7 @@ auto_s3 <- function(text, object) {
     class <- text[2]
   } else {
     message("Invalid @s3method tag")
+    return(NULL)
   }
   cbind(generic, class)
 }
