@@ -1,8 +1,0 @@
-* DOCUMENTATION!
-* better rd wrapping (waiting on Rd package)
-
-# Default tags
-
-* Move out of Block and into parse.r
-* Really need to be given whole block, and run in the same order as other tags.
-* Aliases needs to add @name, not override, rdname should use @name
