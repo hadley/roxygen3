@@ -19,6 +19,7 @@ Imports:
     igraph,
     devtools,
     memoise,
-    methods
+    methods,
+    brew
 Suggests:
     testthat
