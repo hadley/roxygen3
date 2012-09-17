@@ -2,7 +2,7 @@
 #' @rdname tag-export
 setClass("ExportClassTag", contains = "Tag")
 setMethod("value<-", "ExportClassTag", function(tag, value) {
-  tag@text <- parse_words(tag, value)
+  tag@text <- unlist(str_split(value, "[[:space:]]+"))
   tag
 })
 setMethod("writeNamespace", "ExportClassTag", function(object) {

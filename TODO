@@ -1,4 +1,3 @@
-* need tests for multiple tags in a single block (e.g. @s3method)
 * DOCUMENTATION!
 * better rd wrapping (waiting on Rd package)
 

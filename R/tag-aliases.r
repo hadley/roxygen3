@@ -8,7 +8,7 @@
 setClass("AliasesTag", contains = "Tag")
 
 setMethod("value<-", "AliasesTag", function(tag, value) {
-  tag@text <- parse_words(tag, value, min = 1)
+  tag@text <- unlist(str_split(value, "[[:space:]]+"))
   tag
 })
 

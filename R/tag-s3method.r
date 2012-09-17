@@ -11,33 +11,35 @@ setMethod("value", "S3methodTag", function(tag) {
   tag@methods
 })
 
-setMethod("value<-", "S3methodTag", function(tag, value) {
-  tag@text <- parse_words(tag, value, 0, 2)
-  tag
-})
 setMethod("process", "S3methodTag", function(input, block) {
-  n <- length(input@text)
+  entries <- str_split(input@text, "[[:space:]]+")
 
-  if (n == 0) {
+  directives <- lapply(entries, auto_s3, object = block@object)
+
+  input@methods <- do.call("rbind", directives)
+  tag(block, "s3method") <- input
+  block
+})
+
+auto_s3 <- function(text, object) {
+  n <- length(text)
+  if (n == 0 || (n == 1 && text == "")) {
     # Empty, so guess from name
-    pieces <- s3_method_info(block@object@value)
+    pieces <- s3_method_info(object@value)
     generic <- pieces[1]
     class <- pieces[2]
   } else if (n == 1) {
     # Empty, generic provided
-    generic <- input@text
-    class <- str_replace(block@object@name, fixed(str_c(generic, ".")), "")
+    generic <- text
+    class <- str_replace(object@name, fixed(str_c(generic, ".")), "")
+  } else if (n == 2) {
+    generic <- text[1]
+    class <- text[2]
   } else {
-    generic <- input@text[1]
-    class <- input@text[2]
+    message("Invalid @s3method tag")
   }
-
-  input@methods <- cbind(generic, class)
-  input@text <- character()
-
-  tag(block, "s3method") <- input
-  block
-})
+  cbind(generic, class)
+}
 
 setMethod("writeNamespace", "S3methodTag", function(object) {
   if (length(object@methods) == 0) return()

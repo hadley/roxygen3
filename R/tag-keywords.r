@@ -5,7 +5,7 @@ setMethod("defaultTag", c("KeywordsTag", "DataObject"), function(tag, object) {
 })
 
 setMethod("value<-", "KeywordsTag", function(tag, value) {
-  tag@text <- parse_words(tag, value)
+  tag@text <- unlist(str_split(value, "[[:space:]]+"))
   tag
 })
 

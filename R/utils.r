@@ -56,6 +56,7 @@ quote_if_needed <- function(x) {
   x
 }
 
+#' @autoImports
 str_truncate <- function(x, width = getOption("width")) {
   lines <- str_split(x, "\n")[[1]]
 
