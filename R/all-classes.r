@@ -15,8 +15,11 @@ setClass("Tag", contains = "VIRTUAL",
   )
 )
 
+#' The object being documented.
+#'
 #' @rdname Object
 #' @export
+#' @dev
 setClass("Object",
   representation(
     name = "character",
@@ -49,8 +52,11 @@ setClass("Block",
   )
 )
 
+#' An object representing processing behaviour.
+#'
 #' @rdname Behaviour
 #' @export
+#' @dev
 setClass("Behaviour",
   representation(
     tags = "character",
@@ -59,8 +65,11 @@ setClass("Behaviour",
   )
 )
 
+#' An object representing a bundle of blocks in multiple files.
+#'
 #' @rdname Bundle
 #' @export
+#' @dev
 setClass("Bundle",
   representation(
     blocks = "list",

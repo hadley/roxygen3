@@ -3,14 +3,12 @@
 #' This uses the \code{@@rdname} tag to determine which file the output from
 #' each rocblock is sent to.
 #'
-#' Only one of \code{tag} and \code{out} can be supplied.
-#'
-#' @param tag a function that takes a single argument (tag) as input, and
-#'   returns a list of \code{rd_commands} as output
-#' @param name input tag name, usually set by \code{\link{roccer}}.
 #' @dev
 #' @export
 #' @rdname writeRd
+#' @param object Object to proccess, starting at a \linkS4class{Bundle},
+#'   breaking down into \linkS4class{Block}s then individual
+#'   \linkS4class{Tag}s
 NULL
 
 setMethod("writeRd", "PackageBundle", function(object) {

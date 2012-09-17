@@ -1,12 +1,14 @@
-# Translate a command and expressions into an Rd expression;
-# multiple expressions take their own braces.
-#
-# commands have two methods: \code{merge} and \code{format}.  Currently for all
-# commands, merge just combines all values, and format selects from these to
-# display the commands in the appropriate way.
-#
+#' Translate a command and expressions into an Rd expression;
+#' multiple expressions take their own braces.
+#'
+#' commands have two methods: \code{merge} and \code{format}.  Currently for all
+#' commands, merge just combines all values, and format selects from these to
+#' display the commands in the appropriate way.
+#'
 #' @autoImports
 #' @export
+#' @param command name of the command
+#' @param values character vector (possibly named)
 #' @dev
 RdCommand <- function(command, values) {
   if (is.null(values)) return()

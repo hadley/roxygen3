@@ -5,6 +5,12 @@
 #' with the block.
 #'
 #' @export
+#' @dev
+#' @param tags a list of \code{\linkS4class{Tag}} objects
+#' @param object the documented object, of class \code{\linkS4class{Object}}
+#' @param srcref a srcref giving the location of the block
+#' @param default_tags a character vector giving the names of the classes that
+#'   should be used to add default tags to the class.
 Block <- function(tags = list(), object = new("NullObject"),
                   srcref = new("NullSrcref"), default_tags = base_tags()) {
   defaults <- compute_defaults(object, default_tags)

@@ -6,13 +6,9 @@
   writeNamespace(object)
 }
 \arguments{
-  \item{tag}{function that processes a single tag. It
-  should return a character vector of lines to be included
-  in the \file{NAMESPACE}.  Duplicates will be
-  automatically removed.}
-
-  \item{name}{input tag name, usually set by
-  \code{\link{roccer}}.}
+  \item{object}{Object to proccess, starting at a
+  \linkS4class{Bundle}, breaking down into
+  \linkS4class{Block}s then individual \linkS4class{Tag}s}
 }
 
 \description{

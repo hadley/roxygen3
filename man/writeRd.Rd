@@ -6,12 +6,9 @@
   writeRd(object)
 }
 \arguments{
-  \item{tag}{a function that takes a single argument (tag)
-  as input, and returns a list of \code{rd_commands} as
-  output}
-
-  \item{name}{input tag name, usually set by
-  \code{\link{roccer}}.}
+  \item{object}{Object to proccess, starting at a
+  \linkS4class{Bundle}, breaking down into
+  \linkS4class{Block}s then individual \linkS4class{Tag}s}
 }
 
 \description{
@@ -21,7 +18,4 @@
 
   This uses the \code{@rdname} tag to determine which file
   the output from each rocblock is sent to.
-}
-\details{
-  Only one of \code{tag} and \code{out} can be supplied.
 }

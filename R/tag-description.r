@@ -1,10 +1,11 @@
 #' Override default description.
 #'
 #' The topic title. By default this is taken from the second paragraph of the
-#' roxygen block. See \code{\linkS4class{TagIntro}} for more details.
+#' roxygen block. See \code{\linkS4class{IntroTag}} for more details.
 #'
 #' @usageTag @@description Text goes here.
 setClass("DescriptionTag", contains = "Tag")
+
 setMethod("writeRd", "DescriptionTag", function(object) {
   RdCommand("description", object@text)
 })

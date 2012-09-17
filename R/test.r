@@ -20,8 +20,11 @@ test_ns <- function(text) {
 #' This is used cheifly for testing.
 #'
 #' @param text code to parse/execute
+#' @param behaviour a \code{\linkS4class{Behaviour}} object, specifying which
+#'   tags, processors and writers to use.
 #' @autoImports
 #' @export
+#' @keywords internal
 parse_block <- function(text, behaviour = no_output()) {
   pkg_dummy <- structure(
     list(path = tempfile(), package = "temp", version = 0.01),

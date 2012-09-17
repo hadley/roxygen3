@@ -1,10 +1,8 @@
 % Built by roxygen3 0.1
-\name{process_include}
-\alias{process_include}
+\docType{class}
+\name{IncludeTag-class}
+\alias{IncludeTag-class}
 \title{Control order of collation.}
-\usage{
-  process_include(bundle, path = rPath(bundle))
-}
 \description{
   Control order of collation.
 }

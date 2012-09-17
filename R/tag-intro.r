@@ -1,5 +1,3 @@
-setClass("IntroTag", contains = "Tag")
-
 #' Title, description and details.
 #'
 #' @usage The first line becomes the topic title.
@@ -9,9 +7,11 @@ setClass("IntroTag", contains = "Tag")
 #'
 #' The third and subsequent paragraph go into the details.
 #'
-#' @seealso \code{\linkS4class{TagTitle}}, \code{\linkS4class{TagDescription}},
-#'  \code{\linkS4class{TagDetails}} to set each component individually.
+#' @seealso \code{\linkS4class{TitleTag}}, \code{\linkS4class{DescriptionTag}},
+#'  \code{\linkS4class{DetailsTag}} to set each component individually.
 #' @autoImports
+setClass("IntroTag", contains = "Tag")
+
 setMethod("process", "IntroTag", function(input, block) {
   paragraphs <- str_trim(str_split(input@text, fixed('\n\n'))[[1]])
   tag(block, "intro") <- NULL

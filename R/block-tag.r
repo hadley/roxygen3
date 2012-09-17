@@ -70,6 +70,7 @@ setClass("Suffix", contains = "character")
 setClass("Prefix", contains = "character")
 #' @rdname tag-modify
 #' @export
+#' @param x for \code{suffix} and \code{prefix}, text.
 suffix <- function(x) new("Suffix", x)
 #' @rdname tag-modify
 #' @export

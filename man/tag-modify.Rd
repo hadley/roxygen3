@@ -30,6 +30,8 @@
   tag's text. If it's a \code{prefix} object it will be
   added to the beginning of the tag's text. Otherwise, the
   existing tag will be replaced with the new value.}
+
+  \item{x}{for \code{suffix} and \code{prefix}, text.}
 }
 
 \description{

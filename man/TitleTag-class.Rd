@@ -6,7 +6,7 @@
 \description{
   The topic title. By default this is taken from the first
   paragraph of the roxygen block. See
-  \code{\linkS4class{TagIntro}} for more details.
+  \code{\linkS4class{IntroTag}} for more details.
 }
 \section{Tag Usage}{
   \code{ #' @title Topic title }

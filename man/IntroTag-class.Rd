@@ -1,7 +1,7 @@
 % Built by roxygen3 0.1
-\docType{methods}
-\name{process,IntroTag-method}
-\alias{process,IntroTag-method}
+\docType{class}
+\name{IntroTag-class}
+\alias{IntroTag-class}
 \title{Title, description and details.}
 \usage{
   The first line becomes the topic title.
@@ -15,8 +15,8 @@
   Title, description and details.
 }
 \seealso{
-  \code{\linkS4class{TagTitle}},
-  \code{\linkS4class{TagDescription}},
-  \code{\linkS4class{TagDetails}} to set each component
+  \code{\linkS4class{TitleTag}},
+  \code{\linkS4class{DescriptionTag}},
+  \code{\linkS4class{DetailsTag}} to set each component
   individually.
 }

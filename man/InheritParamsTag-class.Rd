@@ -1,10 +1,8 @@
 % Built by roxygen3 0.1
-\name{process_inherit_params}
-\alias{process_inherit_params}
+\docType{class}
+\name{InheritParamsTag-class}
+\alias{InheritParamsTag-class}
 \title{Inherit parameters from another function.}
-\usage{
-  process_inherit_params(package)
-}
 \description{
   This tag will bring in all documentation for parameters
   that are undocumented in the current function, but

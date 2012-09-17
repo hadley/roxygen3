@@ -2,8 +2,8 @@
 #'
 #' The tag class is the base class for all roxygen3 tags.
 #'
-Tag <- function(text) {
-  new("Tag", text = text)
+Tag <- function() {
+  new("Tag")
 }
 
 setMethod("show", "Tag", function(object) {
