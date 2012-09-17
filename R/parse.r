@@ -36,7 +36,7 @@ parse_text <- memoise(function(lines, env, src, default_tags) {
   # Walk through each src ref and match code and comments
   extract <- function(i) {
     ref <- comment_refs[[i]]
-    tags <- parse_roc(as.character(ref), default_tags = default_tags)
+    tags <- parse_roc(as.character(ref), default_tags, ref)
     obj <- object_from_call(parsed[[i]], env, refs[[i]])
 
     if (isNull(obj) & !isNull(tags$docType)) {
@@ -89,7 +89,7 @@ comments <- function(refs) {
 
 #' @autoImports
 # @param tags A character vector of tag names, order is respected.
-parse_roc <- function(lines, match = "^\\s*#+\' ?", default_tags) {
+parse_roc <- function(lines, default_tags, srcref, match = "^\\s*#+\' ?") {
   lines <- lines[str_detect(lines, match)]
   if (length(lines) == 0) return(list())
 
@@ -110,15 +110,18 @@ parse_roc <- function(lines, match = "^\\s*#+\' ?", default_tags) {
 
   cols <- str_split_fixed(elements, "[[:space:]]+", 2)
   cols[, 2] <- str_trim(cols[, 2])
-  parsed_tags <- tapply(cols[, 2], cols[, 1], list)
+  lines <- tapply(cols[, 2], cols[, 1], list)
 
-  # Remove unknown tags and reorder
-  unknown <- setdiff(names(parsed_tags), default_tags)
-  if (length(unknown) > 0) {
-    message("Unknown tags: ", str_c("@", unique(unknown), collapse = ", "))
+  tags <- list()
+  for (tag_name in names(lines)) {
+    tag <- find_tag(tag_name, default_tags)
+    if (is.null(tag)) {
+      message("Unknown tag @", tag_name, " in block at ", location(srcref))
+      next
+    }
+    value(tag) <- lines[[tag_name]]
+    tags[[tag_name(tag)]] <- tag
   }
-  parsed_tags <- parsed_tags[intersect(default_tags, names(parsed_tags))]
-
-  compact(Map(build_tag, names(parsed_tags), parsed_tags))
+  tags <- compact(tags)
+  tags[intersect(default_tags, names(tags))]
 }
-

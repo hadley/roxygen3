@@ -30,20 +30,12 @@ setMethod("isEmpty", "Tag", function(tag) {
   length(val) == 0 || identical(val, "")
 })
 
-build_tag <- function(name, text = character()) {
-  # find matching class for name
-  class_name <- tag_class(name)
-  if (!isClass(class_name)) {
-    message("Unknown tag @", name, " at ") #, location(block))
-    return(NULL)
-  }
+find_tag <- memoise(function(name, tags = base_tags()) {
+  tag <- tags[match(tolower(name), tolower(tags), nomatch = 0L)]
+  if (length(tag) == 0) return()
 
-  tag <- new(class_name, srcref = new("NullSrcref"))
-  if (length(text) > 0) {
-    value(tag) <- text
-  }
-  tag
-}
+  new(tag_class(tag))
+})
 
 tag_class <- function(name) {
   str_c(first_upper(name), "Tag")

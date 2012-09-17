@@ -25,7 +25,7 @@ tag <- function(block, tag_name, create = TRUE) {
 
   if (!is.null(tag) || !create) return(tag)
 
-  tag <- build_tag(tag_name, character())
+  tag <- find_tag(tag_name)
   if (is.null(tag)) stop("Can't find tag called ", tag_name)
   tag
 }
@@ -39,6 +39,7 @@ tag_value <- function(block, tag_name) {
   new_tag <- tag(block, tag_name)
   value(new_tag) <- value
   tag(block, tag_name) <- new_tag
+  block
 }
 
 #' @param value the replacement value. If it is a character string, it

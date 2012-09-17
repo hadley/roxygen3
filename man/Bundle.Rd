@@ -2,7 +2,7 @@
 \docType{class}
 \name{Bundle-class}
 \alias{Bundle-class}
-\title{An object representing a bundle of blocks in multiple files.}
+\title{[DEV] An object representing a bundle of blocks in multiple files.}
 \description{
   This function is aimed primarily at developers extending
   this package. You shouldn't need to use it for everyday
