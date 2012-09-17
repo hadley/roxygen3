@@ -25,18 +25,10 @@
   Imports.
 }
 \section{Tag Usage}{
-  \code{ #' @importClassesFrom package fun1 fun2 }
+\code{
+#' @importClassesFrom package fun1 fun2
+#' @importFrom package function1 function2
+#' @importMethodsFrom package fun1 fun2
+#' @import package1 package2 package3
 }
-
-\section{Tag Usage}{
-  \code{ #' @importFrom package function1 function2 }
 }
-
-\section{Tag Usage}{
-  \code{ #' @importMethodsFrom package fun1 fun2 }
-}
-
-\section{Tag Usage}{
-  \code{ #' @import package1 package2 package3 }
-}
-

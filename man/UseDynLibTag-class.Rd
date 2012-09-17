@@ -19,10 +19,12 @@
   myOtherRoutine)} are not currently supported.
 }
 \section{Tag Usage}{
-  \code{ #' @useDynLib @useDynLib foo @useDynLib foo,
-  myRoutine, myOtherRoutine @useDynLib foo, myRoutine_sym =
-  myRoutine, myOtherRoutine @useDynLib myDLL, .registration
-  = TRUE @useDynLib KernSmooth, .registration = TRUE,
-  .fixes = "F_" }
+\code{
+#' @useDynLib
+#' @useDynLib foo
+#' @useDynLib foo, myRoutine, myOtherRoutine
+#' @useDynLib foo, myRoutine_sym = myRoutine, myOtherRoutine
+#' @useDynLib myDLL, .registration = TRUE
+#' @useDynLib KernSmooth, .registration = TRUE, .fixes = "F_"
 }
-
+}

@@ -9,6 +9,7 @@
   \code{\linkS4class{IntroTag}} for more details.
 }
 \section{Tag Usage}{
-  \code{ #' @details Text goes here. }
+\code{
+#' @details Text goes here.
 }
-
+}

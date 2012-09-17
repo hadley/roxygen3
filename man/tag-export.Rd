@@ -5,13 +5,7 @@
 \alias{ExportMethodsTag-class}
 \alias{ExportPatternTag-class}
 \alias{ExportTag-class}
-\alias{S3methodTag-class}
 \title{Namespace: tags for exporting objects}
-\usage{
-  @export @export function name
-
-  @S3method generic class @S3method generic @S3method
-}
 \description{
   Generally, you will only need to use a bare
   \code{@export} - this will inspect the documented object
@@ -37,14 +31,11 @@
   necessary.}
 }
 \section{Tag Usage}{
-  \code{ #' @exportClass class1 class2 }
+\code{
+#' @exportClass class1 class2
+#' @exportMethods generic1 generic2
+#' @exportPattern pattern
+#' @export
+#' @export function name
 }
-
-\section{Tag Usage}{
-  \code{ #' @exportMethods generic1 generic2 }
 }
-
-\section{Tag Usage}{
-  \code{ #' @exportPattern pattern }
-}
-

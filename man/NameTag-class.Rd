@@ -10,6 +10,7 @@
   that you need to extend roxygen3 for you object type.
 }
 \section{Tag Usage}{
-  \code{ #' @name name }
+\code{
+#' @name name
 }
-
+}

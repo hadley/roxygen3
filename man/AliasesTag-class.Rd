@@ -9,6 +9,7 @@
   is always included in the list of aliases.
 }
 \section{Tag Usage}{
-  \code{ #' @aliases space separated aliases }
+\code{
+#' @aliases space separated aliases
 }
-
+}

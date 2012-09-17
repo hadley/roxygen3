@@ -9,6 +9,7 @@
   \code{\linkS4class{IntroTag}} for more details.
 }
 \section{Tag Usage}{
-  \code{ #' @title Topic title }
+\code{
+#' @title Topic title
 }
-
+}

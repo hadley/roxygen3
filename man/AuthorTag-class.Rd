@@ -9,6 +9,7 @@
   is not the same as the package author.
 }
 \section{Tag Usage}{
-  \code{ #' @author authors... }
+\code{
+#' @author authors...
 }
-
+}

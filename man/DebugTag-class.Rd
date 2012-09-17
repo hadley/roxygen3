@@ -10,6 +10,7 @@
   TRUE)} to turn it on.
 }
 \section{Tag Usage}{
-  \code{ #' None: this is added automatically. }
+\code{
+#' None: this is added automatically.
 }
-
+}

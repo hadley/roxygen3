@@ -1,8 +1,9 @@
-#' @usage
+#' Export S3 methods.
+#'
+#' @usageTag
 #'   @@S3method generic class
 #'   @@S3method generic
 #'   @@S3method
-#' @rdname tag-export
 setClass("S3methodTag", contains = "Tag",
   list("methods" = "matrix"))
 

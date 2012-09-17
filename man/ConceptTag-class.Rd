@@ -8,6 +8,7 @@
   searched for in \code{\link{help.search}}.
 }
 \section{Tag Usage}{
-  \code{ #' @concept additional index entry }
+\code{
+#' @concept additional index entry
 }
-
+}

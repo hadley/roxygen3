@@ -8,6 +8,7 @@
   or other files.
 }
 \section{Tag Usage}{
-  \code{ #' @noRd }
+\code{
+#' @noRd
 }
-
+}

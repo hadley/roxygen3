@@ -12,7 +12,9 @@
   data, package, methods and class.
 }
 \section{Tag Usage}{
-  \code{ #' @docType data @docType package @docType custom
-  doctype }
+\code{
+#' @docType data
+#' @docType package
+#' @docType custom doctype
 }
-
+}

@@ -12,6 +12,7 @@
   default ordering.
 }
 \section{Tag Usage}{
-  \code{ #' @include file-1.r file-2.r }
+\code{
+#' @include file-1.r file-2.r
 }
-
+}

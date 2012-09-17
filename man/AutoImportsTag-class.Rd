@@ -11,6 +11,7 @@
   \code{@importFrom}
 }
 \section{Tag Usage}{
-  \code{ #' @autoImports }
+\code{
+#' @autoImports
 }
-
+}
