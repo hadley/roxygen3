@@ -14,10 +14,10 @@ test_that("empty tag inspects function to determine calls", {
     #' @useDynLib
     f <- function() .External('test')")
 
-  expect_equal(tag_value(out1, "useDynLib"), "temp, test")
-  expect_equal(tag_value(out2, "useDynLib"), "temp, test")
-  expect_equal(tag_value(out3, "useDynLib"), "temp, test")
-  expect_equal(tag_value(out4, "useDynLib"), "temp, test")
+  expect_equal(tag_value(out1, "useDynLib"), "temp,test")
+  expect_equal(tag_value(out2, "useDynLib"), "temp,test")
+  expect_equal(tag_value(out3, "useDynLib"), "temp,test")
+  expect_equal(tag_value(out4, "useDynLib"), "temp,test")
 })
 
 test_that("manual dyn lib directives are preserved as is", {
@@ -44,6 +44,6 @@ test_that("old form still works" ,{
     f <- function() .Call('test')")
 
   dynlib <- tag_value(out, "useDynLib")
-  expect_equal(dynlib[1], "mypackage, a")
-  expect_equal(dynlib[2], "mypackage, b")
+  expect_equal(dynlib[1], "mypackage,a")
+  expect_equal(dynlib[2], "mypackage,b")
 })

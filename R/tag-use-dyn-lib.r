@@ -45,7 +45,7 @@ parse_dynlib <- function(x) {
   pieces <- str_split(x, "[[:space:]]")[[1]]
   if (length(pieces) == 1) return(pieces)
 
-  str_c(pieces[1], ", ", pieces[-1])
+  str_c(pieces[1], ",", pieces[-1])
 }
 
 #' Automatically determine the dynamic imports that a function needs.
@@ -70,7 +70,7 @@ auto_dynlib <- function(x) {
   names <- str_replace_all(names, "\"", "")
 
   pkg <- getPackageName(environment(x))
-  str_c(pkg, ", ", names)
+  str_c(pkg, ",", names)
 }
 
 find_calls <- function(obj, call) {
