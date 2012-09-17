@@ -22,7 +22,7 @@ roxygenise <- function(path, check = FALSE, clean = FALSE) {
   process(pkg)
 
   if (check) {
-    check_doc(pkg)
+    check_doc(path)
   }
 
   invisible(pkg)
