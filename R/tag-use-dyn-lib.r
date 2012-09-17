@@ -1,5 +1,10 @@
 #' Import routines from a shared library.
 #'
+#' Most of the time you should only need to use \code{@@useDynLib} without
+#' any arguments - \code{auto_dynlib} will parse the function and extract any
+#' calls to \code{\link{.C}}, \code{\link{.Fortran}}, \code{\link{.Call}} or
+#' \code{\link{.External}}.
+#'
 #' For more details on how to use, see
 #' \url{http://cran.r-project.org/doc/manuals/R-exts.html#Load-hooks}
 #'
