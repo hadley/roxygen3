@@ -15,6 +15,15 @@ test_that("export detects S4 class", {
   expect_equal(tag_value(out, "exportClass"), "a")
 })
 
+test_that("exporting generic exports both function and methods", {
+  out <- test_process("
+    #' @export
+    setGeneric('a', function(x) standardGeneric('a'))")
+  expect_equal(tag_value(out, "exportMethods"), "a")
+  expect_equal(tag_value(out, "exportMethods"), "a")
+
+})
+
 test_that("export escapes quotes name if needed", {
   out <- test_ns("#' @export\n'a<-' <- function(){}")
   expect_equal(out, 'export("a<-")')
