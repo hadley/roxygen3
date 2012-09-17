@@ -26,6 +26,10 @@ setGeneric("getPrereqs", function(tag) {
 setGeneric("process", function(input, ...) {
   standardGeneric("process")
 })
+cached_process <- memoise(function(input, ...) {
+  process(input, ...)
+})
+
 
 setGeneric("rPath", function(bundle) {
   standardGeneric("rPath")

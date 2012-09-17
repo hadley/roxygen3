@@ -1,11 +1,10 @@
 setMethod("process", "Bundle", function(input) {
   # Process each block individually for local tags
-  input@blocks <- lapply(input@blocks, process)
+  input@blocks <- lapply(input@blocks, cached_process)
 
   # Run global processors
   for (process in input@behaviour@processors) {
-    f <- match.fun(process)
-    input <- f(input)
+    input <- cached_processor(process, input)
   }
 
   # Write output
@@ -21,7 +20,7 @@ setMethod("rPath", "Bundle", function(bundle) {
   NULL
 })
 
-cached_process <- memoise(function(process, input) {
+cached_processor <- memoise(function(process, input) {
   f <- match.fun(process)
   f(input)
 })

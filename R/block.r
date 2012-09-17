@@ -42,7 +42,7 @@ setMethod("show", "Block", function(object) {
 
 setMethod("process", "Block", function(input) {
   for (tag in names(input@tags)) {
-    input <- process(input@tags[[tag]], block = input)
+    input <- cached_process(input@tags[[tag]], block = input)
   }
 
   input
