@@ -1,4 +1,4 @@
-context("Tag: s3method")
+context("Tag: @s3method")
 
 test_that("s3method completes as needed", {
   out1 <- test_process("
