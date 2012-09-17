@@ -10,7 +10,7 @@
 \arguments{
   \item{path}{path of package root directory}
 
-  \item{behaviour}{\code{\link{Behaviour}} object
+  \item{behaviour}{\code{\linkS4class{Behaviour}} object
   describing what tags, processors and writers to use}
 }
 
@@ -20,6 +20,6 @@
   operation of the package.
 
   The package class captures all the information about the
-  package: its name, path, and all the \code{\link{Block}}s
-  that it contains.
+  package: its name, path, and all the
+  \code{\linkS4class{Block}}s that it contains.
 }

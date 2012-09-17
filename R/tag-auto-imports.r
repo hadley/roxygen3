@@ -1,4 +1,10 @@
-#' @rdname tag-import
+#' Automatically add import statements.
+#'
+#' Using this tag will automatically add all external functions used by the
+#' function to the namespace.  If there are any ambiguities (i.e. the same
+#' name is used by multiple packages) you can resolve them using
+#' \code{@@importFrom}
+#'
 #' @usageTag @@autoImports
 #' @autoImports
 setClass("AutoImportsTag", contains = "Tag")

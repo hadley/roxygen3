@@ -1,7 +1,6 @@
 % Built by roxygen3 0.1
 \docType{class}
-\name{AutoImportsTag-class}
-\alias{AutoImportsTag-class}
+\name{ImportClassesFromTag-class}
 \alias{ImportClassesFromTag-class}
 \alias{ImportFromTag-class}
 \alias{ImportMethodsFromTag-class}
@@ -25,10 +24,6 @@
   You must have the packages declared in \code{DESCRIPTION}
   Imports.
 }
-\section{Tag Usage}{
-  \code{ #' @autoImports }
-}
-
 \section{Tag Usage}{
   \code{ #' @importClassesFrom package fun1 fun2 }
 }

@@ -5,7 +5,6 @@
 #' aliases.
 #'
 #' @usageTag @@aliases space separated aliases
-
 setClass("AliasesTag", contains = "Tag")
 
 setMethod("value<-", "AliasesTag", function(tag, value) {

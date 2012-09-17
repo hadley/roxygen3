@@ -1,7 +1,7 @@
 #' A bundle of files in a package.
 #'
 #' The package class captures all the information about the package:
-#' its name, path, and all the \code{\link{Block}}s that it contains.
+#' its name, path, and all the \code{\linkS4class{Block}}s that it contains.
 #'
 #' @autoImports
 #' @inheritParams DirectoryBundle

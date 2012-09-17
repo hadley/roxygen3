@@ -16,7 +16,7 @@
   operation of the package.
 
   Roxygen defaults to using all subclasses of
-  \code{\link{Tag}}, and all processors
+  \code{\linkS4class{Tag}}, and all processors
   (\code{$process[A-Z].*}) and writers
   (\code{$writer[A-Z].*}) defined in the roxygen package.
 }

@@ -10,7 +10,7 @@
 \arguments{
   \item{path}{location of folder containing R files}
 
-  \item{behaviour}{\code{\link{Behaviour}} object
+  \item{behaviour}{\code{\linkS4class{Behaviour}} object
   describing what tags, processors and writers to use}
 }
 

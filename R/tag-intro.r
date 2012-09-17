@@ -9,8 +9,8 @@ setClass("IntroTag", contains = "Tag")
 #'
 #' The third and subsequent paragraph go into the details.
 #'
-#' @seealso \code{\link{tag_title}}, \code{\link{tag_description}},
-#'  \code{\link{tag_details}} to set each component individually.
+#' @seealso \code{\linkS4class{TagTitle}}, \code{\linkS4class{TagDescription}},
+#'  \code{\linkS4class{TagDetails}} to set each component individually.
 #' @autoImports
 setMethod("process", "IntroTag", function(input, block) {
   paragraphs <- str_trim(str_split(input@text, fixed('\n\n'))[[1]])

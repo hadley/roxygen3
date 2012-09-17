@@ -4,7 +4,7 @@
 #' \url{http://cran.r-project.org/doc/manuals/R-exts.html#Load-hooks}
 #'
 #' \code{useDynLib} directives of the form
-#' \code{myDLL = useDynLib(foo, myRoutine_sym = myRoutine, myOtherRoutine)
+#' \code{myDLL = useDynLib(foo, myRoutine_sym = myRoutine, myOtherRoutine)}
 #' are not currently supported.
 #'
 #' @usageTag
@@ -29,7 +29,7 @@ setMethod("writeNamespace", "UseDynLibTag", function(object) {
 #' Automatically determine the dynamic imports that a function needs.
 #'
 #' It does this by walking the call tree and finding all calls to \code{.Call},
-#' \code{.C} and \code{.Fortran).
+#' \code{.C} and \code{.Fortran}.
 #'
 #' @keywords internal
 #' @param x function to inspect

@@ -9,8 +9,8 @@
 }
 \details{
   \code{useDynLib} directives of the form \code{myDLL =
-  useDynLib(foo, myRoutine_sym = myRoutine, myOtherRoutine)
-  are not currently supported.
+  useDynLib(foo, myRoutine_sym = myRoutine,
+  myOtherRoutine)} are not currently supported.
 }
 \section{Tag Usage}{
   \code{ #' @useDynLib @useDynLib foo @useDynLib foo,

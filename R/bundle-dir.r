@@ -1,7 +1,7 @@
 #' A bundle of files in a directory.
 #'
 #' @param path location of folder containing R files
-#' @param behaviour \code{\link{Behaviour}} object describing what tags,
+#' @param behaviour \code{\linkS4class{Behaviour}} object describing what tags,
 #'   processors and writers to use
 #' @export
 #' @dev

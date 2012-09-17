@@ -1,3 +1,4 @@
+#' @rdname include
 setClass("CollateTag", contains = "Tag",
   list(files = "character"))
 

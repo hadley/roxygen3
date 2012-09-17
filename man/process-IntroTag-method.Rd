@@ -15,7 +15,8 @@
   Title, description and details.
 }
 \seealso{
-  \code{\link{tag_title}}, \code{\link{tag_description}},
-  \code{\link{tag_details}} to set each component
+  \code{\linkS4class{TagTitle}},
+  \code{\linkS4class{TagDescription}},
+  \code{\linkS4class{TagDetails}} to set each component
   individually.
 }
