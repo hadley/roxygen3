@@ -40,3 +40,15 @@ test_that("Manual usage lines are merged", {
   expect_equal(shared$usage@values[[2]], "b() # b is for ball")
 
 })
+
+test_that("functions with non-syntactic characters are ok", {
+  out <- test_rd("
+    #' Change names.
+    'names<-' <- function(x, value) {}
+
+    #' Change values
+    '[<-' <- function(x, value) {}
+  ")
+
+  expect_equal(names(out), c("man/names-set.Rd", "man/open-brace-set.Rd"))
+})
