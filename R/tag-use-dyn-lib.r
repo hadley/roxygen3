@@ -17,14 +17,31 @@
 setClass("UseDynLibTag", contains = "Tag")
 
 setMethod("process", "UseDynLibTag", function(input, block) {
-  if (!isEmpty(input)) return(block)
-  tag(block, "useDynLib") <- auto_dynlib(block@object@value)
+  if (isEmpty(input)) {
+    dynlib <- auto_dynlib(block@object@value)
+  } else {
+    dynlib <- unlist(lapply(input@text, parse_dynlib))
+  }
+  tag(block, "useDynLib") <- dynlib
   block
 })
 
 setMethod("writeNamespace", "UseDynLibTag", function(object) {
   str_c("useDynLib(", object@text, ")")
 })
+
+parse_dynlib <- function(x) {
+  stopifnot(length(x) == 1)
+
+  # New form - passed directly to useDynlib()
+  if (str_detect(x, ",")) return(x)
+
+  # Old form
+  pieces <- str_split(x, "[[:space:]]")[[1]]
+  if (length(pieces) == 1) return(pieces)
+
+  str_c(pieces[1], ", ", pieces[-1])
+}
 
 #' Automatically determine the dynamic imports that a function needs.
 #'

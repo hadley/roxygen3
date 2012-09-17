@@ -37,3 +37,13 @@ test_that("namespace directive computed correctly", {
 
   expect_equal(writeNamespace(out)[[1]], "useDynLib(mypackage)")
 })
+
+test_that("old form still works" ,{
+  out <- test_process("
+    #' @useDynLib mypackage a b
+    f <- function() .Call('test')")
+
+  dynlib <- tag_value(out, "useDynLib")
+  expect_equal(dynlib[1], "mypackage, a")
+  expect_equal(dynlib[2], "mypackage, b")
+})

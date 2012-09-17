@@ -20,3 +20,8 @@ setMethod("process", "Bundle", function(input) {
 setMethod("rPath", "Bundle", function(bundle) {
   NULL
 })
+
+cached_process <- memoise(function(process, input) {
+  f <- match.fun(process)
+  f(input)
+})
