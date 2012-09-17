@@ -18,7 +18,7 @@
 #' @export
 #' @dev
 object_from_call <- function(call, env, srcref) {
-  if (is.null(call)) return(new("NullObject", srcref = srcref))
+  if (!is.call(call)) return(new("NullObject", srcref = srcref))
 
   # Determine if we have a method for dealing with this call
   method <- call_method(call[[1]])
