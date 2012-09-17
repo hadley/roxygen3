@@ -57,7 +57,10 @@ find_generic <- memoise(function(name, env = parent.frame()) {
 
 all_s3_methods <- memoise(function(env = parent.frame()) {
   names <- ls(envir = env)
-  t(simplify2array(compact(lapply(names, find_generic, env = env))))
+  results <- compact(lapply(names, find_generic, env = env))
+  if (length(results) == 0) return()
+
+  t(simplify2array(results))
 })
 
 

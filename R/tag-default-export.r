@@ -42,6 +42,7 @@ setMethod("defaultTag", c("DefaultExportTag", "S3MethodObject"),
 setMethod("defaultTag", c("DefaultExportTag", "S3GenericObject"),
   function(tag, object) {
     all <- all_s3_methods(environment(object@value))
+    if (is.null(all)) return()
     matching <- all[all[, 1] == object@name, , drop = FALSE]
 
     new("DefaultExportTag", S3method = matching, export = object@name)

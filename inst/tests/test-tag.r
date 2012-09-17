@@ -1,8 +1,7 @@
 context("Tag")
 
-test_that("keywords and aliases split into pieces", {
+test_that("aliases split into pieces", {
   out <- test_process("
-    #' @keywords a b
     #' @aliases a b
     #' @name a
     NULL")
