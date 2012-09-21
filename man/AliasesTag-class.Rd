@@ -8,6 +8,7 @@
   the documentation with \code{\link{help}}. The topic name
   is always included in the list of aliases.
 }
+\keyword{classes}
 \section{Tag Usage}{
 \code{
 #' @aliases space separated aliases

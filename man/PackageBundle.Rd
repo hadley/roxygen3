@@ -23,3 +23,4 @@
   package: its name, path, and all the
   \code{\linkS4class{Block}}s that it contains.
 }
+\keyword{classes}

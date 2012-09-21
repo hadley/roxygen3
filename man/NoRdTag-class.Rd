@@ -7,6 +7,7 @@
   Note that this only suppresses Rd output, not namespace
   or other files.
 }
+\keyword{classes}
 \section{Tag Usage}{
 \code{
 #' @noRd

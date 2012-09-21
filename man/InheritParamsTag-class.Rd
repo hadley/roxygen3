@@ -10,6 +10,7 @@
   function in the current package, \code{function}, or
   another package \code{package::function}.
 }
+\keyword{classes}
 \section{Tag Usage}{
 \code{
 #' @inheritParams source_function

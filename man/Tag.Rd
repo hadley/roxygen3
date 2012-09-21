@@ -10,3 +10,4 @@
 \description{
   The tag class is the base class for all roxygen3 tags.
 }
+\keyword{classes}

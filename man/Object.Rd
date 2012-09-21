@@ -10,3 +10,4 @@
 
   The object being documented.
 }
+\keyword{classes}

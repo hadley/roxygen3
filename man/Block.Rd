@@ -30,3 +30,4 @@
   roxygen comment block, along with its location in the src
   code, and the object associated with the block.
 }
+\keyword{classes}

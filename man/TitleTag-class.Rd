@@ -8,6 +8,7 @@
   paragraph of the roxygen block. See
   \code{\linkS4class{IntroTag}} for more details.
 }
+\keyword{classes}
 \section{Tag Usage}{
 \code{
 #' @title Topic title

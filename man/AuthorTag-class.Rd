@@ -8,6 +8,7 @@
   function.  This is typically only necessary if the author
   is not the same as the package author.
 }
+\keyword{classes}
 \section{Tag Usage}{
 \code{
 #' @author authors...

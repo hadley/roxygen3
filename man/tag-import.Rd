@@ -24,6 +24,7 @@
   You must have the packages declared in \code{DESCRIPTION}
   Imports.
 }
+\keyword{classes}
 \section{Tag Usage}{
 \code{
 #' @importClassesFrom package fun1 fun2

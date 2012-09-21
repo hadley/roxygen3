@@ -11,3 +11,4 @@
   An object representing a bundle of blocks in multiple
   files.
 }
+\keyword{classes}

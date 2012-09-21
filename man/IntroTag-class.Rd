@@ -12,6 +12,7 @@
   \code{\linkS4class{DetailsTag}} to set each component
   individually.
 }
+\keyword{classes}
 \section{Tag Usage}{
 \code{
 #' The first line becomes the topic title.

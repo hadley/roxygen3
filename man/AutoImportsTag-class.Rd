@@ -10,6 +10,7 @@
   multiple packages) you can resolve them using
   \code{@importFrom}
 }
+\keyword{classes}
 \section{Tag Usage}{
 \code{
 #' @autoImports

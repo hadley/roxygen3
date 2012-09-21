@@ -18,3 +18,4 @@
 
   An output generator for the \file{NAMESPACE} file.
 }
+\keyword{methods}

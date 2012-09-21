@@ -18,6 +18,7 @@
   useDynLib(foo, myRoutine_sym = myRoutine,
   myOtherRoutine)} are not currently supported.
 }
+\keyword{classes}
 \section{Tag Usage}{
 \code{
 #' @useDynLib

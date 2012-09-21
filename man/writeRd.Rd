@@ -19,3 +19,4 @@
   This uses the \code{@rdname} tag to determine which file
   the output from each rocblock is sent to.
 }
+\keyword{methods}

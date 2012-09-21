@@ -9,6 +9,7 @@
   - if you are using it often it's probably an indication
   that you need to extend roxygen3 for you object type.
 }
+\keyword{classes}
 \section{Tag Usage}{
 \code{
 #' @name name

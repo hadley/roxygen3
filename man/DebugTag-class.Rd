@@ -9,6 +9,7 @@
   default - you need to use \code{defaultBehaviour(debug =
   TRUE)} to turn it on.
 }
+\keyword{classes}
 \section{Tag Usage}{
 \code{
 #' None: this is added automatically.

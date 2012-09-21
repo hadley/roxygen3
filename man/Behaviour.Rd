@@ -10,3 +10,4 @@
 
   An object representing processing behaviour.
 }
+\keyword{classes}

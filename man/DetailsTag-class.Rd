@@ -8,6 +8,7 @@
   and subsequent paragraphs of the roxygen block. See
   \code{\linkS4class{IntroTag}} for more details.
 }
+\keyword{classes}
 \section{Tag Usage}{
 \code{
 #' @details Text goes here.

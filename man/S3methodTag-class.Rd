@@ -6,6 +6,7 @@
 \description{
   Export S3 methods.
 }
+\keyword{classes}
 \section{Tag Usage}{
 \code{
 #' @S3method generic class

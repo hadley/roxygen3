@@ -8,3 +8,4 @@ used.}
   Given an object, return a string showing how that object
   should be used.
 }
+\keyword{classes}

@@ -30,6 +30,7 @@
   object is an S3 method, and so only \code{@export is
   necessary.}
 }
+\keyword{classes}
 \section{Tag Usage}{
 \code{
 #' @exportClass class1 class2

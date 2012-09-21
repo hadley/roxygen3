@@ -11,6 +11,7 @@
   the Rd file if it is one of the standard R doctypes:
   data, package, methods and class.
 }
+\keyword{classes}
 \section{Tag Usage}{
 \code{
 #' @docType data

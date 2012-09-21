@@ -56,3 +56,4 @@ tag(block, "aliases") <- prefix("start")
 block
 }
 
+\keyword{methods}
