@@ -9,7 +9,7 @@
 setClass("ClassHierarchyTag", contains = "Tag")
 
 setMethod("process", "ClassHierarchyTag", function(input, block) {
-  if (!is(block@object@value, "classRepresentation")) {
+  if (!is(block@object, "S4ClassObject")) {
     message("@slot only valid for documenting S4 classes ", location(block))
     return(block)
   }

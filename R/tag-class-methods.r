@@ -14,7 +14,7 @@
 setClass("ClassMethodsTag", contains = "Tag")
 
 setMethod("process", "ClassMethodsTag", function(input, block) {
-  if (!is(block@object@value, "classRepresentation")) {
+  if (!is(block@object, "S4ClassObject")) {
     message("@classMethods only valid for documenting S4 classes ",
       location(block))
     return(block)

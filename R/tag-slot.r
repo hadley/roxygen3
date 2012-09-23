@@ -28,7 +28,7 @@ setMethod("value<-", "SlotTag", function(tag, value) {
 })
 
 setMethod("process", "SlotTag", function(input, block) {
-  if (!is(block@object@value, "classRepresentation")) {
+  if (!is(block@object, "S4ClassObject")) {
     message("@slot only valid for documenting S4 classes ", location(block))
     return(block)
   }
