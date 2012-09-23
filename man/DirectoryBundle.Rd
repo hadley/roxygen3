@@ -21,4 +21,8 @@
 
   A bundle of files in a directory.
 }
+\section{Generics with methods for DirectoryBundle}{
+  \itemize{ \item \code{\link[=rPath]{rPath}} }
+}
+
 \keyword{classes}

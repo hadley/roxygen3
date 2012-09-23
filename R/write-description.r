@@ -1,3 +1,4 @@
+
 setMethod("writeDescription", "PackageBundle", function(object) {
   in_dir(object@path, callNextMethod())
 })

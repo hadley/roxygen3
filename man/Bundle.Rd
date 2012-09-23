@@ -17,4 +17,12 @@
   \linkS4class{PackageBundle} (S4) }
 }
 
+\section{Generics with methods for Bundle}{
+  \itemize{ \item \code{\link[=process]{process}} \item
+  \code{\link[=rPath]{rPath}} \item
+  \code{\link[=writeDescription]{writeDescription}} \item
+  \code{\link[=writeNamespace]{writeNamespace}} \item
+  \code{\link[=writeRd]{writeRd}} }
+}
+
 \keyword{classes}

@@ -33,4 +33,10 @@
   \linkS4class{R5ClassObject} (S4) }
 }
 
+\section{Generics with methods for Object}{
+  \itemize{ \item \code{\link[=defaultTag]{defaultTag}}
+  \item \code{\link[=defaultTag]{defaultTag}} \item
+  \code{\link[=show]{show}} }
+}
+
 \keyword{classes}

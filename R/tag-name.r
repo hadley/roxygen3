@@ -33,17 +33,14 @@ setMethod("defaultTag", c("NameTag", "NullObject"),
 # http://cran.r-project.org/doc/manuals/R-exts.html#Documenting-S4-classes-and-methods
 setMethod("defaultTag", c("NameTag", "S4ClassObject"),
   function(tag, object) {
-    new("NameTag", text = str_c(object@name, "-class"))
+    new("NameTag", text = topicName(object@value))
   }
 )
 setMethod("defaultTag", c("NameTag", "S4MethodObject"),
   function(tag, object) {
-    sig <- str_c(object@value@defined, collapse = ",")
-    name <- str_c(object@value@generic, ",", sig, "-method")
-    new("NameTag", text = name)
+    new("NameTag", text = topicName(object@value))
   }
 )
-
 
 setMethod("writeRd", "NameTag", function(object) {
   RdCommand("name", object@text)

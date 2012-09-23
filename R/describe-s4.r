@@ -33,4 +33,16 @@ setMethod("describe", "classRepresentation", function(x) {
   }
 })
 
+setMethod("describe", "MethodDefinition", function(x) {
+  # str_c("\\code{\\link[=", topicName(x), "]{", x@generic, "}}")
+  str_c("\\code{\\link[=", x@generic, "]{", x@generic, "}}")
+})
 
+setGeneric("topicName", function(x) standardGeneric("topicName"))
+setMethod("topicName", "MethodDefinition", function(x) {
+  sig <- str_c(x@defined, collapse = ",")
+  str_c(x@generic, ",", sig, "-method")
+})
+setMethod("topicName", "classRepresentation", function(x) {
+  str_c(x@className, "-class")
+})

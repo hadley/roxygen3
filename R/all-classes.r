@@ -21,6 +21,7 @@ setClass("Tag", contains = "VIRTUAL",
 #' @export
 #' @dev
 #' @classHierarchy
+#' @classMethods
 setClass("Object",
   representation(
     name = "character",
@@ -59,6 +60,8 @@ setClass("Block",
 #' @rdname Behaviour
 #' @export
 #' @dev
+#' @classHierarchy
+#' @classMethods
 setClass("Behaviour",
   representation(
     tags = "character",
@@ -73,6 +76,7 @@ setClass("Behaviour",
 #' @export
 #' @dev
 #' @classHierarchy
+#' @classMethods
 setClass("Bundle",
   representation(
     blocks = "list",
@@ -82,6 +86,7 @@ setClass("Bundle",
 
 #' @rdname DirectoryBundle
 #' @export
+#' @classMethods
 setClass("DirectoryBundle", contains = "Bundle",
   representation(
     path = "character"
@@ -90,6 +95,7 @@ setClass("DirectoryBundle", contains = "Bundle",
 
 #' @rdname PackageBundle
 #' @export
+#' @classMethods
 setClass("PackageBundle", contains = "DirectoryBundle",
   representation(
     name = "character"
