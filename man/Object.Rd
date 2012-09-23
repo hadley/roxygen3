@@ -1,7 +1,17 @@
 % Built by roxygen3 0.1
 \docType{class}
 \name{Object-class}
+\alias{DataObject-class}
+\alias{FunctionObject-class}
+\alias{NullObject-class}
 \alias{Object-class}
+\alias{PackageObject-class}
+\alias{R5ClassObject-class}
+\alias{S3GenericObject-class}
+\alias{S3MethodObject-class}
+\alias{S4ClassObject-class}
+\alias{S4GenericObject-class}
+\alias{S4MethodObject-class}
 \title{[DEV] The object being documented.}
 \description{
   This function is aimed primarily at developers extending
@@ -10,4 +20,17 @@
 
   The object being documented.
 }
+\section{Class hierarchy for Object}{
+  Sub classes: \itemize{ \item \linkS4class{NullObject}
+  (S4) \item \linkS4class{PackageObject} (S4) \item
+  \linkS4class{DataObject} (S4) \item
+  \linkS4class{FunctionObject} (S4) \item
+  \linkS4class{S4ClassObject} (S4) \item
+  \linkS4class{S4MethodObject} (S4) \item
+  \linkS4class{S4GenericObject} (S4) \item
+  \linkS4class{S3MethodObject} (S4) \item
+  \linkS4class{S3GenericObject} (S4) \item
+  \linkS4class{R5ClassObject} (S4) }
+}
+
 \keyword{classes}

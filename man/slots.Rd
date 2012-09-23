@@ -28,13 +28,13 @@
 }
 \section{Slots}{
 \describe{
-  \item{slots}{An object of class \linkS4class{character}}
+  \item{slots}{An object of class \linkS4class{character} (S4)}
 
-  \item{classname}{An object of class \linkS4class{character}}
+  \item{classname}{An object of class \linkS4class{character} (S4)}
 
-  \item{text}{An object of class \linkS4class{character}}
+  \item{text}{An object of class \linkS4class{character} (S4)}
 
-  \item{srcref}{An S3 object of class srcref}
+  \item{srcref}{An object of class srcref (S3)}
 
 }
 }

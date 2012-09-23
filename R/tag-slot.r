@@ -43,6 +43,11 @@ setMethod("process", "SlotTag", function(input, block) {
   block
 })
 
+describe_slots <- function(class, slots) {
+  desc <- describe(slot_classes(class)[slots])
+  setNames(str_c("An object of class ", desc), slots)
+}
+
 setMethod("writeRd", "SlotTag", function(object) {
   RdCommand("slots", object@slots)
 })
@@ -82,22 +87,3 @@ setMethod("process", "AutoSlotsTag", function(input, block) {
 
   block
 })
-
-describe_slots <- function(class, slot_names) {
-  vapply(slot_names, describe_slot, class = class,
-    FUN.VALUE = character(1))
-}
-
-describe_slot <- function(class, slot_name) {
-  if (is.character(class)) class <- getClass(class)
-  stopifnot(is(class, "classRepresentation"))
-
-  slot <- class@slots[[slot_name]]
-  slot_class <- getClass(slot)
-
-  if (extends(slot_class, "oldClass")) {
-    str_c("An S3 object of class ", slot)
-  } else {
-    str_c("An object of class \\linkS4class{", slot, "}")
-  }
-}

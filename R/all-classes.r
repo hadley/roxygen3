@@ -20,6 +20,7 @@ setClass("Tag", contains = "VIRTUAL",
 #' @rdname Object
 #' @export
 #' @dev
+#' @classHierarchy
 setClass("Object",
   representation(
     name = "character",
@@ -29,6 +30,7 @@ setClass("Object",
   )
 )
 #' @export
+#' @rdname Object
 setClass("NullObject", contains = "Object")
 
 #' @rdname Usage
@@ -70,6 +72,7 @@ setClass("Behaviour",
 #' @rdname Bundle
 #' @export
 #' @dev
+#' @classHierarchy
 setClass("Bundle",
   representation(
     blocks = "list",
