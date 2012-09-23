@@ -44,8 +44,14 @@ same_contents <- function(path, contents) {
 }
 
 invert <- function(x) {
-  if (length(x) == 0) return()
-  unstack(rev(stack(x)))
+  stopifnot(is.list(x))
+  char <- vapply(x, is.character, logical(1))
+  stopifnot(all(char))
+
+  values <- unlist(x, use.names = FALSE)
+  ind <- rep.int(names(x), lapply(x, length))
+
+  split(ind, values)
 }
 
 is.syntactic <- function(x) make.names(x) == x
