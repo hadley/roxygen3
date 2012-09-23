@@ -36,7 +36,7 @@ setMethod("process", "ClassMethodsTag", function(input, block) {
 })
 
 class_methods <- function(class) {
-  if (is.character(class)) class <- getMethod(class)
+  if (is.character(class)) class <- getClass(class)
 
   generics <- getGenerics()@.Data
   is_generic <- vapply(generics, isGeneric, logical(1))

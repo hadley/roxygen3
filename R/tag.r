@@ -1,7 +1,9 @@
 #' Tag class
 #'
-#' The tag class is the base class for all roxygen3 tags.
+#' The tag class is the base class for all roxygen3 tags.  To implement a new
+#' tag, you will need to subclass this class.
 #'
+#' @dev
 Tag <- function() {
   new("Tag")
 }

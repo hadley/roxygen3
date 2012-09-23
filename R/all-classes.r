@@ -4,6 +4,8 @@ setClass("NullSrcref", contains = "srcref")
 
 #' @rdname Tag
 #' @export
+#' @classHierarchy
+#' @classMethods
 setClass("Tag", contains = "VIRTUAL",
   representation(
     text = "character",
