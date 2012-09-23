@@ -1,4 +1,11 @@
-
+#' An output generator for the \file{DESCRIPTION} file.
+#'
+#' @dev
+#' @export
+#' @rdname writeDescription
+#' @param object Object to proccess, starting at a \linkS4class{Bundle},
+#'   breaking down into \linkS4class{Block}s then individual
+#'   \linkS4class{Tag}s
 setMethod("writeDescription", "PackageBundle", function(object) {
   in_dir(object@path, callNextMethod())
 })

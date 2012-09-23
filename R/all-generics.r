@@ -23,6 +23,11 @@ setGeneric("getPrereqs", function(tag) {
   standardGeneric("getPrereqs")
 }, valueClass = "character")
 
+#' Process bundles and blocks.
+#'
+#' @dev
+#' @param input object to process
+#' @param ... other arguments used by methods.
 setGeneric("process", function(input, ...) {
   standardGeneric("process")
 })
@@ -30,7 +35,10 @@ cached_process <- memoise(function(input, ...) {
   process(input, ...)
 })
 
-
+#' Compute path to a bundle.
+#'
+#' @param bundle input bundle
+#' @keywords internal
 setGeneric("rPath", function(bundle) {
   standardGeneric("rPath")
 })
@@ -55,4 +63,9 @@ setMethod("isNull", "ANY", function(x) FALSE)
 setMethod("isNull", "NullUsage", function(x) TRUE)
 setMethod("isNull", "NullSrcref", function(x) TRUE)
 
+#' Generate default tag.
+#'
+#' @param tag class of tag
+#' @param object \linkS4class{Object} to generate defaults for.
+#' @dev
 setGeneric("defaultTag", function(tag, object) standardGeneric("defaultTag"))
