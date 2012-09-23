@@ -116,7 +116,9 @@ setMethod("format", "SectionCommand", function(x, ...) {
 
 setClass("ExamplesCommand", contains = "RdCommand")
 setMethod("format", "ExamplesCommand", function(x, ...) {
-  values <- str_c(escape_comments(x@values), collapse = "\n")
+  escaped <- escape_comments(escape_examples(x@values))
+  values <- str_c(escaped, collapse = "\n")
+
   str_c("\\examples{\n", values, "\n}\n")
 })
 

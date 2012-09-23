@@ -1,4 +1,4 @@
-context("Tag: @example")
+context("Tag: @example & @examples")
 
 test_that("@example loads from specified files", {
   out <- test_process("
@@ -53,7 +53,7 @@ test_that("indentation in examples preserved", {
   expect_match(tag_value(out, "examples"), fixed("a <-\n    2"), all = FALSE)
 })
 
-test_that("% in @example escaped", {
+test_that("% in @example are escaped", {
   out <- test_process("
     #' Example
     #' @name a
@@ -62,4 +62,30 @@ test_that("% in @example escaped", {
 
   examples <- writeRd(tag(out, "examples"))
   expect_match(format(examples), fixed("x \\%*\\% y"))
+})
+
+test_that("\\ in @examples are escaped", {
+  out <- test_process("
+    #' Example
+    #' @name a
+    #' @examples
+    #' '\\'
+    NULL")
+  examples <- writeRd(tag(out, "examples"))
+  expect_match(format(examples), fixed("'\\\\'"))
+})
+
+test_that("\\dontrun not unescaped", {
+  out <- test_process("
+    #' Escaping
+    #' @example Rd-example-escapes.r
+    #' @examples
+    #' \\dontrun{a <- 1}
+    #' \\donttest{b <- 2}
+    #' \\dontshow{c <- 3}
+    #' \\testonly{d <- 4}
+    NULL")
+  ex <- tag_value(out, "examples")
+
+  expect_false(any(str_detect(ex, fixed("\\\\"))))
 })
