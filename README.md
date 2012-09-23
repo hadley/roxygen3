@@ -31,6 +31,8 @@ To try it out:
 
 * Custom behaviour objects allow you to control exactly what tags, processors and writers are applied to the roxygen blocks. By modifying the `default_behaviour()` you can turn off tags that you don't want, or restrict the output to only Rd files, the `NAMESPACE` or the `DESCRIPTION`.
 
+* General S4 support is much improved and should work out of the box.
+
 # Developers guide
 
 One of the main motivations for this rewrite of roxygen is to make it much easier to extend (and make it easier to fix bugs!). It has been rewritten to use S4, along with a much stronger object system that should make it easier to understand what's going on. The following section gives an overview of the important classes and generics. More detail will eventually be available in the class and generic documentation.
