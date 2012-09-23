@@ -31,7 +31,7 @@ To try it out:
 
 * Custom behaviour objects allow you to control exactly what tags, processors and writers are applied to the roxygen blocks. By modifying the `default_behaviour()` you can turn off tags that you don't want, or restrict the output to only Rd files, the `NAMESPACE` or the `DESCRIPTION`.
 
-* General S4 support is much improved and should work out of the box.
+* General S4 support is much improved and should work out of the box.  There are also a number of tags that will help generate parts of the documentation: `@classHierarchy`, `@classMethods`, `@genericMethods`.  These are not added automatically because standards for S4 documentation vary so much, so you can pick and choose what you want to use.
 
 # Developers guide
 
