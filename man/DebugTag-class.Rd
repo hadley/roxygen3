@@ -11,7 +11,7 @@
 }
 \keyword{classes}
 \section{Tag Usage}{
-\code{
+\preformatted{
 #' None: this is added automatically.
 }
 }

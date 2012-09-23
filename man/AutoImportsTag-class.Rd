@@ -12,7 +12,7 @@
 }
 \keyword{classes}
 \section{Tag Usage}{
-\code{
+\preformatted{
 #' @autoImports
 }
 }

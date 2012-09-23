@@ -13,9 +13,9 @@
 }
 \keyword{classes}
 \section{Tag Usage}{
-\code{
+\preformatted{
 #' @docType data
-#' @docType package
-#' @docType custom doctype
+#'  @docType package
+#'  @docType custom doctype
 }
 }

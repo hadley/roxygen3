@@ -8,7 +8,7 @@
 }
 \keyword{classes}
 \section{Tag Usage}{
-\code{
+\preformatted{
 #' @comment This is a comment that will not be user visible.
 }
 }

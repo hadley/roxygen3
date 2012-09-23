@@ -20,10 +20,10 @@
 }
 \keyword{classes}
 \section{Tag Usage}{
-\code{
+\preformatted{
 #' @slot name
-#' @slot name description
-#' @autoSlots
+#'  @slot name description
+#'  @autoSlots
 }
 }
 \section{Slots}{

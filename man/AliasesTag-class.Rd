@@ -10,7 +10,7 @@
 }
 \keyword{classes}
 \section{Tag Usage}{
-\code{
+\preformatted{
 #' @aliases space separated aliases
 }
 }

@@ -8,9 +8,9 @@
 }
 \keyword{classes}
 \section{Tag Usage}{
-\code{
+\preformatted{
 #' @S3method generic class
-#' @S3method generic
-#' @S3method
+#'  @S3method generic
+#'  @S3method
 }
 }

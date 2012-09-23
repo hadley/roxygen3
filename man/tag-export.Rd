@@ -32,11 +32,11 @@
 }
 \keyword{classes}
 \section{Tag Usage}{
-\code{
+\preformatted{
 #' @exportClass class1 class2
 #' @exportMethods generic1 generic2
 #' @exportPattern pattern
 #' @export
-#' @export function name
+#'  @export function name
 }
 }

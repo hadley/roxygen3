@@ -51,10 +51,10 @@ x \%/\% 2
 
 \keyword{classes}
 \section{Tag Usage}{
-\code{
+\preformatted{
 #' @examples
-#' a <- 1
-#' b <- 2
-#' @example path/to/example file
+#'    a <- 1
+#'    b <- 2
+#'  @example path/to/example file
 }
 }

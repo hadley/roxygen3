@@ -6,12 +6,14 @@ setMethod("writeRd", "UsageTagTag", function(object) {
 
 setClass("TagUsageCommand", contains = "RdCommand")
 setMethod("format", "TagUsageCommand", function(x, ...) {
-  lines <- unlist(str_split(x@values, "\n"))
-  comments <- str_c("#' ", str_trim(lines), collapse = "\n")
+  # First line looses original spacing, so add it back on
+  values <- str_c(" ", x@values)
+  lines <- unlist(str_split(values, "\n"))
+  comments <- str_c("#'", lines, collapse = "\n")
 
   str_c(
     "\\section{Tag Usage}{\n",
-    "\\code{\n", comments, "\n}",
+    "\\preformatted{\n", comments, "\n}",
     "\n}"
   )
 })

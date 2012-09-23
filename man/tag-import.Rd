@@ -26,7 +26,7 @@
 }
 \keyword{classes}
 \section{Tag Usage}{
-\code{
+\preformatted{
 #' @importClassesFrom package fun1 fun2
 #' @importFrom package function1 function2
 #' @importMethodsFrom package fun1 fun2

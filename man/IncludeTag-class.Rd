@@ -13,7 +13,7 @@
 }
 \keyword{classes}
 \section{Tag Usage}{
-\code{
+\preformatted{
 #' @include file-1.r file-2.r
 }
 }

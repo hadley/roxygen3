@@ -20,12 +20,12 @@
 }
 \keyword{classes}
 \section{Tag Usage}{
-\code{
+\preformatted{
 #' @useDynLib
-#' @useDynLib foo
-#' @useDynLib foo, myRoutine, myOtherRoutine
-#' @useDynLib foo, myRoutine_sym = myRoutine, myOtherRoutine
-#' @useDynLib myDLL, .registration = TRUE
-#' @useDynLib KernSmooth, .registration = TRUE, .fixes = "F_"
+#'  @useDynLib foo
+#'  @useDynLib foo, myRoutine, myOtherRoutine
+#'  @useDynLib foo, myRoutine_sym = myRoutine, myOtherRoutine
+#'  @useDynLib myDLL, .registration = TRUE
+#'  @useDynLib KernSmooth, .registration = TRUE, .fixes = "F_"
 }
 }

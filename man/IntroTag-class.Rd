@@ -14,12 +14,12 @@
 }
 \keyword{classes}
 \section{Tag Usage}{
-\code{
+\preformatted{
 #' The first line becomes the topic title.
-#' 
-#' The next paragraph goes into the descrption section.  Any of these
-#' sections can span multiple lines.
-#' 
-#' The third and subsequent paragraph go into the details.
+#'
+#'The next paragraph goes into the descrption section.  Any of these
+#'sections can span multiple lines.
+#'
+#'The third and subsequent paragraph go into the details.
 }
 }
