@@ -17,4 +17,24 @@ You shouldn't need to use it for everyday operation.
 
 An output generator for the \file{NAMESPACE} file.
 }
+\section{Method signatures for generic writeNamespace}{
+\itemize{
+  \item \linkS4class{Block} (S4)
+  \item \linkS4class{Bundle} (S4)
+  \item \linkS4class{ExportClassTag} (S4)
+  \item \linkS4class{ExportMethodsTag} (S4)
+  \item \linkS4class{ExportPatternTag} (S4)
+  \item \linkS4class{ExportTag} (S4)
+  \item \linkS4class{ImportClassesFromTag} (S4)
+  \item \linkS4class{ImportFromTag} (S4)
+  \item \linkS4class{ImportMethodsFromTag} (S4)
+  \item \linkS4class{ImportTag} (S4)
+  \item \linkS4class{PackageBundle} (S4)
+  \item \linkS4class{S3methodTag} (S4)
+  \item \linkS4class{Tag} (S4)
+  \item \linkS4class{UseDynLibTag} (S4)
+}
+
+}
+
 \keyword{methods}

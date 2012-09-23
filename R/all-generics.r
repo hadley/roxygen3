@@ -4,17 +4,20 @@ setGeneric("usage", function(value, name, srcref) {
 
 #' @rdname writeRd
 #' @export
+#' @genericMethods
 setGeneric("writeRd", function(object) {
   standardGeneric("writeRd")
 })
 
 #' @rdname writeNamespace
 #' @export
+#' @genericMethods
 setGeneric("writeNamespace", function(object) {
   standardGeneric("writeNamespace")
 })
 
 #' @rdname writeDescription
+#' @genericMethods
 setGeneric("writeDescription", function(object) {
   standardGeneric("writeDescription")
 })
@@ -28,6 +31,7 @@ setGeneric("getPrereqs", function(tag) {
 #' @dev
 #' @param input object to process
 #' @param ... other arguments used by methods.
+#' @genericMethods
 setGeneric("process", function(input, ...) {
   standardGeneric("process")
 })
@@ -39,6 +43,7 @@ cached_process <- memoise(function(input, ...) {
 #'
 #' @param bundle input bundle
 #' @keywords internal
+#' @genericMethods
 setGeneric("rPath", function(bundle) {
   standardGeneric("rPath")
 })
@@ -68,4 +73,5 @@ setMethod("isNull", "NullSrcref", function(x) TRUE)
 #' @param tag class of tag
 #' @param object \linkS4class{Object} to generate defaults for.
 #' @dev
+#' @genericMethods
 setGeneric("defaultTag", function(tag, object) standardGeneric("defaultTag"))
