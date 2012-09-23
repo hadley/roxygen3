@@ -1,6 +1,11 @@
 process_inherit_params <- function(package) {
 
   blocks <- package@blocks
+  names(blocks) <- vapply(blocks, function(x) tag_value(x, "name") %||% "", character(1))
+
+  aliases <- compact(lapply(blocks, tag_value, "aliases"))
+  lookup <- invert(aliases)
+
   for(i in seq_along(blocks)) {
     obj <- blocks[[i]]@object@value
     tags <- blocks[[i]]@tags
@@ -10,11 +15,12 @@ process_inherit_params <- function(package) {
     inherit_from <- tags$inheritParams
     if (is.null(inherit_from)) next
 
-    inherited <- unlist(lapply(inherit_from@text, find_params, blocks))
-    if (is.null(inherited)) {
-      message("@inheritParams: can't find topic ", inherit_from)
+    inherited <- unlist(lapply(inherit_from@text, find_params, blocks, lookup))
+    if (identical(inherited, FALSE)) {
+      message("@inheritParams: can't find topic ", inherit_from@text)
       next
     }
+    if (is.null(inherited)) next
 
     fun_params <- names(formals(obj))
     cur_params <- tags$param
@@ -33,25 +39,20 @@ process_inherit_params <- function(package) {
   package
 }
 
-find_params <- function(name, blocks) {
+find_params <- function(name, blocks, lookup) {
   if (str_detect(name, fixed("::"))) {
     # Reference to another package
     pieces <- str_split(name, fixed("::"))[[1]]
     rd <- get_rd(pieces[2], pieces[1])
-    if (is.null(rd)) return(NULL)
+    if (is.null(rd)) return(FALSE)
 
     rd_arguments(rd)
   } else {
     # Reference within this package
-    matching_alias <- function(x) {
-      aliases <- x@tags$aliases
-      if (is.null(aliases)) return(FALSE)
-      name %in% aliases@text
-    }
-    matches <- Filter(matching_alias, blocks)
+    matches <- lookup[[name]]
 
-    if (length(matches) != 1) return(NULL)
-    matches[[1]]@tags$param@arguments
+    if (length(matches) != 1) return(FALSE)
+    tag_value(blocks[[matches]], "param")
   }
 }
 

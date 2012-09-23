@@ -50,6 +50,7 @@ find_generic <- memoise(function(name, env = parent.frame()) {
   for(i in seq_len(n - 1)) {
     generic <- str_c(pieces[seq_len(i)], collapse = ".")
     class <- str_c(pieces[(i + 1):n], collapse = ".")
+
     if (is_s3_generic(generic, env)) return(c(generic, class))
   }
   NULL
@@ -84,6 +85,8 @@ add_s3_metadata <- function(val, name, env) {
 
   class(val) <- "s3method"
   attr(val, "s3method") <- method
+  attr(val, "s3env") <- env
+
   val
 }
 

@@ -70,3 +70,33 @@ test_that("@inheritParams only add missing params", {
   expect_equal(length(args), 1)
   expect_equal(args[[1]], "param 2")
 })
+
+test_that("S4 methods automatically inherit from generics", {
+  out <- test_process("
+    #' @param x an awesome parameter
+    setGeneric('f', function(x) standardGeneric('f'))
+
+    setMethod('f', 'character', function(x) x)")
+
+  param <- tag_value(out, "param")
+  expect_equal(param[["x"]], "an awesome parameter")
+})
+
+test_that("S3 methods automatically inherit from generics", {
+  out <- test_process("
+    #' @param x an awesome parameter
+    f <- function(x) UseMethod('f')
+    f.character <- function(x) x")
+
+  param <- tag_value(out, "param")
+  expect_equal(param[["x"]], "an awesome parameter")
+})
+
+test_that("S3 methods automatically inherit from generics in other packages", {
+  out <- test_process("
+    round.character <- function(x, digits) x")
+
+  param <- tag_value(out, "param")
+  expect_equal(names(param), c("x", "digits"))
+  expect_match(param[["x"]], "a numeric vector")
+})

@@ -73,7 +73,7 @@ Sub classes:
 
 \section{Generics with methods for Tag}{
 \itemize{
-  \item \code{\link{defaultTag}}* (30 methods defined for subclasses)
+  \item \code{\link{defaultTag}}* (32 methods defined for subclasses)
   \item \code{\link{format}}
   \item \code{\link{getPrereqs}}* (6 methods defined for subclasses)
   \item \code{\link{isEmpty}} (1 methods defined for subclasses)

@@ -34,6 +34,8 @@ Generate default tag.
   \item \linkS4class{DocTypeTag}, \linkS4class{S4ClassObject}
   \item \linkS4class{DocTypeTag}, \linkS4class{S4MethodObject}
   \item \linkS4class{FormatTag}, \linkS4class{DataObject}
+  \item \linkS4class{InheritParamsTag}, \linkS4class{S3MethodObject}
+  \item \linkS4class{InheritParamsTag}, \linkS4class{S4MethodObject}
   \item \linkS4class{KeywordsTag}, \linkS4class{DataObject}
   \item \linkS4class{KeywordsTag}, \linkS4class{S3GenericObject}
   \item \linkS4class{KeywordsTag}, \linkS4class{S3MethodObject}
