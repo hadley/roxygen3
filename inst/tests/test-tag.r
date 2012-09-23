@@ -6,8 +6,6 @@ test_that("aliases split into pieces", {
     #' @name a
     NULL")
 
-  expect_match(tag_value(out, "keywords"), fixed("a"), all = FALSE)
-  expect_match(tag_value(out, "keywords"), fixed("b"), all = FALSE)
   expect_match(tag_value(out, "aliases"), fixed("a"), all = FALSE)
   expect_match(tag_value(out, "aliases"), fixed("b"), all = FALSE)
 })
