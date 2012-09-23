@@ -1,8 +1,15 @@
-#' @@classMethods: automatically list all methods of an object
+#' @@classMethods: automatically list all methods of an S4 class.
+#'
+#' This lists all methods connected to this class, directly, not through
+#' any of its superclasses.
+#'
+#' In S4 methods are not associated with classes, but with generic functions.
+#' This tag works by looking at all methods for generic function, and then
+#' only showing those that use this class in at least one element of the
+#' signature.
 #'
 #' @tagUsage
-#'   @@classMethods # exclude inherited methods
-#'   @@classMethods inherited # include inherited methods
+#'   @@classMethods
 #'
 setClass("ClassMethodsTag", contains = "Tag")
 
