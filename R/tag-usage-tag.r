@@ -1,3 +1,6 @@
+#' @@usageTag: describe how to use roxygen tags
+#'
+#' @keywords internal
 setClass("TagUsageTag", contains = "Tag")
 
 setMethod("writeRd", "TagUsageTag", function(object) {

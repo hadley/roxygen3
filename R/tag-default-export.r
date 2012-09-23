@@ -1,3 +1,7 @@
+#' @@defaultExports: stores information used by @@exports
+#'
+#' @keywords internal
+#' @tagUsage # don't use - for internal use only
 setClass("DefaultExportTag", contains = "Tag", list(
   export = "character",
   exportMethods = "character",

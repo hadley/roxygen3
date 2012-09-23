@@ -1,4 +1,4 @@
-#' @rdname include
+#' @rdname IncludeTag-class
 setClass("CollateTag", contains = "Tag",
   list(files = "character"))
 

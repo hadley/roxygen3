@@ -1,6 +1,7 @@
 % Built by roxygen3 0.1
 \docType{class}
-\name{IncludeTag-class}
+\name{CollateTag-class}
+\alias{CollateTag-class}
 \alias{IncludeTag-class}
 \title{@include: describe files that should be sourced before this one.}
 \description{
