@@ -12,7 +12,7 @@
 #' example block): \code{\\dontrun}, \code{\\donttest}, \code{\\dontrun} or
 #' \code{\\testonly}.
 #'
-#' @usageTag
+#' @tagUsage
 #'   @@examples
 #'     a <- 1
 #'     b <- 2

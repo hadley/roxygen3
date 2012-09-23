@@ -13,7 +13,7 @@
 #' You must have the packages declared in \code{DESCRIPTION} Imports.
 #'
 #'
-#' @usageTag @@importFrom package function1 function2
+#' @tagUsage @@importFrom package function1 function2
 #' @rdname tag-import
 #' @autoImports
 setClass("ImportFromTag", contains = "Tag", representation(

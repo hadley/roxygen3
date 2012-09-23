@@ -1,6 +1,6 @@
 #' Export S3 methods.
 #'
-#' @usageTag
+#' @tagUsage
 #'   @@S3method generic class
 #'   @@S3method generic
 #'   @@S3method

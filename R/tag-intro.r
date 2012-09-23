@@ -1,6 +1,6 @@
 #' Title, description and details.
 #'
-#' @usageTag The first line becomes the topic title.
+#' @tagUsage The first line becomes the topic title.
 #'
 #' The next paragraph goes into the descrption section.  Any of these
 #' sections can span multiple lines.

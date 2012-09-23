@@ -5,7 +5,7 @@
 #' name is used by multiple packages) you can resolve them using
 #' \code{@@importFrom}
 #'
-#' @usageTag @@autoImports
+#' @tagUsage @@autoImports
 #' @autoImports
 setClass("AutoImportsTag", contains = "Tag")
 setMethod("process", "AutoImportsTag", function(input, block) {

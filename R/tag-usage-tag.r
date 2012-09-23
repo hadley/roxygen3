@@ -1,6 +1,6 @@
-setClass("UsageTagTag", contains = "Tag")
+setClass("TagUsageTag", contains = "Tag")
 
-setMethod("writeRd", "UsageTagTag", function(object) {
+setMethod("writeRd", "TagUsageTag", function(object) {
   RdCommand("tagUsage", object@text)
 })
 

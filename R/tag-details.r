@@ -4,7 +4,7 @@
 #' paragraphs of the roxygen block. See \code{\linkS4class{IntroTag}} for more
 #' details.
 #'
-#' @usageTag @@details Text goes here.
+#' @tagUsage @@details Text goes here.
 setClass("DetailsTag", contains = "Tag")
 setMethod("writeRd", "DetailsTag", function(object) {
   RdCommand("details", object@text)

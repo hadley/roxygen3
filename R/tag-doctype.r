@@ -4,7 +4,7 @@
 #'   the Rd file if it is one of the standard R doctypes: data, package,
 #'   methods and class.
 #'
-#' @usageTag
+#' @tagUsage
 #'   @@docType data
 #'   @@docType package
 #'   @@docType custom doctype

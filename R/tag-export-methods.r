@@ -1,4 +1,4 @@
-#' @usageTag @@exportMethods generic1 generic2
+#' @tagUsage @@exportMethods generic1 generic2
 #' @rdname tag-export
 setClass("ExportMethodsTag", contains = "Tag")
 setMethod("value<-", "ExportMethodsTag", function(tag, value) {

@@ -1,5 +1,5 @@
 #' @rdname tag-import
-#' @usageTag @@importClassesFrom package fun1 fun2
+#' @tagUsage @@importClassesFrom package fun1 fun2
 setClass("ImportClassesFromTag", contains = "Tag")
 setMethod("value<-", "ImportClassesFromTag", function(tag, value) {
   tag@text <- str_split(value, " ")[[1]]

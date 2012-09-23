@@ -12,7 +12,7 @@
 #' \code{myDLL = useDynLib(foo, myRoutine_sym = myRoutine, myOtherRoutine)}
 #' are not currently supported.
 #'
-#' @usageTag
+#' @tagUsage
 #'   @@useDynLib
 #'   @@useDynLib foo
 #'   @@useDynLib foo, myRoutine, myOtherRoutine

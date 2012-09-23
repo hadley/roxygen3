@@ -4,7 +4,7 @@
 #' components come from. It is not enabled by default - you need to use
 #' \code{defaultBehaviour(debug = TRUE)} to turn it on.
 #'
-#' @usageTag None: this is added automatically.
+#' @tagUsage None: this is added automatically.
 setClass("DebugTag", contains = "Tag",
   list(path = "character"))
 

@@ -18,7 +18,7 @@
 #' now automatically determines if an object is an S3 method, and so only
 #' \code{@@export is necessary.}
 #'
-#' @usageTag
+#' @tagUsage
 #'   @@export
 #'   @@export function name
 #' @rdname tag-export

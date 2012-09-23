@@ -5,5 +5,5 @@
 #' function. The source can be a function in the current package,
 #' \code{function}, or another package \code{package::function}.
 #'
-#' @usageTag @@inheritParams source_function
+#' @tagUsage @@inheritParams source_function
 setClass("InheritParamsTag", contains = "Tag")

@@ -10,7 +10,7 @@
 #' goes in that slot.  This is what is used for all slots if you use
 #' \code{@@autoSlots}.
 #'
-#' @usageTag
+#' @tagUsage
 #'   @@slot name
 #'   @@slot name description
 #'   @@autoSlots

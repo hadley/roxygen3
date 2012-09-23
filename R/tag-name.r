@@ -5,7 +5,7 @@
 #' it's probably an indication that you need to extend roxygen3 for you
 #' object type.
 #'
-#' @usageTag @@name name
+#' @tagUsage @@name name
 setClass("NameTag", contains = "Tag")
 
 setMethod("process", "NameTag", function(input, block) {

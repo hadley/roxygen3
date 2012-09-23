@@ -4,7 +4,7 @@
 #' with \code{\link{help}}. The topic name is always included in the list of
 #' aliases.
 #'
-#' @usageTag @@aliases space separated aliases
+#' @tagUsage @@aliases space separated aliases
 setClass("AliasesTag", contains = "Tag")
 
 setMethod("value<-", "AliasesTag", function(tag, value) {
