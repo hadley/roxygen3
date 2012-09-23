@@ -5,7 +5,7 @@
 \title{Given an object, return a string showing how that object should be
 used.}
 \description{
-  Given an object, return a string showing how that object
-  should be used.
+Given an object, return a string showing how that object should be
+used.
 }
 \keyword{classes}

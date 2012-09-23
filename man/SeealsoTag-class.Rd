@@ -4,7 +4,7 @@
 \alias{SeealsoTag-class}
 \title{@seealso: other places to look for documentation.}
 \description{
-  @seealso: other places to look for documentation.
+@seealso: other places to look for documentation.
 }
 \keyword{classes}
 \section{Tag Usage}{

@@ -8,14 +8,13 @@
 \arguments{
   \item{path}{path of file to parse}
 
-  \item{env}{environment that contains the results of
-  evaluating the file.}
+  \item{env}{environment that contains the results of evaluating the file.}
 }
 
 \value{
-  A list of roc objects
+A list of roc objects
 }
 \description{
-  Parse a source file containing roxygen blocks.
+Parse a source file containing roxygen blocks.
 }
 \keyword{internal}

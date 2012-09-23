@@ -6,6 +6,6 @@
   find_tags()
 }
 \description{
-  Find all currently defined tags.
+Find all currently defined tags.
 }
 \keyword{internal}

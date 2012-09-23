@@ -5,6 +5,6 @@
 \alias{roxygen3-package}
 \title{Roxygen3.}
 \description{
-  Roxygen3 is a ground-up rewrite of roxygen2 that is much
-  easier to extend.
+Roxygen3 is a ground-up rewrite of roxygen2 that is much easier to
+extend.
 }

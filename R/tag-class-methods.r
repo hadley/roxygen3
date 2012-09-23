@@ -18,7 +18,7 @@ setMethod("process", "ClassMethodsTag", function(input, block) {
 
   if (length(methods) == 0) return(block)
 
-  items <- str_c("\\item ", describe(methods), collapse = "\n")
+  items <- str_c("  \\item ", describe(methods), collapse = "\n")
   title <- str_c("Generics with methods for ", obj@className)
   content <- str_c("\\itemize{\n", items, "\n}\n")
 

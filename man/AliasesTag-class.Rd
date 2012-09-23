@@ -4,9 +4,9 @@
 \alias{AliasesTag-class}
 \title{@aliases: additional topic aliases.}
 \description{
-  Add additional aliases through which the user can find
-  the documentation with \code{\link{help}}. The topic name
-  is always included in the list of aliases.
+Add additional aliases through which the user can find the documentation
+with \code{\link{help}}. The topic name is always included in the list of
+aliases.
 }
 \keyword{classes}
 \section{Tag Usage}{

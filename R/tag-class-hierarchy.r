@@ -20,8 +20,8 @@ setMethod("process", "ClassHierarchyTag", function(input, block) {
 
   if (length(sub) == 0 && length(sup) == 0) return(block)
 
-  sub_items <- str_c("\\item ", describe(sub), collapse = "\n")
-  sup_items <- str_c("\\item ", describe(sup), collapse = "\n")
+  sub_items <- str_c("  \\item ", describe(sub), collapse = "\n")
+  sup_items <- str_c("  \\item ", describe(sup), collapse = "\n")
 
   title <- str_c("Class hierarchy for ", obj@className)
   content <- str_c(

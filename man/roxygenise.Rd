@@ -8,15 +8,14 @@
 \arguments{
   \item{path}{path to package}
 
-  \item{check}{should \code{\link[devtools]{check_doc}} be
-  run after documentation is complete?}
+  \item{check}{should \code{\link[devtools]{check_doc}} be run after
+  documentation is complete?}
 
-  \item{clean}{if \code{TRUE} will delete the contents of
-  \file{man/} before generating output.}
+  \item{clean}{if \code{TRUE} will delete the contents of \file{man/} before
+  generating output.}
 }
 
 \description{
-  This converts roxygen comments in to Rd files in the
-  \file{man/} directory, directives in the
-  \file{NAMESPACE}, and fields in the \file{DESCRIPTION}.
+This converts roxygen comments in to Rd files in the \file{man/} directory,
+directives in the \file{NAMESPACE}, and fields in the \file{DESCRIPTION}.
 }

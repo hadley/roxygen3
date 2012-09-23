@@ -1,5 +1,7 @@
 #' @autoImports
 rd_wrap <- function(x, indent = 2, exdent = indent) {
+  return(str_c(x, collapse = "\n\n"))
+
   lines <- str_split(x, "\n")[[1]]
   if (all(str_length(lines) < 60)) width <- Inf
 

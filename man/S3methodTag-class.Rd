@@ -4,11 +4,9 @@
 \alias{S3methodTag-class}
 \title{Export S3 methods.}
 \description{
-  This method is only included for compatibility with
-  previous version of roxygen.  Roxygen3 now automatically
-  determines if a function is a S3 method and
-  \code{@export} will produce the correct namespace
-  directives.
+This method is only included for compatibility with previous version of
+roxygen.  Roxygen3 now automatically determines if a function is a S3 method
+and \code{@export} will produce the correct namespace directives.
 }
 \keyword{classes}
 \section{Tag Usage}{

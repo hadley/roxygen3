@@ -10,7 +10,7 @@
 }
 
 \description{
-  It does this by walking the call tree and finding all
-  calls to \code{.Call}, \code{.C} and \code{.Fortran}.
+It does this by walking the call tree and finding all calls to \code{.Call},
+\code{.C} and \code{.Fortran}.
 }
 \keyword{internal}

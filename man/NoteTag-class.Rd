@@ -4,8 +4,7 @@
 \alias{NoteTag-class}
 \title{@note: Add a note section.}
 \description{
-  Use this for special notes that the user should be aware
-  of.
+Use this for special notes that the user should be aware of.
 }
 \keyword{classes}
 \section{Tag Usage}{

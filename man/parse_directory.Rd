@@ -8,11 +8,10 @@
 \arguments{
   \item{path}{path to directory of R files to parse}
 
-  \item{env}{environment that contains the results of
-  evaluating the file.}
+  \item{env}{environment that contains the results of evaluating the file.}
 }
 
 \description{
-  Parse directory of source files.
+Parse directory of source files.
 }
 \keyword{internal}

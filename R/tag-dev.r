@@ -8,7 +8,8 @@
 setClass("DevTag", contains = "Tag")
 
 setMethod("process", "DevTag", function(input, block) {
-  desc <- "This function is aimed primarily at developers extending this package. You shouldn't need to use it for everyday operation of the package."
+  desc <- str_c("This function is aimed primarily at developers extending " ,
+    "this package.\nYou shouldn't need to use it for everyday operation.")
 
   title <- tag(block, "title")
   title@text <- str_c("[DEV] ", value(title))

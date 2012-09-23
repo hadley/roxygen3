@@ -4,9 +4,8 @@
 \alias{AuthorTag-class}
 \title{@author: the author of the documentation}
 \description{
-  A free text string describing the authors of the
-  function.  This is typically only necessary if the author
-  is not the same as the package author.
+A free text string describing the authors of the function.  This is
+typically only necessary if the author is not the same as the package author.
 }
 \keyword{classes}
 \section{Tag Usage}{

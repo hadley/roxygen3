@@ -10,19 +10,21 @@
 \arguments{
   \item{path}{location of folder containing R files}
 
-  \item{behaviour}{\code{\linkS4class{Behaviour}} object
-  describing what tags, processors and writers to use}
+  \item{behaviour}{\code{\linkS4class{Behaviour}} object describing what tags,
+  processors and writers to use}
 }
 
 \description{
-  This function is aimed primarily at developers extending
-  this package. You shouldn't need to use it for everyday
-  operation of the package.
+This function is aimed primarily at developers extending this package.
+You shouldn't need to use it for everyday operation.
 
-  A bundle of files in a directory.
+A bundle of files in a directory.
 }
 \section{Generics with methods for DirectoryBundle}{
-  \itemize{ \item \code{\link[=rPath]{rPath}} }
+\itemize{
+  \item \code{\link[=rPath]{rPath}}
+}
+
 }
 
 \keyword{classes}

@@ -5,19 +5,18 @@
 \alias{ExamplesTag-class}
 \title{@example/@examples: provide examples.}
 \description{
-  These two tags allow you to add examples to the
-  documentation, either inline with \code{@examples} or by
-  pointing to an external file with \code{@example}.
+These two tags allow you to add examples to the documentation, either inline
+with \code{@examples} or by pointing to an external file with
+\code{@example}.
 }
 \section{Escaping rules}{
-  As with all roxygen blocks, latex comments, \code{\%} are
-  always escaped to \code{\\\%}. Backslash behaviour,
-  code{\\}, is special for \code{@example} and
-  \code{@examples}. Backslahes will be escaped to
-  \code{\\\\} unless they are for the special macros (the
-  only macros that can be used inside an example block):
-  \code{\\dontrun}, \code{\\donttest}, \code{\\dontrun} or
-  \code{\\testonly}.
+
+As with all roxygen blocks, latex comments, \code{\%} are always escaped to
+\code{\\\%}. Backslash behaviour, code{\\}, is special for \code{@example}
+and \code{@examples}. Backslahes will be escaped to \code{\\\\} unless they
+are for the special macros (the only macros that can be used inside an
+example block): \code{\\dontrun}, \code{\\donttest}, \code{\\dontrun} or
+\code{\\testonly}.
 }
 
 \examples{

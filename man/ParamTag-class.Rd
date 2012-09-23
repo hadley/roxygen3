@@ -4,12 +4,12 @@
 \alias{ParamTag-class}
 \title{@param: describe input parameters}
 \arguments{
-  \item{name}{Basic description. Multiple lines of text are
-  fine, and are often useful if your parameter does a lot.}
+  \item{name}{Basic description. Multiple lines of text are fine,
+  and are often useful if your parameter does a lot.}
 }
 
 \description{
-  @param: describe input parameters
+@param: describe input parameters
 }
 \keyword{classes}
 \section{Tag Usage}{

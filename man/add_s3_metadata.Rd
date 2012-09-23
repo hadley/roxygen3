@@ -14,9 +14,9 @@
 }
 
 \description{
-  Add S3 metadata to a function
+Add S3 metadata to a function
 }
 \seealso{
-  Other s3: \code{\link{is_s3_generic}}
+Other s3: \code{\link{is_s3_generic}}
 }
 \keyword{interal}

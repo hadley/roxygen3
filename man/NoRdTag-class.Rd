@@ -4,8 +4,7 @@
 \alias{NoRdTag-class}
 \title{Do not produce rd file for this object.}
 \description{
-  This only suppresses Rd output, not namespace or other
-  files.
+This only suppresses Rd output, not namespace or other files.
 }
 \keyword{classes}
 \section{Tag Usage}{

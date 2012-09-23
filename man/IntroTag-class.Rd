@@ -4,13 +4,11 @@
 \alias{IntroTag-class}
 \title{Title, description and details.}
 \description{
-  Title, description and details.
+Title, description and details.
 }
 \seealso{
-  \code{\linkS4class{TitleTag}},
-  \code{\linkS4class{DescriptionTag}},
-  \code{\linkS4class{DetailsTag}} to set each component
-  individually.
+\code{\linkS4class{TitleTag}}, \code{\linkS4class{DescriptionTag}},
+ \code{\linkS4class{DetailsTag}} to set each component individually.
 }
 \keyword{classes}
 \section{Tag Usage}{

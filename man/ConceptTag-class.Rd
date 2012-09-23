@@ -4,8 +4,8 @@
 \alias{ConceptTag-class}
 \title{@concept: add a "concept" index entry.}
 \description{
-  These can be used to add additional entries that will be
-  searched for in \code{\link{help.search}}.
+These can be used to add additional entries that will be searched for
+in \code{\link{help.search}}.
 }
 \keyword{classes}
 \section{Tag Usage}{

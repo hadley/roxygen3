@@ -4,8 +4,7 @@
 \alias{ClassMethodsTag-class}
 \title{@classMethods: automatically list all methods of an object}
 \description{
-  @classMethods: automatically list all methods of an
-  object
+@classMethods: automatically list all methods of an object
 }
 \keyword{classes}
 \section{Tag Usage}{

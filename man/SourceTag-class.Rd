@@ -4,7 +4,7 @@
 \alias{SourceTag-class}
 \title{@source: the source of a dataset}
 \description{
-  @source: the source of a dataset
+@source: the source of a dataset
 }
 \keyword{classes}
 \section{Tag Usage}{

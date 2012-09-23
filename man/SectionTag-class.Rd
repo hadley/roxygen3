@@ -4,9 +4,8 @@
 \alias{SectionTag-class}
 \title{@section: Add a new named section.}
 \description{
-  This tag allows you to add arbitrarily named new
-  sections. The section name should not use any special
-  formatting for latex compatibility.
+This tag allows you to add arbitrarily named new sections. The section name
+should not use any special formatting for latex compatibility.
 }
 \keyword{classes}
 \section{Slots}{

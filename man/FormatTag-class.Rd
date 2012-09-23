@@ -4,8 +4,7 @@
 \alias{FormatTag-class}
 \title{@format: describe format of data.}
 \description{
-  If not specified, \code{str} will be used to generate a
-  brief description.
+If not specified, \code{str} will be used to generate a brief description.
 }
 \keyword{classes}
 \section{Tag Usage}{

@@ -5,13 +5,12 @@
 \title{@family: associate the function with a family to automatically add
  cross-references.}
 \description{
-  All functions with the same family will have
-  cross-references automatically added to all other
-  functions in the family. '
+All functions with the same family will have cross-references automatically
+added to all other functions in the family.
 }
 \keyword{classes}
 \section{Tag Usage}{
 \preformatted{
-#' @family the name of the family'
+#' @family the name of the family
 }
 }

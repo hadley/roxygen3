@@ -4,7 +4,7 @@
 \alias{CommentTag-class}
 \title{@comment: add comments to the Rd file.}
 \description{
-  @comment: add comments to the Rd file.
+@comment: add comments to the Rd file.
 }
 \keyword{classes}
 \section{Tag Usage}{

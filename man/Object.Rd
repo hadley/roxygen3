@@ -14,29 +14,35 @@
 \alias{S4MethodObject-class}
 \title{[DEV] The object being documented.}
 \description{
-  This function is aimed primarily at developers extending
-  this package. You shouldn't need to use it for everyday
-  operation of the package.
+This function is aimed primarily at developers extending this package.
+You shouldn't need to use it for everyday operation.
 
-  The object being documented.
+The object being documented.
 }
 \section{Class hierarchy for Object}{
-  Sub classes: \itemize{ \item \linkS4class{NullObject}
-  (S4) \item \linkS4class{PackageObject} (S4) \item
-  \linkS4class{DataObject} (S4) \item
-  \linkS4class{FunctionObject} (S4) \item
-  \linkS4class{S4ClassObject} (S4) \item
-  \linkS4class{S4MethodObject} (S4) \item
-  \linkS4class{S4GenericObject} (S4) \item
-  \linkS4class{S3MethodObject} (S4) \item
-  \linkS4class{S3GenericObject} (S4) \item
-  \linkS4class{R5ClassObject} (S4) }
+Sub classes:
+\itemize{
+  \item \linkS4class{NullObject} (S4)
+  \item \linkS4class{PackageObject} (S4)
+  \item \linkS4class{DataObject} (S4)
+  \item \linkS4class{FunctionObject} (S4)
+  \item \linkS4class{S4ClassObject} (S4)
+  \item \linkS4class{S4MethodObject} (S4)
+  \item \linkS4class{S4GenericObject} (S4)
+  \item \linkS4class{S3MethodObject} (S4)
+  \item \linkS4class{S3GenericObject} (S4)
+  \item \linkS4class{R5ClassObject} (S4)
+}
+
 }
 
 \section{Generics with methods for Object}{
-  \itemize{ \item \code{\link[=defaultTag]{defaultTag}}
-  \item \code{\link[=defaultTag]{defaultTag}} \item
-  \code{\link[=show]{show}} }
+\itemize{
+  \item \code{\link[=defaultTag]{defaultTag}}
+  \item \code{\link[=defaultTag]{defaultTag}}
+  \item \code{\link[=show]{show}}
+}
+
 }
 
 \keyword{classes}

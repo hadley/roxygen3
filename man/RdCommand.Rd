@@ -13,12 +13,10 @@ multiple expressions take their own braces.}
 }
 
 \description{
-  This function is aimed primarily at developers extending
-  this package. You shouldn't need to use it for everyday
-  operation of the package.
+This function is aimed primarily at developers extending this package.
+You shouldn't need to use it for everyday operation.
 
-  commands have two methods: \code{merge} and
-  \code{format}.  Currently for all commands, merge just
-  combines all values, and format selects from these to
-  display the commands in the appropriate way.
+commands have two methods: \code{merge} and \code{format}.  Currently for all
+commands, merge just combines all values, and format selects from these to
+display the commands in the appropriate way.
 }

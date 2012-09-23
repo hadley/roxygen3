@@ -4,7 +4,7 @@
 \alias{ReferencesTag-class}
 \title{' @references: add references to the literature.}
 \description{
-  ' @references: add references to the literature.
+' @references: add references to the literature.
 }
 \keyword{classes}
 \section{Tag Usage}{

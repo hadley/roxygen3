@@ -92,7 +92,7 @@ setMethod("format", "ArgumentsCommand", function(x, ...) {
   arg_names <- escape_comments(names(x@values))
   arg_values <- escape_comments(x@values)
 
-  items <- str_c("\\item{", arg_names, "}{", arg_values, "}")
+  items <- str_c("  \\item{", arg_names, "}{", arg_values, "}")
   str_c("\\arguments{\n", rd_wrap(items), "\n}\n")
 })
 
@@ -101,7 +101,7 @@ setMethod("format", "SlotCommand", function(x, ...) {
   slot_names <- escape_comments(names(x@values))
   slot_values <- escape_comments(x@values)
 
-  items <- str_c("\\item{", slot_names, "}{", slot_values, "}")
+  items <- str_c("  \\item{", slot_names, "}{", slot_values, "}")
   str_c("\\section{Slots}\n\n", "\\itemize{\n", rd_wrap(items), "\n}")
 })
 

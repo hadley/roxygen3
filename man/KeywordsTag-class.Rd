@@ -4,15 +4,14 @@
 \alias{KeywordsTag-class}
 \title{@keywords: provide high-level keywords.}
 \description{
-  @keywords: provide high-level keywords.
+@keywords: provide high-level keywords.
 }
 \details{
-  Roxygen3 will automatically add data, classes, and
-  methods keywords for data, objects (S4 and R5), and
-  methods (S3 and S4).
+Roxygen3 will automatically add data, classes, and methods keywords for data,
+objects (S4 and R5), and methods (S3 and S4).
 
-  Functions with the internal keyword will not be listed in
-  the default package index file.
+Functions with the internal keyword will not be listed in the default
+package index file.
 }
 \keyword{classes}
 \section{Tag Usage}{
