@@ -3,8 +3,7 @@
 \alias{auto_imports}
 \title{[DEV] Scans a function and determines what functions it uses from other packages.}
 \usage{
-  auto_imports(f, name = deparse(substitute(f)),
-    imported = NULL, imports = NULL)
+  auto_imports(f, imported = NULL, imports = NULL)
 }
 \arguments{
   \item{f}{function to process}

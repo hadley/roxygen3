@@ -19,7 +19,7 @@
 #'   \file{DESCRIPTION} of the package that \code{f} belongs to.
 #' @autoImports
 #' @dev
-auto_imports <- function(f, name = deparse(substitute(f)), imported = NULL, imports = NULL) {
+auto_imports <- function(f, imported = NULL, imports = NULL) {
   globals <- findGlobals(f, merge = FALSE)$functions
   this_pkg <- environment(f)
 
@@ -48,7 +48,7 @@ auto_imports <- function(f, name = deparse(substitute(f)), imported = NULL, impo
   conflicts <- locs > 1
   if (any(conflicts)) {
     pkgs <- lapply(sources[conflicts], paste, collapse = ", ")
-    message("In ", name, ", multiple possible sources for: \n",
+    message("Multiple possible sources for: \n",
       str_c("  ", names(pkgs), ": ", unlist(pkgs), collapse = "\n"))
   }
 

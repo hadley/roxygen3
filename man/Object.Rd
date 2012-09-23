@@ -40,6 +40,7 @@ Sub classes:
 \itemize{
   \item \code{\link{defaultTag}}* (30 methods defined for subclasses)
   \item \code{\link{isNull}}* (1 methods defined for subclasses)
+  \item \code{\link{location}} (1 methods defined for subclasses)
   \item \code{\link{show}}
 }
 

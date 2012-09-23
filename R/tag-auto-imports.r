@@ -6,15 +6,17 @@
 #' \code{@@importFrom}
 #'
 #' @tagUsage @@autoImports
-#' @autoImports
 setClass("AutoImportsTag", contains = "Tag")
+#' @autoImports
 setMethod("process", "AutoImportsTag", function(input, block) {
   obj <- block@object
   tag(block, "autoImport") <- NULL
+
   if (!is.function(obj@value)) return(block)
 
   importFrom <- tag(block, "importFrom")
-  auto <- auto_imports(obj@value, obj@name, value(importFrom))
+  auto <- at_location(auto_imports(obj@value, value(importFrom)), obj)
+
   importFrom@imports <- c(importFrom@imports, auto)
 
   tag(block, "importFrom") <- importFrom
