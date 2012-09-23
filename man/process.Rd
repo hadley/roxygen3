@@ -19,22 +19,22 @@ Process bundles and blocks.
 }
 \section{Method signatures for generic process}{
 \itemize{
-  \item \linkS4class{AutoImportsTag} (S4)
-  \item \linkS4class{AutoSlotsTag} (S4)
-  \item \linkS4class{Block} (S4)
-  \item \linkS4class{Bundle} (S4)
-  \item \linkS4class{ClassHierarchyTag} (S4)
-  \item \linkS4class{ClassMethodsTag} (S4)
-  \item \linkS4class{DevTag} (S4)
-  \item \linkS4class{ExampleTag} (S4)
-  \item \linkS4class{ExportTag} (S4)
-  \item \linkS4class{GenericMethodsTag} (S4)
-  \item \linkS4class{IntroTag} (S4)
-  \item \linkS4class{NameTag} (S4)
-  \item \linkS4class{S3methodTag} (S4)
-  \item \linkS4class{SlotTag} (S4)
-  \item \linkS4class{Tag} (S4)
-  \item \linkS4class{UseDynLibTag} (S4)
+  \item \linkS4class{AutoImportsTag}
+  \item \linkS4class{AutoSlotsTag}
+  \item \linkS4class{Block}
+  \item \linkS4class{Bundle}
+  \item \linkS4class{ClassHierarchyTag}
+  \item \linkS4class{ClassMethodsTag}
+  \item \linkS4class{DevTag}
+  \item \linkS4class{ExampleTag}
+  \item \linkS4class{ExportTag}
+  \item \linkS4class{GenericMethodsTag}
+  \item \linkS4class{IntroTag}
+  \item \linkS4class{NameTag}
+  \item \linkS4class{S3methodTag}
+  \item \linkS4class{SlotTag}
+  \item \linkS4class{Tag}
+  \item \linkS4class{UseDynLibTag}
 }
 
 }

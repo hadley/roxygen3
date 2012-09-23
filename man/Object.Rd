@@ -22,16 +22,16 @@ The object being documented.
 \section{Class hierarchy for Object}{
 Sub classes:
 \itemize{
-  \item \linkS4class{NullObject} (S4)
-  \item \linkS4class{PackageObject} (S4)
-  \item \linkS4class{DataObject} (S4)
-  \item \linkS4class{FunctionObject} (S4)
-  \item \linkS4class{S4ClassObject} (S4)
-  \item \linkS4class{S4MethodObject} (S4)
-  \item \linkS4class{S4GenericObject} (S4)
-  \item \linkS4class{S3MethodObject} (S4)
-  \item \linkS4class{S3GenericObject} (S4)
-  \item \linkS4class{R5ClassObject} (S4)
+  \item \linkS4class{NullObject}
+  \item \linkS4class{PackageObject}
+  \item \linkS4class{DataObject}
+  \item \linkS4class{FunctionObject}
+  \item \linkS4class{S4ClassObject}
+  \item \linkS4class{S4MethodObject}
+  \item \linkS4class{S4GenericObject}
+  \item \linkS4class{S3MethodObject}
+  \item \linkS4class{S3GenericObject}
+  \item \linkS4class{R5ClassObject}
 }
 
 }

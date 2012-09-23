@@ -20,32 +20,32 @@ each rocblock is sent to.
 }
 \section{Method signatures for generic writeRd}{
 \itemize{
-  \item \linkS4class{AliasesTag} (S4)
-  \item \linkS4class{AuthorTag} (S4)
-  \item \linkS4class{Block} (S4)
-  \item \linkS4class{Bundle} (S4)
-  \item \linkS4class{CommentTag} (S4)
-  \item \linkS4class{DebugTag} (S4)
-  \item \linkS4class{DescriptionTag} (S4)
-  \item \linkS4class{DetailsTag} (S4)
-  \item \linkS4class{DocTypeTag} (S4)
-  \item \linkS4class{ExamplesTag} (S4)
-  \item \linkS4class{FormatTag} (S4)
-  \item \linkS4class{KeywordsTag} (S4)
-  \item \linkS4class{NameTag} (S4)
-  \item \linkS4class{NoteTag} (S4)
-  \item \linkS4class{PackageBundle} (S4)
-  \item \linkS4class{ParamTag} (S4)
-  \item \linkS4class{ReferencesTag} (S4)
-  \item \linkS4class{ReturnTag} (S4)
-  \item \linkS4class{SectionTag} (S4)
-  \item \linkS4class{SeealsoTag} (S4)
-  \item \linkS4class{SlotTag} (S4)
-  \item \linkS4class{SourceTag} (S4)
-  \item \linkS4class{Tag} (S4)
-  \item \linkS4class{TagUsageTag} (S4)
-  \item \linkS4class{TitleTag} (S4)
-  \item \linkS4class{UsageTag} (S4)
+  \item \linkS4class{AliasesTag}
+  \item \linkS4class{AuthorTag}
+  \item \linkS4class{Block}
+  \item \linkS4class{Bundle}
+  \item \linkS4class{CommentTag}
+  \item \linkS4class{DebugTag}
+  \item \linkS4class{DescriptionTag}
+  \item \linkS4class{DetailsTag}
+  \item \linkS4class{DocTypeTag}
+  \item \linkS4class{ExamplesTag}
+  \item \linkS4class{FormatTag}
+  \item \linkS4class{KeywordsTag}
+  \item \linkS4class{NameTag}
+  \item \linkS4class{NoteTag}
+  \item \linkS4class{PackageBundle}
+  \item \linkS4class{ParamTag}
+  \item \linkS4class{ReferencesTag}
+  \item \linkS4class{ReturnTag}
+  \item \linkS4class{SectionTag}
+  \item \linkS4class{SeealsoTag}
+  \item \linkS4class{SlotTag}
+  \item \linkS4class{SourceTag}
+  \item \linkS4class{Tag}
+  \item \linkS4class{TagUsageTag}
+  \item \linkS4class{TitleTag}
+  \item \linkS4class{UsageTag}
 }
 
 }

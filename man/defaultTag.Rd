@@ -19,36 +19,36 @@ Generate default tag.
 }
 \section{Method signatures for generic defaultTag}{
 \itemize{
-  \item \linkS4class{AliasesTag} (S4), \linkS4class{PackageObject} (S4)
-  \item \linkS4class{DebugTag} (S4), \linkS4class{Object} (S4)
-  \item \linkS4class{DefaultExportTag} (S4), \linkS4class{FunctionObject} (S4)
-  \item \linkS4class{DefaultExportTag} (S4), \linkS4class{R5ClassObject} (S4)
-  \item \linkS4class{DefaultExportTag} (S4), \linkS4class{S3GenericObject} (S4)
-  \item \linkS4class{DefaultExportTag} (S4), \linkS4class{S3MethodObject} (S4)
-  \item \linkS4class{DefaultExportTag} (S4), \linkS4class{S4ClassObject} (S4)
-  \item \linkS4class{DefaultExportTag} (S4), \linkS4class{S4GenericObject} (S4)
-  \item \linkS4class{DefaultExportTag} (S4), \linkS4class{S4MethodObject} (S4)
-  \item \linkS4class{DocTypeTag} (S4), \linkS4class{DataObject} (S4)
-  \item \linkS4class{DocTypeTag} (S4), \linkS4class{PackageObject} (S4)
-  \item \linkS4class{DocTypeTag} (S4), \linkS4class{R5ClassObject} (S4)
-  \item \linkS4class{DocTypeTag} (S4), \linkS4class{S4ClassObject} (S4)
-  \item \linkS4class{DocTypeTag} (S4), \linkS4class{S4MethodObject} (S4)
-  \item \linkS4class{FormatTag} (S4), \linkS4class{DataObject} (S4)
-  \item \linkS4class{KeywordsTag} (S4), \linkS4class{DataObject} (S4)
-  \item \linkS4class{KeywordsTag} (S4), \linkS4class{S3GenericObject} (S4)
-  \item \linkS4class{KeywordsTag} (S4), \linkS4class{S3MethodObject} (S4)
-  \item \linkS4class{KeywordsTag} (S4), \linkS4class{S4ClassObject} (S4)
-  \item \linkS4class{KeywordsTag} (S4), \linkS4class{S4GenericObject} (S4)
-  \item \linkS4class{KeywordsTag} (S4), \linkS4class{S4MethodObject} (S4)
-  \item \linkS4class{NameTag} (S4), \linkS4class{NullObject} (S4)
-  \item \linkS4class{NameTag} (S4), \linkS4class{Object} (S4)
-  \item \linkS4class{NameTag} (S4), \linkS4class{S4ClassObject} (S4)
-  \item \linkS4class{NameTag} (S4), \linkS4class{S4MethodObject} (S4)
-  \item \linkS4class{UsageTag} (S4), \linkS4class{DataObject} (S4)
-  \item \linkS4class{UsageTag} (S4), \linkS4class{FunctionObject} (S4)
-  \item \linkS4class{UsageTag} (S4), \linkS4class{S3MethodObject} (S4)
-  \item \linkS4class{UsageTag} (S4), \linkS4class{S4GenericObject} (S4)
-  \item \linkS4class{UsageTag} (S4), \linkS4class{S4MethodObject} (S4)
+  \item \linkS4class{AliasesTag}, \linkS4class{PackageObject}
+  \item \linkS4class{DebugTag}, \linkS4class{Object}
+  \item \linkS4class{DefaultExportTag}, \linkS4class{FunctionObject}
+  \item \linkS4class{DefaultExportTag}, \linkS4class{R5ClassObject}
+  \item \linkS4class{DefaultExportTag}, \linkS4class{S3GenericObject}
+  \item \linkS4class{DefaultExportTag}, \linkS4class{S3MethodObject}
+  \item \linkS4class{DefaultExportTag}, \linkS4class{S4ClassObject}
+  \item \linkS4class{DefaultExportTag}, \linkS4class{S4GenericObject}
+  \item \linkS4class{DefaultExportTag}, \linkS4class{S4MethodObject}
+  \item \linkS4class{DocTypeTag}, \linkS4class{DataObject}
+  \item \linkS4class{DocTypeTag}, \linkS4class{PackageObject}
+  \item \linkS4class{DocTypeTag}, \linkS4class{R5ClassObject}
+  \item \linkS4class{DocTypeTag}, \linkS4class{S4ClassObject}
+  \item \linkS4class{DocTypeTag}, \linkS4class{S4MethodObject}
+  \item \linkS4class{FormatTag}, \linkS4class{DataObject}
+  \item \linkS4class{KeywordsTag}, \linkS4class{DataObject}
+  \item \linkS4class{KeywordsTag}, \linkS4class{S3GenericObject}
+  \item \linkS4class{KeywordsTag}, \linkS4class{S3MethodObject}
+  \item \linkS4class{KeywordsTag}, \linkS4class{S4ClassObject}
+  \item \linkS4class{KeywordsTag}, \linkS4class{S4GenericObject}
+  \item \linkS4class{KeywordsTag}, \linkS4class{S4MethodObject}
+  \item \linkS4class{NameTag}, \linkS4class{NullObject}
+  \item \linkS4class{NameTag}, \linkS4class{Object}
+  \item \linkS4class{NameTag}, \linkS4class{S4ClassObject}
+  \item \linkS4class{NameTag}, \linkS4class{S4MethodObject}
+  \item \linkS4class{UsageTag}, \linkS4class{DataObject}
+  \item \linkS4class{UsageTag}, \linkS4class{FunctionObject}
+  \item \linkS4class{UsageTag}, \linkS4class{S3MethodObject}
+  \item \linkS4class{UsageTag}, \linkS4class{S4GenericObject}
+  \item \linkS4class{UsageTag}, \linkS4class{S4MethodObject}
 }
 
 }

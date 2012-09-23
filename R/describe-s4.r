@@ -29,7 +29,7 @@ setMethod("describe", "classRepresentation", function(x) {
   if (extends(x, "oldClass")) {
     str_c(x@className, " (S3)")
   } else {
-    str_c("\\linkS4class{", x@className, "} (S4)")
+    str_c("\\linkS4class{", x@className, "}")
   }
 })
 

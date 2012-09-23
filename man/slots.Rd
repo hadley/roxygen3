@@ -26,11 +26,11 @@ goes in that slot.  This is what is used for all slots if you use
 }
 \section{Slots}{
 \describe{
-  \item{slots}{An object of class \linkS4class{character} (S4)}
+  \item{slots}{An object of class \linkS4class{character}}
 
-  \item{classname}{An object of class \linkS4class{character} (S4)}
+  \item{classname}{An object of class \linkS4class{character}}
 
-  \item{text}{An object of class \linkS4class{character} (S4)}
+  \item{text}{An object of class \linkS4class{character}}
 
   \item{srcref}{An object of class srcref (S3)}
 

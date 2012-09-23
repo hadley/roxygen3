@@ -12,8 +12,8 @@ An object representing a bundle of blocks in multiple files.
 \section{Class hierarchy for Bundle}{
 Sub classes:
 \itemize{
-  \item \linkS4class{DirectoryBundle} (S4)
-  \item \linkS4class{PackageBundle} (S4)
+  \item \linkS4class{DirectoryBundle}
+  \item \linkS4class{PackageBundle}
 }
 
 }

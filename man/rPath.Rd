@@ -14,9 +14,9 @@ Compute path to a bundle.
 }
 \section{Method signatures for generic rPath}{
 \itemize{
-  \item \linkS4class{Bundle} (S4)
-  \item \linkS4class{DirectoryBundle} (S4)
-  \item \linkS4class{PackageBundle} (S4)
+  \item \linkS4class{Bundle}
+  \item \linkS4class{DirectoryBundle}
+  \item \linkS4class{PackageBundle}
 }
 
 }

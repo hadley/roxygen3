@@ -23,11 +23,11 @@ An output generator for the \file{DESCRIPTION} file.
 }
 \section{Method signatures for generic writeDescription}{
 \itemize{
-  \item \linkS4class{Block} (S4)
-  \item \linkS4class{Bundle} (S4)
-  \item \linkS4class{CollateTag} (S4)
-  \item \linkS4class{PackageBundle} (S4)
-  \item \linkS4class{Tag} (S4)
+  \item \linkS4class{Block}
+  \item \linkS4class{Bundle}
+  \item \linkS4class{CollateTag}
+  \item \linkS4class{PackageBundle}
+  \item \linkS4class{Tag}
 }
 
 }
