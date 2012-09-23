@@ -1,4 +1,4 @@
-#' Automatically add the path as an Rd comment.
+#' @@debug: show the input paths as an Rd comment.
 #'
 #' This is useful for debugging Rd files, if you're not sure where the
 #' components come from. It is not enabled by default - you need to use

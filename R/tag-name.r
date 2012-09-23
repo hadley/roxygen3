@@ -1,11 +1,12 @@
-#' Override the default topic name.
+#' @@name: Override the default topic name.
 #'
 #' By default, the topic name is derived from the object following the
-#' roxygen comments. This tag is rarely needed - if you are using it often
-#' it's probably an indication that you need to extend roxygen3 for you
-#' object type.
+#' roxygen comments. This tag is rarely needed and using it may suggest
+#' that you are documenting the wrong object.
 #'
 #' @tagUsage @@name name
+#' @seealso @@rdname for modifying the generated file name and combining
+#'   the documentation for multiple objects into one file.
 setClass("NameTag", contains = "Tag")
 
 setMethod("process", "NameTag", function(input, block) {

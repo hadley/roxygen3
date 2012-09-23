@@ -2,9 +2,9 @@
 \docType{class}
 \name{CommentTag-class}
 \alias{CommentTag-class}
-\title{Add comments to the Rd file.}
+\title{@comment: add comments to the Rd file.}
 \description{
-  Add comments to the Rd file.
+  @comment: add comments to the Rd file.
 }
 \keyword{classes}
 \section{Tag Usage}{

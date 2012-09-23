@@ -1,4 +1,4 @@
-#' Override default topic title.
+#' @@title: Override default topic title.
 #'
 #' The topic title. By default this is taken from the first paragraph of the
 #' roxygen block. See \code{\linkS4class{IntroTag}} for more details.

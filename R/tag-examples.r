@@ -1,4 +1,4 @@
-#' Provide examples.
+#' @@example/@@examples: provide examples.
 #'
 #' These two tags allow you to add examples to the documentation, either inline
 #' with \code{@@examples} or by pointing to an external file with

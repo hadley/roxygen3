@@ -1,3 +1,7 @@
+#' @@param: describe input parameters
+#'
+#' @tagUsage @param name Basic description. Multiple lines of text are fine,
+#'   and are often useful if your parameter does a lot.
 setClass("ParamTag", contains = "Tag",
   list(arguments = "character"))
 

@@ -1,4 +1,4 @@
-#' Add a "concept" index entry.
+#' @@concept: add a "concept" index entry.
 #'
 #' These can be used to add additional entries that will be searched for
 #' in \code{\link{help.search}}.

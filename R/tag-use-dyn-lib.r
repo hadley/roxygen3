@@ -1,4 +1,4 @@
-#' Import routines from a shared library.
+#' @@useDynLib: import routines from a shared library.
 #'
 #' Most of the time you should only need to use \code{@@useDynLib} without
 #' any arguments - \code{auto_dynlib} will parse the function and extract any

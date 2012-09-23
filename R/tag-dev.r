@@ -1,3 +1,10 @@
+#' @@dev: flag a function as for developers only.
+#'
+#' \code{@@dev} flags a function as use primarily for developers building on
+#' your package, rather than users. It adds \code{[DEV]} to the title and
+#' a brief message to the description.
+#'
+#' @tagUsage @@dev
 setClass("DevTag", contains = "Tag")
 
 setMethod("process", "DevTag", function(input, block) {

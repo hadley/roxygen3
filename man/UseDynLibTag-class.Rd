@@ -2,7 +2,7 @@
 \docType{class}
 \name{UseDynLibTag-class}
 \alias{UseDynLibTag-class}
-\title{Import routines from a shared library.}
+\title{@useDynLib: import routines from a shared library.}
 \description{
   Most of the time you should only need to use
   \code{@useDynLib} without any arguments -

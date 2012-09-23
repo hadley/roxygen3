@@ -2,7 +2,7 @@
 \docType{class}
 \name{DebugTag-class}
 \alias{DebugTag-class}
-\title{Automatically add the path as an Rd comment.}
+\title{@debug: show the input paths as an Rd comment.}
 \description{
   This is useful for debugging Rd files, if you're not sure
   where the components come from. It is not enabled by

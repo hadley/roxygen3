@@ -2,7 +2,7 @@
 \docType{class}
 \name{DescriptionTag-class}
 \alias{DescriptionTag-class}
-\title{Override default description.}
+\title{@description:: describe the function in one or two paragraphs.}
 \description{
   The topic title. By default this is taken from the second
   paragraph of the roxygen block. See

@@ -1,4 +1,4 @@
-#' Add additional topic aliases.
+#' @@aliases: additional topic aliases.
 #'
 #' Add additional aliases through which the user can find the documentation
 #' with \code{\link{help}}. The topic name is always included in the list of

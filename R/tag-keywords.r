@@ -1,3 +1,13 @@
+#' @@keywords: provide high-level keywords.
+#'
+#' @details
+#' Roxygen3 will automatically add data, classes, and methods keywords for data,
+#' objects (S4 and R5), and methods (S3 and S4).
+#'
+#' Functions with the internal keyword will not be listed in the default
+#' package index file.
+#'
+#' @tagUsage @@keywords keyword1 keyword2 keyword3
 setClass("KeywordsTag", contains = "Tag")
 
 setMethod("defaultTag", c("KeywordsTag", "DataObject"), function(tag, object) {

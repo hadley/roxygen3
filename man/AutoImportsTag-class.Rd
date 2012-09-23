@@ -2,7 +2,7 @@
 \docType{class}
 \name{AutoImportsTag-class}
 \alias{AutoImportsTag-class}
-\title{Automatically add import statements.}
+\title{@autoImport: automatically add import statements.}
 \description{
   Using this tag will automatically add all external
   functions used by the function to the namespace.  If

@@ -2,7 +2,7 @@
 \docType{class}
 \name{InheritParamsTag-class}
 \alias{InheritParamsTag-class}
-\title{Inherit parameters from another function.}
+\title{@inheritParams: Inherit parameters from another function.}
 \description{
   This tag will bring in all documentation for parameters
   that are undocumented in the current function, but

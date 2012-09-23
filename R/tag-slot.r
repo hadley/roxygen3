@@ -1,4 +1,4 @@
-#' Document S4 class slots.
+#' @@slot: document the slots of a S4 class.
 #'
 #' Many S4 slots are considered internal implementation details, so slots
 #' (unlike params) are not documented by default. You can use the \code{@@slot}

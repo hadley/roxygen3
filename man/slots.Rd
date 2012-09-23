@@ -3,7 +3,7 @@
 \name{SlotTag-class}
 \alias{AutoSlotsTag-class}
 \alias{SlotTag-class}
-\title{Document S4 class slots.}
+\title{@slot: document the slots of a S4 class.}
 \description{
   Many S4 slots are considered internal implementation
   details, so slots (unlike params) are not documented by

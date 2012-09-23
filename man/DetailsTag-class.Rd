@@ -2,7 +2,7 @@
 \docType{class}
 \name{DetailsTag-class}
 \alias{DetailsTag-class}
-\title{Override default details.}
+\title{@details: provide (lots of) extra detail about the function}
 \description{
   The topic title. By default this is taken from the third
   and subsequent paragraphs of the roxygen block. See

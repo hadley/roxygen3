@@ -1,4 +1,4 @@
-#' Control order of collation.
+#' @@include: describe files that should be sourced before this one.
 #'
 #' @details
 #' The collation order is only modified if it is different from alphabetical

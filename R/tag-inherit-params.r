@@ -1,4 +1,4 @@
-#' Inherit parameters from another function.
+#' @@inheritParams: Inherit parameters from another function.
 #'
 #' This tag will bring in all documentation for parameters that are
 #' undocumented in the current function, but documented in the source

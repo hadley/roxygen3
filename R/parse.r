@@ -98,7 +98,7 @@ parse_roc <- function(lines, default_tags, srcref, match = "^\\s*#+\' ?") {
 
   # If the comment block does not start with a @, then it must be the
   # introduction section
-  if (!str_detect(joined, "^@")) {
+  if (!str_detect(joined, "^@[^@]")) {
     joined <- str_c("@intro ", joined)
   }
 

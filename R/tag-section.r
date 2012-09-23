@@ -1,3 +1,10 @@
+#' @@section: Add a new named section.
+#'
+#' This tag allows you to add arbitrarily named new sections. The section name
+#' should not use any special formatting for latex compatibility.
+#'
+#' @tagUsage Section title:
+#'   Section contents.  This can be multiple paragraphs.
 #' @slot sections A named character vector. The names represent the section
 #'  titles and the values the contents.
 #' @autoImports

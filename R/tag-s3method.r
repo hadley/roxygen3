@@ -1,5 +1,9 @@
 #' Export S3 methods.
 #'
+#' This method is only included for compatibility with previous version of
+#' roxygen.  Roxygen3 now automatically determines if a function is a S3 method
+#' and \code{@@export} will produce the correct namespace directives.
+#'
 #' @tagUsage
 #'   @@S3method generic class
 #'   @@S3method generic

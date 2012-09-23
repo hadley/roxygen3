@@ -1,4 +1,4 @@
-#' Automatically add import statements.
+#' @@autoImport: automatically add import statements.
 #'
 #' Using this tag will automatically add all external functions used by the
 #' function to the namespace.  If there are any ambiguities (i.e. the same

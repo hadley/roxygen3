@@ -1,3 +1,8 @@
+#' @@format: describe format of data.
+#'
+#' If not specified, \code{str} will be used to generate a brief description.
+#'
+#' @tagUsage @@format A data.frame with 12 columns and 3 rows
 setClass("FormatTag", contains = "Tag")
 
 setMethod("defaultTag", c("FormatTag", "DataObject"),

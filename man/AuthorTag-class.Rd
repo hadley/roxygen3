@@ -2,7 +2,7 @@
 \docType{class}
 \name{AuthorTag-class}
 \alias{AuthorTag-class}
-\title{Provide the object's author.}
+\title{@author: the author of the documentation}
 \description{
   A free text string describing the authors of the
   function.  This is typically only necessary if the author

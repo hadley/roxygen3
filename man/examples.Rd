@@ -3,7 +3,7 @@
 \name{ExamplesTag-class}
 \alias{ExampleTag-class}
 \alias{ExamplesTag-class}
-\title{Provide examples.}
+\title{@example/@examples: provide examples.}
 \description{
   These two tags allow you to add examples to the
   documentation, either inline with \code{@examples} or by

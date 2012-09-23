@@ -2,9 +2,12 @@
 \docType{class}
 \name{DocTypeTag-class}
 \alias{DocTypeTag-class}
-\title{Set object documentation type.}
+\title{@docType: set the documentation type of the object.}
 \description{
-  Set object documentation type.
+  Roxygen3 will guess the doctype for you - the only time
+  you should need to specify it yourself for package
+  documentation (\code{@docType package}) which typically
+  document the code \code{NULL}.
 }
 \details{
   You can use any doctype, but it will only be included in

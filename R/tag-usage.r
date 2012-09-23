@@ -1,3 +1,10 @@
+#' @@usage: describe the usage of a function.
+#'
+#' Roxygen3 will automatically generate the usage string for you - if you need
+#' specify this yourself (unless you particularly want to control the formatting
+#' it's probably an indiciation of roxygen bug and should be reported).
+#'
+#' @tagUsage @@usage f(a, b, c) # You can also comments
 setClass("UsageTag", contains = "Tag",
   list(usage = "Usage"),
   prototype = list(usage = new("NullUsage")))

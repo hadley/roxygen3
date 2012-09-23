@@ -1,4 +1,4 @@
-#' Provide the object's author.
+#' @@author: the author of the documentation
 #'
 #' A free text string describing the authors of the function.  This is
 #' typically only necessary if the author is not the same as the package author.
