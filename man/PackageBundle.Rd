@@ -23,10 +23,10 @@ its name, path, and all the \code{\linkS4class{Block}}s that it contains.
 }
 \section{Generics with methods for PackageBundle}{
 \itemize{
-  \item \code{\link[=rPath]{rPath}}
-  \item \code{\link[=writeDescription]{writeDescription}}
-  \item \code{\link[=writeNamespace]{writeNamespace}}
-  \item \code{\link[=writeRd]{writeRd}}
+  \item \code{\link{rPath}}
+  \item \code{\link{writeDescription}}
+  \item \code{\link{writeNamespace}}
+  \item \code{\link{writeRd}}
 }
 
 }

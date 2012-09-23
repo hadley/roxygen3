@@ -22,12 +22,19 @@ setMethod("process", "ClassMethodsTag", function(input, block) {
 
   obj <- block@object@value
   methods <- class_methods(obj)
+  if (nrow(methods) == 0) return(block)
 
-  if (length(methods) == 0) return(block)
+  star <- ifelse(methods$self, "", "*")
+  nmethods <- ifelse(methods$subclasses == 0, "",
+    str_c(" (", methods$subclasses, " methods defined for subclasses)"))
 
-  items <- str_c("  \\item ", describe(methods), collapse = "\n")
+  items <- str_c("  \\item \\code{\\link{", methods$generic, "}}",
+    star, nmethods, collapse = "\n")
   title <- str_c("Generics with methods for ", obj@className)
   content <- str_c("\\itemize{\n", items, "\n}\n")
+  if (any(!methods$self)) {
+    content <- str_c(content, "\n* = methods only defined for subclasses")
+  }
 
   section <- tag(block, "section")
   section@sections <- c(section@sections, setNames(content, title))
@@ -35,13 +42,26 @@ setMethod("process", "ClassMethodsTag", function(input, block) {
   block
 })
 
+get_generics <- function() {
+  generics <- getGenerics()@.Data
+  is_generic <- vapply(generics, isGeneric, logical(1))
+  generics[is_generic & generics != "coerce"]
+}
+
 class_methods <- function(class) {
   if (is.character(class)) class <- getClass(class)
 
-  generics <- getGenerics()@.Data
-  is_generic <- vapply(generics, isGeneric, logical(1))
-  ok <- generics[is_generic & generics != "coerce"]
+  gen <- get_generics()
+  sub <- names(sub_classes(class))
 
-  methods_lists <- lapply(ok, findMethods, classes = class@className)
-  unlist(lapply(methods_lists, "slot", ".Data"))
+  sub <- vapply(gen, n_methods, sub = sub, integer(1))
+  own <- vapply(gen, n_methods, sub = class@className, integer(1)) == 1
+
+  df <- data.frame(generic = gen, self = own, subclasses = sub, row.names = NULL)
+  df[df$self | df$subclasses > 0, ]
 }
+n_methods <- function(gen, sub) {
+  sigs <- findMethods(gen)@signatures
+  sum(vapply(sigs, function(x) any(sub %in% x), logical(1)))
+}
+

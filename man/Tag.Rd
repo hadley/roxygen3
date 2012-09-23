@@ -73,17 +73,20 @@ Sub classes:
 
 \section{Generics with methods for Tag}{
 \itemize{
-  \item \code{\link[=format]{format}}
-  \item \code{\link[=isEmpty]{isEmpty}}
-  \item \code{\link[=process]{process}}
-  \item \code{\link[=show]{show}}
-  \item \code{\link[=value]{value}}
-  \item \code{\link[=value<-]{value<-}}
-  \item \code{\link[=writeDescription]{writeDescription}}
-  \item \code{\link[=writeNamespace]{writeNamespace}}
-  \item \code{\link[=writeRd]{writeRd}}
+  \item \code{\link{defaultTag}}* (30 methods defined for subclasses)
+  \item \code{\link{format}}
+  \item \code{\link{getPrereqs}}* (6 methods defined for subclasses)
+  \item \code{\link{isEmpty}} (1 methods defined for subclasses)
+  \item \code{\link{process}} (13 methods defined for subclasses)
+  \item \code{\link{show}}
+  \item \code{\link{value}} (8 methods defined for subclasses)
+  \item \code{\link{value<-}} (18 methods defined for subclasses)
+  \item \code{\link{writeDescription}} (1 methods defined for subclasses)
+  \item \code{\link{writeNamespace}} (10 methods defined for subclasses)
+  \item \code{\link{writeRd}} (22 methods defined for subclasses)
 }
 
+* = methods only defined for subclasses
 }
 
 \keyword{classes}

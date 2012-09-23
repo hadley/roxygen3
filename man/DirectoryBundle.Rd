@@ -22,9 +22,13 @@ A bundle of files in a directory.
 }
 \section{Generics with methods for DirectoryBundle}{
 \itemize{
-  \item \code{\link[=rPath]{rPath}}
+  \item \code{\link{rPath}} (1 methods defined for subclasses)
+  \item \code{\link{writeDescription}}* (1 methods defined for subclasses)
+  \item \code{\link{writeNamespace}}* (1 methods defined for subclasses)
+  \item \code{\link{writeRd}}* (1 methods defined for subclasses)
 }
 
+* = methods only defined for subclasses
 }
 
 \keyword{classes}

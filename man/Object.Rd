@@ -38,11 +38,12 @@ Sub classes:
 
 \section{Generics with methods for Object}{
 \itemize{
-  \item \code{\link[=defaultTag]{defaultTag}}
-  \item \code{\link[=defaultTag]{defaultTag}}
-  \item \code{\link[=show]{show}}
+  \item \code{\link{defaultTag}}* (28 methods defined for subclasses)
+  \item \code{\link{isNull}}* (1 methods defined for subclasses)
+  \item \code{\link{show}}
 }
 
+* = methods only defined for subclasses
 }
 
 \keyword{classes}

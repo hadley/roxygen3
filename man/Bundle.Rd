@@ -20,11 +20,11 @@ Sub classes:
 
 \section{Generics with methods for Bundle}{
 \itemize{
-  \item \code{\link[=process]{process}}
-  \item \code{\link[=rPath]{rPath}}
-  \item \code{\link[=writeDescription]{writeDescription}}
-  \item \code{\link[=writeNamespace]{writeNamespace}}
-  \item \code{\link[=writeRd]{writeRd}}
+  \item \code{\link{process}}
+  \item \code{\link{rPath}} (2 methods defined for subclasses)
+  \item \code{\link{writeDescription}} (1 methods defined for subclasses)
+  \item \code{\link{writeNamespace}} (1 methods defined for subclasses)
+  \item \code{\link{writeRd}} (1 methods defined for subclasses)
 }
 
 }
