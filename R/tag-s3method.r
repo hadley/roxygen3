@@ -55,5 +55,5 @@ setMethod("writeNamespace", "S3methodTag", function(object) {
   }
 
   str_c("S3method(", quote_if_needed(methods[, 1]), ",",
-    quote_if_needed(methods[, 2]), ")", collapse = "\n")
+    quote_if_needed(methods[, 2]), ")")
 })
