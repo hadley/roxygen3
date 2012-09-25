@@ -19,12 +19,12 @@ setMethod("writeRd", "Bundle", function(object) {
   Map(write_rd, rd, names(rd))
 })
 setMethod("writeRd", "Block", function(object) {
-  compact(lapply(object@tags, writeRd))
+  compact(lapply(object@tags, writeRd__))
 })
 setMethod("writeRd", "Tag", function(object) NULL)
 
 build_rd <- function(blocks) {
-  commands <- lapply(blocks, writeRd)
+  commands <- lapply(blocks, writeRd__)
   has_command <- vapply(commands, function(x) length(x) > 0, logical(1))
 
   paths <- lapply(blocks, output_path)

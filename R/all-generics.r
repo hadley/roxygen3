@@ -8,6 +8,7 @@ setGeneric("usage", function(value, name, srcref) {
 setGeneric("writeRd", function(object) {
   standardGeneric("writeRd")
 })
+writeRd__ <- memoise(function(object) writeRd(object))
 
 #' @rdname writeNamespace
 #' @export
