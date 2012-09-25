@@ -46,3 +46,6 @@ setMethod("topicName", "MethodDefinition", function(x) {
 setMethod("topicName", "classRepresentation", function(x) {
   str_c(x@className, "-class")
 })
+setMethod("topicName", "refObjectGenerator", function(x) {
+  str_c(x$def@className, "-ref-class")
+})
