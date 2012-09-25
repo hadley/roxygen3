@@ -28,8 +28,10 @@ setMethod("value", "Tag", function(tag) {
   tag@text
 })
 setMethod("isEmpty", "Tag", function(tag) {
-  val <- value(tag)
-  length(val) == 0 || identical(val, "")
+  isEmpty(value(tag))
+})
+setMethod("isEmpty", "character", function(tag) {
+  length(tag) == 0 || identical(tag, "")
 })
 
 find_tag <- memoise(function(name, tags = base_tags()) {

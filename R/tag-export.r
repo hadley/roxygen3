@@ -24,6 +24,12 @@
 #' @rdname tag-export
 setClass("ExportTag", contains = "Tag")
 
+setMethod("value<-", "ExportTag", function(tag, value) {
+  if (isEmpty(value)) return(tag)
+  tag@text <- str_split(value, "[[:space:]]+")[[1]]
+  tag
+})
+
 setMethod("process", "ExportTag", function(input, block) {
   if (!isEmpty(input)) return(block)
 

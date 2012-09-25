@@ -10,6 +10,12 @@ test_that("export parameter overrides default", {
   expect_equal(tag_value(out, "export"), "b")
 })
 
+test_that("multiple inputs give multiple outputs", {
+  out <- test_process("#' @export a b\na <- function(){}")
+  expect_equal(tag_value(out, "export"), c("a", "b"))
+})
+
+
 test_that("export detects S4 class", {
   out <- test_process("#' @export\nsetClass('a')")
   expect_equal(tag_value(out, "exportClass"), "a")

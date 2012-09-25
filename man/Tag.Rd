@@ -82,7 +82,7 @@ Sub classes:
   \item \code{\link{process}} (14 methods defined for subclasses)
   \item \code{\link{show}}
   \item \code{\link{value}} (9 methods defined for subclasses)
-  \item \code{\link{value<-}} (19 methods defined for subclasses)
+  \item \code{\link{value<-}} (20 methods defined for subclasses)
   \item \code{\link{writeDescription}} (1 methods defined for subclasses)
   \item \code{\link{writeNamespace}} (10 methods defined for subclasses)
   \item \code{\link{writeRd}} (22 methods defined for subclasses)
