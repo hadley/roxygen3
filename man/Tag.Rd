@@ -63,6 +63,8 @@ Sub classes:
   \item \linkS4class{SlotTag}
   \item \linkS4class{AutoSlotsTag}
   \item \linkS4class{SourceTag}
+  \item \linkS4class{TemplateTag}
+  \item \linkS4class{TemplateVarTag}
   \item \linkS4class{TitleTag}
   \item \linkS4class{TagUsageTag}
   \item \linkS4class{UsageTag}
@@ -75,12 +77,12 @@ Sub classes:
 \itemize{
   \item \code{\link{defaultTag}}* (32 methods defined for subclasses)
   \item \code{\link{format}}
-  \item \code{\link{getPrereqs}}* (6 methods defined for subclasses)
+  \item \code{\link{getPrereqs}}* (7 methods defined for subclasses)
   \item \code{\link{isEmpty}} (1 methods defined for subclasses)
-  \item \code{\link{process}} (13 methods defined for subclasses)
+  \item \code{\link{process}} (14 methods defined for subclasses)
   \item \code{\link{show}}
-  \item \code{\link{value}} (8 methods defined for subclasses)
-  \item \code{\link{value<-}} (18 methods defined for subclasses)
+  \item \code{\link{value}} (9 methods defined for subclasses)
+  \item \code{\link{value<-}} (19 methods defined for subclasses)
   \item \code{\link{writeDescription}} (1 methods defined for subclasses)
   \item \code{\link{writeNamespace}} (10 methods defined for subclasses)
   \item \code{\link{writeRd}} (22 methods defined for subclasses)

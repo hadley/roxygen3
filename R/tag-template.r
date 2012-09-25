@@ -4,51 +4,58 @@
 #' Templates are parsed with \code{\link[brew]{brew}}, so you can access
 #' template variables using \code{<%= name %>}.
 #'
-#' @usageTag
+#' @tagUsage
 #'   @@template name_of_template
 #'   @@templateVar name value
 #' @rdname TemplateTag
 setClass("TemplateTag", contains = "Tag", representation(
   contents = "character"))
-setMethod("getPrereqs", "TemplateTag", function(x) "TemplateVarTag")
+setMethod("getPrereqs", "TemplateTag", function(tag) "TemplateVarTag")
 
 setMethod("process", "TemplateTag", function(input, block) {
   templates <- tag_value(block, "template")
   paths <- vapply(templates, template_find, FUN.VALUE = character(1))
 
-  raw_vars <- tag_value(block, "templateVar")
-  vars <- lapply(raw_vars, type.convert, as.is = TRUE)
+  vars <- tag_value(block, "templateVar")
+  text <- unlist(lapply(paths, template_eval, vars = vars), use.names = FALSE)
 
-  results <- unlist(lapply(paths, template_eval, vars = list2env(vars)))
-  tags <- parse_roc(as.character(ref), base_tags())
+  tags <- parse_roc(text, base_tags(), block@srcref)
 
-  input@contents <- results
+  block@tags <- c(block@tags, tags)
   tag(block, "template") <- NULL
   tag(block, "templateVar") <- NULL
   block
 })
 
-# Will need to test that it affects all tags (e.g. @name, @rdname)
-# Make sure it combines with existing tags
-# Need to make sure the outputs are also processed - and check why I cared about
-# the ordering of the inputs.
-
 #' @rdname TemplateTag
 setClass("TemplateVarTag", contains = "Tag",
-  representation(variables = character()))
+  representation(variables = "list"))
 setMethod("value", "TemplateVarTag", function(tag) tag@variables)
 setMethod("value<-", "TemplateVarTag", function(tag, value) {
   pieces <- str_split_fixed(value, "[[:space:]]+", 2)
 
-  tag@variables <- setNames(pieces[, 1], str_trim(pieces[, 2]))
+  vars <- lapply(pieces[, 2], type.convert, as.is = TRUE)
+
+  tag@variables <- setNames(pieces[, 1], vars)
   tag
 })
 
 template_find <- function(template_name) {
   path <- file.path("man-roxygen", str_c(template_name, ".r"))
   if (!file.exists(path)) {
-    stop("Can not find template ", template_name, call. = FALSE)
+    message("Can not find template ", template_name)
+    return()
   }
   path
+}
+
+#' @autoImports
+template_eval <- function(template, vars) {
+  if (is.null(vars)) {
+    env <- new.env(parent = baseenv())
+  } else {
+    env <- list2env(vars, parent = baseenv())
+  }
+  capture.output(brew(template, envir = env))
 }
 

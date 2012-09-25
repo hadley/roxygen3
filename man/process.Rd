@@ -34,6 +34,7 @@ Process bundles and blocks.
   \item \linkS4class{S3methodTag}
   \item \linkS4class{SlotTag}
   \item \linkS4class{Tag}
+  \item \linkS4class{TemplateTag}
   \item \linkS4class{UseDynLibTag}
 }
 

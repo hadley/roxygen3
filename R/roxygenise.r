@@ -11,6 +11,11 @@
 #' @autoImports
 #' @export
 roxygenise <- function(path, check = FALSE, clean = FALSE) {
+  stopifnot(file.exists(path))
+
+  old_wd <- setwd(path)
+  on.exit(setwd(old_wd))
+
   pkg <- PackageBundle(path)
 
   man_path <- file.path(pkg@path, "man")

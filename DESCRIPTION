@@ -12,14 +12,15 @@ Depends:
     R (>= 2.14),
     stats
 Imports:
-    stringr (>= 0.6),
-    tools,
-    digest,
-    codetools,
-    igraph,
-    devtools,
-    memoise,
     methods,
-    brew
+    tools,
+    utils,
+    brew,
+    codetools,
+    devtools,
+    digest,
+    igraph,
+    memoise,
+    stringr (>= 0.6)
 Suggests:
     testthat
