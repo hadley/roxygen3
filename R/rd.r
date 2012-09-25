@@ -69,7 +69,7 @@ setMethod("format", "CollapsingCommand", function(x, ...) {
   wrapped <- rd_wrap(x@values)
   escaped <- escape_comments(wrapped)
 
-  str_c("\\", x@name, "{\n", wrapped, "\n}")
+  str_c("\\", x@name, "{\n", escaped, "\n}")
 })
 
 # Commands with special semantics ----------------------------------------------
