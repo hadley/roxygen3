@@ -1,3 +1,9 @@
+# NOTICE 28 November 2013
+
+Roxygen development activity has shifted to [`roxygen2`](https://github.com/klutometis/roxygen).
+
+# Previous README.md
+
 Roxygen3 is a ground-up rewrite of roxygen2 aiming for a design that is simpler, more modular and easier to understand so that bugs can be fixed more rapidly and others can extend roxygen to meet their specific needs.  
 
 It is likely that roxygen3 will never be released on CRAN, but instead will be merged into roxygen2.
